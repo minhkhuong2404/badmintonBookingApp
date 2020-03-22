@@ -1,5 +1,5 @@
 # Homework 2 #  
-<dd align="right">This is some text in a paragraph.</dd>
+(<dd align="right">This is some text in a paragraph.</dd>)  
 ## Team E ##  
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 ### Design/describe interfaces [client-server] Logic-Data ###  
