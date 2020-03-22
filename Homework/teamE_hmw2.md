@@ -6,47 +6,47 @@
 ### Design UI (Activity diagram + mockups) ###  
 #### Mockups ####  
 **1. User**  
-* Booking Time  
+1.1 Booking Time  
 ![Bookingtime](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Booking%20time.png)  
 
 
-* Booking  
+1.2 Booking  
 ![Booking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Booking.png)  
 
 
-* Create an account  
+1.3 Create an account  
 ![CreateAnAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Create%20an%20account.png)  
 
 
-* Dashboard  
+1.4 Dashboard  
 ![Dashboard](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Dashboard.png)  
 
 
-* Find Location  
+1.5 Find Location  
 ![FindLocation](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Find%20location.png) 
 
 
-* List of place  
+1.6 List of place  
 ![ListOfPlace](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/List%20of%20place.png)  
 
 
-* Login  
+1.7 Login  
 ![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Log-in.png)  
 
 
-* My Account  
+1.8 My Account  
 ![MyAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/My%20account.png)  
 
 
-* Notification Center  
+1.9 Notification Center  
 ![NotificationCenter](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Notification%20center.png)  
 
 
-* Turn on notification  
+1.10 Turn on notification  
 ![TurnOnNotification](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Turn%20on%20notification.png)  
 
 
-* Upcomming booking  
+1.11 Upcomming booking  
 ![UpcomingBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Upcoming%20booking_2.png) 
 
 
