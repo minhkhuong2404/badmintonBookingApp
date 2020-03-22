@@ -1,4 +1,5 @@
 # Homework 2 #  
+<p align="right">This is some text in a paragraph.</p>
 ## Team E ##  
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 ### Design/describe interfaces [client-server] Logic-Data ###  
@@ -74,4 +75,3 @@
 * 2.6. Upcomming Booking  
 ![UpcommingBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Upcoming%20booking.png)  
 ***
-<p align="right">This is some text in a paragraph.</p>
