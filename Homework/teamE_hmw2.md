@@ -21,6 +21,13 @@ Delete booking with booking_id
 ### Design database (Entity-Relationship Diagram) ###  
 ![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-Diagram%20for%20project.PNG)  
 ### Design UI (Activity diagram + mockups) ###  
+#### Activity diagram ####  
+**1. User**  
+![UserActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/User.jpg)  
+
+
+**2. Staff**  
+![StaffActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/Staff.jpg)  
 #### Mockups ####  
 **1. User**  
 * 1.1. Booking Time  
