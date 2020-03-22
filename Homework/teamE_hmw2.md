@@ -48,3 +48,7 @@
 
 * Upcomming booking  
 ![UpcomingBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Upcoming%20booking_2.png) 
+
+
+**2. Staff**
+![staff](https://github.com/manuelclavel/teamepe2020/tree/master/Images/Diagrams/Mock-ups/Staff)
