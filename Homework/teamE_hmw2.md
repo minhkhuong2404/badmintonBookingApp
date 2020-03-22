@@ -51,4 +51,25 @@
 
 
 **2. Staff**
-![staff](https://github.com/manuelclavel/teamepe2020/tree/master/Images/Diagrams/Mock-ups/Staff)
+Login  
+![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Login%20-%20Staff.png)  
+
+
+Paid Booking  
+![Paid Booking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Paid%20bookings.png)  
+
+
+Pending Booking  
+![PendingBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Pending%20bookings.png)  
+
+
+Reminders  
+![Reminders](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Reminders.png)  
+
+
+Staff Account  
+![StaffAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Staff%20Account.png)  
+
+
+Upcomming Booking  
+![UpcommingBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Upcoming%20booking.png)  
