@@ -6,11 +6,11 @@
 ### Design UI (Activity diagram + mockups) ###  
 #### Mockups ####  
 **1. User**  
-* 1.1 Booking Time  
+  1.1 Booking Time  
 ![Bookingtime](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Booking%20time.png)  
 
 
-* 1.2 Booking  
+  1.2 Booking  
 ![Booking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Booking.png)  
 
 
