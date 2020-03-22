@@ -1,5 +1,4 @@
 # Homework 2 #  
-  <p align="right">This is some text in a paragraph.</p>  
 ## Team E ##  
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 ### Design/describe interfaces [client-server] Logic-Data ###  
