@@ -58,21 +58,22 @@ Delete booking with booking_id
 ![FindLocation](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Find%20location.png) 
 ***
 
-* 1.8. My Account  
-![MyAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/My%20account.png)  
-***
-
-* 1.9. Notification Center  
+* 1.8. Notification Center  
 ![NotificationCenter](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Notification%20center.png)  
 ***
 
-* 1.10. Upcomming booking  
+* 1.9. Upcomming booking  
 ![UpcomingBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Upcoming%20booking_2.png) 
 ***
 
-* 1.11. Turn on notification  
+* 1.10. Turn on notification  
 ![TurnOnNotification](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Turn%20on%20notification.png)  
 ***
+
+* 1.11. My Account  
+![MyAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/My%20account.png)  
+***
+
 **2. Staff**
 * 2.1. Login  
 ![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Login%20-%20Staff.png)  
