@@ -19,6 +19,7 @@ Get bookings which are booked by a user (included pending, paid and cancelled bo
 Create new booking with user_id, court, start time, end time  
 Delete booking with booking_id  
 ### Design database (Entity-Relationship Diagram) ###  
+![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-Diagram%20for%20project.PNG)  
 ### Design UI (Activity diagram + mockups) ###  
 #### Mockups ####  
 **1. User**  
