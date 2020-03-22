@@ -2,18 +2,18 @@
 ## Team E ##  
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 ### Design/describe interfaces [client-server] Logic-Data ###  
-GENERAL:  
+**GENERAL:**  
 Get all cities, courts in the city  
 Get all bookings of a court  
 Get all available slots of the court with a given date  
 Get information of a booking  
 
-STAFF:  
+**STAFF:**  
 Get courts which are managed by a staff  
 Get/Update credential information (username, password, contact number…) for staffs (when they log in, change password…)  
 Change booking status (pending or paid)  
 
-USER:  
+**USER:**  
 Get/Update credential information (username, password, contact number…) for users (when they log in, create new account, change password…)  
 Get bookings which are booked by a user (included pending, paid and cancelled bookings)  
 Create new booking with user_id, court, start time, end time  
