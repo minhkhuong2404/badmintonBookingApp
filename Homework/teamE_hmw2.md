@@ -34,15 +34,15 @@
 ![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Log-in.png)  
 
 
-* My Account
+* My Account  
 ![MyAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/My%20account.png)  
 
 
-* Notification Center
+* Notification Center  
 ![NotificationCenter](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Notification%20center.png)  
 
 
-* Turn on notification
+* Turn on notification  
 ![TurnOnNotification](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Turn%20on%20notification.png)  
 
 
