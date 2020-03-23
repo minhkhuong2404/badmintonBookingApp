@@ -13,10 +13,10 @@ View booking info. view_booking_info(booking_id)
 View pending booking. view_booking(staff_id, payment_stat)  
 ### Design/describe interfaces [client-server] Logic-Data ###  
 **GENERAL:**  
-Get all courts in the city for user to choose. view_all()  
-Get all courts in the choosen sport center. view_court_sport(sportcenter_id)  
-Get all courts with a given date. view_court_date(date)  
-Get all courts with a given date in the choosen sport. view_court(sportcenter_id,date)  
+Get all courts in the city for user to choose. get_all_court()  
+Get all courts in the choosen sport center. get_court_sport(sportcenter_id)  
+Get all courts with a given date. get_court_date(date)  
+Get all courts with a given date in the choosen sport. get_court(sportcenter_id,date)  
 Get credential information for logging. get_cred(user_id)  
 **STAFF:**  
 Get courts which are managed by a staff get_court(staff_id)  
