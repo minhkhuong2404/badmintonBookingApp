@@ -11,7 +11,7 @@ View all sportcenter. ```view_ sportcenter()```
 **STAFF:**  
 View booking info. ```view_booking_info(booking_id)```  
 View pending booking. ```view_booking(staff_id, payment_stat)```  
-### Design/describe interfaces [client-server] Logic-Data ###  
+### Design/describe interfaces [server-database] Logic-Data ###  
 **GENERAL:**  
 Get all courts in the city for user to choose. ```get_all_court()```  
 Get all courts in the choosen sport center. ```get_court_sport(sportcenter_id)```  
