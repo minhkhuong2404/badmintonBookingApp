@@ -2,15 +2,15 @@
 ## Team E ##  
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 **GENERAL:**  
-View booking. View_booking(user_id/staff_id)  
-View account information. View_acc(user_id/staff_id)  
+View booking. view_booking(user_id/staff_id)  
+View account information. view_acc(user_id/staff_id)  
 **USER:**  
-View all courts. View_court()  
-View all courts in a sportcenter. View_court(sportcenter_id)  
-View all sportcenter. View_ sportcenter()  
+View all courts. view_court()  
+View all courts in a sportcenter. view_court(sportcenter_id)  
+View all sportcenter. view_ sportcenter()  
 **STAFF:**  
-View booking_info. View_booking_info(booking_id)  
-View pending booking. View_booking(staff_id, payment_stat)  
+View booking info. view_booking_info(booking_id)  
+View pending booking. view_booking(staff_id, payment_stat)  
 ### Design/describe interfaces [client-server] Logic-Data ###  
 **GENERAL:**  
 Get all courts in the city for user to choose. view_all()  
