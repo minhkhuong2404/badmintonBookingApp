@@ -1,16 +1,27 @@
 # Homework 2 #  
 ## Team E ##  
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
+**GENERAL:**  
+View booking. View_booking(user_id/staff_id)
+View account information. View_acc(user_id/staff_id)
+**USER:** 
+View all courts. View_court() 
+View all courts in a sportcenter. View_court(sportcenter_id)  
+View all sportcenter. View_ sportcenter()  
+**STAFF:**  
+View booking_info. View_booking_info(booking_id)  
+View pending booking. View_booking(staff_id, payment_stat)  
 ### Design/describe interfaces [client-server] Logic-Data ###  
 **GENERAL:**  
-Get all courts in the city for user to choose. view_all()
-Get all courts in the choosen sport center. view_court_sport(sportcenter_id)
-Get all courts with a given date. view_court_date(date)
-Get all courts with a given date in the choosen sport. view_court(sportcenter_id,date)
-Get credential information for logging. get_cred(user_id)
+Get all courts in the city for user to choose. get_all_court()  
+Get all courts in the choosen sport center. get_court_sport(sportcenter_id)  
+Get all courts with a given date. get_court_date(date)  
+Get all courts with a given date in the choosen sport. get_court(sportcenter_id,date)  
+Get credential information for logging. get_cred(user_id)  
 **STAFF:**  
-Get courts which are managed by a staff get_court(staff_id)
-Change booking status (pending or paid).  payment_update(court_id)
+Get courts which are managed by a staff. get_court(staff_id)  
+Get all booking that are pending in a sportcenter. get_booking(staff_id, payment_stat)  
+Change booking status (pending or paid).  payment_update(court_id)  
 **USER:**  
 Get bookings which are booked by a user (included pending, paid and cancelled bookings). Get_booking(user_id)
 Create new booking with user_id, court, start time, end time. create_booking(user_id, court_id, start, end)
