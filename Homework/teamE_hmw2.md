@@ -13,7 +13,6 @@ View booking_info. View_booking_info(booking_id)
 View pending booking. View_booking(staff_id, payment_stat)  
 ### Design/describe interfaces [client-server] Logic-Data ###  
 **GENERAL:**  
-<<<<<<< HEAD
 Get all courts in the city for user to choose. get_all_court()  
 Get all courts in the choosen sport center. get_court_sport(sportcenter_id)  
 Get all courts with a given date. get_court_date(date)  
@@ -22,7 +21,6 @@ Get credential information for logging. get_cred(user_id)
 **STAFF:**  
 Get courts which are managed by a staff. get_court(staff_id)  
 Get all booking that are pending in a sportcenter. get_booking(staff_id, payment_stat)  
-=======
 Get all courts in the city for user to choose. view_all()  
 Get all courts in the choosen sport center. view_court_sport(sportcenter_id)  
 Get all courts with a given date. view_court_date(date)  
@@ -30,7 +28,6 @@ Get all courts with a given date in the choosen sport. view_court(sportcenter_id
 Get credential information for logging. get_cred(user_id)  
 **STAFF:**  
 Get courts which are managed by a staff get_court(staff_id)  
->>>>>>> 7421c78294d47f120dd576c59b5e62df333faf4b
 Change booking status (pending or paid).  payment_update(court_id)  
 **USER:**  
 Get bookings which are booked by a user (included pending, paid and cancelled bookings). Get_booking(user_id)  
