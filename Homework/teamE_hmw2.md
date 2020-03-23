@@ -22,9 +22,9 @@ Get credential information for logging. get_cred(user_id)
 Get courts which are managed by a staff get_court(staff_id)  
 Change booking status (pending or paid).  payment_update(court_id)  
 **USER:**  
-Get bookings which are booked by a user (included pending, paid and cancelled bookings). Get_booking(user_id)  
+Get bookings which are booked by a user (included pending, paid and cancelled bookings). get_booking(user_id)  
 Create new booking with user_id, court, start time, end time. create_booking(user_id, court_id, start, end)  
-Delete booking with booking_id. Delete_booking(booking_id)  
+Delete booking with booking_id. delete_booking(booking_id)  
 ### Design database (Entity-Relationship Diagram) ###  
 ![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-Diagram%20for%20project.PNG)  
 ### Design UI (Activity diagram + mockups) ###  
