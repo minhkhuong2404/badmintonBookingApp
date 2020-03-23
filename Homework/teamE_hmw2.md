@@ -2,7 +2,7 @@
 ## Team E ##  
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 **GENERAL:**  
-View booking. '''view_booking(user_id/staff_id)'''  
+View booking. ```view_booking(user_id/staff_id)```  
 View account information. view_acc(user_id/staff_id)  
 **USER:**  
 View all courts. view_court()  
