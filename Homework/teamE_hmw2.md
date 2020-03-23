@@ -3,21 +3,18 @@
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 ### Design/describe interfaces [client-server] Logic-Data ###  
 **GENERAL:**  
-Get all cities, courts in the city  
-Get all bookings of a court  
-Get all available slots of the court with a given date  
-Get information of a booking  
-
+Get all courts in the city for user to choose. view_all()
+Get all courts in the choosen sport center. view_court_sport(sportcenter_id)
+Get all courts with a given date. view_court_date(date)
+Get all courts with a given date in the choosen sport. view_court(sportcenter_id,date)
+Get credential information for logging. get_cred(user_id)
 **STAFF:**  
-Get courts which are managed by a staff  
-Get/Update credential information (username, password, contact number…) for staffs (when they log in, change password…)  
-Change booking status (pending or paid)  
-
+Get courts which are managed by a staff get_court(staff_id)
+Change booking status (pending or paid).  payment_update(court_id)
 **USER:**  
-Get/Update credential information (username, password, contact number…) for users (when they log in, create new account, change password…)  
-Get bookings which are booked by a user (included pending, paid and cancelled bookings)  
-Create new booking with user_id, court, start time, end time  
-Delete booking with booking_id  
+Get bookings which are booked by a user (included pending, paid and cancelled bookings). Get_booking(user_id)
+Create new booking with user_id, court, start time, end time. create_booking(user_id, court_id, start, end)
+Delete booking with booking_id. Delete_booking(booking_id)
 ### Design database (Entity-Relationship Diagram) ###  
 ![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-Diagram%20for%20project.PNG)  
 ### Design UI (Activity diagram + mockups) ###  
