@@ -3,28 +3,28 @@
 ### Design/describe interfaces [client-server] Presentation-Logic ###  
 **GENERAL:**  
 View booking. ```view_booking(user_id/staff_id)```  
-View account information. view_acc(user_id/staff_id)  
+View account information. ```view_acc(user_id/staff_id)```  
 **USER:**  
-View all courts. view_court()  
-View all courts in a sportcenter. view_court(sportcenter_id)  
-View all sportcenter. view_ sportcenter()  
+View all courts. ```view_court()```  
+View all courts in a sportcenter. ```view_court(sportcenter_id)```  
+View all sportcenter. ```view_ sportcenter()```  
 **STAFF:**  
-View booking info. view_booking_info(booking_id)  
-View pending booking. view_booking(staff_id, payment_stat)  
+View booking info. ```view_booking_info(booking_id)```  
+View pending booking. ```view_booking(staff_id, payment_stat)```  
 ### Design/describe interfaces [client-server] Logic-Data ###  
 **GENERAL:**  
-Get all courts in the city for user to choose. get_all_court()  
-Get all courts in the choosen sport center. get_court_sport(sportcenter_id)  
-Get all courts with a given date. get_court_date(date)  
-Get all courts with a given date in the choosen sport. get_court(sportcenter_id,date)  
-Get credential information for logging. get_cred(user_id)  
+Get all courts in the city for user to choose. ```get_all_court()```  
+Get all courts in the choosen sport center. ```get_court_sport(sportcenter_id)```  
+Get all courts with a given date. ```get_court_date(date)```  
+Get all courts with a given date in the choosen sport. ```get_court(sportcenter_id,date)```  
+Get credential information for logging. ```get_cred(user_id)```  
 **STAFF:**  
-Get courts which are managed by a staff get_court(staff_id)  
-Change booking status (pending or paid).  payment_update(court_id)  
+Get courts which are managed by a staff ```get_court(staff_id)```  
+Change booking status (pending or paid).  ```payment_update(court_id)```  
 **USER:**  
-Get bookings which are booked by a user (included pending, paid and cancelled bookings). get_booking(user_id)  
-Create new booking with user_id, court, start time, end time. create_booking(user_id, court_id, start, end)  
-Delete booking with booking_id. delete_booking(booking_id)  
+Get bookings which are booked by a user (included pending, paid and cancelled bookings). ```get_booking(user_id)```  
+Create new booking with user_id, court, start time, end time. ```create_booking(user_id, court_id, start, end)```  
+Delete booking with booking_id. ```delete_booking(booking_id)```  
 ### Design database (Entity-Relationship Diagram) ###  
 ![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-Diagram%20for%20project.PNG)  
 ### Design UI (Activity diagram + mockups) ###  
