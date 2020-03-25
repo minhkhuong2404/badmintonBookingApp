@@ -1,7 +1,8 @@
 # Homework 3 #  
 ## Team E ##  
 ### Notes  
-* unique identifiers known/agreed upon by presentation/client and logic/server: cityId, venueId, courtId, userId/playerId, bookingId, statusId.  
+* unique identifiers known/agreed upon by presentation/client and logic/server: cityId, venueId, courtId,
+userId/playerId, bookingId, statusId.  
 * success/errorCode known/agreed upon by client and server  
 * ordering (if any), when response is a list/array, known/agreed upon by client and server  
 * structure (if any), when response contains (potentially) structured data,
@@ -93,8 +94,10 @@ test case:
 
 ### _getPlayerBookings_  
 test case:  
-- callerId, Input date, city, PlayerId: server returns list of all player bookings (courtID, startHour, endHour, venueID, centreID)  
-- callerId, wrong Input data/City/PlayerId: server returns PlayerBooking on wrong date/city/player or 'no result is found'  
+- callerId, Input date, city, PlayerId: server returns list of all player bookings 
+(courtID, startHour, endHour, venueID, centreID)  
+- callerId, wrong Input data/City/PlayerId: server returns PlayerBooking on wrong date/city/player 
+or 'no result is found'  
 - wrong/no callerId, Input date, City, PlayerID: server returns 'no result is found'  
   
 ### _getVenueBooking_
@@ -106,9 +109,10 @@ test case:
 ### _createBooking_  
 test case:  
 - callerId, Input date, courtId, start, end, playerId: server creates a booking  
-- Two or more users input same date, courtId, start, end: server will accept the first confirm booking and refuse others with
-message 'Please select another date'  
-- User inputs date, courtId, start, end which have been booked: server refuses booking with message 'Please select another date'  
+- Two or more users input same date, courtId, start, end: server will accept the first confirm booking 
+and refuse others with message 'Please select another date'  
+- User inputs date, courtId, start, end which have been booked: server refuses booking 
+with message 'Please select another date'  
 - wrong/no callerId, Input date, courtId, start time, end time, playerId: server refuses creating booking
 
 ### _cancelBooking_
@@ -120,7 +124,8 @@ test case:
 
 ### _getBookingInfo_  
 test case:  
-- callerId, Input bookingId: server returns all booking's infomation: cityId, venueId, courtId, day, start, end, playerId, statusId  
+- callerId, Input bookingId: server returns all booking's infomation: cityId, venueId, courtId, day, start, end,
+playerId, statusId  
 - callerId, wrong Input bookingId: server returns 'no result is found'  
 - wrong/no callerId, Input booking Id: server returns 'no result is found'  
 
