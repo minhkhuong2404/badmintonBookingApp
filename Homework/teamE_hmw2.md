@@ -236,12 +236,7 @@ get the corresponding name (to display)
 
 ***
 
-* 2.4. Find Names  
-![FindNames](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Find%20names.png)  
-
-***
-
-* 2.5. Staff Account  
+* 2.4. Staff Account  
 ![StaffAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Staff%20Account.png)  
 
 ***
