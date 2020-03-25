@@ -87,10 +87,15 @@ get the corresponding name (to display)
   * error: errorCode [Homework #3]  
 
 
-```### _getAvailableSlots_  
+### _getAvailableSlots_  
 test case:  
-- Input date and city: server returns list of available slots  
-- No response: User chooses date and city but there is no result return from the server  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU01 | Check ```getAvailableSlots``` with valid input | date, city | server returns list of available slots | As Expected | Pass
+
+Input valid date and city: server returns list of available slots  
+Input invalid date: server returns list of available slots on 
+No response: User chooses date and city but there is no result return from the server  
 
 ### _getPlayerBookings_  
 test case:  
