@@ -1,41 +1,191 @@
-# Homework 2 #  
-## Team E ##  
-### Design/describe interfaces [client-server] Presentation-Logic ###  
-**GENERAL:**  
-View booking. ```view_booking(user_id/staff_id)```  
-View account information. ```view_acc(user_id/staff_id)```  
-**USER:**  
-View all courts. ```view_court()```  
-View all courts in a sportcenter. ```view_court(sportcenter_id)```  
-View all sportcenter. ```view_ sportcenter()```  
-**STAFF:**  
-View booking info. ```view_booking_info(booking_id)```  
-View pending booking. ```view_booking(staff_id, payment_stat)```  
-### Design/describe interfaces [server-database] Logic-Data ###  
-**GENERAL:**  
-Get all courts in the city for user to choose. ```get_all_court()```  
-Get all courts in the choosen sport center. ```get_court_sport(sportcenter_id)```  
-Get all courts with a given date. ```get_court_date(date)```  
-Get all courts with a given date in the choosen sport. ```get_court(sportcenter_id,date)```  
-Get credential information for logging. ```get_cred(user_id)```  
-**STAFF:**  
-Get courts which are managed by a staff ```get_court(staff_id)```  
-Change booking status (pending or paid).  ```payment_update(court_id)```  
-**USER:**  
-Get bookings which are booked by a user (included pending, paid and cancelled bookings). ```get_booking(user_id)```  
-Create new booking with user_id, court, start time, end time. ```create_booking(user_id, court_id, start, end)```  
-Delete booking with booking_id. ```delete_booking(booking_id)```  
-### Design database (Entity-Relationship Diagram) ###  
+# Homework 2
+## Team E
+### **Notes**
+* unique identifiers known/agreed upon by presentation/client and 
+logic/server: cityId, venueId, courtId, userId/playerId, bookingId, statusId.
+* success/errorCode known/agreed upon by client and server
+* ordering (if any), when response is a list/array, known/agreed upon by client and server
+* structure (if any), when response contains (potentially) structured data,
+known/agreed upon by client and server
+### **Design/describe interfaces [client-server] Presentation-Logic**  
+
+#### _getAvailableSlots_
+* __Description__: for a given day and cityId, get all the slots available:
+* __security/caller__: anonymous
+* __request__: getSlots(day, cityId)
+* __response__: 
+  * __success__: successCode + array of (centreId, venueSlots), where
+venueSlots is an array of (venueId, courtSlots), where
+courtSlots is an array of (courtId, slots), where
+slots is an array of (startHour, endHour)
+  * __error__: errorCode [Homework #3]
+
+#### _getPlayerBookings_
+* __Description__: for a given day, city, and playerId, 
+get all the  bookings:
+* __security/caller__: callerId
+* __request__: getPlayerBookings(day, cityId, playerId)
+* __response__: 
+  * __success__: successCode + array of (centreId, venueBookings), where
+venueBookings is an array of (venueId, courtBookings), where
+courtBookings is an array of (courtId, bookings), where
+bookings is an array of (bookingId, startHour, endHour)
+  * __error__: errorCode [Homework #3]
+
+#### _getVenueBookings_
+* __Description__: for a given day and venueId
+get all the bookings:
+* __security/caller__: callerId
+* __request__: getVenueBookings(day, venueId)
+* __response__: 
+  * __success__: successCode + array of (courtId, bookings), where
+bookings is an array of (bookingId, startHour, endHour)
+  * __error__: errorCode [Homework #3]
+
+#### _createBooking_
+* __Description__: for a given day, court, start, end, and playerId, 
+create a new booking.
+* __security/caller__: callerId
+* __request__: createBooking(day, courtId, start, end, playerId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _cancelBooking_
+* __Description__: for a given bookingId, cancel the booking
+* __security/caller__: callerId
+* __request__: cancelBooking(bookingId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _getBookingInfo_
+* __Description__: for a given bookingId, get all the booking's
+information: cityId, venueId, courtId, day, start, end, playerId,
+statusId.
+* __security/caller__: callerId
+* __request__: getBookingInfo(bookingId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _updateBookingPaymentStatus_
+* __Description__: for a given bookingId, update the booking's 
+payment status
+* __security/caller__: callerId
+* __request__: updateBookingPaymentStatus(bookingId, statusId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _getNameCity_/_getNameVenue_/_getNameCourt_/_getNameUser_
+* Description: for a given cityId/venueId/courtId/userId,
+get the corresponding name (to display)
+* security/caller: callerId
+* request: getNameCity(cityId)/getNameVenue(venueId)/getNameCourt(courtId)/getNameUser(userId)
+* response: 
+  * success: successCode + name of the cityId/venueId/courtId/userId
+  * error: errorCode [Homework #3]
+
+### **Design/describe interfaces [server-database] Logic-Data**  
+### Notes
+* unique identifiers known/agreed upon by presentation/client and 
+logic/server: cityId, venueId, courtId, userId/playerId, bookingId, statusId.
+* success/errorCode known/agreed upon by client and server
+* ordering (if any), when response is a list/array, known/agreed upon by client and server
+* structure (if any), when response contains (potentially) structured data,
+known/agreed upon by client and server
+
+#### _getVenues_
+* __Description__: for a given cityId, get all the venues of the city:
+* __security/caller__: anonymous
+* __request__: getSlots(day, cityId)
+* __response__: 
+  * __success__: successCode + array of (centreId, venueSlots), where
+venueSlots is an array of (venueId, courtSlots), where
+courtSlots is an array of (courtId, slots), where
+slots is an array of (startHour, endHour)
+  * __error__: errorCode [Homework #3]
+
+#### _getVenueBookings_
+* __Description__: for a given day and venueId
+get all the bookings:
+* __security/caller__: callerId
+* __request__: getVenueBookings(day, venueId)
+* __response__: 
+  * __success__: successCode + array of (courtId, bookings), where
+bookings is an array of (bookingId, startHour, endHour)
+  * __error__: errorCode [Homework #3]
+
+#### _getPlayerBookings_
+* __Description__: for a given day, city, and playerId, 
+get all the  bookings:
+* __security/caller__: callerId
+* __request__: getPlayerBookings(day, cityId, playerId)
+* __response__: 
+  * __success__: successCode + array of (centreId, venueBookings), where
+venueBookings is an array of (venueId, courtBookings), where
+courtBookings is an array of (courtId, bookings), where
+bookings is an array of (bookingId, startHour, endHour)
+  * __error__: errorCode [Homework #3]
+
+_The above 2 functions are used to calculate slots of a city. By all bookings of a court, we can calculate available slots for a court. Then for all courts of a city_
+#### _createBooking_
+* __Description__: for a given day, court, start, end, and playerId, 
+create a new booking.
+* __security/caller__: callerId
+* __request__: createBooking(day, courtId, start, end, playerId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _cancelBooking_
+* __Description__: for a given bookingId, cancel the booking
+* __security/caller__: callerId
+* __request__: cancelBooking(bookingId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _getBookingInfo_
+* __Description__: for a given bookingId, get all the booking's
+information: cityId, venueId, courtId, day, start, end, playerId,
+statusId.
+* __security/caller__: callerId
+* __request__: getBookingInfo(bookingId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _updateBookingPaymentStatus_
+* __Description__: for a given bookingId, update the booking's 
+payment status
+* __security/caller__: callerId
+* __request__: updateBookingPaymentStatus(bookingId, statusId)
+* __response__: 
+  * __success__: successCode
+  * __error__: errorCode [Homework #3]
+
+#### _getNameCity_/_getNameVenue_/_getNameCourt_/_getNameUser_
+* Description: for a given cityId/venueId/courtId/userId,
+get the corresponding name (to display)
+* security/caller: callerId
+* request: getNameCity(cityId)/getNameVenue(venueId)/getNameCourt(courtId)/getNameUser(userId)
+* response: 
+  * success: successCode + name of the cityId/venueId/courtId/userId
+  * error: errorCode [Homework #3]
+
+### Design database (Entity-Relationship Diagram)  
 ![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-Diagram%20for%20project.PNG)  
-### Design UI (Activity diagram + mockups) ###  
-#### Activity diagram ####  
+### Design UI (Activity diagram + mockups)  
+#### Activity diagram  
 **1. User**  
 ![UserActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/User.jpg)  
 
 
 **2. Staff**  
 ![StaffActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/Staff.jpg)  
-#### Mockups ####  
+#### Mockups  
 **1. User**  
 * 1.1. Create an account  
 ![CreateAnAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Create%20an%20account.png)  
