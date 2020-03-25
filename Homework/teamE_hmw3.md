@@ -87,17 +87,26 @@ get the corresponding name (to display)
   * error: errorCode [Homework #3]  
 
 
-### _getAvailableSlots_  
-test case:  
+### _getAvailableSlots_   
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
 ------------ | ------------- | --------- | ---------------- | -------------- | ---------
-TU01 | Check ```getAvailableSlots``` with valid input | date, city | server returns list of available slots | As Expected | Pass
+TU01 | Check ```getAvailableSlots``` with valid data | date, city | server returns list of available slots | As Expected | Pass
+TU02 | Check ```getAvailableSlots``` with invalid data | date, city | server returns 'no result' | As Expected | Pass
 
+test case:  
 Input valid date and city: server returns list of available slots  
 Input invalid date: server returns list of available slots on 
 No response: User chooses date and city but there is no result return from the server  
 
 ### _getPlayerBookings_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU03 | Check ```getPlayerBooking``` with valid data and callerId | date, city, playerId, callerId | server returns list of all player bookings | As Expected | Pass
+TU04 | Check ```getPlayerBooking``` with invalid data and callerId |date, callerId | server returns list of all player bookings with wrong date or 'no result' | As Expected | Pass
+TU05 | Check ```getPlayerBooking``` with invalid data and callerId | city, callerId | server returns list of all player bookings with wrong city or 'no results' | As Expected | Pass
+TU06 | Check ```getPlayerBooking``` with invalid data and callerId | playerId, callerId | server returns list of all player bookings with wrong player or 'no results' | As Expected | Pass
+TU07 | Check ```getPlayerBooking``` with valid data and wrong callerId | date, city, playerId, callerId | server returns 'no results' | As Expected | Pass
+
 test case:  
 - callerId, Input date, city, PlayerId: server returns list of all player bookings 
 (courtID, startHour, endHour, venueID, centreID)  
@@ -105,13 +114,26 @@ test case:
 or 'no result is found'  
 - wrong/no callerId, Input date, City, PlayerID: server returns 'no result is found'  
   
-### _getVenueBooking_
+### _getVenueBooking_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU08 | Check ```getVenueBooking``` with valid data and callerId | date, venueId, callerId | server returns list of all bookings | As Expected | Pass
+TU09 | Check ```getVenueBooking``` with invalid data and callerId | date, callerId | server returns list of all bookings on wrong date or 'no result' | As Expected | Pass
+TU10 | Check ```getVenueBooking``` with invalid data and callerId | venueId, callerId | server returns list of all bookings on wrong venue or 'no result' | As Expected | Pass
+TU11 | Check ```getVenueBooking``` with valid data and wrong callerId | date, venueId, callerId | server returns 'no result' | As Expected | Pass
+
 test case:  
 - callerId, Input date, venueId: server return the list of all bookings  
 - callerId, wrong Input day/venueId: server return VenueBookings on wrong date/venue or 'no result is found'  
 - wrong/no callerId, Input day, venueId: server returns 'no result is found'  
 
 ### _createBooking_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU12 | Check ```createBooking``` with valid data and callerId | date, courtId, start, end, playerId, callerId | server create a bookings | As Expected | Pass
+TU13 | Check ```createBooking``` with invalid data and callerId | date/courtId/start/end (same with existed booking) | server refuses bookings | As Expected | Pass
+TU14 | Check ```createBooking``` with valid data and wrong callerId | date, courtId, start, end, playerId, callerId | server refuses bookings | As Expected | Pass
+
 test case:  
 - callerId, Input date, courtId, start, end, playerId: server creates a booking  
 - Two or more users input same date, courtId, start, end: server will accept the first confirm booking 
@@ -121,6 +143,13 @@ with message 'Please select another date'
 - wrong/no callerId, Input date, courtId, start time, end time, playerId: server refuses creating booking
 
 ### _cancelBooking_
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU15 | Check ```cancelBooking``` with valid data and callerId and > 24 hours before start time| bookingId, callerId | server cancels booking | As Expected | Pass
+TU16 | Check ```cancelBooking``` with valid data and callerId and < 24 hours before start time| bookingId, callerId | server refuses to cancel booking and returns message 'Fail to cancel' | As Expected | Pass
+TU17 | Check ```cancelBooking``` with invalid data and callerId | bookingId, callerId | server refuses to cancel booking and returns 'Booking Id does not exist | As Expected | Pass
+TU18 | Check ```cancelBooking``` with valid data and wrong callerId | bookingId, callerId | server refuses to cancel booking | As Expected | Pass
+
 test case:
 - callerId, Input bookingId, >24 hours before start time: cancelBooking success  
 - callerId, Input bookingId, <24 hours before start time: refuse cancelBooking and return message 'It's too late, babe'  
@@ -128,6 +157,12 @@ test case:
 - wrong/no callerId, Input booking Id, ><24 before start time: refuse cancelBooking  
 
 ### _getBookingInfo_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU19 | Check ```getBookingInfo``` with valid data and callerId | bookingId, callerId | server returns cityId, venueId, courtId, day, start, end, playerId, statusId | As Expected | Pass
+TU20 | Check ```getBookingInfo``` with invalid data and callerId | bookingId, callerId | server returns 'no result' | As Expected | Pass
+TU21 | Check ```getBookingInfo``` with valid data and wrong callerId | bookingId, callerId | server returns 'no result' | As Expected | Pass
+
 test case:  
 - callerId, Input bookingId: server returns all booking's infomation: cityId, venueId, courtId, day, start, end,
 playerId, statusId  
