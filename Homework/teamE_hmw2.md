@@ -182,52 +182,66 @@ get the corresponding name (to display)
 **1. User**  
 ![UserActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/User.jpg)  
 
-
 **2. Staff**  
 ![StaffActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/Staff.jpg)  
+
 #### Mockups  
+
 **1. User**  
+
 * 1.1. Create a booking  
 ![CreateAnAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Create%20a%20booking.png)  
+
 ***
 
 * 1.2. Login  
 ![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Log-in.png)  
+
 ***
 
 * 1.3. List Of Place  
 ![ListOfPlace](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/List%20of%20place.png)  
+
 ***
 
 * 1.4. User Account  
 ![UserAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/User%20account.png)  
+
 ***
 
 * 1.5. Booking Information  
 ![BookingInformation](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Booking%20information.png)  
+
 ***
 
 * 1.6. My Booking  
 ![MyBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/My%20booking.png)  
+
 ***
 
 **2. Staff**
+
 * 2.1. Login - Staff  
 ![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Login%20-%20Staff.png)  
+
 ***
 
 * 2.2. All Booking  
 ![AllBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/All%20bookings.png)  
+
 ***
 
 * 2.3. Booking Information  
 ![BookingInformation](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Booking%20information.png)  
+
 ***
 
 * 2.4. Find Names  
 ![FindNames](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Find%20names.png)  
+
 ***
 
 * 2.5. Staff Account  
 ![StaffAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Staff%20Account.png)  
+
 ***
