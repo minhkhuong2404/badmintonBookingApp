@@ -180,10 +180,10 @@ get the corresponding name (to display)
 ### Design UI (Activity diagram + mockups)  
 #### Activity diagram  
 **1. User**  
-![UserActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/User.jpg)  
+![UserActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/User%20Application.jpg)  
 
 **2. Staff**  
-![StaffActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/Staff.jpg)  
+![StaffActivity](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Activity%20Diagram/Staff%20Application.jpg)  
 
 #### Mockups  
 
