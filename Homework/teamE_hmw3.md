@@ -170,12 +170,24 @@ playerId, statusId
 - wrong/no callerId, Input booking Id: server returns 'no result is found'  
 
 ### _updateBookingPaymentStatus_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU22 | Check ```updateBookingPaymentStatus``` with valid data and callerId | bookingId, callerId | server updates the booking's payment status | As Expected | Pass
+TU23 | Check ```updateBookingPaymentStatus``` with valid data and callerId | bookingId, callerId | server fails to updates the booking's payment status and return 'BookingId does not exist' | As Expected | Pass
+TU24 | Check ```updateBookingPaymentStatus``` with valid data and wrong callerId | bookingId, callerId | server fails to updates the booking's payment status and return 'No result' | As Expected | Pass
+
 test case:  
 - callerId, Input bookingId: update the booking's payment status  
 - callerId, wrong Input bookingId: server returns 'no result is found'
 - wrong/no callerId, bookingId: server returns 'no result is found'  
 
 ### _getNameCity/getNameVenue/getNameCourt/getNameUser_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+TU25 | Check ```getNameCity/getNameVenue/getNameCourt/getNameUser``` with valid data and callerId | cityId/venueId/courtId/userId, callerId | display corresponding name | As Expected | Pass
+TU26 | Check ```getNameCity/getNameVenue/getNameCourt/getNameUser``` with valid data and callerId | cityId/venueId/courtId/userId, callerId | display corresponding name | display cityId/venueId/courtId/userId | Fail
+TU27 | Check ```getNameCity/getNameVenue/getNameCourt/getNameUser``` with valid data and wrong callerId | cityId/venueId/courtId/userId, callerId | server returns 'no result' | As Expected | Pass
+
 test case:  
 - for cityId/venueId/courtId/userId: display corresponding name  
 - for cityId/venueId/courtId/userId: display cityId/venueId/courtId/userId  
