@@ -1,5 +1,5 @@
-# Homework 3 #  
-## Team E ##  
+# Homework 3  
+## Team E  
 ### Notes  
 * unique identifiers known/agreed upon by presentation/client and logic/server: cityId, venueId, courtId,
 userId/playerId, bookingId, statusId.  
@@ -86,6 +86,7 @@ get the corresponding name (to display)
   * success: successCode + name of the cityId/venueId/courtId/userId  
   * error: errorCode [Homework #3]  
 
+## Test cases/scenarios [+ errors]: interfaces Presentation-Logic
 
 ### _getAvailableSlots_   
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
