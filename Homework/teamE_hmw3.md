@@ -134,4 +134,5 @@ test case:
 test case:  
 - for cityId/venueId/courtId/userId: display corresponding name  
 - for cityId/venueId/courtId/userId: display cityId/venueId/courtId/userId  
+- no callerId: server can return the same venue's name but that venue is in different city, or return the same user's name in two different profile
 ```
