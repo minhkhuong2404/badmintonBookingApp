@@ -188,14 +188,13 @@ get the corresponding name (to display)
 #### Mockups  
 
 **1. User**  
-
-* 1.1. Create a booking  
-![CreateAnAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Create%20a%20booking.png)  
+* 1.1. Login  
+![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Log-in.png)  
 
 ***
 
-* 1.2. Login  
-![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Log-in.png)  
+* 1.2. Create a booking  
+![CreateAnAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Create%20a%20booking.png)  
 
 ***
 
