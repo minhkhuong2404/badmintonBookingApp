@@ -188,54 +188,45 @@ get the corresponding name (to display)
 #### Mockups  
 
 **1. User**  
-* 1.1. Login  
-![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Log-in.png)  
 
-***
-
-* 1.2. Create a booking  
+* 1.1. Create a booking  
 ![CreateAnAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Create%20a%20booking.png)  
 
 ***
 
-* 1.3. List Of Place  
+* 1.2. List Of Place  
 ![ListOfPlace](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/List%20of%20place.png)  
 
 ***
 
-* 1.4. User Account  
+* 1.3. User Account  
 ![UserAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/User%20account.png)  
 
 ***
 
-* 1.5. Booking Information  
+* 1.4. Booking Information  
 ![BookingInformation](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/Booking%20information.png)  
 
 ***
 
-* 1.6. My Booking  
+* 1.5. My Booking  
 ![MyBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/User/My%20booking.png)  
 
 ***
 
 **2. Staff**
 
-* 2.1. Login - Staff  
-![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Login%20-%20Staff.png)  
-
-***
-
-* 2.2. All Booking  
+* 2.1. All Booking  
 ![AllBooking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/All%20bookings.png)  
 
 ***
 
-* 2.3. Booking Information  
+* 2.2. Booking Information  
 ![BookingInformation](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Booking%20information.png)  
 
 ***
 
-* 2.4. Staff Account  
+* 2.3. Staff Account  
 ![StaffAccount](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/Staff/Staff%20Account.png)  
 
 ***
