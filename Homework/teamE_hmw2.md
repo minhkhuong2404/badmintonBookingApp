@@ -176,7 +176,7 @@ get the corresponding name (to display)
   * error: errorCode [Homework #3]
 
 ### Design database (Entity-Relationship Diagram)  
-![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-diagram%20for%20project.png)  
+![ERDiagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-diagram.png)  
 ### Design UI (Activity diagram + mockups)  
 #### Activity diagram  
 **1. User**  
