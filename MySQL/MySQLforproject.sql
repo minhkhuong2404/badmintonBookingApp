@@ -36,8 +36,8 @@ CREATE TABLE booking(
   endMin int NOT NULL,
   court int,
   customer int,
-  booking_status 
-  timestamp NOT NULL,
+  booking_status varchar(50),
+  timestamp date NOT NULL,
   CONSTRAINT court_fk
      FOREIGN KEY (court) REFERENCES court (court_id),
   CONSTRAINT customer_fk
@@ -53,11 +53,11 @@ in pstartHour int, in pstartMin int,
 in pendHour int, in pendMin int, 
 in pcourt varchar(50), in pcustomer varchar(50), in ptimestamp timestamp)
 BEGIN
+DECLARE TotalBookings int;
 DECLARE openTime datetime;
 DECLARE closeTime datetime;
 DECLARE startTime datetime;
 DECLARE endTime datetime;
-DECLARE count int;
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
   GET STACKED DIAGNOSTICS CONDITION 1 @p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
@@ -77,53 +77,57 @@ SELECT
 SELECT 
   date_add(date_add(pdate, INTERVAL pendHour HOUR), INTERVAL pendMin MINUTE)
   into endTime;
-
-	
-	
-  
+SELECT 
+  count(*) 
+FROM booking_app.booking as B 
+	JOIN booking_app.customer as C ON B.customer = C.customer_id
+WHERE C.name = pcustomer and B.booking_status like upper("UNPAID")
+  into TotalBookings;  
 START TRANSACTION;
 IF startTime < DATE(NOW())
 THEN 
    SIGNAL SQLSTATE '45000'
-   SET MESSAGE_TEXT = 'CB-001';
+   SET MESSAGE_TEXT = 'Please do not booking in the past';
 END IF;
 IF  startTime < openTime 
 THEN 
    SIGNAL SQLSTATE '45000'
-   SET MESSAGE_TEXT = 'CB-002';
+   SET MESSAGE_TEXT = 'Our center remaining closing';
 END IF;
 IF  endTime > closeTime 
 THEN 
    SIGNAL SQLSTATE '45000'
-   SET MESSAGE_TEXT = 'CB-003';
+   SET MESSAGE_TEXT = 'Our Center closed!';
 END IF;
 
 IF endTime < startTime 
 THEN 
    SIGNAL SQLSTATE '45000'
-   SET MESSAGE_TEXT = 'CB-004';
-END IF;
-
-IF sumBookings >= 3 
-THEN
-	SIGNAL SQLSTATE '45000'
-    SET MESSAGE_TEXT = 'You had 3 unpaid bookings';
-ELSEIF sumBookings = 1 and EXISTS (
-				    SELECT * 
-                                    FROM booking_app.booking 
-                                    WHERE customer = pcustomer 
-                                    AND date_add(date_add(date, INTERVAL startHour HOUR), INTERVAL startMin MINUTE) < date(now()))
-THEN 
-	SIGNAL SQLSTATE '45000'
-    SET MESSAGE_TEXT = 'You had 1 unpaid booking in the past';
+   SET MESSAGE_TEXT = 'Please fix your end time';
 END IF;
 
 IF timestampdiff(MINUTE,startTime,endTime) < 45
 THEN 
 	SIGNAL SQLSTATE '45000'
-    SET MESSAGE_TEXT = ' Your court have to be longer than 45 minutes';
+    SET MESSAGE_TEXT = 'Your court have to be more than 45 minutes';
 END IF;
 
+IF TotalBookings >= 3
+THEN
+	SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'You had 3 unpaid booking';
+ELSEIF TotalBookings = 1 and EXISTS (
+									SELECT * 
+                                    FROM booking_app.booking as B 
+										JOIN booking_app.customer as C ON B.customer = C.customer_id
+                                    WHERE C.name = pcustomer 
+                                    AND date_add(date_add(B.date, INTERVAL B.startHour HOUR), INTERVAL B.startMin MINUTE) < date(now()))
+THEN 
+	SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'You had 1 unpaid booking';
+END IF;
+END //
+DELIMITER ;
 use booking_app;
 DROP PROCEDURE IF EXISTS cancel;
 DELIMITER //
@@ -143,11 +147,11 @@ IF date_add(date(now()),interval 24 hour) >
 from booking_app.booking 
 where booking_id= pbooking)
 THEN SIGNAL SQLSTATE '45000'
-   SET MESSAGE_TEXT = 'You can only cancel before 24 hours ';
+   SET MESSAGE_TEXT = 'You can not cancel before 24 hours ';
 END IF;
-
 END //
 DELIMITER ;
+
 
 
 
@@ -163,15 +167,15 @@ INSERT INTO customer (name) values ("Customer#C");
 
 /* tests */
 
-call CreateBooking("2020-04-01", 7, 0, 8, 0, "Court#1", "Customer#A", 
-    "2020-03-29 09:29:18");
-	/* error: CB-001*/ 
-call CreateBooking("2020-04-01", 6, 0, 8, 0, "Court#1", "Customer#A", 
-	"2020-03-29 09:27:18");
-   /* expected: CB-002*/    
-call CreateBooking("2020-04-01", 7, 0, 21, 15, "Court#1", "Customer#A", 
-	"2020-03-29 09:27:18");
-   /* expected: CB-003 */
-call CreateBooking("2020-04-01", 8, 0, 7, 0, "Court#1", "Customer#A", 
-	"2020-03-29 09:27:18");
-   /* expected: CB-004 */
+call CreateBooking("2020-03-29", 7, 0, 8, 0, "Court#1", "Customer#A", "2020-03-29 09:29:18");
+	/* error: Please do not booking in the past*/ 
+call CreateBooking("2020-04-01", 6, 0, 8, 0, "Court#1", "Customer#A", "2020-03-29 09:27:18");
+   /* expected: Our center remaining closing */    
+call CreateBooking("2020-04-01", 7, 0, 21, 15, "Court#1", "Customer#A", "2020-03-29 09:27:18");
+   /* expected:  Our Center closed*/
+call CreateBooking("2020-04-01", 8, 0, 7, 0, "Court#1", "Customer#A", "2020-03-29 09:27:18");
+   /* expected:  Please fix your end time*/
+call CreateBooking("2020-04-01", 20, 0, 21, 0, "Court#1", "Customer#A","2020-03-29 09:27:18"); 
+    /*expected:  You had 3 unpaid booking */
+Call cancel(2,6);
+/* expected: You can not cancel before 24 hours  */
