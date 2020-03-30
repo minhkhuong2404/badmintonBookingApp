@@ -326,6 +326,7 @@ INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`end
 INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`endMin`,`court`,`customer`,`timestamp`,`paymentStatus`) VALUES (106,'2020-04-04',18,40,19,40,4,998,'2020-03-29 09:27:18',0);
 INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`endMin`,`court`,`customer`,`timestamp`,`paymentStatus`) VALUES (107,'2020-04-04',8,40,9,40,4,1,'2020-03-29 09:27:18',0);
 INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`endMin`,`court`,`customer`,`timestamp`,`paymentStatus`) VALUES (111,'2020-03-28',13,40,14,40,4,1,'2020-03-29 09:27:18',0);
+INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`endMin`,`court`,`customer`,`timestamp`,`paymentStatus`) VALUES (112,'2020-03-30',09,0,10,0,4,2,'2020-03-29 09:27:18',0);
 /* tests */
 
 # CreateBooking (CB) parameters: booking_date, startHour, startMin, endHour, endMin, court_id, customer_id, timestamp
@@ -333,19 +334,19 @@ INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`end
 -- CB-001: startTime < DATE(NOW())
 	CALL CreateBooking("2020-02-01", 6, 0, 8, 0, 4, 1, "2020-03-29 09:27:18"); 
     -- expected
--- CB-002:
+-- CB-002: startTime < openTime 
 	CALL CreateBooking("2020-03-30", 5, 0, 8, 0, 4, 1, "2020-03-29 09:27:18");
--- CB-003:
+-- CB-003: endTime > closeTime 
 	CALL CreateBooking("2020-03-30", 9, 0, 22, 0, 4, 1, "2020-03-29 09:27:18");
--- CB-004:
+-- CB-004: endTime < startTime
 	CALL CreateBooking("2020-03-30", 9, 0, 8, 0, 4, 1, "2020-03-29 09:27:18");
--- CB-005:
+-- CB-005: playtime invalid (valid: 45m, 1h, 1h15m, 1h30m)
 	CALL CreateBooking("2020-03-30", 9, 0, 9, 40, 4, 1, "2020-03-29 09:27:18");
--- CB-006:
+-- CB-006: overlapping booking
 	CALL CreateBooking("2020-03-31", 10, 0, 11, 0, 4, 1, "2020-03-29 09:27:18");
--- CB-007:
+-- CB-007: have pending booking
 	CALL CreateBooking("2020-03-30", 17, 0, 18, 0, 4, 1, "2020-03-29 09:27:18");
--- CB-008:
+-- CB-008: no more than 3 bookings
 	CALL CreateBooking("2020-04-01", 17, 0, 18, 0, 4, 999, "2020-03-29 09:27:18");
 -- CB-109: Customer not existed.
 	CALL CreateBooking("2020-04-02", 17, 0, 18, 0, 4, 404, "2020-03-29 09:27:18");
@@ -356,20 +357,20 @@ INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`end
 
 # ChangePaymentStatus (CP) parameters: booking_id, staff_id, TRUE/FALSE
 
--- CP-001:
+-- CP-001: staff not exist
 	CALL ChangePaymentStatus('1', '9', TRUE);
--- CP-002:
+-- CP-002: booking not exist
 	CALL ChangePaymentStatus('404', '1', TRUE);
--- CP-003:
+-- CP-003: this staff has no relationship with the booking (join booking - court - center - staff)
 	CALL ChangePaymentStatus('111', '1', TRUE);
 
 # CancelBooking (CA) parameters: booking_id, customer_id
 
--- CA-001: 
+-- CA-001: customer not exist
 	Call CancelBooking('1', '404');
--- CA-002:
+-- CA-002: booking not exist
 	Call CancelBooking('404', '1');
--- CA-003:
+-- CA-003: this customer not own the booking
 	Call CancelBooking('1', '1');
--- CA-004:
-	Call CancelBooking('108', '1');
+-- CA-004: violates 24 hours before start time
+	Call CancelBooking('112', '2');
