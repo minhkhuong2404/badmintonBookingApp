@@ -109,7 +109,7 @@ THEN
 	SIGNAL SQLSTATE '45000'
     SET MESSAGE_TEXT = 'You had 3 unpaid bookings';
 ELSEIF sumBookings = 1 and EXISTS (
-									SELECT * 
+				    SELECT * 
                                     FROM booking_app.booking 
                                     WHERE customer = pcustomer 
                                     AND date_add(date_add(date, INTERVAL startHour HOUR), INTERVAL startMin MINUTE) < date(now()))
