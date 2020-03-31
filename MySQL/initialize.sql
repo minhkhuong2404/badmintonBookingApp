@@ -343,7 +343,17 @@ INSERT INTO `booking` (`booking_id`,`date`,`startHour`,`startMin`,`endHour`,`end
 -- CB-005: playtime invalid (valid: 45m, 1h, 1h15m, 1h30m)
 	CALL CreateBooking("2020-03-30", 9, 0, 9, 40, 4, 1, "2020-03-29 09:27:18");
 -- CB-006: overlapping booking
-	CALL CreateBooking("2020-03-31", 10, 0, 11, 0, 4, 1, "2020-03-29 09:27:18");
+--       9:00===========10:00  existed booking
+--    8:00========9:30
+--           9:30==============10:30
+--           9:15==10:00
+--    8:30============10:00
+
+	CALL CreateBooking("2020-04-01", 8, 0, 9, 30, 4, 997, "2020-03-29 09:27:18");
+	CALL CreateBooking("2020-04-01", 9, 30, 10, 30, 4, 997, "2020-03-29 09:27:18");
+	CALL CreateBooking("2020-04-01", 9, 15, 10, 0, 4, 997, "2020-03-29 09:27:18");
+	CALL CreateBooking("2020-04-01", 8, 30, 10, 0, 4, 997, "2020-03-29 09:27:18");
+
 -- CB-007: have pending booking
 	CALL CreateBooking("2020-03-30", 17, 0, 18, 0, 4, 1, "2020-03-29 09:27:18");
 -- CB-008: no more than 3 bookings
