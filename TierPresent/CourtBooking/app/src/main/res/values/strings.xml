@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CourtBooking</string>
+    <string name="show_my_bookings">Show My Bookings</string>
+    <string name="show_available_slots">Show Available Slots</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="sample_date">27/04/1999</string>
+    <string name="change_date">Date</string>
+    <string name="center">Center</string>
+    <string name="court">Court</string>
+</resources>
