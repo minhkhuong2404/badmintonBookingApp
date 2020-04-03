@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">My_Booking2</string>
+    <string name="date">Date</string>
+    <string name="show_my_bookings">Show my bookings</string>
+    <string name="show_available_slot">Show Available Slot</string>
+    <string name="center_1">Center #1</string>
+    <string name="court_1">Court #1</string>
+    <string name="court_2">Court #2</string>
+    <string name="court_3">Court #3</string>
+    <string name="textview">TextView</string>
+    <string name="court_4">Court #4</string>
+    <string name="_7am_9pm">7am-9pm</string>
+    <string name="_10am_1pm">10am-1pm</string>
+    <string name="_2pm_4pm">2pm-4pm</string>
+    <string name="_3_30pm_6pm">3:30pm-6pm</string>
+    <string name="_10am_11_30am">10am-11:30am</string>
+    <string name="_11_45am_2pm">11:45am-2pm</string>
+    <string name="_2_15pm_5pm">2:15pm-5pm</string>
+    <string name="_9am_10am">9am-10am</string>
+    <string name="_1pm_3pm">1pm-3pm</string>
+    <string name="center_2">Center #2</string>
+    <string name="_6pm_7_30pm">6pm-7:30pm</string>
+    <string name="select_a_city">City</string>
+    <string name="change_date">Change Date</string>
+    <string name="DDMMYYYY">--/--/----</string>
+    <string name="pick_a_date">Pick a date</string>
+
+
+</resources>
