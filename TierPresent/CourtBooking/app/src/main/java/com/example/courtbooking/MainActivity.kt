@@ -2,10 +2,14 @@ package com.example.courtbooking
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.court.*
 import java.util.*
 
 
@@ -15,9 +19,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var result : TextView
     lateinit var result2 : TextView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
         // findViewById
         cityChooser = findViewById(R.id.sp_city) as Spinner
@@ -57,5 +64,40 @@ class MainActivity : AppCompatActivity() {
             // Show Date Dialog
             datePicker.show()
         }
+
+        // On button clicked Show Available Slots
+        // On button clicked Show My Bookings
+
+        /* Test RecyclerView */
+
+        // Create fake data for testing
+        //val exampleList = getSlotList(5)
+        val exampleList = getCenterList(20)
+
+        rv_center.adapter = CenterAdapter(exampleList)
+        rv_center.layoutManager = LinearLayoutManager(this)
+        rv_center.setHasFixedSize(true)
+
+        /* End Test RecyclerView*/
     }
+    private fun getCenterList(size: Int): List<Center> {
+        val list = ArrayList<Center>()
+
+        for (i in 0 until size) {
+            val slot = Center("Center#" + i)
+            list += slot
+        }
+        return list
+    }
+    /* Test RecyclerView
+    private fun getSlotList(size: Int): List<Slot> {
+        val list = ArrayList<Slot>()
+
+        for (i in 0 until size) {
+            val slot = Slot("8:00 - 9:00")
+            list += slot
+        }
+        return list
+    }
+    End Test RecyclerView */
 }
