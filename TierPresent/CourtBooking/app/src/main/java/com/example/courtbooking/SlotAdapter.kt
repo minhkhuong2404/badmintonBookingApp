@@ -27,6 +27,6 @@ class SlotAdapter(private val listSlot: List<Slot>) : RecyclerView.Adapter<SlotA
     override fun getItemCount() = listSlot.size
 
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: Button = itemView.b_slot
+        val textView: TextView = itemView.tv_slot
     }
 }

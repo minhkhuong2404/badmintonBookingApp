@@ -80,16 +80,7 @@ class MainActivity : AppCompatActivity() {
         // On button clicked Show My Bookings
 
         // Initialize the CENTER recycler view
-        viewManager = LinearLayoutManager(this)
-        viewAdapter = CenterAdapter(getCenterCourtSlotList(27))
-
-        recyclerView = findViewById<RecyclerView>(R.id.rv_center).apply {
-            // use a linear layout manager
-            layoutManager = viewManager
-
-            // specify an viewAdapter
-            adapter = viewAdapter
-        }
+        initRVCenter()
     }
     // Generate fake data for testing recycler view
     private fun getCenterCourtSlotList(size: Int): List<Center> {
@@ -110,5 +101,12 @@ class MainActivity : AppCompatActivity() {
         val slots = listOf<Slot>(Slot("7:00 - 8:00"), Slot("7:30 - 8:30"), Slot("8:30 - 9:00"),
             Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
         return slots
+    }
+    private fun initRVCenter(){
+        // Calling the recycler view for Center
+        rv_center.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayout.VERTICAL, false)
+            adapter = CenterAdapter(getCenterCourtSlotList(27))
+        }
     }
 }

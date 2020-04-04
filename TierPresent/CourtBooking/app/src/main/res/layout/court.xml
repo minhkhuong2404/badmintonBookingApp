@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
     android:gravity="center">
 
     <TextView
         android:id="@+id/tv_court"
-        android:text="Court"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="center|center_vertical"
+        android:paddingBottom="8dp"
+        android:text="Court"
+
         android:textColor="@android:color/holo_blue_light"
         android:textSize="17sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_slot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_court"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_slot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_court" />
+
 </RelativeLayout>
