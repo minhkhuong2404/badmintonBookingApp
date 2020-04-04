@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize the CENTER recycler view
         viewManager = LinearLayoutManager(this)
-        viewAdapter = CenterAdapter(getCenterCourtList(27))
+        viewAdapter = CenterAdapter(getCenterCourtSlotList(27))
 
         recyclerView = findViewById<RecyclerView>(R.id.rv_center).apply {
             // use a linear layout manager
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     // Generate fake data for testing recycler view
-    private fun getCenterCourtList(size: Int): List<Center> {
+    private fun getCenterCourtSlotList(size: Int): List<Center> {
         val list = ArrayList<Center>()
         val exampleCourtList = getCourtList()
         for (i in 0 until size) {
@@ -102,8 +102,13 @@ class MainActivity : AppCompatActivity() {
         return list
     }
     private fun getCourtList(): List<Court> {
-        val list = listOf<Court>(Court("Court#1"), Court("Court#2"),Court("Court#3"),
-                                        Court("Court#4"),Court("Court#5"))
+        val list = listOf<Court>(Court("Court#1", getSlotList()), Court("Court#2", getSlotList()),
+            Court("Court#3", getSlotList()), Court("Court#4", getSlotList()),Court("Court#5", getSlotList()))
         return list
+    }
+    private fun getSlotList(): List<Slot> {
+        val slots = listOf<Slot>(Slot("7:00 - 8:00"), Slot("7:30 - 8:30"), Slot("8:30 - 9:00"),
+            Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
+        return slots
     }
 }

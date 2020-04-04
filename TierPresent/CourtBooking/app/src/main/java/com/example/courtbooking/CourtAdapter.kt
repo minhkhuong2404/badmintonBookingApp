@@ -3,15 +3,23 @@ package com.example.courtbooking
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.court.view.*
 
 class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
+    // Create ViewPool for child RecyclerView
+    private var viewPool = RecyclerView.RecycledViewPool()
 
     // Referring to the views for each data item
     class CourtViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val courtTextView: TextView = itemView.tv_court
+
+        // Load recycler view of child: rv_court
+        val recyclerViewSlot: RecyclerView = itemView.findViewById(R.id.rv_slot)
     }
 
     // Create new views (invoked by the layout manager)
@@ -27,10 +35,17 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
     // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: CourtViewHolder, position: Int) {
         // - get  element from your dataset at this position
-        val court = courtList[position]
+        val currentCourt = courtList[position]
 
         // - replace the contents of the view with that element
-        holder.courtTextView.text = court.name
+        holder.courtTextView.text = currentCourt.name
+
+        // Call child adapter to show child recyclerview
+        holder.recyclerViewSlot.apply {
+            layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 3, GridLayoutManager.VERTICAL, false)
+            adapter = SlotAdapter(currentCourt.slotList)
+            setRecycledViewPool(viewPool)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

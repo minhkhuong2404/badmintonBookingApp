@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.android.synthetic.main.center.view.*
 
 
-class CenterAdapter(private val listCenter: List<Center>) : RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
+class CenterAdapter(private val centerList: List<Center>) : RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
+    // Create ViewPool for child RecyclerView
+    private var viewPool = RecyclerView.RecycledViewPool()
 
     // Referring to the views for each data item
     class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,8 +25,7 @@ class CenterAdapter(private val listCenter: List<Center>) : RecyclerView.Adapter
         val recyclerViewCourt: RecyclerView = itemView.findViewById(R.id.rv_court)
     }
 
-    // Create ViewPool for child RecyclerView
-    private var viewPool = RecyclerView.RecycledViewPool()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CenterViewHolder {
 
@@ -37,18 +38,19 @@ class CenterAdapter(private val listCenter: List<Center>) : RecyclerView.Adapter
     // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: CenterViewHolder, position: Int) {
         // - get  element from your dataset at this position
-        val currentCenter = listCenter[position]
+        val currentCenter = centerList[position]
+
 
         // - replace the contents of the view with that element
         holder.textView.text = currentCenter.name
 
         // Call child adapter to show child recyclerview
         holder.recyclerViewCourt.apply {
-            layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
             adapter = CourtAdapter(currentCenter.courtList)
             setRecycledViewPool(viewPool)
         }
     }
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = listCenter.size
+    override fun getItemCount() = centerList.size
 }
