@@ -3,6 +3,7 @@ package com.example.courtbooking
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.slot.view.*
@@ -26,6 +27,6 @@ class SlotAdapter(private val listSlot: List<Slot>) : RecyclerView.Adapter<SlotA
     override fun getItemCount() = listSlot.size
 
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.tv_slot
+        val textView: Button = itemView.b_slot
     }
 }

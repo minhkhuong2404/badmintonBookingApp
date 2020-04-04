@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/tv_court"
         android:text="Court"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:textColor="@android:color/holo_blue_light"
-        android:textSize="14sp"
+        android:textSize="17sp"
         android:textStyle="bold"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_slot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-</LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_court"/>
+</RelativeLayout>
