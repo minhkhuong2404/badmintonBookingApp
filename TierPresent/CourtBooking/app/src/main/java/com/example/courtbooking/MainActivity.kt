@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -16,6 +17,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var dateChooser : EditText
     lateinit var result : TextView
     lateinit var result2 : TextView
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,15 +80,16 @@ class MainActivity : AppCompatActivity() {
         // On button clicked Show My Bookings
 
         // Initialize the CENTER recycler view
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = CenterAdapter(getCenterCourtList(27))
 
-        initCenterRecyclerView()
-    }
-    private fun initCenterRecyclerView(){
-        rv_center.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayout.VERTICAL, false)
-            adapter = CenterAdapter(getCenterCourtList(20))
+        recyclerView = findViewById<RecyclerView>(R.id.rv_center).apply {
+            // use a linear layout manager
+            layoutManager = viewManager
+
+            // specify an viewAdapter
+            adapter = viewAdapter
         }
-
     }
     // Generate fake data for testing recycler view
     private fun getCenterCourtList(size: Int): List<Center> {
@@ -96,8 +102,8 @@ class MainActivity : AppCompatActivity() {
         return list
     }
     private fun getCourtList(): List<Court> {
-        val list = listOf<Court>(Court("Court#1"), Court("Court#12"),Court("Court#13"),
-                                        Court("Court#14"),Court("Court#15"))
+        val list = listOf<Court>(Court("Court#1"), Court("Court#2"),Court("Court#3"),
+                                        Court("Court#4"),Court("Court#5"))
         return list
     }
 }

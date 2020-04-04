@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="4dp"
@@ -22,11 +22,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_court"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_56"
+            android:layout_height="wrap_content"
             android:layout_below="@id/tv_center"
             android:gravity="center"
             tools:listitem="@layout/court">
 
         </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

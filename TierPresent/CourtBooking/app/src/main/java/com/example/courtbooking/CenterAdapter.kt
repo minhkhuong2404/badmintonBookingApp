@@ -1,5 +1,6 @@
 package com.example.courtbooking
 
+import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,42 +8,47 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.RecycledViewPool
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.android.synthetic.main.center.view.*
+
 
 class CenterAdapter(private val listCenter: List<Center>) : RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
 
-    // Add this line when this is a parent adapter of nested recyclerview
+    // Referring to the views for each data item
+    class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textView: TextView = itemView.tv_center
+
+        // Load recycler view of child: rv_court
+        val recyclerViewCourt: RecyclerView = itemView.findViewById(R.id.rv_court)
+    }
+
+    // Create ViewPool for child RecyclerView
     private var viewPool = RecyclerView.RecycledViewPool()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CenterViewHolder {
-        // This line is always written when create ViewHolder. Replace the item you want to 'slot'
+
+        // Create a new view for "center"
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.center, parent, false)
+        // Set the view's size, margins, paddings and layout parameters...
 
         return CenterViewHolder(itemView)
     }
-
+    // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: CenterViewHolder, position: Int) {
-        println("center")
-        // exampleList: List<ExampleItem>
+        // - get  element from your dataset at this position
         val currentCenter = listCenter[position]
-        // Depends on the item (in this case the item contains one image, 2 texts)
-        // you must add them as below. They are defined in below class 'ExampleViewHolder'
-        holder.textView.text = currentCenter.name
-        // Call child adapter to show child recyclerview
 
+        // - replace the contents of the view with that element
+        holder.textView.text = currentCenter.name
+
+        // Call child adapter to show child recyclerview
         holder.recyclerViewCourt.apply {
             layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.HORIZONTAL, false)
             adapter = CourtAdapter(currentCenter.courtList)
             setRecycledViewPool(viewPool)
         }
     }
-
+    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = listCenter.size
-
-    class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // Load recycler view of child: rv_court
-        val recyclerViewCourt: RecyclerView = itemView.findViewById(R.id.rv_court)
-
-        val textView: TextView = itemView.tv_center
-    }
 }
