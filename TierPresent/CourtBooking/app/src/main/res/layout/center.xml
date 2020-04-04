@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_center"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Center"
-        android:padding="4dp"
-        android:textAlignment="textStart"
-        android:textColor="#000000"
-        android:textSize="18sp" />
-    <!-- Court Recycler View
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line 1"
+            android:textColor="#D81B60"
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_court"
-            android:padding="4dp"
-            android:clipToPadding="false"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/court"/>
-    -->
-</LinearLayout>
+            android:layout_height="@dimen/dp_56"
+            android:layout_below="@id/tv_center"
+            android:gravity="center"
+            tools:listitem="@layout/court">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

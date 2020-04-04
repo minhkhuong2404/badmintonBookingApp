@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
 
     <TextView
         android:id="@+id/tv_court"
+        android:text="Court"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Court"/>
-    <!-- Slot recycler view must be here -->
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
+    <!-- Slot recycler view must be here
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_slot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="horizontal"/>
-</LinearLayout>
+    -->
+</androidx.cardview.widget.CardView>

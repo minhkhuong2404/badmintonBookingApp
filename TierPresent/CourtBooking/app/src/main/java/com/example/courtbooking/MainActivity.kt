@@ -1,15 +1,13 @@
 package com.example.courtbooking
 
+import com.example.courtbooking.*
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.court.*
 import java.util.*
 
 
@@ -36,15 +34,20 @@ class MainActivity : AppCompatActivity() {
         var cities = arrayOf("City#A", "City#B", "City#C") // For testing
 
         // Show first item on the cities array on the chosenCity spinner
+
         cityChooser.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cities)
+
         // On City Choosing Listener
+
         cityChooser.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) { /* Just a place holder */ }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 //result.text = cities.get(position) // For testing
             }
         }
+
         // Set calendar
+
         val cal = Calendar.getInstance(TimeZone.getDefault()) // Get current date
         val year = cal.get(Calendar.YEAR)
         val month = cal.get(Calendar.MONTH)
@@ -52,8 +55,11 @@ class MainActivity : AppCompatActivity() {
         // Set default as current day
         et_date.setText("" + day + "/" + month + "/" + year)
         //result2.text = et_date.text // For testing
-        //
+
+        // On click of date chooser
+
         dateChooser.setOnClickListener {
+            // Setting up date picker dialog
             val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ _: DatePicker?, mYear: Int, mMonth: Int, mDay: Int ->
                 // Add 1, since in Kotlin start from 0 - 11
                 val finalMonth : Int = mMonth + 1;
@@ -68,36 +74,30 @@ class MainActivity : AppCompatActivity() {
         // On button clicked Show Available Slots
         // On button clicked Show My Bookings
 
-        /* Test RecyclerView */
+        // Initialize the CENTER recycler view
 
-        // Create fake data for testing
-        //val exampleList = getSlotList(5)
-        val exampleList = getCenterList(20)
-
-        rv_center.adapter = CenterAdapter(exampleList)
-        rv_center.layoutManager = LinearLayoutManager(this)
-        rv_center.setHasFixedSize(true)
-
-        /* End Test RecyclerView*/
+        initCenterRecyclerView()
     }
-    private fun getCenterList(size: Int): List<Center> {
+    private fun initCenterRecyclerView(){
+        rv_center.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayout.VERTICAL, false)
+            adapter = CenterAdapter(getCenterCourtList(20))
+        }
+
+    }
+    // Generate fake data for testing recycler view
+    private fun getCenterCourtList(size: Int): List<Center> {
         val list = ArrayList<Center>()
-
+        val exampleCourtList = getCourtList()
         for (i in 0 until size) {
-            val slot = Center("Center#" + i)
+            val slot = Center("Center#$i", exampleCourtList)
             list += slot
         }
         return list
     }
-    /* Test RecyclerView
-    private fun getSlotList(size: Int): List<Slot> {
-        val list = ArrayList<Slot>()
-
-        for (i in 0 until size) {
-            val slot = Slot("8:00 - 9:00")
-            list += slot
-        }
+    private fun getCourtList(): List<Court> {
+        val list = listOf<Court>(Court("Court#1"), Court("Court#12"),Court("Court#13"),
+                                        Court("Court#14"),Court("Court#15"))
         return list
     }
-    End Test RecyclerView */
 }
