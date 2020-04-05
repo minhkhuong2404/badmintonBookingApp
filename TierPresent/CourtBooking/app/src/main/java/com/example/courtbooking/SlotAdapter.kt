@@ -9,24 +9,37 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.slot.view.*
 
 class SlotAdapter(private val listSlot: List<Slot>) : RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
+
+    // Setting up view holder
+    class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // Assign to the views for each item
+        val textView: Button = itemView.b_slot
+    }
+
+    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlotViewHolder {
-        // This line is always written when create ViewHolder. Replace the item you want to 'slot'
+        // Create a new view for "court"
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.slot, parent, false)
+        // Set the view's size, margins, paddings and layout parameters...
 
         return SlotViewHolder(itemView)
     }
 
+    // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: SlotViewHolder, position: Int) {
-        // exampleList: List<ExampleItem>
+        // - get  element from your dataset at this position
         val currentItem = listSlot[position]
-        // Depends on the item (in this case the item contains one image, 2 texts)
-        // you must add them as below. They are defined in below class 'ExampleViewHolder'
+
+        // - replace the contents of the view with that element
         holder.textView.text = currentItem.time
+
+        // setIsRecyclerable: avoid lag when scrolling
+        holder.setIsRecyclable(false)
+
     }
 
+    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = listSlot.size
 
-    class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.tv_slot
-    }
+
 }
