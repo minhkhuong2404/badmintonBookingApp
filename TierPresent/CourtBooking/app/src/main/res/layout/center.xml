@@ -5,6 +5,10 @@
     android:layout_height="wrap_content"
     android:padding="4dp"
     android:layout_margin="4dp">
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     <RelativeLayout
         android:id="@+id/rl_center"
         android:layout_width="match_parent"

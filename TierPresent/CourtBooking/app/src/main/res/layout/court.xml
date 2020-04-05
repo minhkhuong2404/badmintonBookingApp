@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/court_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     <TextView
         android:id="@+id/tv_court"
         android:layout_width="wrap_content"
@@ -20,4 +28,10 @@
         android:layout_below="@id/tv_court"
         android:layout_centerHorizontal="true"/>
 
+<<<<<<< Updated upstream
 </RelativeLayout>
+=======
+
+</RelativeLayout>
+
+>>>>>>> Stashed changes
