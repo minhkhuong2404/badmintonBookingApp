@@ -14,12 +14,15 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
     // Create ViewPool for child RecyclerView
     private var viewPool = RecyclerView.RecycledViewPool()
 
-    // Referring to the views for each data item
+    // Setting up view holder
     class CourtViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // Assign to the views for each item
         val courtTextView: TextView = itemView.tv_court
 
         // Load recycler view of child: rv_court
         val recyclerViewSlot: RecyclerView = itemView.findViewById(R.id.rv_slot)
+
+        //
     }
 
     // Create new views (invoked by the layout manager)
@@ -40,9 +43,12 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
         // - replace the contents of the view with that element
         holder.courtTextView.text = currentCourt.name
 
+        // setIsRecyclerable: avoid lag when scrolling
+        holder.setIsRecyclable(false)
+
         // Call child adapter to show child recyclerview
         holder.recyclerViewSlot.apply {
-            layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 3, GridLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 4, GridLayoutManager.VERTICAL, false)
             adapter = SlotAdapter(currentCourt.slotList)
             setRecycledViewPool(viewPool)
         }
