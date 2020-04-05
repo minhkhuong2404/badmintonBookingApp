@@ -40,12 +40,23 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
         // - replace the contents of the view with that element
         holder.courtTextView.text = currentCourt.name
 
-        // Call child adapter to show child recyclerview
-        holder.recyclerViewSlot.apply {
-            layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 3, GridLayoutManager.VERTICAL, false)
-            adapter = SlotAdapter(currentCourt.slotList)
-            setRecycledViewPool(viewPool)
+
+        var openCourt: Int = 0
+        holder.courtTextView.setOnClickListener {
+            if (openCourt == 0) {
+                // Call child adapter to show child recyclerview
+                holder.recyclerViewSlot.apply {
+                    layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 3, GridLayoutManager.VERTICAL, false)
+                    adapter = SlotAdapter(currentCourt.slotList)
+                    setRecycledViewPool(viewPool)
+                    openCourt = 1
+                }
+            } else {
+                holder.recyclerViewSlot.adapter = null
+                openCourt = 0
+            }
         }
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

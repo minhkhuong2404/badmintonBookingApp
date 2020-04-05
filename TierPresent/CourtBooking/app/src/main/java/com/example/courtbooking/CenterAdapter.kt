@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,8 @@ class CenterAdapter(private val centerList: List<Center>) : RecyclerView.Adapter
 
     // Referring to the views for each data item
     class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val relativeLayout: RelativeLayout = itemView.findViewById(R.id.rl_center)
+
         val textView: TextView = itemView.tv_center
 
         // Load recycler view of child: rv_court
@@ -44,12 +47,22 @@ class CenterAdapter(private val centerList: List<Center>) : RecyclerView.Adapter
         // - replace the contents of the view with that element
         holder.textView.text = currentCenter.name
 
-        // Call child adapter to show child recyclerview
-        holder.recyclerViewCourt.apply {
-            layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
-            adapter = CourtAdapter(currentCenter.courtList)
-            setRecycledViewPool(viewPool)
+        var click: Int = 0
+        holder.relativeLayout.setOnClickListener {
+            if (click == 0) {
+                // Call child adapter to show child recyclerview
+                holder.recyclerViewCourt.apply {
+                    layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
+                    adapter = CourtAdapter(currentCenter.courtList)
+                    setRecycledViewPool(viewPool)
+                }
+                click = 1
+            } else {
+                holder.recyclerViewCourt.adapter = null
+                click = 0
+            }
         }
+
     }
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = centerList.size
