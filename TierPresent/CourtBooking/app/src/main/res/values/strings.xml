@@ -7,4 +7,5 @@
     <string name="change_date">Date</string>
     <string name="center">Center</string>
     <string name="court">Court</string>
+    <string name="example_time_2">8:00 - 9:00</string>
 </resources>

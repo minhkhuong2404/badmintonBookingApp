@@ -76,7 +76,8 @@
             android:id="@+id/rv_center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/center"/>
+            tools:listitem="@layout/center" />
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
