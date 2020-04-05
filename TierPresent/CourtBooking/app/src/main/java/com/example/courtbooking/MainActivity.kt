@@ -2,6 +2,7 @@ package com.example.courtbooking
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CenterAdapter.CallbackInterface {
     lateinit var cityChooser : Spinner
     lateinit var dateChooser : EditText
     lateinit var result : TextView
@@ -75,6 +76,8 @@ class MainActivity : AppCompatActivity() {
             datePicker.show()
         }
 
+
+
         // On button clicked Show Available Slots
         // On button clicked Show My Bookings
 
@@ -115,7 +118,15 @@ class MainActivity : AppCompatActivity() {
         // Calling the recycler view for Center
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayout.VERTICAL, false)
-            adapter = CenterAdapter(getCenterCourtSlotList(27))
+            adapter = CenterAdapter(getCenterCourtSlotList(27), this@MainActivity)
         }
     }
+
+    // override passDataCallback from CenterAdapter.CallbackInterface
+    override fun passDataCallback(message: Slot) {
+        Log.i("Main", "Finished")
+        Toast.makeText(this, ("You choose " + message.time), Toast.LENGTH_SHORT).show()
+    }
+
+
 }

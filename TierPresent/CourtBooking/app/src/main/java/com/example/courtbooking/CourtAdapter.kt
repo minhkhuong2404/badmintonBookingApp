@@ -1,16 +1,15 @@
 package com.example.courtbooking
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.court.view.*
 
-class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
+class CourtAdapter(private val courtList: List<Court>, private val callbackInterface:CallbackInterface) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>(), SlotAdapter.OnItemClickListener {
     // Create ViewPool for child RecyclerView
     private var viewPool = RecyclerView.RecycledViewPool()
 
@@ -43,36 +42,31 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
         // - replace the contents of the view with that element
         holder.courtTextView.text = currentCourt.name
 
-<<<<<<< HEAD
-
-        var openCourt: Int = 0
-        holder.courtTextView.setOnClickListener {
-            if (openCourt == 0) {
-                // Call child adapter to show child recyclerview
-                holder.recyclerViewSlot.apply {
-                    layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 3, GridLayoutManager.VERTICAL, false)
-                    adapter = SlotAdapter(currentCourt.slotList)
-                    setRecycledViewPool(viewPool)
-                    openCourt = 1
-                }
-            } else {
-                holder.recyclerViewSlot.adapter = null
-                openCourt = 0
-            }
-=======
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)
 
         // Call child adapter to show child recyclerview
         holder.recyclerViewSlot.apply {
             layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 4, GridLayoutManager.VERTICAL, false)
-            adapter = SlotAdapter(currentCourt.slotList)
+            adapter = SlotAdapter(currentCourt.slotList, this@CourtAdapter)
             setRecycledViewPool(viewPool)
->>>>>>> 93d338cd270f6e9db4073641139953c0f2a32343
         }
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = courtList.size
+
+    // override onClickListener from SlotAdapter.OnItemClickListener
+    override fun onClickListener(item: Slot, position: Int) {
+        Log.i("Court", "Transfer to Center")
+        callbackInterface.passDataCallback(item)
+    }
+
+    // create interface CallbackInterface
+    interface CallbackInterface {
+        fun passDataCallback(message: Slot)
+    }
+
+
 }
