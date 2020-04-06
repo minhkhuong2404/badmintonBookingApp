@@ -19,11 +19,11 @@ CB-003 | endTime > closeTime |
 CB-004 | endTime < startTime |  
 CB-005 | playtime invalid (valid: 45m, 1h, 1h15m, 1h30m) |  
 CB-006 | overlapping booking |
---     |        9:00===========10:00  existed booking |  
+--     |        9:00===========10:00  existed booking   
 --        8:00========9:30  
 --                   9:30==============10:30        
 --               9:15==10:00  
---          8:30============10:00   
+--          8:30============10:00 |   
 
 	
 Test Case ID | Test Description |
