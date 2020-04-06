@@ -1,14 +1,14 @@
 package com.example.courtbooking
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.slot.view.*
 
-class SlotAdapter(private val listSlot: List<Slot>) : RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
+class SlotAdapter(private val listSlot: List<Slot>, var clickListener: OnItemClickListener) : RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
 
     // Setting up view holder
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,15 +31,29 @@ class SlotAdapter(private val listSlot: List<Slot>) : RecyclerView.Adapter<SlotA
         val currentItem = listSlot[position]
 
         // - replace the contents of the view with that element
-        holder.textView.text = currentItem.time
+        holder.textView.text = currentItem.id
 
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)
+
+        holder.textView.setOnClickListener {
+            Log.i("Slot","XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            Log.i("Slot","Transfer to court")
+            //clickListener.onClickListener(listOf(currentItem.time), holder.adapterPosition)
+            clickListener.onClickListener(currentItem, holder.adapterPosition)
+        }
+
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = listSlot.size
+
+    // create interface OnItemClickListener
+    interface OnItemClickListener {
+        fun onClickListener(item: Slot, position: Int)
+    }
+
 
 
 }

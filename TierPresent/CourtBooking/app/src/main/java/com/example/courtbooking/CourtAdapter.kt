@@ -1,19 +1,18 @@
 package com.example.courtbooking
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.court.view.*
 
-class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
+class CourtAdapter(private val courtList: List<Court>, private val callbackInterface:CallbackInterface) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>(), SlotAdapter.OnItemClickListener {
     // Create ViewPool for child RecyclerView
     private var viewPool = RecyclerView.RecycledViewPool()
+    private var adapterPosition: Int = 0
 
     // Setting up view holder
     class CourtViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -56,11 +55,32 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
         // Call child adapter to show child recyclerview
         holder.recyclerViewSlot.apply {
             layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 4, GridLayoutManager.VERTICAL, false)
-            adapter = SlotAdapter(currentCourt.slotList)
+            adapter = SlotAdapter(currentCourt.slotList, this@CourtAdapter)
             setRecycledViewPool(viewPool)
         }
+
+
+
+        adapterPosition = holder.adapterPosition
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = courtList.size
+
+    // override onClickListener from SlotAdapter.OnItemClickListener
+    override fun onClickListener(item: Slot, position: Int) {
+        Log.i("Court", "Transfer Slot to Center")
+        Log.i("Position Slot", position.toString())
+        Log.i("Position Court", adapterPosition.toString())
+        val slotTime = item.id
+        callbackInterface.passDataCallback(item)
+    }
+
+    // create interface CallbackInterface
+    interface CallbackInterface {
+        fun passDataCallback(message: Slot)
+    }
+
+
 }
