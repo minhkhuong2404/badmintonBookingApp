@@ -4,7 +4,8 @@
     android:id="@+id/court_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    android:background="#1200ACC1">
 
     <TextView
         android:id="@+id/tv_court"
@@ -24,4 +25,3 @@
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
-

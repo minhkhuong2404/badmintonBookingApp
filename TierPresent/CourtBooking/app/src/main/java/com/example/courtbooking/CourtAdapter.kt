@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.court.view.*
 
 class CourtAdapter(private val courtList: List<Court>, private val callbackInterface:CallbackInterface) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>(), SlotAdapter.OnItemClickListener {
+    // Constant for two types of view
+    private var COURTVIEWTYPE_DEFAULT = 0
+    private var COURTVIEWTYPE_LIGHT_BLUE = 1
     // Create ViewPool for child RecyclerView
     private var viewPool = RecyclerView.RecycledViewPool()
     private var adapterPosition: Int = 0
@@ -28,14 +31,27 @@ class CourtAdapter(private val courtList: List<Court>, private val callbackInter
         //val lparams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
     }
 
+    // Determine COURTVIEWTYPE of item
+    override fun getItemViewType(position: Int): Int {
+        if (position % 2 == 0){
+            return COURTVIEWTYPE_LIGHT_BLUE
+        } else {
+            return COURTVIEWTYPE_DEFAULT
+        }
+    }
+
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourtViewHolder {
 
         // Create a new view for "court"
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.court, parent, false)
+        if (viewType == COURTVIEWTYPE_LIGHT_BLUE){
+            var itemView = LayoutInflater.from(parent.context).inflate(R.layout.court, parent, false)
+            return CourtViewHolder(itemView)
+        } else {
+            var itemView = LayoutInflater.from(parent.context).inflate(R.layout.court_gray, parent, false)
+            return CourtViewHolder(itemView)
+        }
         // Set the view's size, margins, paddings and layout parameters...
-
-        return CourtViewHolder(itemView)
     }
 
     // Assign the contents to a view (invoked by the layout manager)
