@@ -21,6 +21,7 @@ CP-003 | this staff has no relationship with the booking (join booking - court -
 
 Test Case ID | Test Description |
 ------------ | ---------------- |
+CB-001 | startTime < DATE(NOW())|
 CB-002 | startTime < openTime | 
 CB-003 | endTime > closeTime | 
 CB-004 | endTime < startTime |  
