@@ -31,7 +31,7 @@ class SlotAdapter(private val listSlot: List<Slot>, var clickListener: OnItemCli
         val currentItem = listSlot[position]
 
         // - replace the contents of the view with that element
-        holder.textView.text = currentItem.id
+        holder.textView.text = currentItem.id.split("/").last()
 
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)

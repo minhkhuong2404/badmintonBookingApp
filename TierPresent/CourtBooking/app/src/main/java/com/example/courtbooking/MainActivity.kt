@@ -110,7 +110,6 @@ class MainActivity : AppCompatActivity(), CenterAdapter.CallbackInterface {
         return list
     }
     private fun getCourtList(): List<Court> {
-<<<<<<< Updated upstream
         return listOf(Court("Court#1", getSlotList(1)), Court("Court#2", getSlotList(2)),
             Court("Court#3", getSlotList(3)), Court("Court#4", getSlotList(4)),Court("Court#5",
                 getSlotList(5)
@@ -127,48 +126,7 @@ class MainActivity : AppCompatActivity(), CenterAdapter.CallbackInterface {
                 Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
             4 -> listOf(Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
             else -> listOf(Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
-=======
-        val list = listOf<Court>(
-            Court("Court#1", getSlotList(1).toList()),
-            Court("Court#2", getSlotList(2).toList()),
-            Court("Court#3", getSlotList(3).toList()),
-            Court("Court#4", getSlotList(4).toList()),
-            Court("Court#5", getSlotList(5).toList()))
-        return list
-    }
-    private fun getSlotList(type : Int): List<Slot> {
 
-        val slots = when {
-            type == 1 -> listOf<Slot>(
-                Slot("7:00 - 8:00"),
-                Slot("7:30 - 8:30"),
-                Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00"))
-            type == 2 -> listOf<Slot>(
-                Slot("7:30 - 8:30"),
-                Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00"))
-            type == 3 -> listOf<Slot>(
-                Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00"))
-            type == 4 -> listOf<Slot>(
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00"))
-            else -> listOf<Slot>(
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00"))
->>>>>>> Stashed changes
         }
     }
     private fun initRecyclerViewVCenter(numOfCenter: Int){
@@ -182,10 +140,18 @@ class MainActivity : AppCompatActivity(), CenterAdapter.CallbackInterface {
     // override passDataCallback from CenterAdapter.CallbackInterface
     override fun passDataCallback(message: Slot) {
         Log.i("Main", "Finished")
-        Toast.makeText(this, ("You choose " + message.id), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, ("You choose " + dateChooser.text + "\n" + cityChooser.selectedItem + "\n" + message.id), Toast.LENGTH_SHORT).show()
+
+        val slotInfo = message.id.split("/")
+
+        val date = dateChooser.text.toString()
+        val city = cityChooser.selectedItem.toString()
+        val center = slotInfo.get(0)    // get center
+        val court = slotInfo.get(1)     // get court
+        val slot = slotInfo.get(2)      // slot
 
         val fm=supportFragmentManager
-        val bookingFragment = BookingFragment()
+        val bookingFragment = BookingFragment( listOf(date, city, center, court, slot))
         bookingFragment.show(fm, "Booking Fragment")
     }
 
