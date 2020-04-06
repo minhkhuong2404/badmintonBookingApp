@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity(),
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity(),
 
     lateinit var cityChooser : Spinner
     lateinit var dateChooser : EditText
+    lateinit var welcomeText : TextView
+    lateinit var welcomeText2 : TextView
     lateinit var result : TextView
     lateinit var result2 : TextView
 
@@ -38,6 +41,8 @@ class MainActivity : AppCompatActivity(),
         // findViewById
         cityChooser = findViewById<Spinner>(R.id.sp_city)
         dateChooser = findViewById<EditText>(R.id.et_date)
+        welcomeText = findViewById<TextView>(R.id.welcome_text_1)
+        welcomeText2 = findViewById<TextView>(R.id.welcome_text_2)
         //result = findViewById(R.id.tv_result) as TextView
         //result2 = findViewById(R.id.tv_result2) as TextView
 
@@ -90,13 +95,38 @@ class MainActivity : AppCompatActivity(),
         b_show_slots.setOnClickListener {
             val selectedCity = cityChooser.selectedItem
             val randomCenter = cities.indexOf(selectedCity) + (1..3).random()
-            initRecyclerViewVCenter(randomCenter)
+            // Initialize the CENTER recycler view
+            initRecyclerViewCenter(randomCenter)
+            // Hide welcome texts
+            welcomeText.text = ""
+            welcomeText2.text = ""
+            // Hide Recycler of ViewBooking
+            rv_booking.adapter = null
         }
         // On button clicked Show My Bookings
-
-        // Initialize the CENTER recycler view
+        b_show_bookings.setOnClickListener {
+            // Initialize the BOOKING recycler view
+            initRecyclerViewBooking()
+            // Hide welcome texts
+            welcomeText.text = ""
+            welcomeText2.text = ""
+            // Hide 'Show Available Slots'
+            rv_center.adapter = null
+        }
     }
+
+
     // Generate fake data for testing recycler view
+    private fun getBookingList() : ArrayList<Booking> {
+        val list = ArrayList<Booking>()
+
+        list += Booking("0001", "27/04/2020", "07:00 - 9:00", "Undue", "City#B, Center#C, Court#12", "06/04/2020 18:43")
+        list += Booking("0004", "26/04/2020", "08:00 - 9:00", "Undue", "City#B, Center#1, Court#12", "06/04/2020 18:43")
+        list += Booking("0008", "19/04/2020", "08:30 - 9:00", "Overdue", "City#1, Center#2, Court#12", "06/04/2020 18:43")
+
+        return list
+    }
+
     private fun getCenterCourtSlotList(size: Int): List<Center> {
         val list = ArrayList<Center>()
         //val exampleCourtList = getCourtList()
@@ -137,7 +167,14 @@ class MainActivity : AppCompatActivity(),
 
         }
     }
-    private fun initRecyclerViewVCenter(numOfCenter: Int){
+    private  fun initRecyclerViewBooking(){
+        rv_booking.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = BookingAdapter(getBookingList())
+        }
+    }
+
+    private fun initRecyclerViewCenter(numOfCenter: Int){
         // Calling the recycler view for Center
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayout.VERTICAL, false)

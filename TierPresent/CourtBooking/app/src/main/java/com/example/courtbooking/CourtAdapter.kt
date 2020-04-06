@@ -24,11 +24,6 @@ class CourtAdapter(private val courtList: List<Court>, private val callbackInter
 
         // Load recycler view of child: rv_court
         val recyclerViewSlot: RecyclerView = itemView.findViewById(R.id.rv_slot)
-
-        // Change background of the court
-        //val courtLayout: RelativeLayout = View.court_layout // get the item court layout
-
-        //val lparams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
     }
 
     // Determine COURTVIEWTYPE of item
