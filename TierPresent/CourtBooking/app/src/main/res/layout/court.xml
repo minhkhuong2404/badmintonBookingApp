@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:background="@drawable/back"
-    >
-
-=======
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/court_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
->>>>>>> master
-=======
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/court_layout"
@@ -24,7 +6,6 @@
     android:layout_height="wrap_content"
     android:paddingBottom="10dp">
 
->>>>>>> master
     <TextView
         android:id="@+id/tv_court"
         android:layout_width="wrap_content"
@@ -42,23 +23,6 @@
         android:layout_below="@id/tv_court"
         android:layout_centerHorizontal="true"/>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_slot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_court"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-/>
 </RelativeLayout>
 
-=======
-</RelativeLayout>
->>>>>>> master
-=======
-</RelativeLayout>
 
->>>>>>> master

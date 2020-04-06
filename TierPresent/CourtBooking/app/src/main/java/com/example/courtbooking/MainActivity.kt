@@ -1,11 +1,5 @@
 package com.example.courtbooking
 
-<<<<<<< HEAD
-
-
-import com.example.courtbooking.*
-=======
->>>>>>> master
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.os.Message
