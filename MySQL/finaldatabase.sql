@@ -490,32 +490,28 @@ call createStaff("Staff#1","HCM_quan1","HCM");
 /* error: CS-001 */
 
 # CancelBooking (CA) parameters: booking_id, customer_id
--- CA-001: customer not exist
+/* test 6 */		   
 Call CancelBooking('1', 'Customer#X');
-
+/* error: CA-001 */
+		   
 /* test 7 */
--- CA-002: booking not exist
 Call CancelBooking('12', 'Customer#B');
 /* error: CA-002 */
 
 /* test 8 */
--- CA-003: this customer not own the booking
 Call CancelBooking('1', 'Customer#B');
 /* error: CA-003 */
 
 /* test 9 */
--- CA-004: violates 24 hours before start time
 Call CancelBooking('11', 'Customer#E');
 /* error: CA-004 */
 
 # updateBookingStatus (CP) parameters: status, bookingId, cityId, centerId, staffId
 /* test 10 */
--- CP-001: staff not exist
 CALL updateBookingStatus(0 ,'1', 'HCM','HCM_quan1','Staff#6');
 /* error: CP-001 */
 
 /* test 11 */
--- CP-002: booking not exist
 CALL updateBookingStatus(0 ,'12', 'Hanoi','HCM_quan2','Staff#1');
 /* error: CP-002 */
 
