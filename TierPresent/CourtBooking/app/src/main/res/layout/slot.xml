@@ -31,5 +31,9 @@
         android:textAlignment="center"
         android:textSize="13sp"
         android:textStyle="bold" />
+<<<<<<< HEAD
+>>>>>>> master
+=======
+
 >>>>>>> master
 </LinearLayout>

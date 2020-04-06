@@ -57,7 +57,7 @@ class CenterAdapter(private val centerList: List<Center>, private val callbackIn
 //                // Call child adapter to show child recyclerview
 //                holder.recyclerViewCourt.apply {
 //                    layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
-//                    adapter = CourtAdapter(currentCenter.courtList)
+//                    adapter = CourtAdapter(currentCenter.courtList, this@CenterAdapter)
 //                    setRecycledViewPool(viewPool)
 //                }
 //                click = 1
@@ -79,7 +79,9 @@ class CenterAdapter(private val centerList: List<Center>, private val callbackIn
 
     // override passDataCallback from CourtAdapter.CallbackInterface
     override fun passDataCallback(message: Slot) {
-        Log.i("Center", "Transfer to Main")
+        Log.i("Center", "Transfer Slot, Court  to Main")
+
+
         callbackInterface.passDataCallback(message)
     }
 
