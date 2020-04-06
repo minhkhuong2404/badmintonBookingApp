@@ -12,7 +12,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
-class MainActivity : AppCompatActivity(), CenterAdapter.CallbackInterface {
+class MainActivity : AppCompatActivity(),
+    CenterAdapter.CallbackInterface,
+    AskForBookingFragment.CallbackRequestFragment,
+    BookingFragment.ConfirmBookingInterface,
+    FinishBookingFragment.MyBookingInterface {
+
     lateinit var cityChooser : Spinner
     lateinit var dateChooser : EditText
     lateinit var result : TextView
@@ -21,6 +26,9 @@ class MainActivity : AppCompatActivity(), CenterAdapter.CallbackInterface {
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
+
+    // random user's number of booking
+    val bookNum = (0..3).random()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -151,10 +159,31 @@ class MainActivity : AppCompatActivity(), CenterAdapter.CallbackInterface {
         val slot = slotInfo.get(2)      // slot
 
         val fm=supportFragmentManager
-        val bookingFragment = BookingFragment( listOf(date, city, center, court, slot))
-        bookingFragment.show(fm, "Booking Fragment")
+        val requestFragment = AskForBookingFragment(date, city, center, court, slot, bookNum, this)
+        requestFragment.show(fm, "Booking Request")
     }
 
+    override fun callBack(date: String, city: String, center: String, court: String, slot: String) {
+        val fm= supportFragmentManager
+        val bookingFragment = BookingFragment(date, city, center, court, slot, this)
+        bookingFragment.show(fm, "Booking Process")
+    }
+
+    override fun callBackFail() {
+        val fm= supportFragmentManager
+        val bookingFragment = MoreThan3Fragment()
+        bookingFragment.show(fm, "Booking Stop")
+    }
+
+    override fun confirm(date: String, city: String, center: String, court: String, slot: String) {
+        val fm= supportFragmentManager
+        val bookingFragment = FinishBookingFragment(date, city, center, court, slot, this)
+        bookingFragment.show(fm, "Booking Finish")
+    }
+
+    override fun showBooking() {
+        Toast.makeText(this, "Show my booking", Toast.LENGTH_SHORT).show()
+    }
 
 
 }
