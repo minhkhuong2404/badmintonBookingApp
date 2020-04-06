@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity(),
             welcomeText2.text = ""
             // Hide Recycler of ViewBooking
             rv_booking.adapter = null
+            findViewById<RelativeLayout>(R.id.center_view).bringToFront()
         }
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
@@ -112,6 +113,7 @@ class MainActivity : AppCompatActivity(),
             welcomeText2.text = ""
             // Hide 'Show Available Slots'
             rv_center.adapter = null
+            findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
         }
     }
 

@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:padding="10dp"
         android:text="Slot is selected"
+        android:textColor="#2196F3"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -38,11 +39,12 @@
 
     <Button
         android:id="@+id/noButton"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
         android:text="No"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,12 +54,13 @@
 
     <Button
         android:id="@+id/yesButton"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
         android:text="Yes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
