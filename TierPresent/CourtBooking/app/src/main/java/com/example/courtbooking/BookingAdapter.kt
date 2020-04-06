@@ -1,14 +1,16 @@
 package com.example.courtbooking
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.booking.view.*
 
-class BookingAdapter (private val listBooking : ArrayList<Booking>) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
+class BookingAdapter (private val listBooking : ArrayList<Booking>, private var cancelInterface: CancelInterface) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
     private var BOOKINGVIEWTYPE_DEFAULT = 0
     private var BOOKINGVIEWTYPE_OVERDUE = 1
 
@@ -21,6 +23,8 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>) : RecyclerVi
         val tvPaymentStatus : TextView = itemView.tv_payment_status
         val tvCourt : TextView = itemView.tv_court
         val tvCreatedOn : TextView = itemView.tv_created_on
+
+        val cancelBtn: Button = itemView.cancelButton
     }
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
@@ -62,9 +66,17 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>) : RecyclerVi
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)
 
+        holder.cancelBtn.setOnClickListener {
+            cancelInterface.moveToCancelFragment(currentItem.id)
+        }
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = listBooking.size
+
+    interface CancelInterface {
+        fun moveToCancelFragment(message: String)
+    }
 
 }

@@ -2,6 +2,7 @@ package com.example.courtbooking
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -17,7 +18,9 @@ class MainActivity : AppCompatActivity(),
     CenterAdapter.CallbackInterface,
     AskForBookingFragment.CallbackRequestFragment,
     BookingFragment.ConfirmBookingInterface,
-    FinishBookingFragment.MyBookingInterface {
+    FinishBookingFragment.MyBookingInterface,
+    BookingAdapter.CancelInterface,
+    CancelBookingFragment.CancelFinishInterface {
 
     lateinit var cityChooser : Spinner
     lateinit var dateChooser : EditText
@@ -25,6 +28,8 @@ class MainActivity : AppCompatActivity(),
     lateinit var welcomeText2 : TextView
     lateinit var result : TextView
     lateinit var result2 : TextView
+    lateinit var bookList: ArrayList<Booking>
+    lateinit var centerList: List<Center>
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -170,17 +175,19 @@ class MainActivity : AppCompatActivity(),
         }
     }
     private  fun initRecyclerViewBooking(){
+        bookList = getBookingList()
         rv_booking.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-            adapter = BookingAdapter(getBookingList())
+            adapter = BookingAdapter(bookList, this@MainActivity)
         }
     }
 
     private fun initRecyclerViewCenter(numOfCenter: Int){
         // Calling the recycler view for Center
+        centerList = getCenterCourtSlotList(numOfCenter)
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayout.VERTICAL, false)
-            adapter = CenterAdapter(getCenterCourtSlotList(numOfCenter), this@MainActivity)
+            adapter = CenterAdapter(centerList, this@MainActivity)
         }
     }
 
@@ -221,9 +228,59 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun showBooking() {
-        Toast.makeText(this, "Show my booking", Toast.LENGTH_SHORT).show()
+        // Initialize the BOOKING recycler view
+        initRecyclerViewBooking()
+        // Hide welcome texts
+        welcomeText.text = ""
+        welcomeText2.text = ""
+        // Hide 'Show Available Slots'
+        rv_center.adapter = null
+        findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
     }
 
+    // override function from BookingAdapter.CancelInterface, open cancel dialog fragment
+    override fun moveToCancelFragment(message: String) {
+        val fm= supportFragmentManager
+        val bookingFragment = CancelBookingFragment(message, this)
+        bookingFragment.show(fm, "Cancel Booking")
+    }
+
+
+    fun aaa(view: View) {
+
+        Log.i("bb", "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
+        Log.i("bb", "ahihi")
+        Log.i("bb", view.toString())
+    }
+
+    override fun moveToFinishCancel(message: String) {
+
+        val fm= supportFragmentManager
+
+        var bookingFragment = CancelResultFragment(message, false)
+
+        if (message == "0004") {
+            // remove the booking in the list
+            for (booking in bookList) {
+                if (booking.id == message) {
+                    bookList.remove(booking)
+                    break
+                }
+            }
+
+            //
+            rv_booking.adapter = BookingAdapter(bookList, this@MainActivity)
+            bookingFragment = CancelResultFragment(message, true)
+        }
+
+
+
+        bookingFragment.show(fm, "Cancel Result")
+
+
+
+
+    }
 
 }
 

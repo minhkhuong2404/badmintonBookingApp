@@ -57,7 +57,7 @@ class CenterAdapter(private val centerList: List<Center>, private val callbackIn
 //                // Call child adapter to show child recyclerview
 //                holder.recyclerViewCourt.apply {
 //                    layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
-//                    adapter = CourtAdapter(currentCenter.courtList)
+//                    adapter = CourtAdapter(currentCenter.courtList, this@CenterAdapter)
 //                    setRecycledViewPool(viewPool)
 //                }
 //                click = 1

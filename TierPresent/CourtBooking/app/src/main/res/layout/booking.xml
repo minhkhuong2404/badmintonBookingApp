@@ -148,13 +148,15 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/cancelButton"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:backgroundTint="#EF5350"
                 android:text="Cancel this booking"
                 android:textColor="#FFFFFF"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="aaa"/>
         </LinearLayout>
 
     </RelativeLayout>
