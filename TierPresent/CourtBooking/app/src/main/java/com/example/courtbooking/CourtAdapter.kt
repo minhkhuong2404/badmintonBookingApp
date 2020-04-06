@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,10 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
         // Load recycler view of child: rv_court
         val recyclerViewSlot: RecyclerView = itemView.findViewById(R.id.rv_slot)
 
-        //
+        // Change background of the court
+        //val courtLayout: RelativeLayout = View.court_layout // get the item court layout
+
+        //val lparams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
     }
 
     // Create new views (invoked by the layout manager)
@@ -45,6 +49,9 @@ class CourtAdapter(private val courtList: List<Court>) : RecyclerView.Adapter<Co
 
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)
+
+        // Setting the background for the court layout
+        
 
         // Call child adapter to show child recyclerview
         holder.recyclerViewSlot.apply {
