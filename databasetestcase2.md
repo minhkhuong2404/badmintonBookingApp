@@ -1,15 +1,22 @@
+Test Case ID | Test Description |
+------------ | ---------------- | 
+CC-001 | city existed |
+CCtr-001 | center existed |
+CCourt-001 | court existed | 
+CPL-001 | player existed |
+CS-001 | staff existed |
 
 Test Case ID | Test Description |
 ------------ | ---------------- | 
-CA-001 | customer not exist |
-CA-002 | booking not exist |
-CA-003 | this customer not own the booking | 
+CA-001 | customer does not exist |
+CA-002 | booking does not exist |
+CA-003 | this customer does not own the booking | 
 CA-004 | violates 24 hours before start time |
 
 Test Case ID | Test Description |
 ------------ | ---------------- | 
-CP-001 | staff not exist |
-CP-002 | booking not exist |
+CP-001 | staff does not exist |
+CP-002 | booking does not exist |
 CP-003 | this staff has no relationship with the booking (join booking - court - center - staff) |
 
 Test Case ID | Test Description |
@@ -29,9 +36,9 @@ CB-006 : overlapping booking
 	
 Test Case ID | Test Description |
 ------------ | ---------------- |
-CB-007 | have pending booking |
-CB-008 | no more than 3 bookings |
-CB-109 | Customer not existed. |
-CB-110 | Court not existed. |
-CB-111 | Court & Customer not existed |
+CB-007 | Player has pending booking in past |
+CB-008 | Player can book no more than 3 bookings |
+CB-109 | Customer does not existed |
+CB-110 | Court does not existed |
+CB-111 | Court & Customer do not existed |
 	
