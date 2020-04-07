@@ -18,4 +18,7 @@
     <string name="time_stamp">30/04/2020 09:30:24</string>
     <string name="welcome_text_1">1. Please select a city and a date.</string>
     <string name="welcome_text_2">2. Tap "Show Available Slots" or "Show My Bookings".</string>
+
+    <string name="facebook_app_id">624133635106948</string>
+    <string name="fb_login_protocol_scheme">fb624133635106948</string>
 </resources>

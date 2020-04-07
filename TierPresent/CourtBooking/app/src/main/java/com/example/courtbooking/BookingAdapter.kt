@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.activity_main_screen.view.*
 import kotlinx.android.synthetic.main.booking.view.*
 
 class BookingAdapter (private val listBooking : ArrayList<Booking>, private var cancelInterface: CancelInterface) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
