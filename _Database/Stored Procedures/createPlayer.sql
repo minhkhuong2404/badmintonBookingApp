@@ -1,0 +1,27 @@
+-- createPlayer(playerId)
+DROP PROCEDURE IF EXISTS createPlayer;
+DELIMITER //
+CREATE PROCEDURE createPlayer(
+in pplayer varchar(50))
+BEGIN
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+  GET STACKED DIAGNOSTICS CONDITION 1 @p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
+  SELECT @p1, @p2;
+  ROLLBACK;
+END;
+  
+START TRANSACTION;
+
+IF
+	EXISTS (SELECT * FROM player WHERE player_id = pplayer)
+THEN
+	SIGNAL SQLSTATE '45000'
+	SET MESSAGE_TEXT ="CPL-001";
+    -- CCourt-001: Court existed
+ELSE INSERT INTO player VALUES (pplayer);
+END IF;
+end//
+DELIMITER ;
+
+/* Test cases for createPlayer */

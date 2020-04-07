@@ -31,7 +31,6 @@ class FinishBookingFragment(val date: String, val city: String, val center: Stri
         myBookingBtn.setOnClickListener {
             dismiss()   // close the current fragment
             myBookingInterface.showBooking()
-
         }
 
         return rootView
