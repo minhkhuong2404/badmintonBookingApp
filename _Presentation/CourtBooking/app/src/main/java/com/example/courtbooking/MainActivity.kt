@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity(),
     lateinit var dateChooser : EditText
     lateinit var welcomeText : TextView
     lateinit var welcomeText2 : TextView
-    lateinit var result : TextView
-    lateinit var result2 : TextView
     lateinit var bookList: ArrayList<Booking>
     lateinit var centerList: List<Center>
 
@@ -36,7 +34,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     // random user's number of booking
-    val bookNum = (0..3).random()
+    private val bookNum = (0..3).random()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,13 +67,12 @@ class MainActivity : AppCompatActivity(),
         }
 
         // Set calendar
-
         val cal = Calendar.getInstance(TimeZone.getDefault()) // Get current date
         val year = cal.get(Calendar.YEAR)
         val month = cal.get(Calendar.MONTH)
         val day = cal.get(Calendar.DAY_OF_MONTH)
         // Set default as current day
-        et_date.setText("" + day + "/" + month + "/" + year)
+        et_date.setText("$day/$month/$year")
         //result2.text = et_date.text // For testing
 
         // On click of date chooser
@@ -87,7 +84,7 @@ class MainActivity : AppCompatActivity(),
                 // Add 1, since in Kotlin start from 0 - 11
                 val finalMonth : Int = mMonth + 1;
                 // Set result to EditText
-                et_date.setText("" + mDay + "/" + finalMonth + "/" + mYear)
+                et_date.setText("$mDay/$finalMonth/$mYear")
                 //result2.text = et_date.text; // For testing
             }, year, month, day)
             datePicker.datePicker.minDate = System.currentTimeMillis() - 1000
@@ -200,9 +197,9 @@ class MainActivity : AppCompatActivity(),
 
         val date = dateChooser.text.toString()
         val city = cityChooser.selectedItem.toString()
-        val center = slotInfo.get(0)    // get center
-        val court = slotInfo.get(1)     // get court
-        val slot = slotInfo.get(2)      // slot
+        val center = slotInfo[0]    // get center
+        val court = slotInfo[1]     // get court
+        val slot = slotInfo[2]      // slot
 
         val fm=supportFragmentManager
         val requestFragment = AskForBookingFragment(date, city, center, court, slot, bookNum, this)
@@ -245,9 +242,7 @@ class MainActivity : AppCompatActivity(),
         bookingFragment.show(fm, "Cancel Booking")
     }
 
-
     fun aaa(view: View) {
-
         Log.i("bb", "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
         Log.i("bb", "ahihi")
         Log.i("bb", view.toString())
@@ -273,12 +268,7 @@ class MainActivity : AppCompatActivity(),
             bookingFragment = CancelResultFragment(message, true)
         }
 
-
-
         bookingFragment.show(fm, "Cancel Result")
-
-
-
 
     }
 

@@ -16,7 +16,7 @@ class BookingFragment(val date: String, val city: String, val center: String, va
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView:View=inflater.inflate(R.layout.fragment_booking, container, false)
+        val rootView:View=inflater.inflate(R.layout.fragment_booking, container, false)
 
         val placeTV = rootView.findViewById<TextView>(R.id.placeTextView)
         val dateTV = rootView.findViewById<TextView>(R.id.dateBookingTextView)
@@ -24,7 +24,7 @@ class BookingFragment(val date: String, val city: String, val center: String, va
 
         val conformButton = rootView.findViewById<Button>(R.id.bookingConformBtn)
 
-        placeTV.text = court + ", " + center + ", " + city
+        placeTV.text = "$court, $center, $city"
         dateTV.text = date
         slotTV.text = slot
 

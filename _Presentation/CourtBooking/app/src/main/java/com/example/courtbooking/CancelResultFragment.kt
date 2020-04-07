@@ -14,15 +14,14 @@ class CancelResultFragment(var bookingId: String, var success: Boolean): DialogF
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView: View =inflater.inflate(R.layout.fragment_cancel_result, container, false)
+        val rootView: View =inflater.inflate(R.layout.fragment_cancel_result, container, false)
+        val header = rootView.findViewById<TextView>(R.id.cancelResultHeader)
+        val text = rootView.findViewById<TextView>(R.id.cancelResultInfo)
+        val button = rootView.findViewById<Button>(R.id.cancelButton)
 
-        var header = rootView.findViewById<TextView>(R.id.cancelResultHeader)
-        var text = rootView.findViewById<TextView>(R.id.cancelResultInfo)
-        var button = rootView.findViewById<Button>(R.id.cancelButton)
-
-        if (success == true) {
+        if (success) {
             header.text = "Booking Canceled"
-            text.text = "The booking " + bookingId + " has been canceled."
+            text.text = "The booking $bookingId has been canceled."
         } else {
             header.text = "Cancel Error"
             text.text = "Cancellation only takes place 24 hours before the start time. You cannot cancel this booking."
