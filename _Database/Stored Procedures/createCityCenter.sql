@@ -3,7 +3,7 @@
 DROP PROCEDURE IF EXISTS createCityCenter;
 DELIMITER //
 CREATE PROCEDURE createCityCenter(
-in pcity varchar(50), in pcenter varchar(50))
+in pcenterId varchar(50), in pcityId varchar(50))
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
@@ -13,21 +13,24 @@ BEGIN
 END;
   
 START TRANSACTION;
-IF NOT EXISTS (SELECT * FROM city WHERE city_id = pcenter)
+IF NOT pcityId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+	 SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CEN-000';
+ELSEIF NOT pcenterId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+	 SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CEN-001';
+ELSEIF NOT EXISTS (SELECT * FROM city WHERE city_id = pcityId)
 THEN
 	SIGNAL SQLSTATE '45000'
-	SET MESSAGE_TEXT ="CCtr-002";
-    -- CCtr-002: City not existed
+	SET MESSAGE_TEXT ="CEN-002";
 ELSEIF
-	EXISTS (SELECT * FROM center WHERE center_id = pcenter)
+	EXISTS (SELECT * FROM center WHERE center_id = pcenterId)
 THEN
 	SIGNAL SQLSTATE '45000'
-	SET MESSAGE_TEXT ="CCtr-001";
-    -- CCtr-001: Center existed
-ELSE INSERT INTO court VALUES (pcourt, pcenter, pcity);
+	SET MESSAGE_TEXT ="CEN-003";
+ELSE INSERT INTO center VALUES (pcenterId, pcityId);
 END IF;
 end//
 DELIMITER ;
-
-
-/* Test cases for createCityCenter */

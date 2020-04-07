@@ -1,0 +1,77 @@
+-- updateBookingStatus(status, bookingId, cityId, centerId, staffId)
+
+/* Test if updateBookingStatus is rejected when bookingId is invalid */
+CALL updateBookingStatus(1, "#BOOKING", "CITY", "CENTER", "STAFF");
+/* expected error code UBS-000 */
+
+/* Test if updateBookingStatus is rejected when cityId is invalid */
+CALL updateBookingStatus(1, "BOOKING", "#CITY", "CENTER", "STAFF");
+/* expected error code UBS-001 */
+
+/* Test if updateBookingStatus is rejected when centerId is invalid */
+CALL updateBookingStatus(1, "BOOKING", "CITY", "#CENTER", "STAFF");
+/* expected error code UBS-002 */
+
+/* Test if updateBookingStatus is rejected when staffId is invalid */
+CALL updateBookingStatus(1, "BOOKING", "CITY", "CENTER", "#STAFF");
+/* expected error code UBS-003 */
+
+/* Test if updateBookingStatus is rejected when bookingId is not existed */
+CALL updateBookingStatus(1, "BOOKING12", "CITY", "CENTER", "STAFF");
+/* expected error code UBS-004 */
+
+/* Test if updateBookingStatus is rejected when cityId is not existed */
+CALL createCity("CityA");
+CALL createCityCenter("CenterA", "CityA");
+CALL createCityCenterCourt("Court1", "CityA", "CenterA");
+CALL createStaff("Staff", "CityA", "CenterA");
+INSERT INTO `` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL updateBookingStatus(1, "Booking1", "CITY", "CENTER", "STAFF");
+/* expected error code UBS-005 */
+
+/* Test if updateBookingStatus is rejected when centerId is not existed */
+CALL createCity("CityA");
+CALL createCityCenter("CenterA", "CityA");
+CALL createCityCenterCourt("Court1", "CityA", "CenterA");
+CALL createStaff("Staff", "CityA", "CenterA");
+INSERT INTO `` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL updateBookingStatus(1, "Booking1", "CityA", "CENTER", "STAFF");
+/* expected error code UBS-006 */
+
+/* Test if updateBookingStatus is rejected when staffId does not manage in cityId, courtId*/
+CALL createCity("CityA");
+CALL createCityCenter("CenterA", "CityA");
+CALL createCityCenterCourt("Court1", "CityA", "CenterA");
+CALL createStaff("Staff", "CityA", "CenterA");
+CALL createPlayer("Player");
+INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL updateBookingStatus(1, "Booking1", "CityA", "CenterA", "STAFF1");
+/* expected error code UBS-007 */
+
+/* Test if updateBookingStatus is rejected when bookingId does not belong to cityId, centerId */
+CALL createCity("CityA");
+CALL createCity("CityB");
+CALL createCityCenter("CenterA", "CityA");
+CALL createCityCenter("CenterB", "CityB");
+CALL createCityCenterCourt("Court1", "CityA", "CenterA");
+CALL createStaff("Staff", "CityA", "CenterA");
+CALL createStaff("Staff2", "CityB", "CenterB");
+CALL createPlayer("Player");
+INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL updateBookingStatus(1, "Booking1", "CityB", "CenterB", "Staff2");
+/* expected error code UBS-008 */
+
+/* Test if updateBookingStatus is accepted when all above constraints are passed */
+CALL createCity("CityA");
+CALL createCityCenter("CenterA", "CityA");
+CALL createCityCenterCourt("Court1", "CityA", "CenterA");
+CALL createStaff("Staff", "CityA", "CenterA");
+CALL createPlayer("Player");
+INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL updateBookingStatus(1, "Booking1", "CityA", "CenterA", "Staff");
+/* expected no error code */

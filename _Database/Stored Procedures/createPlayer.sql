@@ -2,7 +2,7 @@
 DROP PROCEDURE IF EXISTS createPlayer;
 DELIMITER //
 CREATE PROCEDURE createPlayer(
-in pplayer varchar(50))
+in pplayerId varchar(50))
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
@@ -10,18 +10,20 @@ BEGIN
   SELECT @p1, @p2;
   ROLLBACK;
 END;
-  
 START TRANSACTION;
 
-IF
-	EXISTS (SELECT * FROM player WHERE player_id = pplayer)
-THEN
-	SIGNAL SQLSTATE '45000'
-	SET MESSAGE_TEXT ="CPL-001";
-    -- CCourt-001: Court existed
-ELSE INSERT INTO player VALUES (pplayer);
+IF NOT pplayerId REGEXP '^[a-zA-Z0-9]*$'
+THEN SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CPL-000';
+ELSEIF EXISTS ( SELECT * 
+			FROM player
+            WHERE player_id = pplayerId )
+THEN SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CPL-001';
+ELSE 
+    INSERT INTO player VALUES (pplayerId);
 END IF;
-end//
+END //
 DELIMITER ;
 
 /* Test cases for createPlayer */

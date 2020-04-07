@@ -1,8 +1,8 @@
--- create Staff. createStaff(staffId, cityId, centerId)
+-- createStaff(staffId, cityId, centerId)
 DROP PROCEDURE IF EXISTS createStaff;
 DELIMITER //
 CREATE PROCEDURE createStaff(
-in pstaff varchar(50), in pcenter varchar(50), in pcity varchar(50))
+in pstaffId varchar(50), in pcityId varchar(50), in pcenterId varchar(50))
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
@@ -12,24 +12,33 @@ BEGIN
 END;
   
 START TRANSACTION;
-IF NOT EXISTS ( SELECT * FROM city WHERE city_id = pcity)
-THEN
-	SIGNAL SQLSTATE '45000'
-	SET MESSAGE_TEXT ="CS002";
-ELSEIF NOT EXISTS (SELECT * FROM center WHERE center_id = pcenter)
+IF NOT pcityId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+	 SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CS-000';
+ELSEIF NOT pcenterId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+	 SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CS-001';
+ELSEIF NOT pstaffId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+	 SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CS-002';
+ELSEIF NOT EXISTS (SELECT * FROM city WHERE city_id = pcityId)
 THEN
 	SIGNAL SQLSTATE '45000'
 	SET MESSAGE_TEXT ="CS-003";
 ELSEIF
-	EXISTS (SELECT * FROM staff WHERE staff_id = pstaff)
+	NOT EXISTS (SELECT * FROM center WHERE center_id = pcenterId)
 THEN
 	SIGNAL SQLSTATE '45000'
-	SET MESSAGE_TEXT ="CS-001";
-    -- CS-001: Staff existed
-ELSE INSERT INTO staff VALUES (pstaff, pcenter, pcity);
+	SET MESSAGE_TEXT ="CS-004";
+ELSEIF
+	EXISTS (SELECT * FROM staff WHERE staff_id = pstaffId)
+THEN
+	SIGNAL SQLSTATE '45000'
+	SET MESSAGE_TEXT ="CS-005";
+ELSE INSERT INTO staff VALUES (pstaffId, pcityId, pcenterId);
 END IF;
 END //
 DELIMITER ;
-
-
-/* Test cases for createStaff */

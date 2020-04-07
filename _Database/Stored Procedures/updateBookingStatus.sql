@@ -2,11 +2,11 @@
 DROP PROCEDURE IF EXISTS updateBookingStatus;
 DELIMITER //
 CREATE PROCEDURE updateBookingStatus(
-in status int,
-in bookingId varchar(50), 
-in cityId varchar(50), 
-in cenyterId varchar(50),
-in staffId varchar(50))
+in pstatus int,
+in pbookingId varchar(50), 
+in pcityId varchar(50), 
+in pcenterId varchar(50),
+in pstaffId varchar(50))
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
@@ -15,52 +15,56 @@ BEGIN
   ROLLBACK;
 END;
 START TRANSACTION;
--- CP-001: staff not exist
-IF NOT EXISTS ( SELECT * 
-				FROM staff
-                WHERE staff_id = staffId )
-THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CP-001';
--- CP-002: booking not exist
+
+IF NOT pbookingId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+     SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'UBS-000';
+ELSEIF NOT pcityId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+     SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'UBS-001';
+ELSEIF NOT pcenterId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+     SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'UBS-002';
+ELSEIF NOT pstaffId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+     SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'UBS-003';
 ELSEIF NOT EXISTS ( SELECT * 
-				FROM booking
-                WHERE booking_id = bookingId )
+					FROM booking
+                    WHERE booking_id = pbookingId)
 THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CP-002';
--- CP-003: this staff has no relationship with the booking (join booking - court - center - staff)
-ELSEIF NOT EXISTS ( SELECT b.booking_id, co.court_id, s.staff_id
-				FROM booking b, court co, center ce, staff s, city ci
-				WHERE ( co.court_id = b.court_id and
-						ce.center_id = co.center_id and
-						s.center_id = ce.center_id and
-                        s.city_id = ci.city_id and
-						b.booking_id = bookingId and
-						s.staff_id =  staffId) )
+     SET MESSAGE_TEXT = 'UBS-004';
+ELSEIF NOT EXISTS ( SELECT * 
+				FROM city
+                    WHERE city_id = pcityId )
 THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CP-003';
--- change status
-ELSE	UPDATE booking
-		SET paymentstatus = status
-        WHERE booking_id = bookingId;
+     SET MESSAGE_TEXT = 'UBS-005';
+ELSEIF NOT EXISTS ( SELECT * 
+					FROM center
+                    WHERE center_id = pcenterId )
+THEN SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'UBS-006';
+ELSEIF NOT EXISTS ( SELECT * 
+					FROM staff
+                    WHERE staff_id = pstaffId and
+                    city_id = pcityId and
+                    center_id = pcenterId )
+THEN SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'UBS-007';
+ELSEIF NOT EXISTS ( SELECT *
+					FROM booking
+                    WHERE booking_id = pbookingId and
+                    city_id = pcityId and
+                    center_id = pcenterId )
+THEN SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'UBS-008';
+ELSE 
+	UPDATE booking
+	SET status = pstatus
+	WHERE booking_id = bookingId;
 END IF;
 END //
 DELIMITER ;
-
-
-/* Test cases for updateBookingStatus 
-CP-001 | staff does not exist 
-CP-002 | booking does not exist 
-CP-003 | this staff has no relationship with the booking (join booking - court - center - staff) 
-*/
-# updateBookingStatus (CP) parameters: status, bookingId, cityId, centerId, staffId
-/* test 10 */
-CALL updateBookingStatus(0 ,'1', 'HCM','HCM_quan1','Staff#6');
-/* error: CP-001 */
-
-/* test 11 */
-CALL updateBookingStatus(0 ,'12', 'Hanoi','HCM_quan2','Staff#1');
-/* error: CP-002 */
-
-/* test 12 */
-CALL updateBookingStatus(0 ,'1', 'Can_tho','HCM_quan1','Staff#3' );
-/* error: CP-003*/
