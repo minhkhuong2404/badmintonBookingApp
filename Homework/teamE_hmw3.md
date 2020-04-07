@@ -123,7 +123,7 @@ TU14 | Check ```createBooking``` with valid data and callerId | date, courtId, s
 TU15 | Check ```createBooking``` with invalid data and callerId | date/courtId/start/end (same with existed booking) | server refuses bookings | As Expected | Pass
 TU16 | Check ```createBooking``` with valid data but the callerId on the client and the request callerId are different | date, courtId, start, end, playerId, callerId | server refuses bookings and returns 'Action is now allowed | As Expected | Pass
 TU17 | Check ```createBooking``` with valid data and callerId and if server returns courtId.count > 3| date, courtId, start, end, playerId, callerId | server refuses bookings and return 'no more booking is allowed | As Expected | Pass
-
+TU31 | Check ```createBooking``` with valid data and callerId and if server returns unpaid = 1 | date, courtId, start, end, playerId, callerId | server refuses bookings and return 'no more booking is allowed' | As Expected | Pass
 
 ### _cancelBooking_
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail

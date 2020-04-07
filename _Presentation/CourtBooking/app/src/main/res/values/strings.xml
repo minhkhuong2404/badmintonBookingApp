@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CourtBooking</string>
+    <string name="show_my_bookings">Show My Bookings</string>
+    <string name="show_available_slots">Show Available Slots</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="sample_date">27/04/1999</string>
+    <string name="change_date">Date</string>
+    <string name="center">Center</string>
+    <string name="court">Court</string>
+    <string name="example_time_2">8:00 - 9:00</string>
+    <string name="booking_id">Booking ID:</string>
+    <string name="_123456">123456</string>
+    <string name="place">Court:</string>
+    <string name="created_on">Created on:</string>
+    <string name="date">Date:</string>
+    <string name="time">Time:</string>
+    <string name="payment_status">Payment Status:</string>
+    <string name="time_stamp">30/04/2020 09:30:24</string>
+    <string name="welcome_text_1">1. Please select a city and a date.</string>
+    <string name="welcome_text_2">2. Tap "Show Available Slots" or "Show My Bookings".</string>
+</resources>

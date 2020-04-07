@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|center_horizontal"
+    android:paddingStart="2dp"
+    android:paddingEnd="3dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="2dp">
+
+    <Button
+        android:id="@+id/b_slot"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:background="@drawable/ripple"
+        android:minWidth="91dp"
+        android:text="@string/example_time_2"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
