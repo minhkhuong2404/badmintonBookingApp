@@ -65,6 +65,7 @@ CA-002 | playerId is not existed |
 CA-003 | bookingId is not existed |
 CA-004 | playerId does not own the bookingId |
 CA-005 | violating 24 hours before start time |
+***
 # updateBookingStatus
 Test Case ID | Test Description |
 ------------ | ---------------- |
