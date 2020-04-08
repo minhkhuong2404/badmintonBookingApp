@@ -1,3 +1,9 @@
+/* 
+Test suites for:
+cancelBooking(bookingId, playerId)
+Ensure the database is empty when doing the tests (clean up city, player will let database empty)
+*/ 
+
 /* Test if cancelBooking is rejected when bookingId is invalid */
 CALL cancelBooking("#", "A");
 /* expected error code CA-000 */

@@ -1,3 +1,9 @@
+/* 
+Test suites for:
+createBooking(booking_id, timestamp, date, startTime, endTime, cityId, centerId, courtId, playerId)
+Ensure the database is empty when doing the tests (clean up city, player will let database empty)
+*/ 
+
 /* Test if createCity is accepted when cityId is valid */
 delete from city where city_id = "1";
 CALL createCity("1");
