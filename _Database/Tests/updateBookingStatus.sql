@@ -11,6 +11,23 @@ Hướng dẫn kiểm thử cho: updateBookingStatus(status, bookingId, cityId, 
 - Câu lệnh SQL cuối cùng là câu lệnh dùng để test.
 */ 
 
+/* Test if updateBookingStatus is accepted when all constraints are passed */
+delete from city where city_id = "CityA";
+delete from center where center_id = "CenterA" and city_id = "CityA";
+delete from court where court_id = "Court1" and city_id = "CityA" and center_id = "CenterA";
+delete from staff where staff_id = "Staff" and city_id = "CityA" and center_id = "CenterA";
+delete from player where player_id ="Player";
+
+CALL createCity("CityA");
+CALL createCityCenter("CenterA", "CityA");
+CALL createCityCenterCourt("Court1", "CityA", "CenterA");
+CALL createStaff("Staff", "CityA", "CenterA");
+CALL createPlayer("Player");
+INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL updateBookingStatus(1, "Booking1", "CityA", "CenterA", "Staff");
+/* expected no error code */  
+
 /* Test if updateBookingStatus is rejected when bookingId is invalid */
 CALL updateBookingStatus(1, "#BOOKING", "CITY", "CENTER", "STAFF");
 /* expected error code UBS-000 */
