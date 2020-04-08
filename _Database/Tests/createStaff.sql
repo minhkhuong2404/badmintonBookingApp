@@ -59,7 +59,7 @@ CALL createCityCenter("CENTER", "CITY");
 CALL createStaff("A", "CITY2", "CENTER2");
 /* expected error code CS-003 */
 
-/* Test if createStaff is rejected when courtId is existed */
+/* Test if createStaff is rejected when staffId is existed */
 delete from city where city_id = "1";
 delete from center where center_id = "2" and city_id = "1";
 delete from staff where staff_id = "A" and city_id = "1" and center_id = "2";
