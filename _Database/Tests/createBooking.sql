@@ -1,73 +1,85 @@
-/* Test cases for createBooking 
-CB-000 | booking_id not alphanumeric
-CB-001 | startTime < DATE(NOW())
-CB-002 | startTime < openTime 
-CB-003 | endTime > closeTime 
-CB-004 | endTime < startTime   
-CB-005 | playtime invalid (valid: 45m, 1h, 1h15m, 1h30m)  
-CB-006 | overlapping booking  
-CB-007 | Player has pending booking in past 
-CB-008 | Player can book no more than 3 bookings 
-CB-109 | Customer does not existed 
-CB-110 | Court does not existed
-CB-111 | Court & Customer do not existed
-*/
+/* 
+[English]
+Test guide for: createBooking(booking_id, timestamp, date, startTime, endTime, cityId, centerId, courtId, playerId)
+- Ensure the database is empty when doing the tests (clean up city, player will let database empty)
+- Run SQL statements in "Scenario" to make scenario for the test
+- Every test has n SQL statements, the (n - 1) first SQL statements are the ADDITIONAL SCENARIO for the test.
+- The last SQL statements is the actual test.
+[Tiếng Việt]
+Hướng dẫn kiểm thử cho: createBooking(booking_id, timestamp, date, startTime, endTime, cityId, centerId, courtId, playerId)
+- Đảm bảo rằng database hoàn toàn trống (xoá dữ liệu trong city, player sẽ làm toàn bộ database trống)
+- Chạy câu lệnh SQL ở scenario để tạo dữ liệu mẫu
+- Mỗi test có n câu lệnh SQL, (n - 1) câu lệnh đầu tiên dùng để tạo THÊM dữ liệu mẫu.
+- Câu lệnh SQL cuối cùng là câu lệnh dùng để test.
+*/ 
 
+/* Scenario for this tests: */
+CALL createCity("city1");
+CALL createCityCenter("center1", "city1");
+CALL createCityCenterCourt("court1","city1","center1");
+CALL createPlayer("player1");
 
+/* Test if createBooking is accepted when all constraints are valid */
+CALL createBooking("booking1", "2020-04-07 09:27:18", "2021-05-01", "10:00:00" , "10:45:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected no error code */
 
+/* Test if createBooking is rejected when bookingId is not alphanumeric */
+CALL createBooking("#booking", "2020-04-07 09:27:18", "2021-05-01", "10:30:00" , "11:30:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-000 */
 
+/* Test if createBooking is rejected when bookingId is existed */
+CALL createBooking("booking1", "2020-04-07 09:27:18", "2021-05-01", "10:30:00" , "11:30:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-100 */
 
-/* CreateBooking(booking_id : alphanumeric, 
-				timestamp : DATETIME, date, startTime, endTime, cityId, centerId, courtId, playerId
-/* test 13 */
-CALL CreateBooking(13, "2020-03-29 09:27:18", "2020-02-01", 10, 10, 00, 18, 35, 00, 'HCM', 'HCM_quan1', 'Court#1', 'Customer#A');
-/* error: CB-001 */
+/* Test if createBooking is rejected when cityId is not existed */
+CALL createBooking("booking12", "2020-04-07 09:27:18", "2021-05-01", "10:30:00" , "11:30:00" , 'city2', 'center1', 'court1', 'player1');
+/* expected error code CB-001 */
 
-/* test 14 */	
-CALL CreateBooking(14, "2020-03-29 09:27:18", "2020-05-01", 6, 10, 00, 18, 35, 00, 'HCM', 'HCM_quan1', 'Court#1', 'Customer#A');
-/* error: CB-002 */
+/* Test if createBooking is rejected when centerId is not existed */
+CALL createBooking("booking12", "2020-04-07 09:27:18", "2021-05-01", "10:30:00" , "11:30:00" , 'city1', 'center2', 'court1', 'player1');
+/* expected error code CB-002 */
 
-/* test 15 */
-CALL CreateBooking(15, "2020-03-29 09:27:18", "2020-04-15", 9, 00, 00, 23, 00, 00, 'HCM', 'HCM_quan1', 'Court#1', 'Customer#A');
-/* error: CB-003 */
+/* Test if createBooking is rejected when courtId is not existed */
+CALL createBooking("booking12", "2020-04-07 09:27:18", "2021-05-01", "10:30:00" , "11:30:00" , 'city1', 'center1', 'court2', 'player1');
+/* expected error code CB-003 */
 
-/* test 16 */
-CALL CreateBooking(16, "2020-03-29 09:27:18", "2020-04-16", 9, 00, 00, 8, 00, 00, 'HCM', 'HCM_quan1', 'Court#1', 'Customer#A');
-/* error: CB-004 */
+/* Test if createBooking is rejected when playerId is not existed */
+CALL createBooking("booking12", "2020-04-07 09:27:18", "2021-05-01", "10:30:00" , "11:30:00" , 'city1', 'center1', 'court1', 'player2');
+/* expected error code CB-004 */
 
-/* test 17 */
-CALL CreateBooking(17, "2020-03-29 09:27:18", "2020-04-17", 9, 00, 00, 9, 35, 00, 'HCM', 'HCM_quan1', 'Court#1', 'Customer#A');
-/* error: CB-005 */
+/* Test if createBooking is rejected when startTime < DATE(NOW()) */
+CALL createBooking("booking2", "2020-04-07 09:27:18", "2020-03-01", "10:10:00" , "18:35:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-005 */
 
-/* test 18 */
---       9:00===========10:00  existed booking
---    8:00========9:30
---           9:30==============10:30
---         9:15=========10:00
---     8:30=============10:00
+/* Test if createBooking is rejected when startTime < openTime */
+CALL createBooking("booking2", "2020-04-07 09:27:18", "2020-05-01", "06:00:00" , "07:00:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-006 */
 
-CALL CreateBooking(18, "2020-03-29 09:27:18", "2020-04-11", 8, 0, 0, 9, 30, 0, 'HCM', 'HCM_quan2', 'Court#2', 'Customer#B');
-CALL CreateBooking(18, "2020-03-29 09:27:18", "2020-04-11", 9, 30, 0, 10, 30, 0, 'HCM', 'HCM_quan2', 'Court#2', 'Customer#B');
-CALL CreateBooking(18, "2020-03-29 09:27:18", "2020-04-11", 9, 15, 0, 10, 0, 0, 'HCM', 'HCM_quan2', 'Court#2', 'Customer#B');
-CALL CreateBooking(18, "2020-03-29 09:27:18", "2020-04-11", 8, 30, 0, 10, 0, 0, 'HCM', 'HCM_quan2', 'Court#2', 'Customer#B');
-/* error: CB-006 */
+/* Test if createBooking is rejected when endTime > closeTime */
+CALL createBooking("booking2", "2020-04-07 09:27:18", "2020-05-01", "07:00:00" , "22:00:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-007 */
 
-/* test 19 */
-CALL CreateBooking(19,"2020-03-29 09:27:18",'2020-04-18',9,00,00,10,00,00,'HCM','HCM_quan1','Court#2','Customer#B');
-/* error: CB-007 */
-    
- /* test 20 */   
-CALL CreateBooking(20,"2020-03-29 09:27:18",'2020-04-19',9,00,00,10,00,00,'HCM','HCM_quan5','Court#5','Customer#E');
-/* error: CB-008 */
+/* Test if createBooking is rejected when endTime < startTime */
+CALL createBooking("booking2", "2020-04-07 09:27:18", "2020-05-01", "09:00:00" , "07:00:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-008 */
 
-/* test 21 */
-CALL CreateBooking(21,"2020-03-29 09:27:18",'2020-04-20',9,00,00,10,00,00,'HCM','HCM_quan5','Court#5','Customer#X');
-/* error: CB-109 */
+/* Test if createBooking is rejected when playtime invalid (valid: 45m, 1h, 1h15m, 1h30m) */
+CALL CreateBooking("booking2", "2020-04-07 09:27:18", "2021-05-01", "10:00:00" , "10:30:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-009 */
 
-/* test 22 */
-CALL CreateBooking(22,"2020-03-29 09:27:18",'2020-04-19',9,00,00,10,00,00,'HCM','HCM_quan5','Court#X','Customer#A');
-/* error: CB-110 */
+/* Test if createBooking is rejected when create a booking that overlapped with other booking */
+CALL createBooking("booking2", "2020-04-07 09:27:18", "2021-05-01", "10:30:00" , "11:30:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-010 */
 
-/* test 23 */
-CALL CreateBooking(23,"2020-03-29 09:27:18",'2020-04-19',9,00,00,10,00,00,'HCM','HCM_quan5','Court#X','Customer#X');
-/* error: CB-111 */
+/* Test if createBooking is rejected if playerId have pending booking */
+INSERT INTO `booking_app`.`booking` (`booking_id`, `timestamp`, `date`, `startTime`, `endTime`, `city_id`, `center_id`, `court_id`, `player_id`, `status`) VALUES ('pending1', '2020-04-07 09:27:18', '2020-04-01', '10:00:00', '10:45:00', 'city1', 'center1', 'court1', 'player1', '0');
+CALL createBooking("booking2", "2020-04-07 09:27:18", "2021-05-02", "10:30:00" , "11:30:00" , 'city1', 'center1', 'court1', 'player1');
+/* expected error code CB-011 */
+
+/* Test if createBooking is rejected if playerId no more than 3 bookings */
+INSERT INTO player VALUES ("player2");
+INSERT INTO `booking_app`.`booking` (`booking_id`, `timestamp`, `date`, `startTime`, `endTime`, `city_id`, `center_id`, `court_id`, `player_id`, `status`) VALUES ('bookingA', '2020-04-07 09:27:18', '2021-05-03', '07:00:00', '08:00:00', 'city1', 'center1', 'court1', 'player2', '0');
+INSERT INTO `booking_app`.`booking` (`booking_id`, `timestamp`, `date`, `startTime`, `endTime`, `city_id`, `center_id`, `court_id`, `player_id`, `status`) VALUES ('bookingB', '2020-04-07 09:27:18', '2021-05-05', '07:00:00', '08:00:00', 'city1', 'center1', 'court1', 'player2', '0');
+INSERT INTO `booking_app`.`booking` (`booking_id`, `timestamp`, `date`, `startTime`, `endTime`, `city_id`, `center_id`, `court_id`, `player_id`, `status`) VALUES ('bookingC', '2020-04-07 09:27:18', '2021-05-04', '07:00:00', '08:00:00', 'city1', 'center1', 'court1', 'player2', '0');
+CALL createBooking("bookingD", "2020-04-07 09:27:18", "2021-05-06", "10:30:00" , "11:30:00" , 'city1', 'center1', 'court1', 'player2');
+/* expected error code CB-012 */

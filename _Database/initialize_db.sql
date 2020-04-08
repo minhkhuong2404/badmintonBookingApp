@@ -55,8 +55,12 @@ CREATE TABLE booking(
   court_id varchar(50),
   player_id varchar(50),
   status int default 0,
-  CONSTRAINT court_fk
+  CONSTRAINT booking_city_fk
+     FOREIGN KEY (city_id) REFERENCES city (city_id) ON DELETE CASCADE,
+  CONSTRAINT booking_center_fk
+     FOREIGN KEY (center_id) REFERENCES center (center_id) ON DELETE CASCADE,
+  CONSTRAINT booking_court_fk
      FOREIGN KEY (court_id) REFERENCES court (court_id) ON DELETE CASCADE,
-  CONSTRAINT player_fk
+  CONSTRAINT booking_player_fk
      FOREIGN KEY (player_id) REFERENCES player (player_id) ON DELETE CASCADE	 
 );

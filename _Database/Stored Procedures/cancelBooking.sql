@@ -2,7 +2,7 @@
 DROP PROCEDURE IF EXISTS CancelBooking;
 DELIMITER //
 CREATE PROCEDURE CancelBooking(
-in pbooking varchar(50), in pplayer varchar(50))
+in pbookingId varchar(50), in pplayerId varchar(50))
 BEGIN
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
 BEGIN
@@ -11,59 +11,36 @@ BEGIN
   ROLLBACK;
 END;
 START TRANSACTION;
-
--- CA-001: customer not exist
-IF NOT EXISTS ( SELECT * 
+IF NOT pbookingId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+	 SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CA-000'; -- CA-000: pbookingId invalid
+ELSEIF NOT pplayerId REGEXP '^[a-zA-Z0-9]*$'
+THEN 
+	 SIGNAL SQLSTATE '45000'
+     SET MESSAGE_TEXT = 'CA-001'; -- CA-001: pplayerId invalid
+ELSEIF NOT EXISTS ( SELECT * 
 				FROM player
-                WHERE player_id = pplayer )
+                WHERE player_id = pplayerId )
 THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CA-001';
--- CA-002: booking not exist
+     SET MESSAGE_TEXT = 'CA-002'; -- CA-002: playerId not exist
 ELSEIF NOT EXISTS ( SELECT * 
 				FROM booking
-                WHERE booking_id = pbooking )
+                WHERE booking_id = pbookingId )
 THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CA-002';
--- CA-003: this customer not own the booking
+     SET MESSAGE_TEXT = 'CA-003';-- CA-003: bookingId not exist
 ELSEIF NOT EXISTS ( SELECT * 
 				FROM booking
-                WHERE booking_id = pbooking and player_id = pplayer )
+                WHERE booking_id = pbookingId and player_id = pplayerId )
 THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CA-003';
--- CA-004: violates 24 hours before start time
-ELSEIF date_add(date(now()),interval 24 hour) >
-									( SELECT date_add(date_add(date_add(date, INTERVAL startHour HOUR), INTERVAL startMin MINUTE), INTERVAL startSec SECOND) 
-									  FROM b_app.booking 
-									  WHERE booking_id = pbooking)
-    THEN SIGNAL SQLSTATE '45000'
-         SET MESSAGE_TEXT = 'CA-004';
+     SET MESSAGE_TEXT = 'CA-004';  -- CA-004: playerId not own the bookingId
+ELSEIF date_add(date(now()), INTERVAL 24 HOUR) >
+									( SELECT date_add(date, INTERVAL TIME_TO_SEC(startTime) SECOND) 
+									  FROM booking 
+									  WHERE booking_id = pbookingId)
+THEN SIGNAL SQLSTATE '45000'
+	 SET MESSAGE_TEXT = 'CA-005'; -- CA-004: violates 24 hours before start time
+ELSE DELETE FROM booking WHERE booking_id = pbookingId;
 END IF;
--- Delete the booking
-DELETE FROM booking WHERE booking_id = pbooking;
 END //
 DELIMITER ;
-
-
-/* Test cases for cancelBooking 
-CA-001 | customer does not exist 
-CA-002 | booking does not exist 
-CA-003 | this customer does not own the booking 
-CA-004 | violates 24 hours before start time
-*/
-
-# CancelBooking (CA) parameters: booking_id, customer_id
-/* test 6 */		   
-Call CancelBooking('1', 'Customer#X');
-/* error: CA-001 */
-		   
-/* test 7 */
-Call CancelBooking('12', 'Customer#B');
-/* error: CA-002 */
-
-/* test 8 */
-Call CancelBooking('1', 'Customer#B');
-/* error: CA-003 */
-
-/* test 9 */
-Call CancelBooking('11', 'Customer#E');
-/* error: CA-004 */
