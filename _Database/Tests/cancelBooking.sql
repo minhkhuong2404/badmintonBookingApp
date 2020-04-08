@@ -39,7 +39,7 @@ VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','Cit
 CALL cancelBooking("Booking2", "Player");
 /* expected error code CA-003 */
 
-/* Test if cancelBooking is rejected when bookingId is not existed */
+/* Test if cancelBooking is rejected when playerId does not own the bookingId */
 CALL createCity("CityA");
 CALL createCityCenter("CenterA", "CityA");
 CALL createCityCenterCourt("Court1", "CityA", "CenterA");
