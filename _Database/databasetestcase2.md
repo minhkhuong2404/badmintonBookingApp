@@ -1,46 +1,79 @@
+# createCity
 Test Case ID | Test Description |
 ------------ | ---------------- | 
-CC-001 | city existed |
-CCtr-001 | center existed |
-CCourt-001 | court existed | 
-CPL-001 | player existed |
-CS-001 | staff existed |
-
+CITY-000 | cityId is invalid |
+CITY-001 | cityId is existed |
+***
+# createCityCenter
 Test Case ID | Test Description |
 ------------ | ---------------- | 
-CA-001 | customer does not exist |
-CA-002 | booking does not exist |
-CA-003 | this customer does not own the booking | 
-CA-004 | violates 24 hours before start time |
-
+CEN-000 | cityId is invalid
+CEN-001 | centerId is invalid
+CEN-002 | cityId is not existed
+CEN-003 | centerId is not existed
+***
+# createCityCenterCourt
 Test Case ID | Test Description |
 ------------ | ---------------- | 
-CP-001 | staff does not exist |
-CP-002 | booking does not exist |
-CP-003 | this staff has no relationship with the booking (join booking - court - center - staff) |
+CRT-000 | cityId is invalid |
+CRT-001 | centerId is invalid |
+CRT-002 | courtId is invalid |
+CRT-003 | centerId is existed but cityId is not existed **OR** both centerId and cityId are not existed|
+CRT-004 | centerId is not existed but cityId is existed |
+CRT-005 | courtId is existed |
+***
+# createStaff
+Test Case ID | Test Description |
+------------ | ---------------- | 
+CS-000 | cityId is invalid |
+CS-001 | centerId is invalid |
+CS-002 | staffId is invalid |
+CS-003 | centerId is existed but cityId is not existed **OR** both centerId and cityId are not existed |
+CS-004 | centerId is not existed but cityId is existed |
+CS-005 | staffId is existed |
 
+# createPlayer
+Test Case ID | Test Description |
+------------ | ---------------- | 
+CPL-000 | playerId is invalid |
+CPL-001 | playerId is existed
+***
+# createBooking
 Test Case ID | Test Description |
 ------------ | ---------------- |
-CB-001 | startTime < DATE(NOW())|
-CB-002 | startTime < openTime | 
-CB-003 | endTime > closeTime | 
-CB-004 | endTime < startTime |  
-CB-005 | playtime invalid (valid: 45m, 1h, 1h15m, 1h30m) |  
-
-CB-006 | overlapping booking | 
--------| ------------------- |
-*               9:00===========10:00  existed booking    
-*         8:00========9:30      
-*                     9:30==============10:30        
-*                   9:15=======10:00          
-*            8:30==============10:00            
-
-	
+CB-000 | bookingId is not alphanumeric |
+CB-100 | bookingId is existed |
+CB-001 | cityId is not existed | 
+CB-002 | centerId is not existed | 
+CB-003 | courtId is not existed |  
+CB-004 | playerId is not existed |
+CB-005 | startTime < DATE(NOW()) |  
+CB-006 | startTime < openTime |
+CB-007 | endTime > closeTime |
+CB-008 | endTime < startTime |
+CB-009 | playtime invalid (valid: 45m, 1h, 1h15m, 1h30m) |
+CB-010 | create a booking that overlapped with other booking |
+CB-011 | playerId have pending booking |
+CB-012 | playerId no more than 3 bookings |
+***
+# cancelBooking
 Test Case ID | Test Description |
 ------------ | ---------------- |
-CB-007 | Player has pending booking in past |
-CB-008 | Player can book no more than 3 bookings |
-CB-109 | Customer does not existed |
-CB-110 | Court does not existed |
-CB-111 | Court & Customer do not existed |
-	
+CA-000 | bookingId is invalid |
+CA-001 | playerId is invalid |
+CA-002 | playerId is not existed |
+CA-003 | bookingId is not existed |
+CA-004 | playerId does not own the bookingId |
+CA-005 | violating 24 hours before start time |
+# updateBookingStatus
+Test Case ID | Test Description |
+------------ | ---------------- |
+UBS-000 | bookingId is invalid |
+UBS-001 | cityId is invalid |
+UBS-002 | centerId is invalid |
+UBS-003 | staffId is invalid |
+UBS-004 | bookingId is not existed |
+UBS-005 | cityId is not existed |
+UBS-006 | centerId is not existed |
+UBS-007 | staffId does not manage in cityId, courtId |
+UBS-008 | bookingId does not belong to cityId, centerId |
