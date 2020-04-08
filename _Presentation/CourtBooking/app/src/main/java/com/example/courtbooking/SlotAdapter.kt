@@ -43,7 +43,6 @@ class SlotAdapter(private val listSlot: List<Slot>, var clickListener: OnItemCli
             clickListener.onClickListener(currentItem, holder.adapterPosition)
         }
 
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -53,7 +52,5 @@ class SlotAdapter(private val listSlot: List<Slot>, var clickListener: OnItemCli
     interface OnItemClickListener {
         fun onClickListener(item: Slot, position: Int)
     }
-
-
 
 }

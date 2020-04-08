@@ -1,18 +1,16 @@
 package com.example.courtbooking
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.booking.view.*
 
 class BookingAdapter (private val listBooking : ArrayList<Booking>, private var cancelInterface: CancelInterface) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
-    private var BOOKINGVIEWTYPE_DEFAULT = 0
-    private var BOOKINGVIEWTYPE_OVERDUE = 1
+    private var bookingViewTypeDefault = 0
+    private var bookingViewTypeOverdue = 1
 
     // Setting up view holder
     class BookingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,28 +21,26 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>, private var 
         val tvPaymentStatus : TextView = itemView.tv_payment_status
         val tvCourt : TextView = itemView.tv_court
         val tvCreatedOn : TextView = itemView.tv_created_on
-
         val cancelBtn: Button = itemView.cancelButton
     }
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
-        if (listBooking[position].paymentStatus == "Overdue") {
-            return BOOKINGVIEWTYPE_OVERDUE
+        return if (listBooking[position].paymentStatus == "Overdue") {
+            bookingViewTypeOverdue
         } else {
-            return BOOKINGVIEWTYPE_DEFAULT
+            bookingViewTypeDefault
         }
     }
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingAdapter.BookingViewHolder {
         // Create a new view for "court"
-        if (viewType == BOOKINGVIEWTYPE_OVERDUE) {
+        return if (viewType == bookingViewTypeOverdue) {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.pending_booking, parent, false)
-            return BookingAdapter.BookingViewHolder(itemView)
-        }
-        else {
+            BookingAdapter.BookingViewHolder(itemView)
+        } else {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.booking, parent, false)
-            return BookingAdapter.BookingViewHolder(itemView)
+            BookingAdapter.BookingViewHolder(itemView)
         }
 
         // Set the view's size, margins, paddings and layout parameters...

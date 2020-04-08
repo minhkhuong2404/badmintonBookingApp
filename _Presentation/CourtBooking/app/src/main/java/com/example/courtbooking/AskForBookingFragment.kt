@@ -15,14 +15,13 @@ class AskForBookingFragment(val date: String, val city: String, val center: Stri
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView: View =inflater.inflate(R.layout.fragment_ask_for_booking, container, false)
-
-
+        val rootView: View =inflater.inflate(R.layout.fragment_ask_for_booking, container, false)
         val textView = rootView.findViewById<TextView>(R.id.text2)
         val noButton = rootView.findViewById<Button>(R.id.noButton)
         val yesButton = rootView.findViewById<Button>(R.id.yesButton)
 
-        textView.text = "Time slot is " + slot + " at " + court + ", " + center + ", " + city + " on " + date + ". Do you want to create a booking"
+        textView.text =
+            "Time slot is $slot at $court, $center, $city on $date. Do you want to create a booking"
 
         // dismiss the fragment if user press no
         noButton.setOnClickListener {

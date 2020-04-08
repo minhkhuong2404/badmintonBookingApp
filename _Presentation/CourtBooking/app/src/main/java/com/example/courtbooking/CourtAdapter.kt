@@ -11,8 +11,8 @@ import kotlinx.android.synthetic.main.court.view.*
 
 class CourtAdapter(private val courtList: List<Court>, private val callbackInterface:CallbackInterface) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>(), SlotAdapter.OnItemClickListener {
     // Constant for two types of view
-    private var COURTVIEWTYPE_DEFAULT = 0
-    private var COURTVIEWTYPE_LIGHT_BLUE = 1
+    private var courtViewTypeDefault = 0
+    private var courtViewTypeLightBlue = 1
     // Create ViewPool for child RecyclerView
     private var viewPool = RecyclerView.RecycledViewPool()
     private var adapterPosition: Int = 0
@@ -29,9 +29,9 @@ class CourtAdapter(private val courtList: List<Court>, private val callbackInter
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
         if (position % 2 == 0){
-            return COURTVIEWTYPE_LIGHT_BLUE
+            return courtViewTypeLightBlue
         } else {
-            return COURTVIEWTYPE_DEFAULT
+            return courtViewTypeDefault
         }
     }
 
@@ -39,12 +39,12 @@ class CourtAdapter(private val courtList: List<Court>, private val callbackInter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourtViewHolder {
 
         // Create a new view for "court"
-        if (viewType == COURTVIEWTYPE_LIGHT_BLUE){
-            var itemView = LayoutInflater.from(parent.context).inflate(R.layout.court, parent, false)
-            return CourtViewHolder(itemView)
+        return if (viewType == courtViewTypeLightBlue){
+            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.court, parent, false)
+            CourtViewHolder(itemView)
         } else {
-            var itemView = LayoutInflater.from(parent.context).inflate(R.layout.court_gray, parent, false)
-            return CourtViewHolder(itemView)
+            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.court_gray, parent, false)
+            CourtViewHolder(itemView)
         }
         // Set the view's size, margins, paddings and layout parameters...
     }
@@ -69,9 +69,6 @@ class CourtAdapter(private val courtList: List<Court>, private val callbackInter
             adapter = SlotAdapter(currentCourt.slotList, this@CourtAdapter)
             setRecycledViewPool(viewPool)
         }
-
-
-
         adapterPosition = holder.adapterPosition
 
     }

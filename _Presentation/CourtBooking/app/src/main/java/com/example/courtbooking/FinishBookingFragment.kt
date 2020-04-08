@@ -14,8 +14,7 @@ class FinishBookingFragment(val date: String, val city: String, val center: Stri
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootView: View =inflater.inflate(R.layout.fragment_finish_booking, container, false)
-
+        val rootView: View =inflater.inflate(R.layout.fragment_finish_booking, container, false)
         val placeTV = rootView.findViewById<TextView>(R.id.placeTextView)
         val dateTV = rootView.findViewById<TextView>(R.id.dateBookingTextView)
         val startTV = rootView.findViewById<TextView>(R.id.startTextView)
@@ -23,10 +22,10 @@ class FinishBookingFragment(val date: String, val city: String, val center: Stri
 
         val myBookingBtn = rootView.findViewById<Button>(R.id.myBookingButton)
 
-        placeTV.text = court + ", " + center + ", " + city
+        placeTV.text = "$court, $center, $city"
         dateTV.text = date
-        startTV.text = slot.split(" - ").get(0)
-        endTV.text = slot.split(" - ").get(1)
+        startTV.text = slot.split(" - ")[0]
+        endTV.text = slot.split(" - ")[1]
 
         myBookingBtn.setOnClickListener {
             dismiss()   // close the current fragment

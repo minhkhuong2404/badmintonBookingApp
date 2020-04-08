@@ -55,7 +55,7 @@ SELECT pendTime into endTime;
 SELECT TIMEDIFF(endTime, startTime) into playTime;
 -- Throw exception for Start/End Time Constraint
 -- CB-001: startTime < DATE(NOW())
-IF date < DATE(NOW())
+IF pdate < DATE(NOW())
 THEN 
    SIGNAL SQLSTATE '45000'
    SET MESSAGE_TEXT = 'CB-001'; 

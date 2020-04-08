@@ -64,7 +64,7 @@ THEN SIGNAL SQLSTATE '45000'
 ELSE 
 	UPDATE booking
 	SET status = pstatus
-	WHERE booking_id = bookingId;
+	WHERE booking_id = pbookingId;
 END IF;
 END //
 DELIMITER ;
