@@ -3,16 +3,23 @@ package com.example.courtbooking
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.facebook.*
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
+import org.json.JSONException
+import org.json.JSONObject
 
 class MainActivity: AppCompatActivity() {
 
+    lateinit var profileImage: ImageView
+    lateinit var userNameTV: TextView
+    lateinit var userEmailTV: TextView
     lateinit var facebookLoginButton: LoginButton
     lateinit var callBackManager: CallbackManager
 
@@ -20,30 +27,85 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        profileImage = findViewById(R.id.profileImage)
+        userNameTV = findViewById(R.id.usernameTextView)
+        userEmailTV = findViewById(R.id.emailTextView)
         facebookLoginButton = findViewById(R.id.loginFacebookButton)
         callBackManager = CallbackManager.Factory.create()
 
-        facebookLoginButton.registerCallback(callBackManager,  FacebookCallback1<LoginResult>())
-    }
+        facebookLoginButton.setPermissions(listOf("public_profile", "email"))
 
-    // use inner class so the this@MainActivity can be a context
-    inner class FacebookCallback1<T> : FacebookCallback<LoginResult> {
-        override fun onSuccess(result: LoginResult?) {
-            val goToMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
-            startActivity(goToMainScreen)
-            Toast.makeText(this@MainActivity, "Log in successful", Toast.LENGTH_SHORT).show()
-            Log.i("Main Activity", "Log in by facebook account")
-        }
+        facebookLoginButton.registerCallback(callBackManager,  object : FacebookCallback<LoginResult> {
+            override fun onSuccess(result: LoginResult?) {
 
-        override fun onCancel() {}
+            }
 
-        override fun onError(error: FacebookException?) {}
+            override fun onCancel() {
 
+            }
+
+            override fun onError(error: FacebookException?) {
+                Toast.makeText(this@MainActivity, "Login Failed. May be check your internet connection", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callBackManager.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    var tokenTracker = object : AccessTokenTracker() {
+        override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken?, currentAccessToken: AccessToken?) {
+            if (currentAccessToken == null) {
+                // the user log out
+                profileImage.setImageResource(0)
+                userNameTV.text = ""
+                userEmailTV.text = ""
+                Toast.makeText(this@MainActivity, "Log out successful", Toast.LENGTH_SHORT).show()
+            } else {
+                loadUserData(currentAccessToken)
+
+                val toMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
+                startActivity(toMainScreen)
+
+            }
+        }
+    }
+
+    fun loadUserData(newAccessToken: AccessToken) {
+        val request = GraphRequest.newMeRequest(newAccessToken, object : GraphRequest.GraphJSONObjectCallback {
+            override fun onCompleted(`object`: JSONObject?, response: GraphResponse?) {
+                try {
+                    Log.i("m", "read email")
+                    val firstName = `object`?.getString("first_name")
+                    val lastName = `object`?.getString("last_name")
+                    val email = `object`?.getString("email")
+                    val id = `object`?.getString("id")
+                    val imageURL = "https://graph.facebook.com/" + id + "/picture?type=normal"
+
+                    Log.i("b", "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
+                    Log.i("k", "$firstName $lastName")
+                    Log.i("k", `object`?.toString())
+                    userNameTV.text = "$firstName $lastName"
+                    userEmailTV.text = email
+                    val requestOptions = RequestOptions()
+                    requestOptions.dontAnimate()
+
+                    Glide.with(this@MainActivity).load(imageURL).into(profileImage)
+
+                } catch(e: JSONException) {
+                    e.printStackTrace()
+                }
+            }
+
+        })
+
+
+        val parameter = Bundle()
+        parameter.putString("fields", "email, first_name, last_name")
+        request.parameters = parameter
+        request.executeAsync()
     }
 
 }

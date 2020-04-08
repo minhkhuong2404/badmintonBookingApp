@@ -269,7 +269,7 @@ class MainScreenActivity : AppCompatActivity(),
         }
 
         bookingFragment.show(fm, "Cancel Result")
-        
+
     }
 
 }
