@@ -39,7 +39,7 @@ ELSEIF date_add(date(now()), INTERVAL 24 HOUR) >
 									  FROM booking 
 									  WHERE booking_id = pbookingId)
 THEN SIGNAL SQLSTATE '45000'
-	 SET MESSAGE_TEXT = 'CA-005'; -- CA-004: violates 24 hours before start time
+	 SET MESSAGE_TEXT = 'CA-005'; -- CA-005: violates 24 hours before start time
 ELSE DELETE FROM booking WHERE booking_id = pbookingId;
 END IF;
 END //
