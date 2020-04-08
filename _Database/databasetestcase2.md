@@ -1,11 +1,11 @@
 # createCity
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- | 
 CITY-000 | cityId is invalid |
 CITY-001 | cityId is existed |
 ***
 # createCityCenter
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- | 
 CEN-000 | cityId is invalid
 CEN-001 | centerId is invalid
@@ -13,7 +13,7 @@ CEN-002 | cityId is not existed
 CEN-003 | centerId is not existed
 ***
 # createCityCenterCourt
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- | 
 CRT-000 | cityId is invalid |
 CRT-001 | centerId is invalid |
@@ -23,7 +23,7 @@ CRT-004 | centerId is not existed but cityId is existed |
 CRT-005 | courtId is existed |
 ***
 # createStaff
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- | 
 CS-000 | cityId is invalid |
 CS-001 | centerId is invalid |
@@ -33,13 +33,13 @@ CS-004 | centerId is not existed but cityId is existed |
 CS-005 | staffId is existed |
 
 # createPlayer
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- | 
 CPL-000 | playerId is invalid |
 CPL-001 | playerId is existed
 ***
 # createBooking
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- |
 CB-000 | bookingId is not alphanumeric |
 CB-100 | bookingId is existed |
@@ -57,7 +57,7 @@ CB-011 | playerId have pending booking |
 CB-012 | playerId no more than 3 bookings |
 ***
 # cancelBooking
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- |
 CA-000 | bookingId is invalid |
 CA-001 | playerId is invalid |
@@ -67,7 +67,7 @@ CA-004 | playerId does not own the bookingId |
 CA-005 | violating 24 hours before start time |
 ***
 # updateBookingStatus
-Test Case ID | Test Description |
+Error code | Test Description |
 ------------ | ---------------- |
 UBS-000 | bookingId is invalid |
 UBS-001 | cityId is invalid |
