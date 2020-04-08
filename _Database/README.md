@@ -10,4 +10,5 @@
     7. updateBookingStatus.sql
     8. cancelBooking.sql
     
-3. To test stored procedures, go to "Tests" folder. Please read the test guide in each test.
+3. To test stored procedures, go to "Tests" folder. Please read the test guide in each test.  
+4. For List of error codes and description, see ListofErrorCode.md
