@@ -14,9 +14,6 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -32,7 +29,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -100,22 +96,22 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586351122828" />
-    <state width="1311" height="280" key="GridCell.Tab.0.bottom" timestamp="1586409521917">
+    <state width="1311" height="280" key="GridCell.Tab.0.bottom" timestamp="1586409471706">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1311" height="280" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586409521917" />
-    <state width="1311" height="280" key="GridCell.Tab.0.center" timestamp="1586409521916">
+    <state width="1311" height="280" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586409471706" />
+    <state width="1311" height="280" key="GridCell.Tab.0.center" timestamp="1586409471705">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1311" height="280" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586409521916" />
-    <state width="1311" height="280" key="GridCell.Tab.0.left" timestamp="1586409521916">
+    <state width="1311" height="280" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586409471705" />
+    <state width="1311" height="280" key="GridCell.Tab.0.left" timestamp="1586409471705">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1311" height="280" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586409521916" />
-    <state width="1311" height="280" key="GridCell.Tab.0.right" timestamp="1586409521916">
+    <state width="1311" height="280" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586409471705" />
+    <state width="1311" height="280" key="GridCell.Tab.0.right" timestamp="1586409471706">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1311" height="280" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586409521916" />
+    <state width="1311" height="280" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586409471706" />
     <state width="999" height="345" key="GridCell.Tab.1.bottom" timestamp="1586398314095">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
@@ -140,16 +136,5 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="804" y="168" width="821" height="601" key="new project wizard/40.23.1640.1027@40.23.1640.1027" timestamp="1586350596888" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
