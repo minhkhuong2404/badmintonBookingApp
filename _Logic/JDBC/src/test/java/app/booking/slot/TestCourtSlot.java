@@ -276,5 +276,32 @@ public class TestCourtSlot {
         // then it should have 1 available slot from 8:00 to 20:00
         assertEquals(1, slotList.size(), "Pass.");
     }
+    
+    @Test
+    public void getAvailableSlot_IfThereIsBookingFrom7_45To20_15() {
+        // create empty booking
+        ArrayList<Booking> booking = new ArrayList<Booking>();
+        // create bookings from 7:45 to 20:15
 
+        booking.add(new Booking("07:45", "09:00"));
+        booking.add(new Booking("09:00", "10:00"));
+        booking.add(new Booking("10:00", "11:00"));
+        booking.add(new Booking("11:00", "12:00"));
+        booking.add(new Booking("12:00", "13:00"));
+        booking.add(new Booking("13:00", "14:00"));
+        booking.add(new Booking("14:00", "15:00"));
+        booking.add(new Booking("15:00", "16:00"));
+        booking.add(new Booking("16:00", "17:00"));
+        booking.add(new Booking("17:00", "18:00"));
+        booking.add(new Booking("18:00", "19:00"));
+        booking.add(new Booking("19:00", "20:15"));
+
+
+        CourtSlot courtSlot = new CourtSlot();
+
+        ArrayList<Slot> slotList = courtSlot.get(booking);
+        // assert statements: if there is bookings from 7:45 to 20:15
+        // then it should have 2 available slot from 7:00 to 7:45 and from 20:15 to 21:00
+        assertEquals(2, slotList.size(), "Pass.");
+    }
 }
