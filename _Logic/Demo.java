@@ -5,9 +5,19 @@ class Time {
     private int hour;
     private int minute;
 
+    // constructors
     Time(int newH, int newM) {
         hour = newH;
         minute = newM;
+    }
+    Time(String newTime) {
+        String[] timeSplit = newTime.split(":");
+        hour = Integer.parseInt(timeSplit[0]);
+        minute = Integer.parseInt(timeSplit[1]);
+    }
+    Time(Time newTime) {
+        hour = newTime.getHour();
+        minute = newTime.getMinute();
     }
 
     public int compare(Time t) {
@@ -21,6 +31,8 @@ class Time {
         }
     }
 
+    public void setHour(int newH) { hour = newH; }
+    public void setMinute(int newM) { minute = newM; }
     public int getHour() { return hour; }
     public int getMinute() { return minute; }
 
@@ -33,8 +45,17 @@ class Booking {
     private Time start;
     private Time end;
 
+    // constructors
     public Booking(Time newStart, Time newEnd) {
         start = newStart;
+        end = newEnd;
+    }
+
+    // set, get methods
+    public void setStart(Time newStart) {
+        start = newStart;
+    }
+    public void setEnd(Time newEnd) {
         end = newEnd;
     }
 
@@ -49,8 +70,17 @@ class Slot {
     private Time start;
     private Time end;
 
+    // constructors
     public Slot(Time newStart, Time newEnd) {
         start = newStart;
+        end = newEnd;
+    }
+
+    // set, get methods
+    public void setStart(Time newStart) {
+        start = newStart;
+    }
+    public void setEnd(Time newEnd) {
         end = newEnd;
     }
 
@@ -74,16 +104,15 @@ public class Demo {
             Slot slot = slotList.get(slotList.size()-1);            
              
             // if 
-            if ( booking.getStart().toMinute() - slot.getStart().toMinute() >= 45 ) {
-                int index = slotList.indexOf(slot);
-                slotList.add(index, new Slot( slot.getStart(), booking.getStart() ) );
-            }
             if (slot.getEnd().toMinute() - booking.getEnd().toMinute() >= 45) {
-                int index = slotList.indexOf(slot);
-                slotList.add(index + 1, new Slot( booking.getEnd(), slot.getEnd() ) );
+                slotList.add( new Slot( booking.getEnd(), slot.getEnd() ) );
             }
 
-            slotList.remove(slot);
+            if ( booking.getStart().toMinute() - slot.getStart().toMinute() >= 45 ) {
+                slot.setEnd(booking.getStart());
+            } else {
+                slotList.remove(slot);
+            }
             
         }
 
@@ -102,7 +131,7 @@ public class Demo {
         Demo a = new Demo();
 
         // get 
-        ArrayList<Slot> slotList = new ArrayList<Slot>(a.getCourtSlots(bookingList));  
+        ArrayList<Slot> slotList = new ArrayList<Slot>(a.getCourtSlots(bookingList)); 
         
         for (Slot slot : slotList) {
             System.out.print("[" + slot.getStart().getHour() + ":" + slot.getStart().getMinute() +
