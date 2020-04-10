@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/ConnectionDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/booking/db/TestConnectionDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/database/MySQLAccess.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestCourtSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/slot/TestCourtSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/database/MySQLAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/TestCourtSlot.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +45,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/bookingapp" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14Hours">
+  <component name="RunManager" selected="JUnit.TestConnectionDB.createPlayer_Success">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JDBC" />
@@ -50,50 +59,80 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCourtSlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestConnectionDB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBC" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.db" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDB" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCourtSlot.bookingListEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestConnectionDB.createCityCenterCourt_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBC" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
-      <option name="METHOD_NAME" value="bookingListEmpty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.db" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDB" />
+      <option name="METHOD_NAME" value="createCityCenterCourt_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCourtSlot.getAvailableSlot_14Bookings_14" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestConnectionDB.createCity_Invalid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBC" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
-      <option name="METHOD_NAME" value="getAvailableSlot_14Bookings_14" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.db" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDB" />
+      <option name="METHOD_NAME" value="createCity_Invalid" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCourtSlot.getAvailableSlot_14Bookings_14Hours" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestConnectionDB.createPlayer_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBC" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
-      <option name="METHOD_NAME" value="getAvailableSlot_14Bookings_14Hours" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.db" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDB" />
+      <option name="METHOD_NAME" value="createPlayer_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCourtSlot.slotListEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestConnectionDB.createStaff_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBC" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
-      <option name="METHOD_NAME" value="slotListEmpty" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.db.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.db" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDB" />
+      <option name="METHOD_NAME" value="createStaff_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,19 +163,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.TestCourtSlot.bookingListEmpty" />
-      <item itemvalue="JUnit.TestCourtSlot.slotListEmpty" />
-      <item itemvalue="JUnit.TestCourtSlot" />
-      <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14" />
-      <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14Hours" />
+      <item itemvalue="JUnit.TestConnectionDB" />
+      <item itemvalue="JUnit.TestConnectionDB.createCity_Invalid" />
+      <item itemvalue="JUnit.TestConnectionDB.createCityCenterCourt_Success" />
+      <item itemvalue="JUnit.TestConnectionDB.createStaff_Success" />
+      <item itemvalue="JUnit.TestConnectionDB.createPlayer_Success" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14Hours" />
-        <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14" />
-        <item itemvalue="JUnit.TestCourtSlot" />
-        <item itemvalue="JUnit.TestCourtSlot.slotListEmpty" />
-        <item itemvalue="JUnit.TestCourtSlot.bookingListEmpty" />
+        <item itemvalue="JUnit.TestConnectionDB.createPlayer_Success" />
+        <item itemvalue="JUnit.TestConnectionDB.createStaff_Success" />
+        <item itemvalue="JUnit.TestConnectionDB.createCityCenterCourt_Success" />
+        <item itemvalue="JUnit.TestConnectionDB" />
+        <item itemvalue="JUnit.TestConnectionDB.createCity_Invalid" />
       </list>
     </recent_temporary>
   </component>
@@ -162,6 +201,10 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586492196238" />
+    <state x="700" y="123" width="880" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1586519634575">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="700" y="123" width="880" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1586519634575" />
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586492193975">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
@@ -170,53 +213,68 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586351122828" />
-    <state x="711" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586493371829">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state x="687" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586522929834">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state x="687" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1586522929834" />
     <state x="711" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586493371829" />
-    <state width="1335" height="235" key="GridCell.Tab.0.bottom" timestamp="1586504826499">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state x="735" y="292" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586523073877">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state x="735" y="292" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1586523073877" />
+    <state width="922" height="280" key="GridCell.Tab.0.bottom" timestamp="1586525032861">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="922" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1586525032861" />
     <state width="1335" height="235" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586504826499" />
-    <state width="1335" height="235" key="GridCell.Tab.0.center" timestamp="1586504826497">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state width="922" height="280" key="GridCell.Tab.0.center" timestamp="1586525032860">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state width="922" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1586525032860" />
     <state width="1335" height="235" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586504826497" />
-    <state width="1335" height="235" key="GridCell.Tab.0.left" timestamp="1586504826497">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state width="922" height="280" key="GridCell.Tab.0.left" timestamp="1586525032860">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state width="922" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1586525032860" />
     <state width="1335" height="235" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586504826497" />
-    <state width="1335" height="235" key="GridCell.Tab.0.right" timestamp="1586504826498">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state width="922" height="280" key="GridCell.Tab.0.right" timestamp="1586525032861">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state width="922" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1586525032861" />
     <state width="1335" height="235" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586504826498" />
-    <state width="1335" height="235" key="GridCell.Tab.1.bottom" timestamp="1586504827099">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state width="1039" height="331" key="GridCell.Tab.1.bottom" timestamp="1586509861960">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state width="1039" height="331" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1586509861960" />
     <state width="1335" height="235" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586504827099" />
-    <state width="1335" height="235" key="GridCell.Tab.1.center" timestamp="1586504827098">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state width="1039" height="331" key="GridCell.Tab.1.center" timestamp="1586509861959">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state width="1039" height="331" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1586509861959" />
     <state width="1335" height="235" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586504827098" />
-    <state width="1335" height="235" key="GridCell.Tab.1.left" timestamp="1586504827098">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state width="1039" height="331" key="GridCell.Tab.1.left" timestamp="1586509861959">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state width="1039" height="331" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1586509861959" />
     <state width="1335" height="235" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586504827098" />
-    <state width="1335" height="235" key="GridCell.Tab.1.right" timestamp="1586504827098">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state width="1039" height="331" key="GridCell.Tab.1.right" timestamp="1586509861960">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state width="1039" height="331" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1586509861960" />
     <state width="1335" height="235" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586504827098" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog" timestamp="1586496259787">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="526" y="200" key="Maven.ArtifactSearchDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586496259787" />
-    <state x="324" y="155" key="SettingsEditor" timestamp="1586338681663">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state x="291" y="155" key="SettingsEditor" timestamp="1586513997317">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state x="291" y="155" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1586513997317" />
     <state x="324" y="155" key="SettingsEditor/40.23.1640.1027@40.23.1640.1027" timestamp="1586338681663" />
-    <state x="828" y="323" key="chooseDestDirectoryDialog" timestamp="1586490754755">
-      <screen x="40" y="23" width="1640" height="1027" />
+    <state x="807" y="323" key="chooseDestDirectoryDialog" timestamp="1586514509787">
+      <screen x="0" y="23" width="1680" height="1027" />
     </state>
+    <state x="807" y="323" key="chooseDestDirectoryDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1586514509787" />
     <state x="828" y="323" key="chooseDestDirectoryDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586490754755" />
     <state x="804" y="168" width="821" height="601" key="new project wizard" timestamp="1586350596888">
       <screen x="40" y="23" width="1640" height="1027" />

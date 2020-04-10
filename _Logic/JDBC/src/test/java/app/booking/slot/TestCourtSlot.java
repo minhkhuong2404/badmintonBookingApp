@@ -1,3 +1,4 @@
+package app.booking.slot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import app.booking.slot.Booking;
