@@ -13,16 +13,16 @@ Hướng dẫn kiểm thử cho: createCity(cityId)
 
 /* Test if createCity is accepted when cityId is valid */
 delete from city where city_id = "1";
-CALL createCity("1");
+CALL createCity("1", @code);
 /* expected no error code */
  
 /* Test if createCity is rejected when cityId is invalid */
-CALL createCity("$A");
+CALL createCity("$A", @code);
 /* expected error CITY-000 */
 
 /* Test if createCity is rejected when cityId is existed */
 delete from city where city_id = "1";
-CALL createCity("1");
-CALL createCity("1");
+CALL createCity("1", @code);
+CALL createCity("1", @code);
 /* expected error CITY-001 */
 
