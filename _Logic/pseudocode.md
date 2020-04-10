@@ -28,7 +28,7 @@ If `bookings` is sorted then after running the algorithm `slots` is automaticall
 
 # Pseudocode for getCenterSlots
 ## Input: 
-`centerBookings` is an array of `[court, bookings]` in which `court` is a court and `bookings` is all bookings of that court in the center.
+`centerBookings` is an array of `[court, bookings]` in which `court` is a court and `bookings` is all bookings of that court.  
 ## Output: 
 `centerSlots` is an array of `[court, slots]` in which `slots` is all available slots of `court`.
 ## Pseudocode
@@ -44,9 +44,9 @@ For each [court, bookings] in centerBookings:
 
 # Pseudocode for getCitySlots
 ## Input: 
-`cityBookings` is an array of `[center, centerBookings]` in which `center` is a center and `centerBookings` is an array of `[court, bookings]`
+`cityBookings` is an array of `[center, centerBookings]`.  
 ## Output: 
-`citySlots` is an array of `[center, centerSlots]` in which `centerSlots` is an array of `[court, slots]`.
+`citySlots` is an array of `[center, centerSlots]`.  
 ## Pseudocode
 ```
 getCitySlots(array cityBookings)
