@@ -61,6 +61,7 @@ class Slot {
 public class Demo {
 
     public ArrayList<Slot> getCourtSlots(ArrayList<Booking> bookingList) {
+        // bookingList: sorted list
 
         // create a initail slot
         ArrayList<Slot> slotList = new ArrayList<Slot>();   // store all slot
@@ -69,25 +70,23 @@ public class Demo {
         slotList.add(new Slot(new Time(7, 0), new Time(21,0)) );    // initial slot: [7:00 21:00]
 
         for(Booking booking: bookingList) {
+
+            Slot slot = slotList.get(slotList.size()-1);            
             
-            for (Slot slot : slotList) {
-                // if booking. start >= slot.start and booking.end <= slot.end
-                if ( (booking.getStart().compare(slot.getStart()) >= 0) && (booking.getEnd().compare(slot.getEnd())  <= 0) ) {
-                    
-                    // if 
-                    if ( booking.getStart().toMinute() - slot.getStart().toMinute() >= 45 ) {
-                        int index = slotList.indexOf(slot);
-                        slotList.add(index, new Slot( slot.getStart(), booking.getStart() ) );
-                    }
-                    if (slot.getEnd().toMinute() - booking.getEnd().toMinute() >= 45) {
-                        int index = slotList.indexOf(slot);
-                        slotList.add(index + 1, new Slot( booking.getEnd(), slot.getEnd() ) );
-                    }
-
-                    slotList.remove(slot);
-
-                    break;
+            if ( (booking.getStart().compare(slot.getStart()) >= 0) && (booking.getEnd().compare(slot.getEnd())  <= 0) ) {
+                
+                // if 
+                if ( booking.getStart().toMinute() - slot.getStart().toMinute() >= 45 ) {
+                    int index = slotList.indexOf(slot);
+                    slotList.add(index, new Slot( slot.getStart(), booking.getStart() ) );
                 }
+                if (slot.getEnd().toMinute() - booking.getEnd().toMinute() >= 45) {
+                    int index = slotList.indexOf(slot);
+                    slotList.add(index + 1, new Slot( booking.getEnd(), slot.getEnd() ) );
+                }
+
+                slotList.remove(slot);
+                
             }
             
         }
@@ -106,6 +105,7 @@ public class Demo {
         
         Demo a = new Demo();
 
+        // get 
         ArrayList<Slot> slotList = new ArrayList<Slot>(a.getCourtSlots(bookingList));  
         
         for (Slot slot : slotList) {
