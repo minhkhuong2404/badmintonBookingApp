@@ -72,22 +72,18 @@ public class Demo {
         for(Booking booking: bookingList) {
 
             Slot slot = slotList.get(slotList.size()-1);            
-            
-            if ( (booking.getStart().compare(slot.getStart()) >= 0) && (booking.getEnd().compare(slot.getEnd())  <= 0) ) {
-                
-                // if 
-                if ( booking.getStart().toMinute() - slot.getStart().toMinute() >= 45 ) {
-                    int index = slotList.indexOf(slot);
-                    slotList.add(index, new Slot( slot.getStart(), booking.getStart() ) );
-                }
-                if (slot.getEnd().toMinute() - booking.getEnd().toMinute() >= 45) {
-                    int index = slotList.indexOf(slot);
-                    slotList.add(index + 1, new Slot( booking.getEnd(), slot.getEnd() ) );
-                }
-
-                slotList.remove(slot);
-                
+             
+            // if 
+            if ( booking.getStart().toMinute() - slot.getStart().toMinute() >= 45 ) {
+                int index = slotList.indexOf(slot);
+                slotList.add(index, new Slot( slot.getStart(), booking.getStart() ) );
             }
+            if (slot.getEnd().toMinute() - booking.getEnd().toMinute() >= 45) {
+                int index = slotList.indexOf(slot);
+                slotList.add(index + 1, new Slot( booking.getEnd(), slot.getEnd() ) );
+            }
+
+            slotList.remove(slot);
             
         }
 
