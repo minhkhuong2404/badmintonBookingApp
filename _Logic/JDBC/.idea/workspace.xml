@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestCourtSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCourtSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestCourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestCourtSlot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,10 +42,19 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="JUnit.TestCourtSlot.slotListEmpty">
+  <component name="RunManager" selected="JUnit.TestCourtSlot">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JDBC" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCourtSlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBC" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,9 +106,11 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.TestCourtSlot.bookingListEmpty" />
       <item itemvalue="JUnit.TestCourtSlot.slotListEmpty" />
+      <item itemvalue="JUnit.TestCourtSlot" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestCourtSlot" />
         <item itemvalue="JUnit.TestCourtSlot.slotListEmpty" />
         <item itemvalue="JUnit.TestCourtSlot.bookingListEmpty" />
       </list>
@@ -141,38 +150,38 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="711" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586493371829" />
-    <state width="1335" height="235" key="GridCell.Tab.0.bottom" timestamp="1586497954719">
+    <state width="1335" height="235" key="GridCell.Tab.0.bottom" timestamp="1586499784877">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586497954719" />
-    <state width="1335" height="235" key="GridCell.Tab.0.center" timestamp="1586497954719">
+    <state width="1335" height="235" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
+    <state width="1335" height="235" key="GridCell.Tab.0.center" timestamp="1586499784877">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586497954719" />
-    <state width="1335" height="235" key="GridCell.Tab.0.left" timestamp="1586497954718">
+    <state width="1335" height="235" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
+    <state width="1335" height="235" key="GridCell.Tab.0.left" timestamp="1586499784876">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586497954718" />
-    <state width="1335" height="235" key="GridCell.Tab.0.right" timestamp="1586497954719">
+    <state width="1335" height="235" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784876" />
+    <state width="1335" height="235" key="GridCell.Tab.0.right" timestamp="1586499784877">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586497954719" />
-    <state width="1335" height="235" key="GridCell.Tab.1.bottom" timestamp="1586497955152">
+    <state width="1335" height="235" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
+    <state width="1335" height="235" key="GridCell.Tab.1.bottom" timestamp="1586499784878">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586497955152" />
-    <state width="1335" height="235" key="GridCell.Tab.1.center" timestamp="1586497955151">
+    <state width="1335" height="235" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784878" />
+    <state width="1335" height="235" key="GridCell.Tab.1.center" timestamp="1586499784877">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586497955151" />
-    <state width="1335" height="235" key="GridCell.Tab.1.left" timestamp="1586497955151">
+    <state width="1335" height="235" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
+    <state width="1335" height="235" key="GridCell.Tab.1.left" timestamp="1586499784877">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586497955151" />
-    <state width="1335" height="235" key="GridCell.Tab.1.right" timestamp="1586497955151">
+    <state width="1335" height="235" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
+    <state width="1335" height="235" key="GridCell.Tab.1.right" timestamp="1586499784877">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586497955151" />
+    <state width="1335" height="235" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog" timestamp="1586496259787">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
@@ -189,16 +198,5 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="804" y="168" width="821" height="601" key="new project wizard/40.23.1640.1027@40.23.1640.1027" timestamp="1586350596888" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/TestCourtSlot.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
