@@ -1,6 +1,8 @@
 package app.booking.db;
 
 import org.junit.jupiter.api.Test;
+import java.sql.*;
+import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -418,7 +420,7 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         // actual test
-        String result_code = db.createBooking("booking1", "2020-04-07 09:27:18", "2021-05-01", "10:00:00", "10:45:00", '1', '2', 'A', 'B');
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
         assertEquals("200", result_code, "Pass.");
     }
 
