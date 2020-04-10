@@ -136,6 +136,20 @@ public class TestConnectionDB {
         String result_code = db.createCityCenterCourt("A", "1", "2");
         assertEquals("200", result_code, "Pass.");
     }
+    @Test
+    public void createCityCenterCourt_courtIdIsInvalid() throws Exception {
+        ConnectionDB db = new ConnectionDB();
+        // clean up database
+        db.cleanTable("city");
+        db.cleanTable("center");
+        db.cleanTable("court");
+        // scenario
+        db.createCity("1");
+        db.createCityCenter("2", "1");
+        // actual test
+        String result_code = db.createCityCenterCourt("#", "1", "2");
+        assertEquals("CRT-002", result_code, "Pass.");
+    }
 
     // createPlayer
 
@@ -167,4 +181,12 @@ public class TestConnectionDB {
         String result_code = db.createStaff("A", "1", "2");
         assertEquals("200", result_code, "Pass.");
     }
+
+    // updateBookingStatus
+
+    // cancelBooking
+
+    // createBooking
+
+    
 }

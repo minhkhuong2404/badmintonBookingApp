@@ -106,7 +106,7 @@ public class ConnectionDB {
         CallableStatement stm = null;
         try {
             stm = conn.prepareCall("{ CALL createCityCenterCourt(?, ?, ?, ?) }");
-            stm.setString(1, cityId);
+            stm.setString(1, courtId);
             stm.setString(2, cityId);
             stm.setString(3, centerId);
             stm.registerOutParameter(4, Types.VARCHAR);
