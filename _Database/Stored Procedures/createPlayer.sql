@@ -2,27 +2,25 @@
 DROP PROCEDURE IF EXISTS createPlayer;
 DELIMITER //
 CREATE PROCEDURE createPlayer(
-in pplayerId varchar(50))
+in pplayerId varchar(50),
+OUT resultCode varchar(50))
 BEGIN
-DECLARE EXIT HANDLER FOR SQLEXCEPTION
-BEGIN
-  GET STACKED DIAGNOSTICS CONDITION 1 @p1 = RETURNED_SQLSTATE, @p2 = MESSAGE_TEXT;
-  SELECT @p1, @p2;
-  ROLLBACK;
-END;
-START TRANSACTION;
 
 IF NOT pplayerId REGEXP '^[a-zA-Z0-9]*$'
-THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CPL-000';
+THEN
+     SET resultCode = 'CPL-000';
 ELSEIF EXISTS ( SELECT * 
 			FROM player
             WHERE player_id = pplayerId )
-THEN SIGNAL SQLSTATE '45000'
-     SET MESSAGE_TEXT = 'CPL-001';
+THEN
+     SET resultCode = 'CPL-001';
 ELSE 
     INSERT INTO player VALUES (pplayerId);
+    SET resultCode = '200';
 END IF;
+
+SELECT resultCode;
+
 END //
 DELIMITER ;
 
