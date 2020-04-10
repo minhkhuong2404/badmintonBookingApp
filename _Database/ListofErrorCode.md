@@ -10,7 +10,7 @@ Error code | Test Description |
 CEN-000 | cityId is invalid
 CEN-001 | centerId is invalid
 CEN-002 | cityId is not existed
-CEN-003 | centerId is not existed
+CEN-003 | centerId is existed
 ***
 # createCityCenterCourt
 Error code | Test Description |

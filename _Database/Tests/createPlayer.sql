@@ -13,15 +13,15 @@ Hướng dẫn kiểm thử cho: createPlayer(playerId)
 
 /* Test if createPlayer is accepted when cityId is valid */
 delete from player where player_id ="A";
-CALL createPlayer("A");
+CALL createPlayer("A", @code);
 /* expected no error code */
  
 /* Test if createPlayer is rejected when playerId is invalid */
-CALL createPlayer("$A");
+CALL createPlayer("$A", @code);
 /* expected error CPL-000 */
 
 /* Test if createPlayer is rejected when playerId is existed */
 delete from player where player_id ="A";
-CALL createPlayer("A");
-CALL createPlayer("A");
+CALL createPlayer("A", @code);
+CALL createPlayer("A", @code);
 /* expected error CPL-001 */
