@@ -16,10 +16,11 @@ getCourtSlots(array `bookings`)
 
     For each `b` in `bookings`:
         `s` is the last item in `slots`
-        If `(b_start - s_start) ≥ 45 minutes`:
-            s_end = b_start
         If `s_end - b_end ≥ 45 minutes`:
             Insert [b_end, s_end] into `slots`
+        If `(b_start - s_start) ≥ 45 minutes`:
+            s_end = b_start
+        Else delete `s` from slots
     Return slots
 ```
 
