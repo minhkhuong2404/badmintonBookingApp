@@ -26,7 +26,7 @@ public class TestCourtSlot {
     public void getAvailableSlot_IfbookingListFull() {
         // create empty booking
         ArrayList<Booking> booking = new ArrayList<Booking>();
-        // create booking from 7AM to 21AM
+        // create bookings from 7:00 to 21:00
         booking.add(new Booking("07:00", "08:00"));
         booking.add(new Booking("08:00", "09:00"));
         booking.add(new Booking("09:00", "10:00"));
@@ -65,7 +65,7 @@ public class TestCourtSlot {
     }
 
     @Test
-    public void getAvailableSlot_IfThereIsBookingAt20_15PM() {
+    public void getAvailableSlot_IfThereIsBookingAt20_15() {
         // create empty booking
         ArrayList<Booking> booking = new ArrayList<Booking>();
         // create booking from 20:15 to 21:00
@@ -80,10 +80,10 @@ public class TestCourtSlot {
     }
 
     @Test
-    public void getAvailableSlot_IfThereIsBookingFrom7_30AMto21_00PM() {
+    public void getAvailableSlot_IfThereIsBookingFrom7_30to21_00() {
         // create empty booking
         ArrayList<Booking> booking = new ArrayList<Booking>();
-        //create booking from 7:30AM to 21:AM
+        //create booking from 7:30 to 21:00
         booking.add(new Booking("07:30", "09:00"));
         booking.add(new Booking("09:00", "10:00"));
         booking.add(new Booking("10:00", "11:00"));
@@ -107,10 +107,10 @@ public class TestCourtSlot {
     }
 
     @Test
-    public void getAvailableSlot_IfThereIsBookingFrom7AMto20_30PM() {
+    public void getAvailableSlot_IfThereIsBookingFrom7to20_30() {
         // create empty booking
         ArrayList<Booking> booking = new ArrayList<Booking>();
-        // create booking from 7AM to 20:30PM
+        // create booking from 7:00 to 20:30
         booking.add(new Booking("07:00", "08:00"));
         booking.add(new Booking("08:00", "09:00"));
         booking.add(new Booking("09:00", "10:00"));
