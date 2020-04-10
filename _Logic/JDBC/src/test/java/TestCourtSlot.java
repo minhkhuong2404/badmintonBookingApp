@@ -258,7 +258,7 @@ public class TestCourtSlot {
     }
 
     @Test
-    public void getAvailableSlot_IfThereIsBookingAt7AndOnesAt20_00PM() {
+    public void getAvailableSlot_IfThereIsBookingAt7AndOnesAt20_00() {
         // create empty booking
         ArrayList<Booking> booking = new ArrayList<Booking>();
         // create bookings from 7:00 to 8:00
