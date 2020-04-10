@@ -124,5 +124,30 @@ public class TestCourtSlot {
         // assert statements: if there is a continuous booking from 7 to 08:15
         assertEquals(1, slotList.size(), "Pass.");
     }
+    @Test
+    public void getAvailableSlot_14Bookings_14Hours() {
+        // create empty booking
+        ArrayList<Booking> booking = new ArrayList<Booking>();
+        //create an continuously booking from 7 to 8:15
+        booking.add(new Booking("07:00", "08:00"));
+        booking.add(new Booking("08:00", "09:00"));
+        booking.add(new Booking("09:00", "10:00"));
+        booking.add(new Booking("10:00", "11:00"));
+        booking.add(new Booking("11:00", "12:00"));
+        booking.add(new Booking("12:00", "13:00"));
+        booking.add(new Booking("13:00", "14:00"));
+        booking.add(new Booking("14:00", "15:00"));
+        booking.add(new Booking("15:00", "16:00"));
+        booking.add(new Booking("16:00", "17:00"));
+        booking.add(new Booking("17:00", "18:00"));
+        booking.add(new Booking("18:00", "19:00"));
+        booking.add(new Booking("19:00", "20:00"));
+        booking.add(new Booking("20:00", "21:00"));
 
+        CourtSlot courtSlot = new CourtSlot();
+
+        ArrayList<Slot> slotList = courtSlot.get(booking);
+        // assert statements: if there is a continuous booking from 7 to 08:15
+        assertEquals(0, slotList.size(), "Pass.");
+    }
 }

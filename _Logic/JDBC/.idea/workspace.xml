@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestCourtSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCourtSlot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="JUnit.TestCourtSlot">
+  <component name="RunManager" selected="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JDBC" />
@@ -64,6 +65,16 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
       <option name="METHOD_NAME" value="bookingListEmpty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCourtSlot.getAvailableSlot_14Bookings_14" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBC" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
+      <option name="METHOD_NAME" value="getAvailableSlot_14Bookings_14" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -107,9 +118,11 @@
       <item itemvalue="JUnit.TestCourtSlot.bookingListEmpty" />
       <item itemvalue="JUnit.TestCourtSlot.slotListEmpty" />
       <item itemvalue="JUnit.TestCourtSlot" />
+      <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14" />
         <item itemvalue="JUnit.TestCourtSlot" />
         <item itemvalue="JUnit.TestCourtSlot.slotListEmpty" />
         <item itemvalue="JUnit.TestCourtSlot.bookingListEmpty" />
@@ -150,22 +163,22 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="711" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1586493371829" />
-    <state width="1335" height="235" key="GridCell.Tab.0.bottom" timestamp="1586499784877">
+    <state width="1335" height="280" key="GridCell.Tab.0.bottom" timestamp="1586503036837">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
-    <state width="1335" height="235" key="GridCell.Tab.0.center" timestamp="1586499784877">
+    <state width="1335" height="280" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1586503036837" />
+    <state width="1335" height="280" key="GridCell.Tab.0.center" timestamp="1586503036836">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
-    <state width="1335" height="235" key="GridCell.Tab.0.left" timestamp="1586499784876">
+    <state width="1335" height="280" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1586503036836" />
+    <state width="1335" height="280" key="GridCell.Tab.0.left" timestamp="1586503036835">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784876" />
-    <state width="1335" height="235" key="GridCell.Tab.0.right" timestamp="1586499784877">
+    <state width="1335" height="280" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1586503036835" />
+    <state width="1335" height="280" key="GridCell.Tab.0.right" timestamp="1586503036836">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1335" height="235" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586499784877" />
+    <state width="1335" height="280" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1586503036836" />
     <state width="1335" height="235" key="GridCell.Tab.1.bottom" timestamp="1586499784878">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
