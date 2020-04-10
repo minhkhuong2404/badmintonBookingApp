@@ -20,5 +20,16 @@ public class TestCourtSlot {
         // assert statements
         assertEquals(1, slotList.size(), "Pass.");
     }
+    @Test
+    public void slotListEmpty() {
+        // create empty booking
+        ArrayList<Booking> booking = new ArrayList<Booking>();
+        booking.add(new Booking("07:00", "21:00"));
 
+        CourtSlot courtSlot = new CourtSlot();
+
+        ArrayList<Slot> slotList = courtSlot.get(booking);
+        // assert statements
+        assertEquals(0, slotList.size(), "Pass.");
+    }
 }
