@@ -43,7 +43,14 @@ public class TestConnectionDB {
         // clean up database
         db.cleanTable("city");
         // scenario
-        db.createCity("E");
+        String sql = "INSERT INTO city VALUE (?)";
+
+        PreparedStatement smt = db.getConnect().prepareStatement(sql);
+
+        smt.setString(1, "E");
+
+        smt.execute();
+         db.createCity("E");
         // actual test
         String result_code = db.createCity("E");
         assertEquals("CITY-001", result_code, "Pass.");
@@ -425,7 +432,7 @@ public class TestConnectionDB {
     }
 
     @Test
-    public void createBooking_failWhenBookingIdIsNotAlphanumeric() throws Exception {
+    public void createBooking_WhenBookingIdIsNotAlphanumeric() throws Exception {
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -443,7 +450,7 @@ public class TestConnectionDB {
     }
 
     @Test
-    public void create_Booking_fail_when_bookingID_is_existed() throws  Exception{
+    public void createBooking_WhenbookingIdIsExisted() throws  Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -455,13 +462,14 @@ public class TestConnectionDB {
         db.createCityCenter("2", "1");
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
+        db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
         //actual test
         String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-100", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_fail_when_cityID_is_not_existed() throws Exception{
+    public void createBooking_WhencityIdIsNotexisted() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -474,12 +482,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking12", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "2", "2", "A", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "2", "2", "A", "B");
         assertEquals("CB-001", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_fail_when_centerID_is_not_existed()throws  Exception{
+    public void createBooking_WhencenterIdIsNotExisted()throws  Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -492,12 +500,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking12", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "3", "A", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "3", "A", "B");
         assertEquals("CB-002", result_code, "Pass.");
     }
 
     @Test
-    public void create_Booking_failWhenCourtIdIsNotExisted() throws Exception{
+    public void createBooking_WhenCourtIdIsNotExisted() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -510,12 +518,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking12", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "C", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "C", "B");
         assertEquals("CB-003", result_code, "Pass.");
     }
 
     @Test
-    public void create_Booking_failWhenPlayerIdIsNotExisted() throws Exception{
+    public void createBooking_WhenPlayerIdIsNotExisted() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -528,12 +536,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking12", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "D");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "D");
         assertEquals("CB-004", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_failWhenStartTime_less_than_Date() throws Exception{
+    public void createBooking_WhenStartTimeLessThanDateNow() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -546,12 +554,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-03-01"), Time.valueOf("10:10:00"), Time.valueOf("18:35:00"), "1", "2", "A", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-03-01"), Time.valueOf("10:10:00"), Time.valueOf("18:35:00"), "1", "2", "A", "B");
         assertEquals("CB-005", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_failWhenStartTime_less_than_openTime() throws Exception{
+    public void createBooking_WhenStartTimeLessThanOpenTime() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -564,12 +572,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("06:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("06:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
         assertEquals("CB-006", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_failWhenEndTime_longer_than_closeTime() throws Exception{
+    public void createBooking_WhenEndTimeLongerThanCloseTime() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -582,12 +590,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("07:10:00"), Time.valueOf("21:30:00"), "1", "2", "A", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("07:10:00"), Time.valueOf("21:30:00"), "1", "2", "A", "B");
         assertEquals("CB-007", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_failWhenEndTime_less_than_startTime() throws Exception{
+    public void createBooking_WhenEndTimeLessThanStartTime() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -600,12 +608,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("08:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("08:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
         assertEquals("CB-008", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_failWhenPlayTimeIsInvalid() throws Exception{
+    public void createBooking_WhenPlayTimeIsInvalid() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -618,12 +626,12 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
         //actual test
-        String result_code = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
+        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
         assertEquals("CB-009", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_failWhenOverlappedWithOtherBookings() throws Exception{
+    public void createBooking_WhenOverlappedWithOtherBookings() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -635,13 +643,20 @@ public class TestConnectionDB {
         db.createCityCenter("2", "1");
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
+        db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
-        assertEquals("CB-010", result_code, "Pass.");
+        String result_code1 = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code2 = db.createBooking("booking3", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("09:30:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
+        String result_code3 = db.createBooking("booking4", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("09:45:00"), Time.valueOf("11:00:00"), "1", "2", "A", "B");
+        String result_code4 = db.createBooking("booking5", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
+        assertEquals("CB-010", result_code1, "Pass.");
+        assertEquals("CB-010", result_code2, "Pass.");
+        assertEquals("CB-010", result_code3, "Pass.");
+        assertEquals("CB-010", result_code4, "Pass.");
     }
 
     @Test
-    public void createBooking_failWhenPlayerIdHavePendingBooking() throws Exception{
+    public void createBooking_WhenPlayerIdHavePendingBooking() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -652,17 +667,33 @@ public class TestConnectionDB {
         db.createCity("1");
         db.createCityCenter("2", "1");
         db.createCityCenterCourt("A", "1", "2");
+        db.createStaff("A", "1", "2");
         db.createPlayer("B");
+        String sql = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        db.createBooking("pending1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-04-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
+        PreparedStatement smt = db.getConnect().prepareStatement(sql);
+
+        smt.setString(1, "pending1");
+        smt.setString(2, "2020-04-07 18:04:00");
+        smt.setString(3, "2019-04-15");
+        smt.setString(4, "09:00:00");
+        smt.setString(5, "10:00:00");
+        smt.setString(6, "1");
+        smt.setString(7, "2");
+        smt.setString(8, "A");
+        smt.setString(9, "B");
+        smt.setString(10, "0");
+
+
+        smt.execute();
 
         //actual test
-        String result_code = db.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-02"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code = db.createBooking("1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-03"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-011", result_code, "Pass.");
     }
 
     @Test
-    public void create_booking_failWhenPlayerIdHaveNoMoreThan3Booking() throws Exception{
+    public void createBooking_WhenPlayerIdHaveNoMoreThan3Booking() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -680,13 +711,13 @@ public class TestConnectionDB {
         db.createBooking("booking3", Timestamp.valueOf("2020-04-09 09:27:18"), Date.valueOf("2020-05-05"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
 
         //actual test
-        String result_code = db.createBooking("booking4", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-06"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "E");
+        String result_code = db.createBooking("booking4", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-06"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-012", result_code, "Pass.");
     }
 
     //test cancel booking
     @Test
-    public void cancel_booking_failWhenBookingIdIsInvalid() throws Exception{
+    public void cancelBooking_WhenBookingIdIsInvalid() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -704,7 +735,7 @@ public class TestConnectionDB {
     }
 
     @Test
-    public void cancel_booking_failWhenPlayerIdIsInvalid() throws Exception{
+    public void cancelBooking_WhenPlayerIdIsInvalid() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -722,7 +753,7 @@ public class TestConnectionDB {
     }
 
     @Test
-    public void cancel_booking_failWhenPlayerIdIsNotExited() throws Exception{
+    public void cancelBooking_WhenPlayerIdIsNotExited() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -743,7 +774,7 @@ public class TestConnectionDB {
     }
 
     @Test
-    public void cancel_booking_failWhenBookingIdIsNotExisted() throws Exception{
+    public void cancelBooking_WhenBookingIdIsNotExisted() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -763,7 +794,7 @@ public class TestConnectionDB {
     }
 
     @Test
-    public void cancel_booking_failWhenPlayerIdDoesNotOwnTheBooking() throws Exception{
+    public void cancelBooking_WhenPlayerIdDoesNotOwnTheBooking() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -784,7 +815,7 @@ public class TestConnectionDB {
     }
 
     @Test
-    public void cancel_booking_failWhenViolating24HoursBeforeStartTime() throws Exception{
+    public void cancelBooking_WhenViolating24HoursBeforeStartTime() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up database
         db.cleanTable("city");
@@ -797,7 +828,7 @@ public class TestConnectionDB {
         db.createCityCenterCourt("A", "1", "2");
         db.createPlayer("B");
 
-        db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-06"), Time.valueOf("07:00:00"), Time.valueOf("08:00:00"), "1", "2", "A", "B");
+        db.createBooking("booking1", Timestamp.valueOf("2020-04-11 18:12:00"), Date.valueOf("2020-04-11"), Time.valueOf("20:00:00"), Time.valueOf("21:00:00"), "1", "2", "A", "B");
         //actual test
         String result_code = db.cancelBooking("booking1","B");
         assertEquals("CA-005", result_code, "Pass.");
@@ -821,12 +852,12 @@ public class TestConnectionDB {
 
         db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.updateBookingStatus("1","booking1","1","2","S");
+        String result_code = db.updateBookingStatus('1',"booking1","1","2","S");
         assertEquals("200", result_code, "Pass.");
     }
 
     @Test
-    public void updateBooingStatus_failWhenBookingIdIsInvalid() throws  Exception{
+    public void updateBooingStatus_WhenBookingIdIsInvalid() throws  Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up some data
         db.cleanTable("city");
@@ -842,12 +873,12 @@ public class TestConnectionDB {
 
         db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.updateBookingStatus("1","#booking","1","2","S");
+        String result_code = db.updateBookingStatus('1',"#booking","1","2","S");
         assertEquals("UBS-000", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_failWhenCityIdIsInvalid() throws Exception{
+    public void updateBookingStatus_WhenCityIdIsInvalid() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up some data
         db.cleanTable("city");
@@ -863,12 +894,12 @@ public class TestConnectionDB {
 
         db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.updateBookingStatus("1","booking1","#","2","S");
+        String result_code = db.updateBookingStatus('1',"booking1","#","2","S");
         assertEquals("UBS-001", result_code, "Pass.");
     }
 
     @Test
-    public void undateBookingStatus_failWhenCenterIdIsInvalid() throws Exception{
+    public void updateBookingStatus_WhenCenterIdIsInvalid() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up some data
         db.cleanTable("city");
@@ -884,12 +915,12 @@ public class TestConnectionDB {
 
         db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.updateBookingStatus("1","booking1","1","#","S");
+        String result_code = db.updateBookingStatus('1',"booking1","1","#","S");
         assertEquals("UBS-002", result_code, "Pass.");
     }
 
     @Test
-    public void undateBookingStatus_failWhenStaffIdIsInvalid() throws Exception{
+    public void updateBookingStatus_WhenStaffIdIsInvalid() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up some data
         db.cleanTable("city");
@@ -905,12 +936,12 @@ public class TestConnectionDB {
 
         db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.updateBookingStatus("1","booking1","1","2","#");
+        String result_code = db.updateBookingStatus('1',"booking1","1","2","#");
         assertEquals("UBS-003", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_failWhenBookingIdIsNotExisted() throws Exception{
+    public void updateBookingStatus_WhenBookingIdIsNotExisted() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up some data
         db.cleanTable("city");
@@ -926,12 +957,12 @@ public class TestConnectionDB {
 
         db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.updateBookingStatus("1","booking2","1","2","S");
+        String result_code = db.updateBookingStatus('1',"booking2","1","2","S");
         assertEquals("UBS-004", result_code, "Pass.");
     }
 
     @Test
-    public void undateBookingStatus_failWhenCityIdIsNotExisted() throws Exception{
+    public void updateBookingStatus_WhenCityIdIsNotExisted() throws Exception{
         ConnectionDB db = new ConnectionDB();
         // clean up some data
         db.cleanTable("city");
@@ -947,7 +978,78 @@ public class TestConnectionDB {
 
         db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
         //actual test
-        String result_code = db.updateBookingStatus("1","booking1","3","2","S");
+        String result_code = db.updateBookingStatus('1',"booking1","3","2","S");
         assertEquals("UBS-005", result_code, "Pass.");
     }
+
+    @Test
+    public void updateBookingStatus_WhenCenterIdIsNotExisted() throws Exception{
+        ConnectionDB db = new ConnectionDB();
+        // clean up some data
+        db.cleanTable("city");
+        db.cleanTable("center");
+        db.cleanTable("staff");
+        db.cleanTable("booking");
+        //scenario
+        db.createCity("1");
+        db.createCityCenter("2", "1");
+        db.createCityCenterCourt("A", "1", "2");
+        db.createStaff("S","1","2");
+        db.createPlayer("B");
+
+        db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
+        //actual test
+        String result_code = db.updateBookingStatus('1',"booking1","1","404","S");
+        assertEquals("UBS-006", result_code, "Pass.");
+    }
+
+    @Test
+    public void updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId() throws Exception{
+        ConnectionDB db = new ConnectionDB();
+        // clean up some data
+        db.cleanTable("city");
+        db.cleanTable("center");
+        db.cleanTable("staff");
+        db.cleanTable("booking");
+        //scenario
+        db.createCity("1");
+        db.createCityCenter("2", "1");
+        db.createCityCenterCourt("A", "1", "2");
+        db.createStaff("S","1","2");
+        db.createPlayer("B");
+
+        db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "2", "A", "B");
+        //actual test
+        String result_code = db.updateBookingStatus('1',"booking1","1","2","S2");
+        assertEquals("UBS-007", result_code, "Pass.");
+    }
+
+    @Test
+    public void updateBookingStatus_bookingIdDoesNotBelongTocityIdcenterId() throws Exception{
+        ConnectionDB db = new ConnectionDB();
+        // clean up some data
+        db.cleanTable("city");
+        db.cleanTable("center");
+        db.cleanTable("staff");
+        db.cleanTable("booking");
+        //scenario
+        db.createCity("1");
+        db.createCityCenter("1", "1");
+        db.createCityCenterCourt("A", "1", "1");
+        db.createStaff("S","1","1");
+
+        db.createCity("2");
+        db.createCityCenter("2", "2");
+        db.createCityCenterCourt("B", "2", "2");
+        db.createStaff("S2","2","2");
+
+        db.createPlayer("B");
+
+        db.createBooking("booking1", Timestamp.valueOf("2020-04-07 18:04:00"), Date.valueOf("2020-04-15"), Time.valueOf("09:00:00"), Time.valueOf("10:00:00"), "1", "1", "A", "B");
+        //actual test
+        String result_code = db.updateBookingStatus('1',"booking1","2","2","S2");
+        assertEquals("UBS-008", result_code, "Pass.");
+    }
+
 }
+
