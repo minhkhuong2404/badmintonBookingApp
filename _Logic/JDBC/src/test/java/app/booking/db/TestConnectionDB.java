@@ -43,13 +43,6 @@ public class TestConnectionDB {
         // clean up database
         db.cleanTable("city");
         // scenario
-        String sql = "INSERT INTO city VALUE (?)";
-
-        PreparedStatement smt = db.getConnect().prepareStatement(sql);
-
-        smt.setString(1, "E");
-
-        smt.execute();
          db.createCity("E");
         // actual test
         String result_code = db.createCity("E");
@@ -420,6 +413,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         // scenario
         db.createCity("1");
@@ -438,6 +432,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -456,6 +451,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -475,6 +471,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -493,6 +490,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -511,6 +509,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -529,6 +528,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -547,6 +547,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -565,6 +566,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -583,6 +585,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -601,6 +604,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -619,6 +623,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -637,6 +642,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -662,6 +668,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -699,6 +706,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -723,6 +731,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -740,6 +749,7 @@ public class TestConnectionDB {
         // clean up database
         db.cleanTable("city");
         db.cleanTable("center");
+        db.cleanTable("player");
         db.cleanTable("staff");
         db.cleanTable("booking");
         //scenario
@@ -759,6 +769,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -780,6 +791,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -800,6 +812,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -821,6 +834,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -842,6 +856,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -863,6 +878,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -884,6 +900,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -905,6 +922,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -926,6 +944,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -947,6 +966,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -968,6 +988,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -989,6 +1010,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -1010,6 +1032,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
@@ -1031,6 +1054,7 @@ public class TestConnectionDB {
         db.cleanTable("city");
         db.cleanTable("center");
         db.cleanTable("staff");
+        db.cleanTable("player");
         db.cleanTable("booking");
         //scenario
         db.createCity("1");
