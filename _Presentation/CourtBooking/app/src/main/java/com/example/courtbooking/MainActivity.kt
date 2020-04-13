@@ -29,7 +29,7 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        
         profileImage = findViewById(R.id.profileImage)
         userNameTV = findViewById(R.id.usernameTextView)
         userEmailTV = findViewById(R.id.emailTextView)
@@ -82,7 +82,6 @@ class MainActivity: AppCompatActivity() {
 
                 val toMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
                 startActivity(toMainScreen)
-
             }
         }
     }
@@ -98,7 +97,7 @@ class MainActivity: AppCompatActivity() {
                     val id = `object`?.getString("id")
                     val imageURL = "https://graph.facebook.com/" + id + "/picture?type=normal"
 
-                    Log.i("b", "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
+                    Log.i("b", "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
                     Log.i("k", "$firstName $lastName")
                     Log.i("k", `object`?.toString())
                     userNameTV.text = "$firstName $lastName"
@@ -125,6 +124,7 @@ class MainActivity: AppCompatActivity() {
     fun checkLoginStatus(){
         if (AccessToken.getCurrentAccessToken() != null){
             loadUserData(AccessToken.getCurrentAccessToken());
+            toBookingButton.visibility = View.VISIBLE
         }
     }
 

@@ -6,126 +6,126 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="28"
-8-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+8-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+9-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:5:5-66
-11-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:5:22-64
+11-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:5:5-66
+11-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-12-->[com.android.installreferrer:installreferrer:1.0] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/f4b8f09f08a4866936702f4bf5d1d0bf/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
-12-->[com.android.installreferrer:installreferrer:1.0] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/f4b8f09f08a4866936702f4bf5d1d0bf/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+12-->[com.android.installreferrer:installreferrer:1.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\c1a9cf2ff7e53e2f4e7cfaccaf95ebbb\jetified-installreferrer-1.0\AndroidManifest.xml:9:5-110
+12-->[com.android.installreferrer:installreferrer:1.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\c1a9cf2ff7e53e2f4e7cfaccaf95ebbb\jetified-installreferrer-1.0\AndroidManifest.xml:9:22-107
 13
 14    <application
-14-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:6:5-40:19
+14-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:6:5-40:19
 15        android:allowBackup="true"
-15-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:7:9-35
+15-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:7:9-35
 16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.1.0] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/298ea8177a06e7e73d842fb4acd8415b/core-1.1.0/AndroidManifest.xml:24:18-86
+16-->[androidx.core:core:1.1.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\298ea8177a06e7e73d842fb4acd8415b\core-1.1.0\AndroidManifest.xml:24:18-86
 17        android:debuggable="true"
 18        android:extractNativeLibs="false"
 19        android:icon="@mipmap/ic_launcher"
-19-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:8:9-43
+19-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:8:9-43
 20        android:label="@string/app_name"
-20-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:9:9-41
+20-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:9:9-41
 21        android:roundIcon="@mipmap/ic_launcher_round"
-21-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:10:9-54
+21-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:10:9-54
 22        android:supportsRtl="true"
-22-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:11:9-35
+22-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:11:9-35
 23        android:testOnly="true"
 24        android:theme="@style/AppTheme" >
-24-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:12:9-40
+24-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:12:9-40
 25        <activity android:name="com.example.courtbooking.MainActivity" >
-25-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:13:9-19:20
-25-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:13:19-47
+25-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:13:9-19:20
+25-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:13:19-47
 26            <intent-filter>
-26-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:14:13-18:29
+26-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:14:13-18:29
 27                <action android:name="android.intent.action.MAIN" />
-27-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:15:17-69
-27-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:15:25-66
+27-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:15:17-69
+27-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:15:25-66
 28
 29                <category android:name="android.intent.category.LAUNCHER" />
-29-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:17:17-77
-29-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:17:27-74
+29-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:17:17-77
+29-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:17:27-74
 30            </intent-filter>
 31        </activity>
 32        <activity android:name="com.example.courtbooking.MainScreenActivity" />
-32-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:21:9-55
-32-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:21:19-53
+32-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:21:9-55
+32-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:21:19-53
 33
 34        <meta-data
-34-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:23:9-24:54
+34-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:23:9-24:54
 35            android:name="com.facebook.sdk.ApplicationId"
-35-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:23:20-65
+35-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:23:20-65
 36            android:value="@string/facebook_app_id" />
-36-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:24:13-52
+36-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:24:13-52
 37
 38        <activity
-38-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:26:9-29:48
+38-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:26:9-29:48
 39            android:name="com.facebook.FacebookActivity"
-39-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:26:19-63
+39-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:26:19-63
 40            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-40-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:27:13-113
+40-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:27:13-114
 41            android:label="@string/app_name"
-41-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:29:13-45
+41-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:29:13-45
 42            android:theme="@style/com_facebook_activity_theme" />
-42-->[com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/d278022500255c5b072b6c791660bc4e/jetified-facebook-common-5.15.3/AndroidManifest.xml:33:13-63
+42-->[com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:33:13-63
 43        <activity
-43-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:30:9-39:20
+43-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:30:9-39:20
 44            android:name="com.facebook.CustomTabActivity"
-44-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:31:13-58
+44-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:31:13-58
 45            android:exported="true" >
-45-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:32:13-36
+45-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:32:13-36
 46            <intent-filter>
-46-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:33:13-38:29
+46-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:33:13-38:29
 47                <action android:name="android.intent.action.VIEW" />
-47-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:34:17-69
-47-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:34:25-66
+47-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:34:17-69
+47-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:34:25-66
 48
 49                <category android:name="android.intent.category.DEFAULT" />
-49-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:35:17-76
-49-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:35:27-73
+49-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:35:17-76
+49-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:35:27-73
 50                <category android:name="android.intent.category.BROWSABLE" />
-50-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:36:17-78
-50-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:36:27-75
+50-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:36:17-78
+50-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:36:27-75
 51
 52                <data android:scheme="@string/fb_login_protocol_scheme" />
-52-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:37:17-75
-52-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:37:23-72
+52-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:37:17-75
+52-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:37:23-72
 53            </intent-filter>
 54            <intent-filter>
-54-->[com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/d278022500255c5b072b6c791660bc4e/jetified-facebook-common-5.15.3/AndroidManifest.xml:39:13-48:29
+54-->[com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:39:13-48:29
 55                <action android:name="android.intent.action.VIEW" />
-55-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:34:17-69
-55-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:34:25-66
+55-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:34:17-69
+55-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:34:25-66
 56
 57                <category android:name="android.intent.category.DEFAULT" />
-57-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:35:17-76
-57-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:35:27-73
+57-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:35:17-76
+57-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:35:27-73
 58                <category android:name="android.intent.category.BROWSABLE" />
-58-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:36:17-78
-58-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:36:27-75
+58-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:36:17-78
+58-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:36:27-75
 59
 60                <data
-60-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:37:17-75
+60-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:37:17-75
 61                    android:host="cct.com.example.courtbooking"
 62                    android:scheme="fbconnect" />
-62-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:37:23-72
+62-->C:\Users\bill\Documents\GitHub\teamepe2020\_Presentation\CourtBooking\app\src\main\AndroidManifest.xml:37:23-72
 63            </intent-filter>
 64        </activity>
 65        <activity android:name="com.facebook.CustomTabMainActivity" />
-65-->[com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/d278022500255c5b072b6c791660bc4e/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:9-71
-65-->[com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/d278022500255c5b072b6c791660bc4e/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:19-68
+65-->[com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:34:9-71
+65-->[com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:34:19-68
 66
 67        <provider
-67-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c033e5b7082567e855107417291e48d2/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+67-->[com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
 68            android:name="com.squareup.picasso.PicassoProvider"
-68-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c033e5b7082567e855107417291e48d2/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+68-->[com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
 69            android:authorities="com.example.courtbooking.com.squareup.picasso"
-69-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c033e5b7082567e855107417291e48d2/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+69-->[com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
 70            android:exported="false" />
-70-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c033e5b7082567e855107417291e48d2/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+70-->[com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
 71        <!--
 72         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
 73         with the application context. This config is merged in with the host app's manifest,
@@ -136,25 +136,25 @@
 78         a completely different provider.
 79        -->
 80        <provider
-80-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:39:9-42:40
+80-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:39:9-42:40
 81            android:name="com.facebook.internal.FacebookInitProvider"
-81-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:40:13-70
+81-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:40:13-70
 82            android:authorities="com.example.courtbooking.FacebookInitProvider"
-82-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:41:13-72
+82-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:41:13-72
 83            android:exported="false" />
-83-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:42:13-37
+83-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:42:13-37
 84
 85        <receiver
-85-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:44:9-50:20
+85-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:44:9-50:20
 86            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-86-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:45:13-86
+86-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:45:13-86
 87            android:exported="false" >
-87-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:46:13-37
+87-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:46:13-37
 88            <intent-filter>
-88-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:47:13-49:29
+88-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:47:13-49:29
 89                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-89-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:17-95
-89-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/6e97429398a8560f152ca5ff7db382ef/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:25-92
+89-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:48:17-95
+89-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:48:25-92
 90            </intent-filter>
 91        </receiver>
 92    </application>
