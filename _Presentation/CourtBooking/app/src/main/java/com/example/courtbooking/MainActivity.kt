@@ -45,6 +45,7 @@ class MainActivity: AppCompatActivity() {
         }
 
         facebookLoginButton.setPermissions(listOf("public_profile", "email"))
+        checkLoginStatus();
 
         facebookLoginButton.registerCallback(callBackManager,  object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
@@ -119,6 +120,12 @@ class MainActivity: AppCompatActivity() {
         parameter.putString("fields", "email, first_name, last_name")
         request.parameters = parameter
         request.executeAsync()
+    }
+
+    fun checkLoginStatus(){
+        if (AccessToken.getCurrentAccessToken() != null){
+            loadUserData(AccessToken.getCurrentAccessToken());
+        }
     }
 
 }
