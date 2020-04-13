@@ -3,6 +3,8 @@ package com.example.courtbooking
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +24,7 @@ class MainActivity: AppCompatActivity() {
     lateinit var userEmailTV: TextView
     lateinit var facebookLoginButton: LoginButton
     lateinit var callBackManager: CallbackManager
+    lateinit var toBookingButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,14 @@ class MainActivity: AppCompatActivity() {
         userEmailTV = findViewById(R.id.emailTextView)
         facebookLoginButton = findViewById(R.id.loginFacebookButton)
         callBackManager = CallbackManager.Factory.create()
+        toBookingButton = findViewById(R.id.toMainScreenButton)
+
+        // make the button invisible
+        toBookingButton.visibility = View.INVISIBLE
+        toBookingButton.setOnClickListener {
+            val toMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
+            startActivity(toMainScreen)
+        }
 
         facebookLoginButton.setPermissions(listOf("public_profile", "email"))
 
@@ -62,9 +73,11 @@ class MainActivity: AppCompatActivity() {
                 profileImage.setImageResource(0)
                 userNameTV.text = ""
                 userEmailTV.text = ""
+                toBookingButton.visibility = View.INVISIBLE
                 Toast.makeText(this@MainActivity, "Log out successful", Toast.LENGTH_SHORT).show()
             } else {
                 loadUserData(currentAccessToken)
+                toBookingButton.visibility = View.VISIBLE
 
                 val toMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
                 startActivity(toMainScreen)
