@@ -1,7 +1,7 @@
 # Homework#2 day9  
 ## Team E  
 ### **Notes**  
-* Choose user's Facebook Id and email to be unique  
+* Choose user's Facebook ID and email to be unique  
 
 Risk | Mitigate
 ---- | --------
