@@ -1,8 +1,8 @@
 package com.example.courtbooking
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -29,6 +29,9 @@ class MainScreenActivity : AppCompatActivity(),
     lateinit var bookList: ArrayList<Booking>
     lateinit var centerList: List<Center>
 
+    lateinit var city: String   // for later choosing
+    lateinit var date: String   // for later choosing
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -46,23 +49,19 @@ class MainScreenActivity : AppCompatActivity(),
         dateChooser = findViewById<EditText>(R.id.et_date)
         welcomeText = findViewById<TextView>(R.id.welcome_text_1)
         welcomeText2 = findViewById<TextView>(R.id.welcome_text_2)
-        //result = findViewById(R.id.tv_result) as TextView
-        //result2 = findViewById(R.id.tv_result2) as TextView
 
         // City list store here
         val cities = arrayOf("City#A", "City#B", "City#C", "City#D", "City#E") // For testing
 
         // Show first item on the cities array on the chosenCity spinner
-
         cityChooser.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cities)
 
         // On City Choosing Listener
-
         cityChooser.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) { /* Just a place holder */ }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                result.text = cities[position] // For testing
+                city = cities[position] // For testing
             }
         }
 
@@ -73,19 +72,17 @@ class MainScreenActivity : AppCompatActivity(),
         val day = cal.get(Calendar.DAY_OF_MONTH)
         // Set default as current day
         et_date.setText("$day/$month/$year")
-        //result2.text = et_date.text // For testing
+        date = et_date.text.toString() // For testing
 
         // On click of date chooser
-
         dateChooser.setOnClickListener {
-
             // Setting up date picker dialog
             val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ _: DatePicker?, mYear: Int, mMonth: Int, mDay: Int ->
                 // Add 1, since in Kotlin start from 0 - 11
                 val finalMonth : Int = mMonth + 1;
                 // Set result to EditText
                 et_date.setText("$mDay/$finalMonth/$mYear")
-                //result2.text = et_date.text; // For testing
+                date = et_date.text.toString(); // For testing
             }, year, month, day)
             datePicker.datePicker.minDate = System.currentTimeMillis() - 1000
             // Show Date Dialog
@@ -95,6 +92,8 @@ class MainScreenActivity : AppCompatActivity(),
 
         // On button clicked Show Available Slots
         b_show_slots.setOnClickListener {
+            Toast.makeText(this, "City: " + city + "\nDate: " + date, Toast.LENGTH_SHORT).show()
+
             val selectedCity = cityChooser.selectedItem
             val randomCenter = cities.indexOf(selectedCity) + (1..3).random()
             // Initialize the CENTER recycler view
@@ -179,6 +178,7 @@ class MainScreenActivity : AppCompatActivity(),
         }
     }
 
+    @SuppressLint("WrongConstant")
     private fun initRecyclerViewCenter(numOfCenter: Int){
         // Calling the recycler view for Center
         centerList = getCenterCourtSlotList(numOfCenter)

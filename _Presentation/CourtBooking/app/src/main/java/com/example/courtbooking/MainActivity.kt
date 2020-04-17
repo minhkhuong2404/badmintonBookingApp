@@ -14,7 +14,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.facebook.*
 import com.facebook.AccessToken
 import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import org.json.JSONException
 import org.json.JSONObject
@@ -101,7 +100,7 @@ class MainActivity: AppCompatActivity() {
                 // after login
                 loadUserData(currentAccessToken)
 
-                customFacebookButton.text = "Logout"
+                customFacebookButton.text = "Log out"
                 toBookingButton.visibility = View.VISIBLE
 
                 val toMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
@@ -147,7 +146,6 @@ class MainActivity: AppCompatActivity() {
 
         })
 
-
         val parameter = Bundle()
         parameter.putString("fields", "email, first_name, last_name")
         request.parameters = parameter
@@ -156,8 +154,9 @@ class MainActivity: AppCompatActivity() {
 
     fun checkLoginStatus(){
         if (AccessToken.getCurrentAccessToken() != null){
-            Toast.makeText(this, AccessToken.getCurrentAccessToken().permissions.toString(), Toast.LENGTH_SHORT).show()
+            // setup the screen if the user already login (token is still valid)
             loadUserData(AccessToken.getCurrentAccessToken())
+            customFacebookButton.text = "Log out"
             toBookingButton.visibility = View.VISIBLE
         }
     }
@@ -173,7 +172,6 @@ class MainActivity: AppCompatActivity() {
             HttpMethod.DELETE,
             GraphRequest.Callback { LoginManager.getInstance().logOut() }).executeAsync()
     }
-
-
+    
 }
 
