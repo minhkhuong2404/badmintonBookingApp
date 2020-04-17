@@ -1263,6 +1263,7 @@ id et_date
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fakeFacebookButton
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1297,7 +1298,6 @@ id line1
 id line3
 id listMode
 id list_item
-id loginFacebookButton
 id masked
 id media_actions
 id message
@@ -1333,6 +1333,7 @@ id progress_bar
 id progress_circular
 id progress_horizontal
 id radio
+id realFacebookButton
 id right
 id right_icon
 id right_side

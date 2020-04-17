@@ -12,17 +12,21 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.facebook.*
+import com.facebook.AccessToken
+import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import org.json.JSONException
 import org.json.JSONObject
+
 
 class MainActivity: AppCompatActivity() {
 
     lateinit var profileImage: ImageView
     lateinit var userNameTV: TextView
     lateinit var userEmailTV: TextView
-    lateinit var facebookLoginButton: LoginButton
+    lateinit var realFacebookButton: LoginButton
+    lateinit var customFacebookButton: Button
     lateinit var callBackManager: CallbackManager
     lateinit var toBookingButton: Button
 
@@ -33,7 +37,8 @@ class MainActivity: AppCompatActivity() {
         profileImage = findViewById(R.id.profileImage)
         userNameTV = findViewById(R.id.usernameTextView)
         userEmailTV = findViewById(R.id.emailTextView)
-        facebookLoginButton = findViewById(R.id.loginFacebookButton)
+        realFacebookButton = findViewById(R.id.realFacebookButton)
+        customFacebookButton = findViewById(R.id.fakeFacebookButton)
         callBackManager = CallbackManager.Factory.create()
         toBookingButton = findViewById(R.id.toMainScreenButton)
 
@@ -44,22 +49,37 @@ class MainActivity: AppCompatActivity() {
             startActivity(toMainScreen)
         }
 
-        facebookLoginButton.setPermissions(listOf("public_profile", "email"))
-        checkLoginStatus();
+        //
+        realFacebookButton.setPermissions(listOf("public_profile", "email"))
 
-        facebookLoginButton.registerCallback(callBackManager,  object : FacebookCallback<LoginResult> {
-            override fun onSuccess(result: LoginResult?) {
+        //
+        checkLoginStatus()
 
+        //
+        customFacebookButton.setOnClickListener {
+            if(AccessToken.getCurrentAccessToken() == null) {
+                // login
+                realFacebookButton.performClick()
+            } else {
+                // logout
+                disconnectFromFacebook()
             }
+        }
 
-            override fun onCancel() {
+//        realFacebookButton.registerCallback(callBackManager,  object : FacebookCallback<LoginResult> {
+//            override fun onSuccess(result: LoginResult?) {
+//
+//            }
+//
+//            override fun onCancel() {
+//
+//            }
+//
+//            override fun onError(error: FacebookException?) {
+//                Toast.makeText(this@MainActivity, "Login Failed. May be check your internet connection", Toast.LENGTH_SHORT).show()
+//            }
+//        })
 
-            }
-
-            override fun onError(error: FacebookException?) {
-                Toast.makeText(this@MainActivity, "Login Failed. May be check your internet connection", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -70,14 +90,18 @@ class MainActivity: AppCompatActivity() {
     var tokenTracker = object : AccessTokenTracker() {
         override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken?, currentAccessToken: AccessToken?) {
             if (currentAccessToken == null) {
-                // the user log out
+                // after the user log out
                 profileImage.setImageResource(0)
                 userNameTV.text = ""
                 userEmailTV.text = ""
+                customFacebookButton.text = "Sign in with Facebook"
                 toBookingButton.visibility = View.INVISIBLE
                 Toast.makeText(this@MainActivity, "Log out successful", Toast.LENGTH_SHORT).show()
             } else {
+                // after login
                 loadUserData(currentAccessToken)
+
+                customFacebookButton.text = "Logout"
                 toBookingButton.visibility = View.VISIBLE
 
                 val toMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
@@ -90,27 +114,36 @@ class MainActivity: AppCompatActivity() {
         val request = GraphRequest.newMeRequest(newAccessToken, object : GraphRequest.GraphJSONObjectCallback {
             override fun onCompleted(`object`: JSONObject?, response: GraphResponse?) {
                 try {
-                    Log.i("m", "read email")
-                    val firstName = `object`?.getString("first_name")
-                    val lastName = `object`?.getString("last_name")
-                    val email = `object`?.getString("email")
-                    val id = `object`?.getString("id")
-                    val imageURL = "https://graph.facebook.com/" + id + "/picture?type=normal"
 
-                    Log.i("b", "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL")
-                    Log.i("k", "$firstName $lastName")
-                    Log.i("k", `object`?.toString())
-                    userNameTV.text = "$firstName $lastName"
-                    userEmailTV.text = email
-                    val requestOptions = RequestOptions()
-                    requestOptions.dontAnimate()
+                    for (permission in newAccessToken.permissions) {
+                        if (permission.equals("public_profile")) {
+                            // get user's name
+                            Log.i("Login", "Get user's name")
+                            val firstName = `object`?.getString("first_name")
+                            val lastName = `object`?.getString("last_name")
+                            userNameTV.text = "$firstName $lastName"
 
-                    Glide.with(this@MainActivity).load(imageURL).into(profileImage)
+                            // get user's profile picture
+                            Log.i("Login", "Get user's profile picture")
+                            val id = `object`?.getString("id")
+                            val imageURL = "https://graph.facebook.com/$id/picture?type=normal"
+
+                            val requestOptions = RequestOptions()
+                            requestOptions.dontAnimate()
+                            Glide.with(this@MainActivity).load(imageURL).into(profileImage)
+
+                        } else if (permission.equals("email")) {
+                            // get user's email
+                            Log.i("m", "read email")
+                            val email = `object`?.getString("email")
+                            userEmailTV.text = email
+                        }
+                    } // end for loop
 
                 } catch(e: JSONException) {
                     e.printStackTrace()
                 }
-            }
+            } // end onCompleted
 
         })
 
@@ -123,10 +156,24 @@ class MainActivity: AppCompatActivity() {
 
     fun checkLoginStatus(){
         if (AccessToken.getCurrentAccessToken() != null){
-            loadUserData(AccessToken.getCurrentAccessToken());
+            Toast.makeText(this, AccessToken.getCurrentAccessToken().permissions.toString(), Toast.LENGTH_SHORT).show()
+            loadUserData(AccessToken.getCurrentAccessToken())
             toBookingButton.visibility = View.VISIBLE
         }
     }
+
+    fun disconnectFromFacebook() {
+        if (AccessToken.getCurrentAccessToken() == null) {
+            return  // already logged out
+        }
+        GraphRequest(
+            AccessToken.getCurrentAccessToken(),
+            "/me/permissions/",
+            null,
+            HttpMethod.DELETE,
+            GraphRequest.Callback { LoginManager.getInstance().logOut() }).executeAsync()
+    }
+
 
 }
 

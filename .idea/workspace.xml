@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ceb166c2-392d-4b71-b058-373fd3daa057" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/db/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/db/ConnectionDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/CourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/CourtSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/Time.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/Time.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/db/TestConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/db/TestConnectionDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/slot/TestCourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/slot/TestCourtSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Presentation/CourtBooking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Presentation/CourtBooking/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Presentation/CourtBooking/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Presentation/CourtBooking/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1aZI3SE9GIZWIUs3yIQg38d6fRB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ceb166c2-392d-4b71-b058-373fd3daa057" name="Default Changelist" comment="" />
+      <created>1586936489097</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586936489097</updated>
+    </task>
+    <servers />
+  </component>
+</project>
