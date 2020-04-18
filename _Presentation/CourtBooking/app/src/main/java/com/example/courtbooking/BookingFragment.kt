@@ -66,10 +66,11 @@ class BookingFragment(val date: String, val city: String, val center: String, va
                 startTime = startForChoosing[position] // For testing
                 endTime = toTimeString(toMinute(startTime) + 45)
                 endForChoosing = ArrayList<String>()
-                if (toMinute(startSlot) + 45 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 45) ) }   // 45 minutes booking
-                if (toMinute(startSlot) + 60 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 60) ) }   // 60 minutes booking
-                if (toMinute(startSlot) + 75 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 75) ) }   // 75 minutes booking
-                if (toMinute(startSlot) + 90 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 90) ) }   // 90 minutes booking
+                if (toMinute(startTime) + 45 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 45) ) }   // 45 minutes booking
+                if (toMinute(startTime) + 60 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 60) ) }   // 60 minutes booking
+                if (toMinute(startTime) + 75 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 75) ) }   // 75 minutes booking
+                if (toMinute(startTime) + 90 <= toMinute(endSlot)) { endForChoosing.add( toTimeString(toMinute(startTime) + 90) ) }   // 90 minutes booking
+
                 endSpinner.adapter = ArrayAdapter<String>(mainScreen, android.R.layout.simple_list_item_1, endForChoosing)
             }
         }
