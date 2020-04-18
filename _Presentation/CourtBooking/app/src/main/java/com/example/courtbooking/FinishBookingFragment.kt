@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 
-class FinishBookingFragment(val date: String, val city: String, val center: String, val court: String, val slot: String, private var myBookingInterface: MyBookingInterface): DialogFragment() {
+class FinishBookingFragment(val date: String, val city: String, val center: String, val court: String, val start: String, val end: String, private var myBookingInterface: MyBookingInterface): DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -24,8 +24,8 @@ class FinishBookingFragment(val date: String, val city: String, val center: Stri
 
         placeTV.text = "$court, $center, $city"
         dateTV.text = date
-        startTV.text = slot.split(" - ")[0]
-        endTV.text = slot.split(" - ")[1]
+        startTV.text = start
+        endTV.text = end
 
         myBookingBtn.setOnClickListener {
             dismiss()   // close the current fragment

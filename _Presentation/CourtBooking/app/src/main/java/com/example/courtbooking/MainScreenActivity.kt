@@ -208,7 +208,7 @@ class MainScreenActivity : AppCompatActivity(),
 
     override fun callBack(date: String, city: String, center: String, court: String, slot: String) {
         val fm= supportFragmentManager
-        val bookingFragment = BookingFragment(date, city, center, court, slot, this)
+        val bookingFragment = BookingFragment(date, city, center, court, slot, this, this)
         bookingFragment.show(fm, "Booking Process")
     }
 
@@ -218,10 +218,12 @@ class MainScreenActivity : AppCompatActivity(),
         bookingFragment.show(fm, "Booking Stop")
     }
 
-    override fun confirm(date: String, city: String, center: String, court: String, slot: String) {
+    override fun confirm(date: String, city: String, center: String, court: String, slot: String, start: String, end: String) {
         val fm= supportFragmentManager
-        val bookingFragment = FinishBookingFragment(date, city, center, court, slot, this)
+        val bookingFragment = FinishBookingFragment(date, city, center, court, start, end, this)
         bookingFragment.show(fm, "Booking Finish")
+
+        Toast.makeText(this, "Date: $date\nCenter: $center\nCourt: $court\nSlot: $slot\nStart: $start End: $end", Toast.LENGTH_SHORT).show()
     }
 
     override fun showBooking() {

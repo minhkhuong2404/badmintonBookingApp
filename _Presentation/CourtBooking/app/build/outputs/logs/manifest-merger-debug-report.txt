@@ -15,7 +15,6 @@ MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\bill\.gradle\caches\tran
 MERGED from [androidx.recyclerview:recyclerview-selection:1.1.0-rc01] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\61de9ab6b6903b4e2015d817fb811814\recyclerview-selection-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
 MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\0919d437ef0dcab9aa46c43379f92092\jetified-circleimageview-3.1.0\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\11bb17ef244a3f52617154bac017ff85\jetified-glide-4.11.0\AndroidManifest.xml:2:1-12:12
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\808e70a5b52106146207d061ee23c088\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\bee4f31d9cbf278cf5a5b7a0f3ad69a2\fragment-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\0dff7ffcd24d8f2b8760425d2ed3a818\vectordrawable-animated-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -85,8 +84,6 @@ MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\bill\.gradle\caches\tr
 MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\0919d437ef0dcab9aa46c43379f92092\jetified-circleimageview-3.1.0\AndroidManifest.xml:9:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\11bb17ef244a3f52617154bac017ff85\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\11bb17ef244a3f52617154bac017ff85\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:7:5-12:19
 MERGED from [com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:28:5-51:19
 MERGED from [com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:28:5-51:19
 MERGED from [androidx.core:core:1.1.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\298ea8177a06e7e73d842fb4acd8415b\core-1.1.0\AndroidManifest.xml:24:5-89
@@ -201,8 +198,6 @@ MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\bill\.gradle\caches\tr
 MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\0919d437ef0dcab9aa46c43379f92092\jetified-circleimageview-3.1.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\11bb17ef244a3f52617154bac017ff85\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\11bb17ef244a3f52617154bac017ff85\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:5:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\808e70a5b52106146207d061ee23c088\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\808e70a5b52106146207d061ee23c088\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\bee4f31d9cbf278cf5a5b7a0f3ad69a2\fragment-1.0.0\AndroidManifest.xml:20:5-44
@@ -289,14 +284,6 @@ intent-filter#action:name:android.intent.action.VIEW+category:name:android.inten
 ADDED from [com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:39:13-48:29
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:cct.com.example.courtbooking+data:scheme:fbconnect
 ADDED from [com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:39:13-48:29
-provider#com.squareup.picasso.PicassoProvider
-ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
-	android:authorities
-		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
-	android:exported
-		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
-	android:name
-		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\3c41da83e9a0768357ea52f7c4916823\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
 provider#com.facebook.internal.FacebookInitProvider
 ADDED from [com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:39:9-42:40
 	android:authorities

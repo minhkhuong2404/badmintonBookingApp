@@ -172,6 +172,6 @@ class MainActivity: AppCompatActivity() {
             HttpMethod.DELETE,
             GraphRequest.Callback { LoginManager.getInstance().logOut() }).executeAsync()
     }
-    
+
 }
 
