@@ -7,16 +7,16 @@ import retrofit2.http.*
 interface JsonPlaceHolderApi {
     @GET("posts")
     fun getPosts(
-        @Query("userId") userId: Array<Int?>?,
+        @Query("userId") userId: Int,
         @Query("_sort") sort: String?,
         @Query("_order") order: String?
-    ): Call<List<Post>>?
+    ): Call<List<BookingRequest>>?
 
     @GET("posts")
-    fun getPosts(@QueryMap parameters: Map<String, String>): Call<List<Post>>?
+    fun getPosts(@QueryMap parameters: Map<String, String>): Call<List<BookingRequest>>?
 
     @POST("posts")
-    fun createPost(@Body post: Post?): Call<Post>?
+    fun createPost(@Body post: BookingRequest?): Call<BookingRequest>?
 
     @FormUrlEncoded
     @POST("posts")
@@ -24,9 +24,9 @@ interface JsonPlaceHolderApi {
         @Field("userId") userId: Int,
         @Field("title") title: String?,
         @Field("body") text: String?
-    ): Call<Post?>?
+    ): Call<BookingRequest?>?
 
     @FormUrlEncoded
     @POST("posts")
-    fun createPost(@FieldMap fields: Map<String?, String?>?): Call<Post>?
+    fun createPost(@FieldMap fields: Map<String?, String?>?): Call<BookingRequest>?
 }

@@ -2,7 +2,6 @@ package com.example.courtbooking
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.net.http.HttpResponseCache
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,8 +15,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.net.HttpURLConnection
-import java.net.URL
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -47,6 +44,7 @@ class MainScreenActivity : AppCompatActivity(),
     private val bookNum = (0..3).random()
     private val jsonPlaceHolderApi: JsonPlaceHolderApi? = null
 
+    private var mAPIService: JsonPlaceHolderApi? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +58,9 @@ class MainScreenActivity : AppCompatActivity(),
         val jsonPlaceHolderApi = retrofit.create(
             JsonPlaceHolderApi::class.java
         )
+        // new
+        mAPIService = ApiUtils.aPIService
+
 
         // findViewById
         cityChooser = findViewById<Spinner>(R.id.sp_city)
@@ -121,8 +122,7 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide Recycler of ViewBooking
             rv_booking.adapter = null
             findViewById<RelativeLayout>(R.id.center_view).bringToFront()
-            sendPost()
-            Log.i("bb","WOWWWWWWWWWWWWWW")
+            sendPost("New title",23)
         }
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
@@ -134,13 +134,10 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide 'Show Available Slots'
             rv_center.adapter = null
             findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
-            sendGet()
-            Log.i("bb","WORKKKKKKKKKKKKKKK")
-
+            sendGet(12,"id","desc")
         }
 
     }
-
 
     // Generate fake data for testing recycler view
     private fun getBookingList() : ArrayList<Booking> {
@@ -235,104 +232,129 @@ class MainScreenActivity : AppCompatActivity(),
 
     }
 
-    fun sendGet() {
+    private fun sendGet(userId: Int, _sort : String, _order : String) {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["userId"] = "1"
+        parameters["userId"] = "12"
         parameters["_sort"] = "id"
         parameters["_order"] = "desc"
 
-        val call = jsonPlaceHolderApi?.getPosts(parameters)
+        val call = mAPIService?.getPosts(userId ,_sort,_order)
+        Log.i("bb","WORKKKKKKKKKKKKKKK33333333")
 
-        call?.enqueue(object : Callback<List<Post>> {
+        call?.enqueue(object : Callback<List<BookingRequest>> {
             override fun onResponse(
-                call: Call<List<Post>>,
-                response: Response<List<Post>>
+                call: Call<List<BookingRequest>>,
+                response: Response<List<BookingRequest>>
             ) {
                 if (!response.isSuccessful) {
-                    Log.i("bb","Code: " + response.code())
+                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+
                     return
                 }
-                val posts = response.body()!!
-                for (post in posts) {
-                    var content = ""
-                    content += """
-                        ID: ${post.id}
-                        
-                        """.trimIndent()
-                    content += """
-                        User ID: ${post.userId}
-                        
-                        """.trimIndent()
-                    content += """
-                        Title: ${post.title}
-                        
-                        """.trimIndent()
-                    content += """
-                        Text: ${post.text}
-                        
-                        
-                        """.trimIndent()
-                    Log.i("bb",content)
-                }
+//                val posts = response.body()!!
+//                for (post in posts) {
+//                    var content = ""
+//                    content += """
+//                    Code: ${response.code()}
+//
+//                    """.trimIndent()
+//                    content += """
+//                    Booking ID: ${post!!.bookingId}
+//
+//                    """.trimIndent()
+//                    content += """
+//                    Booking time: ${post!!.bookingTime}
+//
+//                    """.trimIndent()
+//                    content += """
+//                    Date: ${post!!.date}
+//
+//                    """.trimIndent()
+//                    content += """
+//                    Start Time: ${post!!.startTime}
+//
+//
+//                    """.trimIndent()
+//                    content += """
+//                    End Time: ${post!!.endTime}
+//
+//
+//                    """.trimIndent()
+//                    content += """
+//                    City Id: ${post!!.cityId}
+//
+//
+//                    """.trimIndent()
+//                    content += """
+//                    Center Id: ${post!!.centerId}
+//
+//
+//                    """.trimIndent()
+//                    content += """
+//                    Court Id: ${post!!.courtId}
+//
+//
+//                    """.trimIndent()
+//                    content += """
+//                    Facebook Id: ${post!!.facebookId}
+//
+//
+//                    """.trimIndent()
+//                    Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
+//                }
+                Log.i("bb","WORKKKKKKKKKKKKKKK")
+
             }
 
             override fun onFailure(
-                call: Call<List<Post>>,
+                call: Call<List<BookingRequest>>,
                 t: Throwable
             ) {
-                Log.i("bb",t.message)
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+
             }
         })
+
     }
-    fun sendPost() {
-        val post = Post(23, "New Title", "New Text")
+    private fun sendPost(title : String, userId : Int) {
+//        val bookingRequest = BookingRequest("booking12", "2020-04-07 09:27:18",
+//                                            "2020-04-19","10:30:00" , "11:30:00" ,
+//                                            "city1", "center2", "court1", "player1")
 
         val fields: MutableMap<String?, String?> = HashMap()
         fields["userId"] = "25"
         fields["title"] = "New Title"
 
-        val call = jsonPlaceHolderApi?.createPost(fields)
+        val call = mAPIService?.createPost(userId, title,"New")
 
-        call?.enqueue(object : Callback<Post?> {
+        Log.i("bb","WOWWWWWWWWWWWWWW333333333")
+        call?.enqueue(object : Callback<BookingRequest?> {
             override fun onResponse(
-                call: Call<Post?>,
-                response: Response<Post?>
+                call: Call<BookingRequest?>,
+                response: Response<BookingRequest?>
             ) {
                 if (!response.isSuccessful) {
-                    Log.i("bb","Code: " + response.code())
+                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb","WOWWWWWWWWWWWWWW44444444")
                     return
                 }
                 val postResponse = response.body()
                 var content = ""
-                content += """
-                    Code: ${response.code()}
-                    
-                    """.trimIndent()
-                content += """
-                    ID: ${postResponse!!.id}
-                    
-                    """.trimIndent()
-                content += """
-                    User ID: ${postResponse!!.userId}
-                    
-                    """.trimIndent()
-                content += """
-                    Title: ${postResponse!!.title}
-                    
-                    """.trimIndent()
-                content += """
-                    Text: ${postResponse!!.text}
-                    
-                    
-                    """.trimIndent()
-                Log.i("bb",content)
+
+                Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
+                Log.i("bb","WOWWWWWWWWWWWWWW")
             }
 
-            override fun onFailure(call: Call<Post?>, t: Throwable) {
-                Log.i("bb",t.message)
+            override fun onFailure(call: Call<BookingRequest?>, t: Throwable) {
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+                Log.i("bb","WOWWWWWWWWWWWWWW22222")
             }
         })
+
     }
+
 
     override fun callBackFail() {
         val fm= supportFragmentManager
