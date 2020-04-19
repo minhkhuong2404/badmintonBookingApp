@@ -22,6 +22,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        android:usesCleartextTraffic="true"
         <activity android:name="com.example.courtbooking.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,6 +64,11 @@
             </intent-filter>
         </activity>
         <activity android:name="com.facebook.CustomTabMainActivity" />
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="com.example.courtbooking.com.squareup.picasso"
+            android:exported="false" />
         <!--
          The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
          with the application context. This config is merged in with the host app's manifest,

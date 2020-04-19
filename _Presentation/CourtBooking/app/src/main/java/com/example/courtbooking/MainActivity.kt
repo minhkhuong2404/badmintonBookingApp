@@ -48,13 +48,10 @@ class MainActivity: AppCompatActivity() {
             startActivity(toMainScreen)
         }
 
-        //
         realFacebookButton.setPermissions(listOf("public_profile", "email"))
 
-        //
         checkLoginStatus()
 
-        //
         customFacebookButton.setOnClickListener {
             if(AccessToken.getCurrentAccessToken() == null) {
                 // login

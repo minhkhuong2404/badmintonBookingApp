@@ -33,21 +33,6 @@
             ]
         },
         {
-            "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-ldltr-v21_values-ldltr-v21.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c718709a63172dec4cfffa1a59a58445/appcompat-1.1.0/res/values-ldltr-v21/values-ldltr-v21.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "112",
-                        "endOffsets": "163"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-pa_values-pa.arsc.flat",
             "map": [
                 {
@@ -99,6 +84,21 @@
                         "startOffsets": "2767,2932,3062,3210,3323,3409,3498,3580,3670,3759,3873,3987,4082,4177,4289,4420,4500,4586,4762,4857,4965,5080,5190",
                         "endColumns": "164,129,147,112,85,88,81,89,88,113,113,94,94,111,130,79,85,175,94,107,114,109,164",
                         "endOffsets": "2927,3057,3205,3318,3404,3493,3575,3665,3754,3868,3982,4077,4172,4284,4415,4495,4581,4757,4852,4960,5075,5185,5350"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-ldltr-v21_values-ldltr-v21.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c718709a63172dec4cfffa1a59a58445/appcompat-1.1.0/res/values-ldltr-v21/values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
                     }
                 }
             ]
@@ -192,21 +192,6 @@
             ]
         },
         {
-            "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-v18_values-v18.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c718709a63172dec4cfffa1a59a58445/appcompat-1.1.0/res/values-v18/values-v18.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "48",
-                        "endOffsets": "99"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-ne_values-ne.arsc.flat",
             "map": [
                 {
@@ -234,6 +219,21 @@
                         "startOffsets": "2967",
                         "endColumns": "100",
                         "endOffsets": "3063"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-v18_values-v18.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c718709a63172dec4cfffa1a59a58445/appcompat-1.1.0/res/values-v18/values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
                     }
                 }
             ]
@@ -797,6 +797,21 @@
             ]
         },
         {
+            "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-h720dp-v13_values-h720dp-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c718709a63172dec4cfffa1a59a58445/appcompat-1.1.0/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-v24_values-v24.arsc.flat",
             "map": [
                 {
@@ -824,21 +839,6 @@
                         "startOffsets": "347,413,474,540",
                         "endColumns": "65,60,65,66",
                         "endOffsets": "408,469,535,602"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/values-h720dp-v13_values-h720dp-v13.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/c718709a63172dec4cfffa1a59a58445/appcompat-1.1.0/res/values-h720dp-v13/values-h720dp-v13.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "66",
-                        "endOffsets": "117"
                     }
                 }
             ]

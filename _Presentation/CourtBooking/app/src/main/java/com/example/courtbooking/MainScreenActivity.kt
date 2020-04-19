@@ -4,22 +4,18 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.net.http.HttpResponseCache
 import android.os.Bundle
-import android.util.JsonReader
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main_screen.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.InputStream
-import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.*
@@ -49,11 +45,21 @@ class MainScreenActivity : AppCompatActivity(),
 
     // random user's number of booking
     private val bookNum = (0..3).random()
+    private val jsonPlaceHolderApi: JsonPlaceHolderApi? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val jsonPlaceHolderApi = retrofit.create(
+            JsonPlaceHolderApi::class.java
+        )
 
         // findViewById
         cityChooser = findViewById<Spinner>(R.id.sp_city)
@@ -115,8 +121,8 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide Recycler of ViewBooking
             rv_booking.adapter = null
             findViewById<RelativeLayout>(R.id.center_view).bringToFront()
-//            getTest()
-            Log.i("bb","SUCCESSSSSSSSSSSSSSSSS")
+            sendPost()
+            Log.i("bb","WOWWWWWWWWWWWWWW")
         }
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
@@ -220,7 +226,6 @@ class MainScreenActivity : AppCompatActivity(),
         val fm=supportFragmentManager
         val requestFragment = AskForBookingFragment(date, city, center, court, slot, bookNum, this)
         requestFragment.show(fm, "Booking Request")
-//        sendGet(center, court, slot)
     }
 
     override fun callBack(date: String, city: String, center: String, court: String, slot: String) {
@@ -231,18 +236,14 @@ class MainScreenActivity : AppCompatActivity(),
     }
 
     fun sendGet() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val parameters: MutableMap<String, String> = HashMap()
+        parameters["userId"] = "1"
+        parameters["_sort"] = "id"
+        parameters["_order"] = "desc"
 
-        val jsonPlaceHolderApi = retrofit.create(
-            JsonPlaceHolderApi::class.java
-        )
+        val call = jsonPlaceHolderApi?.getPosts(parameters)
 
-        val call = jsonPlaceHolderApi.getPosts()
-
-        call!!.enqueue(object : Callback<List<Post>> {
+        call?.enqueue(object : Callback<List<Post>> {
             override fun onResponse(
                 call: Call<List<Post>>,
                 response: Response<List<Post>>
@@ -271,7 +272,7 @@ class MainScreenActivity : AppCompatActivity(),
                         
                         
                         """.trimIndent()
-                    Log.i("bb","SUCCESSSSSSSSSSS")
+                    Log.i("bb",content)
                 }
             }
 
@@ -283,84 +284,54 @@ class MainScreenActivity : AppCompatActivity(),
             }
         })
     }
-    fun getTest() {
-//        var sb = StringBuilder()
-        val http = "https://api.github.com/"
+    fun sendPost() {
+        val post = Post(23, "New Title", "New Text")
 
-//        var urlConnection: HttpURLConnection? = null
-        var urlConnection: HttpURLConnection? = null
-        val url = URL(http)
+        val fields: MutableMap<String?, String?> = HashMap()
+        fields["userId"] = "25"
+        fields["title"] = "New Title"
 
-        urlConnection = url.openConnection() as HttpURLConnection
-//            urlConnection.doInput = true
-//            urlConnection.doOutput = true
-        urlConnection.requestMethod = "GET"
-//            urlConnection.connectTimeout = 10000
-//            urlConnection.readTimeout = 10000
-        urlConnection.setRequestProperty("User-Agent", "my-rest-app-v0.1")
-        urlConnection.setRequestProperty(
-            "Accept",
-            "application/vnd.github.v3+json"
-        )
-        urlConnection.setRequestProperty(
-            "Contact-Me",
-            "hathibelagal@example.com"
-        )
-        urlConnection.connect()
+        val call = jsonPlaceHolderApi?.createPost(fields)
 
-        //Create JSONObject here
-//            val gson = Gson()
-//            val test = test("K", 21, "K@gmail.com")
-//            val json = gson.toJson(test)
-//
-//            val out = OutputStreamWriter(urlConnection!!.outputStream)
-//            out.write(json.toString())
-//            out.close()
-//            val HttpResult = urlConnection!!.responseCode
-        if (urlConnection.getResponseCode() == 200) {
-            val responseBody: InputStream = urlConnection.getInputStream()
-            val responseBodyReader = InputStreamReader(responseBody, "UTF-8")
-            val jsonReader = JsonReader(responseBodyReader)
-            jsonReader.beginObject() // Start processing the JSON object
-
-            while (jsonReader.hasNext()) { // Loop through all keys
-                val key: String = jsonReader.nextName() // Fetch the next key
-                if (key == "organization_url") { // Check if desired key
-                    // Fetch the value as a String
-                    val value: String = jsonReader.nextString()
-                    Log.i("bb", value)
-
-                    break // Break out of the loop
-                } else {
-                    jsonReader.skipValue() // Skip values of other keys
+        call?.enqueue(object : Callback<Post?> {
+            override fun onResponse(
+                call: Call<Post?>,
+                response: Response<Post?>
+            ) {
+                if (!response.isSuccessful) {
+                    Log.i("bb","Code: " + response.code())
+                    return
                 }
+                val postResponse = response.body()
+                var content = ""
+                content += """
+                    Code: ${response.code()}
+                    
+                    """.trimIndent()
+                content += """
+                    ID: ${postResponse!!.id}
+                    
+                    """.trimIndent()
+                content += """
+                    User ID: ${postResponse!!.userId}
+                    
+                    """.trimIndent()
+                content += """
+                    Title: ${postResponse!!.title}
+                    
+                    """.trimIndent()
+                content += """
+                    Text: ${postResponse!!.text}
+                    
+                    
+                    """.trimIndent()
+                Log.i("bb",content)
             }
-            jsonReader.close()
-            urlConnection.disconnect()
-        }
-    }
 
-    fun sendTest(){
-        val httpbinEndpoint = URL("http://localhost:8000/api/hello")
-        val myConnection =
-            httpbinEndpoint.openConnection() as HttpURLConnection
-
-        myConnection.requestMethod = "POST"
-        // Create the data
-        val myData = "Marcin"
-
-        // Enable writing
-        myConnection.doOutput = true
-
-        // Write the data
-        myConnection.outputStream.write(myData.toByteArray())
-        val myCache = HttpResponseCache.install(
-            cacheDir, 100000L
-        )
-        if (myCache.getHitCount() > 0) {
-            // The cache is working
-            Log.i("bb","WORK!!!!!!!!!")
-        }
+            override fun onFailure(call: Call<Post?>, t: Throwable) {
+                Log.i("bb",t.message)
+            }
+        })
     }
 
     override fun callBackFail() {
