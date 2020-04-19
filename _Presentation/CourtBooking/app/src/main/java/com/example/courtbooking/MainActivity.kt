@@ -147,7 +147,6 @@ class MainActivity: AppCompatActivity() {
 
         })
 
-
         val parameter = Bundle()
         parameter.putString("fields", "email, first_name, last_name")
         request.parameters = parameter

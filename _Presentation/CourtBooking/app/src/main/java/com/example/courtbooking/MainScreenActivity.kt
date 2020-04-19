@@ -1,18 +1,28 @@
 package com.example.courtbooking
 
 import android.app.DatePickerDialog
+import android.net.http.HttpResponseCache
 import android.os.Bundle
-import android.os.Message
+import android.util.JsonReader
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main_screen.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.io.InputStream
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
 import java.util.*
 import kotlin.collections.ArrayList
-
 
 class MainScreenActivity : AppCompatActivity(),
     CenterAdapter.CallbackInterface,
@@ -105,6 +115,8 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide Recycler of ViewBooking
             rv_booking.adapter = null
             findViewById<RelativeLayout>(R.id.center_view).bringToFront()
+//            getTest()
+            Log.i("bb","SUCCESSSSSSSSSSSSSSSSS")
         }
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
@@ -116,7 +128,11 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide 'Show Available Slots'
             rv_center.adapter = null
             findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
+            sendGet()
+            Log.i("bb","WORKKKKKKKKKKKKKKK")
+
         }
+
     }
 
 
@@ -158,7 +174,6 @@ class MainScreenActivity : AppCompatActivity(),
             ))
     }
     private fun getSlotList(type : Int): List<Slot> {
-
         return when (type) {
             1 -> listOf(Slot("7:00 - 8:00"), Slot("7:30 - 8:30"), Slot("8:30 - 9:00"),
                 Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
@@ -191,7 +206,7 @@ class MainScreenActivity : AppCompatActivity(),
     // override passDataCallback from CenterAdapter.CallbackInterface
     override fun passDataCallback(message: Slot) {
         Log.i("Main", "Finished")
-        //Toast.makeText(this, ("You choose " + dateChooser.text + "\n" + cityChooser.selectedItem + "\n" + message.id), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, ("You choose " + dateChooser.text + "\n" + cityChooser.selectedItem + "\n" + message.id), Toast.LENGTH_SHORT).show()
 
         val slotInfo = message.id.split("/")
 
@@ -204,12 +219,147 @@ class MainScreenActivity : AppCompatActivity(),
         val fm=supportFragmentManager
         val requestFragment = AskForBookingFragment(date, city, center, court, slot, bookNum, this)
         requestFragment.show(fm, "Booking Request")
+//        sendGet(center, court, slot)
     }
 
     override fun callBack(date: String, city: String, center: String, court: String, slot: String) {
         val fm= supportFragmentManager
         val bookingFragment = BookingFragment(date, city, center, court, slot, this)
         bookingFragment.show(fm, "Booking Process")
+
+    }
+
+    fun sendGet() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val jsonPlaceHolderApi = retrofit.create(
+            JsonPlaceHolderApi::class.java
+        )
+
+        val call = jsonPlaceHolderApi.getPosts()
+
+        call!!.enqueue(object : Callback<List<Post>> {
+            override fun onResponse(
+                call: Call<List<Post>>,
+                response: Response<List<Post>>
+            ) {
+                if (!response.isSuccessful) {
+                    Log.i("bb","Code: " + response.code())
+                    return
+                }
+                val posts = response.body()!!
+                for (post in posts) {
+                    var content = ""
+                    content += """
+                        ID: ${post.id}
+                        
+                        """.trimIndent()
+                    content += """
+                        User ID: ${post.userId}
+                        
+                        """.trimIndent()
+                    content += """
+                        Title: ${post.title}
+                        
+                        """.trimIndent()
+                    content += """
+                        Text: ${post.text}
+                        
+                        
+                        """.trimIndent()
+                    Log.i("bb","SUCCESSSSSSSSSSS")
+                }
+            }
+
+            override fun onFailure(
+                call: Call<List<Post>>,
+                t: Throwable
+            ) {
+                Log.i("bb",t.message)
+            }
+        })
+    }
+    fun getTest() {
+//        var sb = StringBuilder()
+        val http = "https://api.github.com/"
+
+//        var urlConnection: HttpURLConnection? = null
+        var urlConnection: HttpURLConnection? = null
+        val url = URL(http)
+
+        urlConnection = url.openConnection() as HttpURLConnection
+//            urlConnection.doInput = true
+//            urlConnection.doOutput = true
+        urlConnection.requestMethod = "GET"
+//            urlConnection.connectTimeout = 10000
+//            urlConnection.readTimeout = 10000
+        urlConnection.setRequestProperty("User-Agent", "my-rest-app-v0.1")
+        urlConnection.setRequestProperty(
+            "Accept",
+            "application/vnd.github.v3+json"
+        )
+        urlConnection.setRequestProperty(
+            "Contact-Me",
+            "hathibelagal@example.com"
+        )
+        urlConnection.connect()
+
+        //Create JSONObject here
+//            val gson = Gson()
+//            val test = test("K", 21, "K@gmail.com")
+//            val json = gson.toJson(test)
+//
+//            val out = OutputStreamWriter(urlConnection!!.outputStream)
+//            out.write(json.toString())
+//            out.close()
+//            val HttpResult = urlConnection!!.responseCode
+        if (urlConnection.getResponseCode() == 200) {
+            val responseBody: InputStream = urlConnection.getInputStream()
+            val responseBodyReader = InputStreamReader(responseBody, "UTF-8")
+            val jsonReader = JsonReader(responseBodyReader)
+            jsonReader.beginObject() // Start processing the JSON object
+
+            while (jsonReader.hasNext()) { // Loop through all keys
+                val key: String = jsonReader.nextName() // Fetch the next key
+                if (key == "organization_url") { // Check if desired key
+                    // Fetch the value as a String
+                    val value: String = jsonReader.nextString()
+                    Log.i("bb", value)
+
+                    break // Break out of the loop
+                } else {
+                    jsonReader.skipValue() // Skip values of other keys
+                }
+            }
+            jsonReader.close()
+            urlConnection.disconnect()
+        }
+    }
+
+    fun sendTest(){
+        val httpbinEndpoint = URL("http://localhost:8000/api/hello")
+        val myConnection =
+            httpbinEndpoint.openConnection() as HttpURLConnection
+
+        myConnection.requestMethod = "POST"
+        // Create the data
+        val myData = "Marcin"
+
+        // Enable writing
+        myConnection.doOutput = true
+
+        // Write the data
+        myConnection.outputStream.write(myData.toByteArray())
+        val myCache = HttpResponseCache.install(
+            cacheDir, 100000L
+        )
+        if (myCache.getHitCount() > 0) {
+            // The cache is working
+            Log.i("bb","WORK!!!!!!!!!")
+        }
     }
 
     override fun callBackFail() {
@@ -273,3 +423,4 @@ class MainScreenActivity : AppCompatActivity(),
     }
 
 }
+
