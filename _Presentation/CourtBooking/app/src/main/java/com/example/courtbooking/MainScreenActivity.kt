@@ -122,7 +122,7 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide Recycler of ViewBooking
             rv_booking.adapter = null
             findViewById<RelativeLayout>(R.id.center_view).bringToFront()
-            sendPost("New title",23)
+            sendPost(23, "New title","Good morning")
         }
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
@@ -194,6 +194,7 @@ class MainScreenActivity : AppCompatActivity(),
         rv_booking.apply {
             layoutManager = LinearLayoutManager(this@MainScreenActivity, LinearLayoutManager.VERTICAL, false)
             adapter = BookingAdapter(bookList, this@MainScreenActivity)
+            setHasFixedSize(true)
         }
     }
 
@@ -204,6 +205,7 @@ class MainScreenActivity : AppCompatActivity(),
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@MainScreenActivity, LinearLayout.VERTICAL, false)
             adapter = CenterAdapter(centerList, this@MainScreenActivity)
+            setHasFixedSize(true)
         }
     }
 
@@ -318,7 +320,7 @@ class MainScreenActivity : AppCompatActivity(),
         })
 
     }
-    private fun sendPost(title : String, userId : Int) {
+    private fun sendPost(userId: Int, title : String, text : String) {
 //        val bookingRequest = BookingRequest("booking12", "2020-04-07 09:27:18",
 //                                            "2020-04-19","10:30:00" , "11:30:00" ,
 //                                            "city1", "center2", "court1", "player1")
@@ -327,7 +329,7 @@ class MainScreenActivity : AppCompatActivity(),
         fields["userId"] = "25"
         fields["title"] = "New Title"
 
-        val call = mAPIService?.createPost(userId, title,"New")
+        val call = mAPIService?.createPost(userId, title,text)
 
         Log.i("bb","WOWWWWWWWWWWWWWW333333333")
         call?.enqueue(object : Callback<BookingRequest?> {
@@ -340,7 +342,7 @@ class MainScreenActivity : AppCompatActivity(),
                     Log.i("bb","WOWWWWWWWWWWWWWW44444444")
                     return
                 }
-                val postResponse = response.body()
+//                val postResponse = response.body()
                 var content = ""
 
                 Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
