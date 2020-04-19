@@ -115,48 +115,39 @@
 63            </intent-filter>
 64        </activity>
 65        <activity android:name="com.facebook.CustomTabMainActivity" />
-65-->[com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/66db9994ff357f37b22d0cb20b71f738/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:9-71
-65-->[com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/66db9994ff357f37b22d0cb20b71f738/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:19-68
-66
-67        <provider
-67-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/88691e9cd489fbe4da4f9374cc7a3ed0/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
-68            android:name="com.squareup.picasso.PicassoProvider"
-68-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/88691e9cd489fbe4da4f9374cc7a3ed0/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
-69            android:authorities="com.example.courtbooking.com.squareup.picasso"
-69-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/88691e9cd489fbe4da4f9374cc7a3ed0/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
-70            android:exported="false" />
-70-->[com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/88691e9cd489fbe4da4f9374cc7a3ed0/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
-71        <!--
-72         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
-73         with the application context. This config is merged in with the host app's manifest,
-74         but there can only be one provider with the same authority activated at any given
-75         point; so if the end user has two or more different apps that use Facebook SDK, only the
-76         first one will be able to use the provider. To work around this problem, we use the
-77         following placeholder in the authority to identify each host application as if it was
-78         a completely different provider.
-79        -->
-80        <provider
-80-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:39:9-42:40
-81            android:name="com.facebook.internal.FacebookInitProvider"
-81-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:40:13-70
-82            android:authorities="com.example.courtbooking.FacebookInitProvider"
-82-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:41:13-72
-83            android:exported="false" />
-83-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:42:13-37
-84
-85        <receiver
-85-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:44:9-50:20
-86            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-86-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:45:13-86
-87            android:exported="false" >
-87-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:46:13-37
-88            <intent-filter>
-88-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:47:13-49:29
-89                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-89-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:17-95
-89-->[com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/428a8964eb0124c6975d6ec7b718c989/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:25-92
-90            </intent-filter>
-91        </receiver>
-92    </application>
-93
-94</manifest>
+65-->[com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:34:9-71
+65-->[com.facebook.android:facebook-common:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\d4565565ad150182dd2e623e11c92b26\jetified-facebook-common-5.15.3\AndroidManifest.xml:34:19-68
+66        <!--
+67         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+68         with the application context. This config is merged in with the host app's manifest,
+69         but there can only be one provider with the same authority activated at any given
+70         point; so if the end user has two or more different apps that use Facebook SDK, only the
+71         first one will be able to use the provider. To work around this problem, we use the
+72         following placeholder in the authority to identify each host application as if it was
+73         a completely different provider.
+74        -->
+75        <provider
+75-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:39:9-42:40
+76            android:name="com.facebook.internal.FacebookInitProvider"
+76-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:40:13-70
+77            android:authorities="com.example.courtbooking.FacebookInitProvider"
+77-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:41:13-72
+78            android:exported="false" />
+78-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:42:13-37
+79
+80        <receiver
+80-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:44:9-50:20
+81            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+81-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:45:13-86
+82            android:exported="false" >
+82-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:46:13-37
+83            <intent-filter>
+83-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:47:13-49:29
+84                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+84-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:48:17-95
+84-->[com.facebook.android:facebook-core:5.15.3] C:\Users\bill\.gradle\caches\transforms-2\files-2.1\afc0d2d531698b439c3e35e331228046\jetified-facebook-core-5.15.3\AndroidManifest.xml:48:25-92
+85            </intent-filter>
+86        </receiver>
+87    </application>
+88
+89</manifest>
