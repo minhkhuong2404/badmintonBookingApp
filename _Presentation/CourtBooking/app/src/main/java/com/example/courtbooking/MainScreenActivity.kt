@@ -1,9 +1,7 @@
 package com.example.courtbooking
 
-import android.R.attr.path
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,16 +9,12 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
+import com.example.courtbooking.booking.*
+import com.example.courtbooking.request.*
 import kotlinx.android.synthetic.main.activity_main_screen.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.BufferedWriter
-import java.io.OutputStream
-import java.io.OutputStreamWriter
-import java.net.HttpURLConnection
-import java.net.URL
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -128,29 +122,7 @@ class MainScreenActivity : AppCompatActivity(),
             rv_booking.adapter = null
             findViewById<RelativeLayout>(R.id.center_view).bringToFront()
 //            sendPost((12..100).random(), "New title","Good morning")
-            sendPost()
 
-//            val url =  URL("http://10.0.2.2/api/hello")
-//            val httpURLConnection : HttpURLConnection = url.openConnection() as HttpURLConnection
-//            httpURLConnection.requestMethod = "POST"
-//            httpURLConnection.setRequestProperty("Content-Type", "application/json; utf-8")
-//            httpURLConnection.setRequestProperty("Accept","application/json")
-//            httpURLConnection.doOutput
-//            val jsonInputString  = JSONObject("""{"login":"test" ,"password":"test" }""")
-//            httpURLConnection.outputStream.use { os ->
-//                val input: ByteArray = jsonInputString.toString().toByteArray(Charsets.UTF_8)
-//                os.write(input, 0, input.size)
-//            }
-//            BufferedReader(
-//                InputStreamReader(httpURLConnection.inputStream, "utf-8")
-//            ).use { br ->
-//                val response = StringBuilder()
-//                var responseLine: String? = null
-//                while (br.readLine().also { responseLine = it } != null) {
-//                    response.append(responseLine!!.trim { it <= ' ' })
-//                }
-//                Log.i("bb",response.toString())
-//            }
         }
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
@@ -162,33 +134,6 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide 'Show Available Slots'
             rv_center.adapter = null
             findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
-            sendGet()
-//            try {
-//                val url = URL("http:10.0.2.2/api/hello?")
-//                val conn = url.openConnection() as HttpURLConnection
-//                conn.readTimeout = 10000
-//                conn.connectTimeout = 15000
-//                conn.requestMethod = "GET"
-//                conn.doInput = true
-//                val builder: Uri.Builder = Uri.Builder()
-//                    .appendQueryParameter("name", "khuong")
-//                val query: String ?= builder.build().encodedQuery
-//                Log.i("bb",query.toString())
-//                val os: OutputStream = conn.outputStream
-//                val writer = BufferedWriter(
-//                    OutputStreamWriter(os, "UTF-8")
-//                )
-//                writer.write(query.toString())
-//                writer.flush()
-//                writer.close()
-//                os.close()
-//                conn.connect()
-//                Log.e("ERROR", conn.responseMessage)
-//                Log.e("ERROR", conn.requestMethod)
-//                Log.e("ERROR", java.lang.String.valueOf(conn.responseCode))
-//            } catch (e: Exception) {
-//                Log.e("ERROR", e.message.toString())
-//            }
         }
 
     }
@@ -197,9 +142,30 @@ class MainScreenActivity : AppCompatActivity(),
     private fun getBookingList() : ArrayList<Booking> {
         val list = ArrayList<Booking>()
 
-        list += Booking("0001", "27/04/2020", "07:00 - 9:00", "Undue", "City#B, Center#C, Court#12", "06/04/2020 18:43")
-        list += Booking("0004", "26/04/2020", "08:00 - 9:00", "Undue", "City#B, Center#1, Court#12", "06/04/2020 18:43")
-        list += Booking("0008", "19/04/2020", "08:30 - 9:00", "Overdue", "City#1, Center#2, Court#12", "06/04/2020 18:43")
+        list += Booking(
+            "0001",
+            "27/04/2020",
+            "07:00 - 9:00",
+            "Undue",
+            "City#B, Center#C, Court#12",
+            "06/04/2020 18:43"
+        )
+        list += Booking(
+            "0004",
+            "26/04/2020",
+            "08:00 - 9:00",
+            "Undue",
+            "City#B, Center#1, Court#12",
+            "06/04/2020 18:43"
+        )
+        list += Booking(
+            "0008",
+            "19/04/2020",
+            "08:30 - 9:00",
+            "Overdue",
+            "City#1, Center#2, Court#12",
+            "06/04/2020 18:43"
+        )
 
         return list
     }
@@ -247,7 +213,10 @@ class MainScreenActivity : AppCompatActivity(),
         bookList = getBookingList()
         rv_booking.apply {
             layoutManager = LinearLayoutManager(this@MainScreenActivity, LinearLayoutManager.VERTICAL, false)
-            adapter = BookingAdapter(bookList, this@MainScreenActivity)
+            adapter = BookingAdapter(
+                bookList,
+                this@MainScreenActivity
+            )
             setHasFixedSize(true)
         }
     }
@@ -277,100 +246,65 @@ class MainScreenActivity : AppCompatActivity(),
         val slot = slotInfo[2]      // slot
 
         val fm=supportFragmentManager
-        val requestFragment = AskForBookingFragment(date, city, center, court, slot, bookNum, this)
+        val requestFragment =
+            AskForBookingFragment(
+                date,
+                city,
+                center,
+                court,
+                slot,
+                bookNum,
+                this
+            )
         requestFragment.show(fm, "Booking Request")
     }
 
     override fun callBack(date: String, city: String, center: String, court: String, slot: String) {
         val fm= supportFragmentManager
-        val bookingFragment = BookingFragment(date, city, center, court, slot, this, this)
+        val bookingFragment = BookingFragment(
+            date,
+            city,
+            center,
+            court,
+            slot,
+            this,
+            this
+        )
         bookingFragment.show(fm, "Booking Process")
-
     }
 
-    private fun sendGet() {
+    // when press show all bookings
+    private fun sendGetBooking() {
         val parameters: MutableMap<String, String> = HashMap()
-//        parameters["userId"] = "1"
-//        parameters["_sort"] = "id"
-//        parameters["_order"] = "desc"
-        parameters.put("name" ,"Khuong")
+        parameters["pbookingid"] = "all"
 
-        val gsonCall = Gson()
-        val callJson = gsonCall.toJson(parameters)
+        val call = mAPIService?.getBookings(parameters)
 
-        val call = mAPIService?.getBookings("Khuong")
+        Log.i("bb",parameters.toString())
 
-        Log.i("bb",callJson.toString())
-
-        call?.enqueue(object : Callback<List<BookingRequest>> {
+        call?.enqueue(object : Callback<List<GetBookingRequest>> {
             override fun onResponse(
-                call: Call<List<BookingRequest>>,
-                response: Response<List<BookingRequest>>
+                call: Call<List<GetBookingRequest>>,
+                response: Response<List<GetBookingRequest>>
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
                     Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
-
                     return
                 }
-//                val posts = response.body()!!
-//                for (post in posts) {
-//                    var content = ""
-//                    content += """
-//                    Code: ${response.code()}
-//
-//                    """.trimIndent()
-//                    content += """
-//                    Booking ID: ${post!!.bookingId}
-//
-//                    """.trimIndent()
-//                    content += """
-//                    Booking time: ${post!!.bookingTime}
-//
-//                    """.trimIndent()
-//                    content += """
-//                    Date: ${post!!.date}
-//
-//                    """.trimIndent()
-//                    content += """
-//                    Start Time: ${post!!.startTime}
-//
-//
-//                    """.trimIndent()
-//                    content += """
-//                    End Time: ${post!!.endTime}
-//
-//
-//                    """.trimIndent()
-//                    content += """
-//                    City Id: ${post!!.cityId}
-//
-//
-//                    """.trimIndent()
-//                    content += """
-//                    Center Id: ${post!!.centerId}
-//
-//
-//                    """.trimIndent()
-//                    content += """
-//                    Court Id: ${post!!.courtId}
-//
-//
-//                    """.trimIndent()
-//                    content += """
-//                    Facebook Id: ${post!!.facebookId}
-//
-//
-//                    """.trimIndent()
-//                    Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
-//                }
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                // cái này là hiện ra tất cả booking user đã đặt
+                val bookingRequest : List<GetBookingRequest>?  = response.body()
+                if (bookingRequest != null) {
+                    for (booking in bookingRequest){
 
+                    }
+                }
+                Log.i("bb","WORKKKKKKKKKKKKKKK")
             }
 
             override fun onFailure(
-                call: Call<List<BookingRequest>>,
+                call: Call<List<GetBookingRequest>>,
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
@@ -380,24 +314,174 @@ class MainScreenActivity : AppCompatActivity(),
         })
 
     }
-    private fun sendPost() {
-        val bookingRequest = BookingRequest("booking1", "2020-04-07 09:27:18",
-                                            "2021-05-01","10:00:00" , "10:45:00" ,
-                                            "city1", "center1", "court1", "player1")
-        val fields: MutableMap<String, String> = HashMap()
-//        fields["userId"] = "25"
-        fields.put("login" ,"test")
-        fields.put("password", "test")
 
-        val gsonCall = Gson()
-        val callJson = gsonCall.toJson(fields)
+    // when press to select a city
+    private fun sendGetCity() {
+        val parameters: MutableMap<String, String> = HashMap()
+        parameters["pcityid"] = "all"
 
-//        val requestBody : RequestBody = RequestBody.create(MediaType.parse("application/json"),callJson)
+        val call = mAPIService?.getCity(parameters)
+
+        Log.i("bb",parameters.toString())
+
+        call?.enqueue(object : Callback<List<CityRequest>> {
+            override fun onResponse(
+                call: Call<List<CityRequest>>,
+                response: Response<List<CityRequest>>
+            ) {
+                Log.i("bb",call.toString())
+                if (!response.isSuccessful) {
+//                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    return
+                }
+                // này là lúc bấm nút show all trong cái list city là nó hiện ra tất cả city
+                val cityRequest : List<CityRequest>?  = response.body()
+                if (cityRequest != null) {
+                    for (slot in cityRequest){
+
+                    }
+                }
+                Log.i("bb","WORKKKKKKKKKKKKKKK")
+            }
+
+            override fun onFailure(
+                call: Call<List<CityRequest>>,
+                t: Throwable
+            ) {
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+
+            }
+        })
+
+    }
+
+    private fun sendGetCourt() {
+        val parameters: MutableMap<String, String> = HashMap()
+        parameters["pcourtid"] = "all"
+
+        val call = mAPIService?.getCourt(parameters)
+
+        Log.i("bb",parameters.toString())
+
+        call?.enqueue(object : Callback<List<CourtRequest>> {
+            override fun onResponse(
+                call: Call<List<CourtRequest>>,
+                response: Response<List<CourtRequest>>
+            ) {
+                Log.i("bb",call.toString())
+                if (!response.isSuccessful) {
+//                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    return
+                }
+                Log.i("bb","WORKKKKKKKKKKKKKKK")
+            }
+
+            override fun onFailure(
+                call: Call<List<CourtRequest>>,
+                t: Throwable
+            ) {
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+
+            }
+        })
+    }
+
+    // when press to select a date
+    private fun sendGetDate() {
+        val parameters: MutableMap<String, String> = HashMap()
+        parameters["pdate"] = "all"
+
+        val call = mAPIService?.getDate(parameters)
+
+        Log.i("bb",parameters.toString())
+
+        call?.enqueue(object : Callback<List<DateRequest>> {
+            override fun onResponse(
+                call: Call<List<DateRequest>>,
+                response: Response<List<DateRequest>>
+            ) {
+                Log.i("bb",call.toString())
+                if (!response.isSuccessful) {
+//                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    return
+                }
+                Log.i("bb","WORKKKKKKKKKKKKKKK")
+            }
+
+            override fun onFailure(
+                call: Call<List<DateRequest>>,
+                t: Throwable
+            ) {
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+
+            }
+        })
+
+    }
+
+    // when press show all slots
+    private fun sendGetSlot(city: String, date: String) {
+        val parameters: MutableMap<String, String> = HashMap()
+        parameters["pcityid"] = city
+        parameters["pdate"] = date
+
+        val call = mAPIService?.getSlots(parameters)
+
+        Log.i("bb",parameters.toString())
+
+        call?.enqueue(object : Callback<List<SlotRequest>> {
+            override fun onResponse(
+                call: Call<List<SlotRequest>>,
+                response: Response<List<SlotRequest>>
+            ) {
+                Log.i("bb",call.toString())
+                if (!response.isSuccessful) {
+//                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    return
+                }
+                // cái này là sau khi nó nhận đc gì thì hiện cái đó ra như app mình hiện slot á
+                // t ko biết làm sao :))
+                val slotRequests : List<SlotRequest>?  = response.body()
+                if (slotRequests != null) {
+                    for (slot in slotRequests){
+
+                    }
+                }
+
+                Log.i("bb","WORKKKKKKKKKKKKKKK")
+            }
+
+            override fun onFailure(
+                call: Call<List<SlotRequest>>,
+                t: Throwable
+            ) {
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+
+            }
+        })
+
+    }
+
+    // when press create a new booking
+    private fun sendPostBooking() {
+        val bookingRequest = BookingRequest(
+            "booking1",
+            "2021-05-01", "10:00:00", "10:45:00",
+            "1", "2", "A", "B"
+        )
+//        val fields: MutableMap<String, String> = HashMap()
 
         val call = mAPIService?.createBookings(bookingRequest)
 
         Log.i("bb",bookingRequest.toString())
-//        Log.i("bb",call.toString())
 
         call?.enqueue(object : Callback<BookingRequest?> {
             override fun onResponse(
@@ -420,10 +504,7 @@ class MainScreenActivity : AppCompatActivity(),
                     Booking ID: ${bookingRequest!!.pbookingid}
 
                     """.trimIndent()
-                    content += """
-                    Booking time: ${bookingRequest!!.ptimestamp}
 
-                    """.trimIndent()
                     content += """
                     Date: ${bookingRequest!!.pdate}
 
@@ -431,31 +512,25 @@ class MainScreenActivity : AppCompatActivity(),
                     content += """
                     Start Time: ${bookingRequest!!.pstarttime}
 
-
                     """.trimIndent()
                     content += """
                     End Time: ${bookingRequest!!.pendtime}
-
 
                     """.trimIndent()
                     content += """
                     City Id: ${bookingRequest!!.pcityid}
 
-
                     """.trimIndent()
                     content += """
                     Center Id: ${bookingRequest!!.pcenterid}
-
 
                     """.trimIndent()
                     content += """
                     Court Id: ${bookingRequest!!.pcourtid}
 
-
                     """.trimIndent()
                     content += """
                     Facebook Id: ${bookingRequest!!.pplayerid}
-
 
                     """.trimIndent()
                     Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
@@ -499,7 +574,8 @@ class MainScreenActivity : AppCompatActivity(),
     // override function from BookingAdapter.CancelInterface, open cancel dialog fragment
     override fun moveToCancelFragment(message: String) {
         val fm= supportFragmentManager
-        val bookingFragment = CancelBookingFragment(message, this)
+        val bookingFragment =
+            CancelBookingFragment(message, this)
         bookingFragment.show(fm, "Cancel Booking")
     }
 
@@ -513,7 +589,8 @@ class MainScreenActivity : AppCompatActivity(),
 
         val fm= supportFragmentManager
 
-        var bookingFragment = CancelResultFragment(message, false)
+        var bookingFragment =
+            CancelResultFragment(message, false)
 
         if (message == "0004") {
             // remove the booking in the list
@@ -525,8 +602,15 @@ class MainScreenActivity : AppCompatActivity(),
             }
 
             //
-            rv_booking.adapter = BookingAdapter(bookList, this@MainScreenActivity)
-            bookingFragment = CancelResultFragment(message, true)
+            rv_booking.adapter = BookingAdapter(
+                bookList,
+                this@MainScreenActivity
+            )
+            bookingFragment =
+                CancelResultFragment(
+                    message,
+                    true
+                )
         }
 
         bookingFragment.show(fm, "Cancel Result")
