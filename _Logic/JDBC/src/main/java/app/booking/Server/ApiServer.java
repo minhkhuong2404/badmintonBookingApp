@@ -13,7 +13,7 @@ import static app.booking.Server.Configuration.getObjectMapper;
 
 public class ApiServer {
     public static void main(String[] args) throws IOException {
-        int serverPort = 8000;
+        int serverPort = 8003;
         HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
         CreateBookingHandler createBookingHandler = new CreateBookingHandler(getObjectMapper(), getErrorHandler());
         server.createContext("/api/booking/create", createBookingHandler::handle);

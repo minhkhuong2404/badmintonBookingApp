@@ -13,9 +13,9 @@ public class Main {
 
         CourtSlot a = new CourtSlot();
 
-        // get
-        ArrayList<Slot> slotList = new ArrayList<Slot>(a.get(bookingList));
-        System.out.println("Done.");
+//        // get
+//        ArrayList<Slot> slotList = new ArrayList<Slot>(a.get(bookingList));
+//        System.out.println("Done.");
 
     }
 

@@ -381,8 +381,8 @@ class MainScreenActivity : AppCompatActivity(),
 
     }
     private fun sendPost() {
-        val bookingRequest = BookingRequest("booking1", "2020-04-07 09:27:18",
-                                            "2021-05-01","10:00:00" , "10:45:00" ,
+        val bookingRequest = BookingRequest("booking2", "2020-04-07 09:27:18",
+                                            "2022-05-01","10:00:00" , "10:45:00" ,
                                             "city1", "center1", "court1", "player1")
         val fields: MutableMap<String, String> = HashMap()
 //        fields["userId"] = "25"

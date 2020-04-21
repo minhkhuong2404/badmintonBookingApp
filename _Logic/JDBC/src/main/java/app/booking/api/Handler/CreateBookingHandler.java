@@ -3,7 +3,7 @@ package app.booking.api.Handler;
 import app.booking.api.Constants;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
-import app.booking.database.MySQLAccess;
+import app.booking.db.ConnectionDB;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +11,10 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 
 public class CreateBookingHandler extends Handler {
@@ -19,7 +23,7 @@ public class CreateBookingHandler extends Handler {
     }
 
     @Override
-    protected void execute(HttpExchange exchange) throws IOException {
+    protected void execute(HttpExchange exchange) throws Exception {
         byte[] response ;
         if ("POST".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doPost(exchange.getRequestBody());
@@ -36,11 +40,24 @@ public class CreateBookingHandler extends Handler {
         os.close();
     }
 
-    private ResponseEntity<Response> doPost(InputStream is) {
+    private ResponseEntity<Response> doPost(InputStream is) throws Exception {
         CreateBookingRequest CBrequest = super.readRequest(is, CreateBookingRequest.class);
 
-        MySQLAccess.create_booking(CBrequest.getPbookingid(),CBrequest.getPtimestamp(), CBrequest.getPdate(), CBrequest.getPendtime(),
-                CBrequest.getPendtime(),CBrequest.getPcityid(),CBrequest.getPcenterid(),CBrequest.getPcourtid(), CBrequest.getPplayerid());
+        ConnectionDB db = new ConnectionDB();
+
+        System.out.println(CBrequest);
+
+        String result_code = db.createBooking(CBrequest.getPbookingid(),
+                Timestamp.valueOf(CBrequest.getPtimestamp()),
+                Date.valueOf(CBrequest.getPdate()),
+                Time.valueOf(CBrequest.getPstarttime()),
+                Time.valueOf(CBrequest.getPendtime()),
+                CBrequest.getPcityid(),
+                CBrequest.getPcenterid(),
+                CBrequest.getPcourtid(),
+                CBrequest.getPplayerid());
+
+        System.out.println("Database execution with result code: " + result_code);
 
         Response response = new Response("1");
 
