@@ -2,9 +2,10 @@ package app.booking.db;
 
 import java.sql.*;
 import java.util.Properties;
+import java.util.TimeZone;
 
 public class ConnectionDB {
-    private static final String CONNECTION = "jdbc:mysql://localhost:3306/booking_app?noAccessToProcedureBodies=true&autoReconnect=true";
+    private static final String CONNECTION = "jdbc:mysql://localhost:3306/booking_app?noAccessToProcedureBodies=true&autoReconnect=true&serverTimezone=" + TimeZone.getDefault().getID();
 
     public Connection getConnect() throws Exception {
         Connection conn = null;
