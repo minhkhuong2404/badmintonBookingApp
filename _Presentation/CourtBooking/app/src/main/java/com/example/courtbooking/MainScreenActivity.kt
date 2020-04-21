@@ -1,7 +1,9 @@
 package com.example.courtbooking
 
+import android.R.attr.path
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,14 +11,19 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main_screen.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.io.BufferedWriter
+import java.io.OutputStream
+import java.io.OutputStreamWriter
+import java.net.HttpURLConnection
+import java.net.URL
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class MainScreenActivity : AppCompatActivity(),
     CenterAdapter.CallbackInterface,
@@ -42,7 +49,6 @@ class MainScreenActivity : AppCompatActivity(),
 
     // random user's number of booking
     private val bookNum = (0..3).random()
-    private val jsonPlaceHolderApi: JsonPlaceHolderApi? = null
 
     private var mAPIService: JsonPlaceHolderApi? = null
 
@@ -50,17 +56,16 @@ class MainScreenActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val jsonPlaceHolderApi = retrofit.create(
-            JsonPlaceHolderApi::class.java
-        )
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://jsonplaceholder.typicode.com/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        val jsonPlaceHolderApi = retrofit.create(
+//            JsonPlaceHolderApi::class.java
+//        )
         // new
         mAPIService = ApiUtils.aPIService
-
 
         // findViewById
         cityChooser = findViewById<Spinner>(R.id.sp_city)
@@ -122,7 +127,30 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide Recycler of ViewBooking
             rv_booking.adapter = null
             findViewById<RelativeLayout>(R.id.center_view).bringToFront()
-            sendPost(23, "New title","Good morning")
+//            sendPost((12..100).random(), "New title","Good morning")
+            sendPost()
+
+//            val url =  URL("http://10.0.2.2/api/hello")
+//            val httpURLConnection : HttpURLConnection = url.openConnection() as HttpURLConnection
+//            httpURLConnection.requestMethod = "POST"
+//            httpURLConnection.setRequestProperty("Content-Type", "application/json; utf-8")
+//            httpURLConnection.setRequestProperty("Accept","application/json")
+//            httpURLConnection.doOutput
+//            val jsonInputString  = JSONObject("""{"login":"test" ,"password":"test" }""")
+//            httpURLConnection.outputStream.use { os ->
+//                val input: ByteArray = jsonInputString.toString().toByteArray(Charsets.UTF_8)
+//                os.write(input, 0, input.size)
+//            }
+//            BufferedReader(
+//                InputStreamReader(httpURLConnection.inputStream, "utf-8")
+//            ).use { br ->
+//                val response = StringBuilder()
+//                var responseLine: String? = null
+//                while (br.readLine().also { responseLine = it } != null) {
+//                    response.append(responseLine!!.trim { it <= ' ' })
+//                }
+//                Log.i("bb",response.toString())
+//            }
         }
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
@@ -134,7 +162,33 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide 'Show Available Slots'
             rv_center.adapter = null
             findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
-            sendGet(12,"id","desc")
+            sendGet()
+//            try {
+//                val url = URL("http:10.0.2.2/api/hello?")
+//                val conn = url.openConnection() as HttpURLConnection
+//                conn.readTimeout = 10000
+//                conn.connectTimeout = 15000
+//                conn.requestMethod = "GET"
+//                conn.doInput = true
+//                val builder: Uri.Builder = Uri.Builder()
+//                    .appendQueryParameter("name", "khuong")
+//                val query: String ?= builder.build().encodedQuery
+//                Log.i("bb",query.toString())
+//                val os: OutputStream = conn.outputStream
+//                val writer = BufferedWriter(
+//                    OutputStreamWriter(os, "UTF-8")
+//                )
+//                writer.write(query.toString())
+//                writer.flush()
+//                writer.close()
+//                os.close()
+//                conn.connect()
+//                Log.e("ERROR", conn.responseMessage)
+//                Log.e("ERROR", conn.requestMethod)
+//                Log.e("ERROR", java.lang.String.valueOf(conn.responseCode))
+//            } catch (e: Exception) {
+//                Log.e("ERROR", e.message.toString())
+//            }
         }
 
     }
@@ -234,22 +288,28 @@ class MainScreenActivity : AppCompatActivity(),
 
     }
 
-    private fun sendGet(userId: Int, _sort : String, _order : String) {
+    private fun sendGet() {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["userId"] = "12"
-        parameters["_sort"] = "id"
-        parameters["_order"] = "desc"
+//        parameters["userId"] = "1"
+//        parameters["_sort"] = "id"
+//        parameters["_order"] = "desc"
+        parameters.put("name" ,"Khuong")
 
-        val call = mAPIService?.getPosts(userId ,_sort,_order)
-        Log.i("bb","WORKKKKKKKKKKKKKKK33333333")
+        val gsonCall = Gson()
+        val callJson = gsonCall.toJson(parameters)
+
+        val call = mAPIService?.getBookings("Khuong")
+
+        Log.i("bb",callJson.toString())
 
         call?.enqueue(object : Callback<List<BookingRequest>> {
             override fun onResponse(
                 call: Call<List<BookingRequest>>,
                 response: Response<List<BookingRequest>>
             ) {
+                Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
-                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
                     Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
 
                     return
@@ -320,32 +380,86 @@ class MainScreenActivity : AppCompatActivity(),
         })
 
     }
-    private fun sendPost(userId: Int, title : String, text : String) {
-//        val bookingRequest = BookingRequest("booking12", "2020-04-07 09:27:18",
-//                                            "2020-04-19","10:30:00" , "11:30:00" ,
-//                                            "city1", "center2", "court1", "player1")
+    private fun sendPost() {
+        val bookingRequest = BookingRequest("booking1", "2020-04-07 09:27:18",
+                                            "2021-05-01","10:00:00" , "10:45:00" ,
+                                            "city1", "center1", "court1", "player1")
+        val fields: MutableMap<String, String> = HashMap()
+//        fields["userId"] = "25"
+        fields.put("login" ,"test")
+        fields.put("password", "test")
 
-        val fields: MutableMap<String?, String?> = HashMap()
-        fields["userId"] = "25"
-        fields["title"] = "New Title"
+        val gsonCall = Gson()
+        val callJson = gsonCall.toJson(fields)
 
-        val call = mAPIService?.createPost(userId, title,text)
+//        val requestBody : RequestBody = RequestBody.create(MediaType.parse("application/json"),callJson)
 
-        Log.i("bb","WOWWWWWWWWWWWWWW333333333")
+        val call = mAPIService?.createBookings(bookingRequest)
+
+        Log.i("bb",bookingRequest.toString())
+//        Log.i("bb",call.toString())
+
         call?.enqueue(object : Callback<BookingRequest?> {
             override fun onResponse(
                 call: Call<BookingRequest?>,
                 response: Response<BookingRequest?>
             ) {
+
                 if (!response.isSuccessful) {
-                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
                     Log.i("bb","WOWWWWWWWWWWWWWW44444444")
                     return
                 }
-//                val postResponse = response.body()
+                val jsonResponse: BookingRequest? = response.body()
                 var content = ""
+                    content += """
+                    Code: ${response.code()}
 
-                Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
+                    """.trimIndent()
+                    content += """
+                    Booking ID: ${bookingRequest!!.pbookingid}
+
+                    """.trimIndent()
+                    content += """
+                    Booking time: ${bookingRequest!!.ptimestamp}
+
+                    """.trimIndent()
+                    content += """
+                    Date: ${bookingRequest!!.pdate}
+
+                    """.trimIndent()
+                    content += """
+                    Start Time: ${bookingRequest!!.pstarttime}
+
+
+                    """.trimIndent()
+                    content += """
+                    End Time: ${bookingRequest!!.pendtime}
+
+
+                    """.trimIndent()
+                    content += """
+                    City Id: ${bookingRequest!!.pcityid}
+
+
+                    """.trimIndent()
+                    content += """
+                    Center Id: ${bookingRequest!!.pcenterid}
+
+
+                    """.trimIndent()
+                    content += """
+                    Court Id: ${bookingRequest!!.pcourtid}
+
+
+                    """.trimIndent()
+                    content += """
+                    Facebook Id: ${bookingRequest!!.pplayerid}
+
+
+                    """.trimIndent()
+                    Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
+                Log.i("bb",content)
                 Log.i("bb","WOWWWWWWWWWWWWWW")
             }
 
@@ -356,7 +470,6 @@ class MainScreenActivity : AppCompatActivity(),
         })
 
     }
-
 
     override fun callBackFail() {
         val fm= supportFragmentManager
@@ -421,4 +534,7 @@ class MainScreenActivity : AppCompatActivity(),
     }
 
 }
+
+
+
 

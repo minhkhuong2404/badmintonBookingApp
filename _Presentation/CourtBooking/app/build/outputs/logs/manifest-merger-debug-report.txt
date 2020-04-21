@@ -115,6 +115,8 @@ MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/minhkhuongl
 		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:7:9-35
 	android:theme
 		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:12:9-40
+	android:usesCleartextTraffic
+		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:13:9-44
 activity#com.example.courtbooking.MainActivity
 ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:14:9-20:20
 	android:name

@@ -34,9 +34,10 @@
 22        android:supportsRtl="true"
 22-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:11:9-35
 23        android:testOnly="true"
-24        android:theme="@style/AppTheme" >
+24        android:theme="@style/AppTheme"
 24-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:12:9-40
-25        android:usesCleartextTraffic="true"
+25        android:usesCleartextTraffic="true" >
+25-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:13:9-44
 26        <activity android:name="com.example.courtbooking.MainActivity" >
 26-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:14:9-20:20
 26-->/Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:14:19-47
