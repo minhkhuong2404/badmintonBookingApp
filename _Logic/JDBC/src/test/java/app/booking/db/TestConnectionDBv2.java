@@ -744,7 +744,16 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         // actual test
-        String result_code = db.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
+        String result_code = db.createBooking(
+                "booking1",
+                Timestamp.valueOf("2020-04-07 09:27:18"),
+                Date.valueOf("2021-05-01"),
+                Time.valueOf("10:00:00"),
+                Time.valueOf("10:45:00"),
+                "1",
+                "2",
+                "A",
+                "B");
         assertEquals("200", result_code, "Pass.");
     }
 

@@ -26,6 +26,7 @@ SELECT pstartTime into startTime;
 SELECT pendTime into endTime;
 SELECT TIMEDIFF(endTime, startTime) into playTime;
 
+
 IF NOT pbookingId REGEXP '^[a-zA-Z0-9]*$'
 THEN
      SET resultCode = 'CB-000';

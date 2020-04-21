@@ -1,44 +1,196 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ceb166c2-392d-4b71-b058-373fd3daa057" name="Default Changelist" comment="">
+    <list default="true" id="ae56f769-c1c2-4a91-a8cd-9b62983e2462" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/teamepe2020.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/FbAPI/Access.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/FbAPI/AccessFBGraphAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/FbAPI/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/Test/InMemoryUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/Test/NewUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/Test/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/Test/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/Test/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/Test/httpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_Logic/JDBC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/db/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/db/ConnectionDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/META-INF/JDBC.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/META-INF/JDBC.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/database/MySQLAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/database/MySQLAccess.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/CourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/CourtSlot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/Time.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/classes/app/booking/slot/Time.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/db/TestConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/db/TestConnectionDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/slot/TestCourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/app/booking/slot/TestCourtSlot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Presentation/CourtBooking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Presentation/CourtBooking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Presentation/CourtBooking/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_Presentation/CourtBooking/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/TestCourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/_Logic/JDBC/target/test-classes/TestCourtSlot.class" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/FbAPI/Access.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_Logic/JDBC/pom.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/FbAPI/AccessFBGraphAPI.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_Logic/JDBC/src/main/java/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1aZI3SE9GIZWIUs3yIQg38d6fRB" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="645" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="teamepe2020" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamepe2020" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamepe2020" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamepe2020" type="462c0819:PsiDirectoryNode" />
+              <item name="_Logic" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ceb166c2-392d-4b71-b058-373fd3daa057" name="Default Changelist" comment="" />
-      <created>1586936489097</created>
+      <changelist id="ae56f769-c1c2-4a91-a8cd-9b62983e2462" name="Default Changelist" comment="" />
+      <created>1587318086006</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1586936489097</updated>
+      <updated>1587318086006</updated>
+      <workItem from="1587318087469" duration="106000" />
+      <workItem from="1587318207610" duration="3000" />
+      <workItem from="1587318222433" duration="37000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="146000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info id="Build Variants" side_tool="true" />
+      <window_info id="Captures" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/FbAPI/Access.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_Logic/JDBC/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_Logic/JDBC/src/main/java/app/booking/FbAPI/AccessFBGraphAPI.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_Logic/JDBC/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
