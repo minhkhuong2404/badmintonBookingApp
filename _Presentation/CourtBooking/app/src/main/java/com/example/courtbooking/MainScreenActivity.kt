@@ -471,12 +471,15 @@ class MainScreenActivity : AppCompatActivity(),
     }
 
     // when press create a new booking
-    private fun sendPostBooking() {
-        val bookingRequest = BookingRequest(
-            "booking1",
-            "2021-05-01", "10:00:00", "10:45:00",
-            "1", "2", "A", "B"
-        )
+    private fun sendPostBooking(bookingId:String, date: String, startTime: String, endTime:String, cityId:String, centerId: String, courtId: String, playerId: String) {
+//        val bookingRequest = BookingRequest(
+//            "booking1",
+//            "2021-05-01", "10:00:00", "10:45:00",
+//            "1", "2", "A", "B"
+//        )
+        val bookingRequest = BookingRequest(bookingId, date, startTime, endTime, cityId, centerId, courtId, playerId)
+
+
 //        val fields: MutableMap<String, String> = HashMap()
 
         val call = mAPIService?.createBookings(bookingRequest)
@@ -557,6 +560,7 @@ class MainScreenActivity : AppCompatActivity(),
         val bookingFragment = FinishBookingFragment(date, city, center, court, start, end, this)
         bookingFragment.show(fm, "Booking Finish")
 
+        sendPostBooking("Booking Id", date, start, end, city, center, court, "Player Id")
         Toast.makeText(this, "Date: $date\nCenter: $center\nCourt: $court\nSlot: $slot\nStart: $start End: $end", Toast.LENGTH_SHORT).show()
     }
 
