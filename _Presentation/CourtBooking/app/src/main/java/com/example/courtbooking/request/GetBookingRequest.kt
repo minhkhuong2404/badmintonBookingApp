@@ -1,5 +1,10 @@
 package com.example.courtbooking.request
 
 class GetBookingRequest (
-    val pbookingid : String
+    val id : String,
+    val date : String,
+    val time : String,
+    val paymentStatus : String,
+    val court : String,
+    val createdOn : String
 )

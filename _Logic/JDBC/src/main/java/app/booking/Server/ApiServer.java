@@ -19,7 +19,7 @@ public class ApiServer {
         HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 
         CreateBookingHandler createBookingHandler = new CreateBookingHandler(getObjectMapper(), getErrorHandler());
-        server.createContext("/api/booking/create", createBookingHandler::handle);
+        server.createContext("/api/booking/create/", createBookingHandler::handle);
 
         //Get context
 
@@ -43,6 +43,7 @@ public class ApiServer {
 
         PlayerBookingHandler playerBookingHandler = new PlayerBookingHandler(getObjectMapper(),getErrorHandler());
         HttpContext context7 = server.createContext("/api/booking/view2",playerBookingHandler::handle);
+
 
         server.setExecutor(null); // creates a default executor
         server.start();

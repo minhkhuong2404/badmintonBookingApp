@@ -13,6 +13,12 @@ interface JsonPlaceHolderApi {
     ): Call<List<GetBookingRequest>>?
 
     @GET(".")
+    fun getStaffs(
+        @Query("cityid") cityid: String,
+        @Query("centerid") centerid: String
+    ): Call<StaffRequest>?
+
+    @GET(".")
     fun getBookings(@QueryMap parameters: Map<String, String>): Call<List<GetBookingRequest>>?
 
     @GET(".")
@@ -22,10 +28,16 @@ interface JsonPlaceHolderApi {
     fun getCourt(@QueryMap parameters: Map<String, String>): Call<List<CourtRequest>>?
 
     @GET(".")
+    fun getCenter(@QueryMap parameters: Map<String, String>): Call<List<CenterRequest>>?
+
+    @GET(".")
     fun getDate(@QueryMap parameters: Map<String, String>): Call<List<DateRequest>>?
 
     @GET(".")
     fun getSlots(@QueryMap parameters: Map<String, String>): Call<List<SlotRequest>>?
+
+    @GET(".")
+    fun getStaff(@QueryMap parameters: Map<String, String>): Call<StaffRequest>?
 
     @POST(".")
     fun createBookings(@Body post: BookingRequest?): Call<BookingRequest>?

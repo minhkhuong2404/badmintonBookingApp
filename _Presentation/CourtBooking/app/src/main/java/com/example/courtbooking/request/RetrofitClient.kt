@@ -1,5 +1,3 @@
-@file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-
 package com.example.courtbooking.request
 
 import android.annotation.SuppressLint
@@ -44,48 +42,4 @@ object RetrofitClient {
         }
         return retrofit
     }
-}
-object HttpClientService {
-
-    val unsafeOkHttpClient: OkHttpClient
-        get() = try {
-            val trustAllCerts: Array<TrustManager> = arrayOf<TrustManager>(
-                object : X509TrustManager {
-                    @SuppressLint("TrustAllX509TrustManager")
-                    override fun checkClientTrusted(
-                        chain: Array<X509Certificate?>?,
-                        authType: String?
-                    ) {
-                        //Do nothing
-                    }
-
-                    @SuppressLint("TrustAllX509TrustManager")
-                    override fun checkServerTrusted(
-                        chain: Array<X509Certificate?>?,
-                        authType: String?
-                    ) {
-                        //Do nothing
-                    }
-
-                    override fun getAcceptedIssuers(): Array<X509Certificate?>? {
-                        return arrayOfNulls(0)
-                    }
-                })
-            val sslContext = SSLContext.getInstance("TLS")
-            sslContext.init(
-                null, trustAllCerts,
-                SecureRandom()
-            )
-
-            val sslSocketFactory: javax.net.ssl.SSLSocketFactory = sslContext
-                .socketFactory
-
-            val okhttpclient : OkHttpClient = OkHttpClient.Builder()
-                .sslSocketFactory(sslSocketFactory)
-                .hostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
-                .build()
-            okhttpclient
-        } catch (e: Exception) {
-            throw RuntimeException(e)
-        }
 }
