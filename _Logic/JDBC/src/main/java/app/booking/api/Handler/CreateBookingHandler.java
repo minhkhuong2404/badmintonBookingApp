@@ -4,6 +4,7 @@ import app.booking.api.Constants;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
 import app.booking.db.ConnectionDB;
+import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,11 +44,10 @@ public class CreateBookingHandler extends Handler {
     private ResponseEntity<Response> doPost(InputStream is) throws Exception {
         CreateBookingRequest CBrequest = super.readRequest(is, CreateBookingRequest.class);
 
-        ConnectionDB db = new ConnectionDB();
 
         System.out.println(CBrequest);
 
-        String result_code = db.createBooking(CBrequest.getPbookingid(),
+        String result_code = SQLStatement.createBooking(CBrequest.getPbookingid(),
                 Timestamp.valueOf(CBrequest.getPtimestamp()),
                 Date.valueOf(CBrequest.getPdate()),
                 Time.valueOf(CBrequest.getPstarttime()),
@@ -64,6 +64,4 @@ public class CreateBookingHandler extends Handler {
         return new ResponseEntity<>(response,
                 getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
-
-
 }

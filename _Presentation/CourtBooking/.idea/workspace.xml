@@ -26,8 +26,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ded06aee-f5f1-411c-8419-fbf07ba0cc57" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../_Logic/JDBC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Logic/JDBC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Logic/JDBC/src/main/java/app/booking/db/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Logic/JDBC/src/main/java/app/booking/db/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Logic/JDBC/target/classes/app/booking/db/ConnectionDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Logic/JDBC/target/classes/app/booking/db/ConnectionDB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
