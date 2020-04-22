@@ -5,6 +5,9 @@ BEGIN
 -- select all players --
 select * from player;
 SET resultCode = '200';
+SELECT resultCode;
 END //
 DELIMITER ;
-call getPlayers(@code);
+delete from player where player_id = "P";
+CALL createPlayer("P", @code);
+CALL getPlayers(@code);
