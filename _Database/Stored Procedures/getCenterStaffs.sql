@@ -1,12 +1,13 @@
-DROP PROCEDURE IF EXISTS getCenterStaffs;
+DROP PROCEDURE IF EXISTS getCityCenterStaffs;
 DELIMITER //
-CREATE PROCEDURE getCenterStaffs(
+CREATE PROCEDURE getCityCenterStaffs(
+  in cityId varchar(50),
   in centerId varchar(50),
   out resultCode varchar(50))
 BEGIN
 
-IF NOT centerId REGEXP '^[a-zA-Z0-9]*$'
-THEN SET resultCode = 'GCS-000';
+IF NOT EXISTS (SELECT * FROM city WHERE cityId = city_id)
+THEN SET resultCode ="GCS-000";
 ELSEIF NOT EXISTS (SELECT * FROM center WHERE centerId = center_id)
 THEN SET resultCode ="GCS-001";
 ELSE
@@ -19,15 +20,15 @@ DELIMITER ;
 
 
 /* Test if getCenterStaffs is rejected when centerId is invalid */
-CALL getCenterStaffs("#", @code);
+CALL getCityCenterStaffs("A", "#", @code);
 /* expected error code CEN-000 */
 
 
 /* Test if getCenterStaffs is rejected when centerId is not existed */
-CALL getCenterStaffs("B", @code);
+CALL getCityCenterStaffs("A", "B", @code);
 /* expected error code CEN-001 */
 
 /* Test if getCenterStaffs is valid and existed */
-call getCenterStaffs('HCMquan1', @code);
+call getCityCenterStaffs("A", 'HCMquan1', @code);
 
 

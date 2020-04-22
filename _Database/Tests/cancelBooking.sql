@@ -15,48 +15,31 @@ Hướng dẫn kiểm thử cho: cancelBooking(bookingId, playerId)
 CALL cancelBooking("#", "A", @code);
 /* expected error code CA-000 */
 
-/* Test if cancelBooking is rejected when playerId is invalid */
-CALL cancelBooking("A", "#", @code);
-/* expected error code CA-001 */
 
-/* Test if cancelBooking is rejected when playerId is not existed */
-CALL createCity("CityA", @code);
-CALL createCityCenter("CenterA", "CityA", @code);
-CALL createCityCenterCourt("Court1", "CityA", "CenterA", @code);
-CALL createPlayer("Player", @code);
-INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
-VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
-CALL cancelBooking("Booking1", "Player2", @code);
-/* expected error code CA-002 */
 
 /* Test if cancelBooking is rejected when bookingId is not existed */
 CALL createCity("CityA", @code);
 CALL createCityCenter("CenterA", "CityA", @code);
 CALL createCityCenterCourt("Court1", "CityA", "CenterA", @code);
-CALL createPlayer("Player", @code);
-INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
-VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
-CALL cancelBooking("Booking2", "Player", @code);
+INSERT INTO `booking` (timestamp, `date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES ('2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL cancelBooking("2", "Player", @code);
 /* expected error code CA-003 */
 
 /* Test if cancelBooking is rejected when playerId does not own the bookingId */
 CALL createCity("CityA", @code);
 CALL createCityCenter("CenterA", "CityA", @code);
 CALL createCityCenterCourt("Court1", "CityA", "CenterA", @code);
-CALL createPlayer("Player", @code);
-CALL createPlayer("Player2", @code);
-INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
-VALUES ('Booking1','2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
-CALL cancelBooking("Booking1", "Player2");
+INSERT INTO `booking` (`booking_id`, `timestamp`, `date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
+VALUES (2, '2020-04-17 18:04:00','2020-04-15','09:00:00','10:00:00','CityA','CenterA','Court1','Player',0);
+CALL cancelBooking("2", "Player2", @code);
 /* expected error code CA-004 */
 
 /* Test if cancelBooking is rejected when violating 24 hours before start time */
 CALL createCity("CityA", @code);
 CALL createCityCenter("CenterA", "CityA", @code);
 CALL createCityCenterCourt("Court1", "CityA", "CenterA", @code);
-CALL createPlayer("Player", @code);
-CALL createPlayer("Player2", @code);
 INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) 
-VALUES ('Booking2','2020-04-17 18:04:00',DATE(NOW()),'07:00:00','8:00:00','CityA','CenterA','Court1','Player',0);
-CALL cancelBooking("Booking2", "Player", @code);
+VALUES ('2','2020-04-17 18:04:00',DATE(NOW()),'07:00:00','8:00:00','CityA','CenterA','Court1','Player',0);
+CALL cancelBooking("2", "Player", @code);
 /* expected error code CA-005 */

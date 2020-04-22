@@ -10,7 +10,7 @@ in pstaffId varchar(50),
 OUT resultCode varchar(50))
 BEGIN
 
-IF NOT pbookingId REGEXP '^[a-zA-Z0-9]*$'
+IF NOT pbookingId REGEXP '^[0-9]*$'
 THEN 
      SET resultCode = 'UBS-000';
 ELSEIF NOT pcityId REGEXP '^[a-zA-Z0-9]*$'

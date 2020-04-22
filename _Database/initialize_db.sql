@@ -38,14 +38,10 @@ CREATE TABLE staff(
      FOREIGN KEY (city_id) REFERENCES city (city_id) ON DELETE CASCADE
 );
 
-DROP TABLE IF EXISTS player;
-CREATE TABLE player(
-  player_id varchar(50) NOT NULL PRIMARY KEY
-);
 
 DROP TABLE IF EXISTS booking;
 CREATE TABLE booking(
-  booking_id varchar(50) NOT NULL PRIMARY KEY,
+  booking_id int NOT NULL auto_increment PRIMARY KEY,
   timestamp datetime NOT NULL,
   date date NOT NULL,
   startTime TIME NOT NULL,
@@ -60,7 +56,5 @@ CREATE TABLE booking(
   CONSTRAINT booking_center_fk
      FOREIGN KEY (center_id) REFERENCES center (center_id) ON DELETE CASCADE,
   CONSTRAINT booking_court_fk
-     FOREIGN KEY (court_id) REFERENCES court (court_id) ON DELETE CASCADE,
-  CONSTRAINT booking_player_fk
-     FOREIGN KEY (player_id) REFERENCES player (player_id) ON DELETE CASCADE	 
+     FOREIGN KEY (court_id) REFERENCES court (court_id) ON DELETE CASCADE
 );

@@ -11,21 +11,21 @@ ELSEIF NOT EXISTS (SELECT * FROM center WHERE city_id = cityId)
 THEN SET resultCode ="GCC-001";
 ELSE
 	select * from center where cityId = city_id;
-  SET resultCode = '200';
+  SET resultCode = "200";
 END IF;
 end//
 DELIMITER ;
 
 
 /* Tests if getCityCenters is rejected when cityId is invalid */
-CALL getCityCenters("#");
+CALL getCityCenters("#", @code);
 /* expected error CEN-000 */
 
 /* Tests if getCityCenters is rejected when cityId is not existed */
 delete from center where center_id = "A";
-CALL getCityCenters("A");
+CALL getCityCenters("A", @code);
 /* expected error CEN-001 */
 
 /* Tests if getCityCenters is valid then return the table center*/
-call getCityCenters("HCM");
+call getCityCenters("HCM", @code);
 /* expected: the Center table*/

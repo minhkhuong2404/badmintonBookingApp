@@ -1,8 +1,7 @@
--- createBooking(booking_id, date, startTime, endTime, cityId, centerId, courtId, playerId)
+-- createBooking(date, startTime, endTime, cityId, centerId, courtId, playerId)
 DROP PROCEDURE IF EXISTS CreateBooking;
 DELIMITER //
 CREATE PROCEDURE CreateBooking(
-in pbookingId varchar(50),
 in pdate date, 
 in pstartTime TIME,
 in pendTime TIME, 
@@ -26,13 +25,8 @@ SELECT pendTime into endTime;
 SELECT TIMEDIFF(endTime, startTime) into playTime;
 
 
-IF NOT pbookingId REGEXP '^[a-zA-Z0-9]*$'
-THEN
-     SET resultCode = 'CB-000';
-ELSEIF EXISTS (SELECT * FROM booking WHERE booking_id = pbookingId)
-THEN
-	SET resultCode ="CB-100";
-ELSEIF NOT EXISTS (SELECT * FROM city WHERE city_id = pcityId)
+
+IF NOT EXISTS (SELECT * FROM city WHERE city_id = pcityId)
 THEN
 	SET resultCode ="CB-001";
 ELSEIF NOT EXISTS (SELECT * FROM center WHERE center_id = pcenterId)
@@ -41,9 +35,6 @@ THEN
 ELSEIF NOT EXISTS (SELECT * FROM court WHERE court_id = pcourtId)
 THEN
 	SET resultCode ="CB-003";
-ELSEIF NOT EXISTS (SELECT * FROM player WHERE player_id = pplayerId)
-THEN
-	SET resultCode ="CB-004";
 ELSEIF date_add(pdate, INTERVAL time_to_sec(startTime) SECOND) < DATE(NOW())
 THEN 
    SET resultCode = 'CB-005';
@@ -63,11 +54,9 @@ ELSEIF (playTime <> MAKETIME(0,45,0) and
 THEN 
     SET resultCode = 'CB-009'; 
 ELSEIF EXISTS ( SELECT *
-			FROM booking
-			WHERE ( date = pdate and
-				    court_id = pcourtId and
-				    startTime < pendTime and
-				    endTime > pstartTime ) )
+			FROM booking b
+			WHERE ( date = pdate and court_id = pcourtId and
+				    (b.startTime < pendTime) and (pstartTime < b.endTime) ) )
 THEN 
     SET resultCode = 'CB-010'; 
 ELSEIF EXISTS ( SELECT *
@@ -82,8 +71,8 @@ ELSEIF 3 <= ( SELECT COUNT(*) FROM booking
 THEN
     SET resultCode = 'CB-012'; 
 ELSE
-	INSERT INTO booking 
-    VALUES (pbookingId, NOW(), pdate, pstartTime, pendTime, pcityId, pcenterId, pcourtId, pplayerId, 0);
+	INSERT INTO booking (timestamp, date, startTime, endTime, city_id, center_id, court_id, player_id)
+    VALUES (NOW(), pdate, pstartTime, pendTime, pcityId, pcenterId, pcourtId, pplayerId);
 	SET resultCode = '200';
 END IF;
 
