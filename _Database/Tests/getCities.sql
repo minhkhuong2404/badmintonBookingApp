@@ -15,3 +15,4 @@ Hướng dẫn kiểm thử cho: getCities()
 delete from city where city_id = "HCM";
 call createCity("HCM", @code);
 call getCities(@code);
+/* expected no error code */
