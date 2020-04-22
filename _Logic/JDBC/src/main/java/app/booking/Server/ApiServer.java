@@ -18,10 +18,10 @@ public class ApiServer {
         HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 
         CreateBookingHandler createBookingHandler = new CreateBookingHandler(getObjectMapper(), getErrorHandler());
-        server.createContext("/api/booking/create", createBookingHandler::handle);
+        server.createContext("/api/booking/create/", createBookingHandler::handle);
 
         StaffsHandler staffsHandler = new StaffsHandler(getObjectMapper(),getErrorHandler());
-        server.createContext("api/staff/view", staffsHandler::handle);
+        server.createContext("/api/staff/view/", staffsHandler::handle);
 
         server.setExecutor(null); // creates a default executor
         server.start();

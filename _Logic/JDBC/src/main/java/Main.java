@@ -12,8 +12,7 @@ public class Main {
 
         ArrayList<CityCenter> cityCenterList = SQLStatement.getCityCenters("A");
         System.out.println(cityCenterList);
-
-
+        
         ArrayList<CityCenterCourt> cityCenterCourtList = SQLStatement.getCityCenterCourts("A", "A1");
         System.out.println(cityCenterCourtList);
 

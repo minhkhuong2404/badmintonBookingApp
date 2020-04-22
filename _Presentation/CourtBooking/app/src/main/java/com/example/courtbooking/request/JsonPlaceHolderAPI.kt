@@ -22,6 +22,9 @@ interface JsonPlaceHolderApi {
     fun getCourt(@QueryMap parameters: Map<String, String>): Call<List<CourtRequest>>?
 
     @GET(".")
+    fun getCenter(@QueryMap parameters: Map<String, String>): Call<List<CenterRequest>>?
+
+    @GET(".")
     fun getDate(@QueryMap parameters: Map<String, String>): Call<List<DateRequest>>?
 
     @GET(".")
