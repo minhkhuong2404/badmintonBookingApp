@@ -32,21 +32,21 @@ CS-003 | centerId is existed but cityId is not existed **OR** both centerId and 
 CS-004 | centerId is not existed but cityId is existed |
 CS-005 | staffId is existed |
 
-# createPlayer
+# ~~createPlayer
 Error code | Test Description |
 ------------ | ---------------- | 
 CPL-000 | playerId is invalid |
-CPL-001 | playerId is existed
+CPL-001 | playerId is existed~~
 ***
 # createBooking
 Error code | Test Description |
 ------------ | ---------------- |
-CB-000 | bookingId is not alphanumeric |
-CB-100 | bookingId is existed |
+~~CB-000~~ | ~~bookingId is not alphanumeric~~ |
+~~CB-100~~ | ~~bookingId is existed~~ |
 CB-001 | cityId is not existed | 
 CB-002 | centerId is not existed | 
 CB-003 | courtId is not existed |  
-CB-004 | playerId is not existed |
+~~CB-004~~ | ~~playerId is not existed~~ |
 CB-005 | startTime < DATE(NOW()) |  
 CB-006 | startTime < openTime |
 CB-007 | endTime > closeTime |
