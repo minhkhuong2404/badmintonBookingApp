@@ -16,21 +16,3 @@ END IF;
 SELECT resultCode;
 end//
 DELIMITER ;
-
-/* Test if getCenterStaffs is valid and existed */
-delete from staff where staff_id = "S";
-CALL createStaff("S", "HCM", "A", @code);
-call getCenterStaffs('A', @code);
-
-/* Test if getCenterStaffs is rejected when centerId is invalid */
-CALL getCenterStaffs("#", @code);
-/* expected error code GCS-000 */
-
-
-/* Test if getCenterStaffs is rejected when centerId is not existed */
-CALL getCenterStaffs("B", @code);
-/* expected error code GCS-001 */
-
-
-
-
