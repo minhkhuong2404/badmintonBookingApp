@@ -60,8 +60,8 @@ CB-012 | playerId no more than 3 bookings |
 Error code | Test Description |
 ------------ | ---------------- |
 CA-000 | bookingId is invalid |
-CA-001 | playerId is invalid |
-CA-002 | playerId is not existed |
+~~CA-001~~ | playerId is invalid |
+~~CA-002~~ | playerId is not existed |
 CA-003 | bookingId is not existed |
 CA-004 | playerId does not own the bookingId |
 CA-005 | violating 24 hours before start time |
