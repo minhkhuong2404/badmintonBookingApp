@@ -13,6 +13,10 @@ Hướng dẫn kiểm thử cho: getStaffs()
 
 /* Test if getStaffs is accepted */
 delete from staff where staff_id = "S";
+delete from city where city_id = "HCM";
+delete from center where center_id = "A" and city_id = "HCM";
+CALL createCity("HCM",@code);
+CALL createCityCenter("A","HCM",@code);
 CALL createStaff("S", "HCM", "A", @code);
 CALL getStaffs(@code);
 /* expected table staff and no error code */
