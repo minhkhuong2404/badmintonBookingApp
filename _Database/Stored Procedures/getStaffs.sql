@@ -5,7 +5,6 @@ BEGIN
 -- select all staffs --
 select * from staff;
 SET resultCode = '200';
+SELECT resultCode;
 END //
 DELIMITER ;
-
-call getStaffs(@code);

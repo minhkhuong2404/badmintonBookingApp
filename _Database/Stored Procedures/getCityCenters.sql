@@ -13,19 +13,7 @@ ELSE
 	select * from center where cityId = city_id;
   SET resultCode = "200";
 END IF;
+
+SELECT resultCode;
 end//
 DELIMITER ;
-
-
-/* Tests if getCityCenters is rejected when cityId is invalid */
-CALL getCityCenters("#", @code);
-/* expected error CEN-000 */
-
-/* Tests if getCityCenters is rejected when cityId is not existed */
-delete from center where center_id = "A";
-CALL getCityCenters("A", @code);
-/* expected error CEN-001 */
-
-/* Tests if getCityCenters is valid then return the table center*/
-call getCityCenters("HCM", @code);
-/* expected: the Center table*/

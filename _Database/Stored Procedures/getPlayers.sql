@@ -5,6 +5,6 @@ BEGIN
 -- select all players --
 select * from player;
 SET resultCode = '200';
+SELECT resultCode;
 END //
 DELIMITER ;
-call getPlayers(@code);

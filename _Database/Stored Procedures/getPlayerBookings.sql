@@ -15,17 +15,6 @@ ELSE select *
      where playerId = player_id;
      SET resultCode = '200';
 END IF;
+SELECT resultCode;
 end//
 DELIMITER ;
-
-/* Test if getPlayerBookings is rejected when centerId is invalid */
-call getPlayerBookings('#', @code);
-/* expected error code CEN-000 */
-
-/* Test if getPlayerBookings is rejected when centerId is not existed */
-call getPlayerBookings('A', @code);
-/* expected error code CEN-001 */
-
-/* Test if getPlayerBookings is valid and existed, then return the information */
-call getPlayerBookings('CustomerA', @code);
-

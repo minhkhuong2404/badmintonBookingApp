@@ -1,8 +1,8 @@
 DROP PROCEDURE IF EXISTS getCityCenterCourts;
 DELIMITER //
 CREATE PROCEDURE getCityCenterCourts(
-	in cityId varchar(50), 
-	in centerId varchar(50),
+	in centerId varchar(50), 
+	in cityId varchar(50),
 	out resultCode varchar(50))
 BEGIN
 
@@ -22,32 +22,6 @@ ELSE
 	select * from court where cityId = city_id and centerId = center_id;
 	SET resultCode = "200";
 END IF;
+SELECT resultCode;
 end//
 DELIMITER ;
-
-/* Test if getCityCenterCourts is accepted when centerId and cityId are valid */
-delete from center where center_id = "A" and city_id = "1";
-CALL getCityCenterCourts("A", "1", @code);
-/* expected no error code */
-
-/* Tests if getCityCenterCourts is rejected when cityId is invalid */
-CALL getCityCenterCourts("A", "#", @code);
-/* expected error CEN-000 */
-
-/* Tests if getCityCenterCourts is rejected when centerId is invalid */
-CALL getCityCenterCourts("#", "A", @code);
-/* expected error CEN-001 */
-
-/* Tests if getCityCenterCourts is rejected when cityId is not existed */
-CALL getCityCenterCourts("A", "A", @code);
-/* expected error CEN-002 */
-
-/* Tests if getCityCenterCourts is rejected when centerId is not existed */
-CALL getCityCenterCourts("HCM", "2", @code);
-/* expected error CEN-002 */
-
-/* Tests if getCityCenterCourts is valid and existed*/
-CALL getCityCenterCourts("HCM", "HCMquan1", @code);
-
-
-

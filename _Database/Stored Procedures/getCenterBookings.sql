@@ -13,15 +13,6 @@ ELSE
 	select * from booking where centerId = center_id;
   SET resultCode = '200';
 END IF;
+SELECT resultCode;
 end//
 DELIMITER ;
-
-/* Test if getCenterBookings is rejected when centerId is invalid */
-call getCenterBookings('#', @code);
-/* expected error code CEN-000 */
-
-/* Test if getCenterBookings is rejected when centerId is not existed */
-call getCenterBookings('A', @code);
-/* expected error code CEN-001 */
-/* Test if getCenterBookings is valid and existed, then return the information */
-call getCenterBookings('HCMquan1', @code);

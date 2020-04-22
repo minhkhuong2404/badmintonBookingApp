@@ -14,21 +14,6 @@ ELSE
 	select * from staff where centerId = center_id;
   SET resultCode = '200';
 END IF;
+SELECT resultCode;
 end//
 DELIMITER ;
-
-
-
-/* Test if getCenterStaffs is rejected when centerId is invalid */
-CALL getCityCenterStaffs("A", "#", @code);
-/* expected error code CEN-000 */
-
-
-/* Test if getCenterStaffs is rejected when centerId is not existed */
-CALL getCityCenterStaffs("A", "B", @code);
-/* expected error code CEN-001 */
-
-/* Test if getCenterStaffs is valid and existed */
-call getCityCenterStaffs("A", 'HCMquan1', @code);
-
-
