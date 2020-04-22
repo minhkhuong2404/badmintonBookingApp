@@ -8,6 +8,3 @@ SET resultCode = '200';
 SELECT resultCode;
 END //
 DELIMITER ;
-delete from staff where staff_id = "S";
-CALL createStaff("S", "HCM", "A", @code);
-CALL getStaffs(@code);
