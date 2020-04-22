@@ -15,7 +15,7 @@ public class Access {
         User user = facebookClient.fetchObject("me", User.class);
 
         System.out.println("User="+ user);
-        System.out.println("UserName= "+ user.getUsername());
+        System.out.println("UserName= "+ user.getFirstName() + " " + user.getLastName());
         System.out.println(user.getEmail());
         System.out.println("Birthday= "+ user.getBirthday());
 

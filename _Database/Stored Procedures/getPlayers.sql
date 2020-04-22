@@ -7,4 +7,4 @@ select * from player;
 SET resultCode = '200';
 END //
 DELIMITER ;
-call getPlayers();
+call getPlayers(@code);

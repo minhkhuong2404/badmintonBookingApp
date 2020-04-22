@@ -8,4 +8,4 @@ SET resultCode = '200';
 END //
 DELIMITER ;
 
-call getCities();
+call getCities(@code);

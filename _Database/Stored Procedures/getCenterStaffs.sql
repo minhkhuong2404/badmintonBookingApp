@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS getCenterStaffs;
 DELIMITER //
 CREATE PROCEDURE getCenterStaffs(
-  in centerId varchar(50)
+  in centerId varchar(50),
   out resultCode varchar(50))
 BEGIN
 
@@ -19,15 +19,15 @@ DELIMITER ;
 
 
 /* Test if getCenterStaffs is rejected when centerId is invalid */
-CALL getCenterStaffs("#");
+CALL getCenterStaffs("#", @code);
 /* expected error code CEN-000 */
 
 
 /* Test if getCenterStaffs is rejected when centerId is not existed */
-CALL getCenterStaffs("B");
+CALL getCenterStaffs("B", @code);
 /* expected error code CEN-001 */
 
 /* Test if getCenterStaffs is valid and existed */
-call getCenterStaffs('HCMquan1');
+call getCenterStaffs('HCMquan1', @code);
 
 

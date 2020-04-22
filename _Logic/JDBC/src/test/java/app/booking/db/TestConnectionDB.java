@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestConnectionDB {
 
+    /*
+
     // createCity
 
     @Test
@@ -1077,6 +1079,6 @@ public class TestConnectionDB {
         String result_code = SQLStatement.updateBookingStatus('1',"booking1","2","2","S2");
         assertEquals("UBS-008", result_code, "Pass.");
     }
-
+    */
 }
 

@@ -48,7 +48,6 @@ public class CreateBookingHandler extends Handler {
         System.out.println(CBrequest);
 
         String result_code = SQLStatement.createBooking(CBrequest.getPbookingid(),
-                Timestamp.valueOf(CBrequest.getPtimestamp()),
                 Date.valueOf(CBrequest.getPdate()),
                 Time.valueOf(CBrequest.getPstarttime()),
                 Time.valueOf(CBrequest.getPendtime()),

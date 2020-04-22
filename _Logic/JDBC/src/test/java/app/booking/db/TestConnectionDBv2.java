@@ -745,7 +745,6 @@ public class TestConnectionDBv2 {
         // actual test
         String result_code = SQLStatement.createBooking(
                 "booking1",
-                Timestamp.valueOf("2020-04-07 09:27:18"),
                 Date.valueOf("2021-05-01"),
                 Time.valueOf("10:00:00"),
                 Time.valueOf("10:45:00"),
@@ -802,7 +801,15 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("#booking", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(
+                "#booking",
+                Date.valueOf("2021-05-01"),
+                Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"),
+                "1",
+                "2",
+                "A",
+                "B");
         assertEquals("CB-000", result_code, "Pass.");
     }
 
@@ -871,7 +878,10 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(
+                "booking1",
+                Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-100", result_code, "Pass.");
     }
 
@@ -922,7 +932,10 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "2", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(
+                "booking1",
+                Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"), "2", "2", "A", "B");
         assertEquals("CB-001", result_code, "Pass.");
     }
 
@@ -972,7 +985,7 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "3", "A", "B");
+        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "3", "A", "B");
         assertEquals("CB-002", result_code, "Pass.");
     }
 
@@ -1023,7 +1036,10 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "C", "B");
+        String result_code = SQLStatement.createBooking(
+                "booking1", Date.valueOf("2021-05-01"),
+                Time.valueOf("10:30:00"), Time.valueOf("11:30:00"),
+                "1", "2", "C", "B");
         assertEquals("CB-003", result_code, "Pass.");
     }
 
@@ -1074,7 +1090,10 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "D");
+        String result_code = SQLStatement.createBooking(
+                "booking1", Date.valueOf("2021-05-01"),
+                Time.valueOf("10:30:00"), Time.valueOf("11:30:00"),
+                "1", "2", "A", "D");
         assertEquals("CB-004", result_code, "Pass.");
     }
 
@@ -1125,7 +1144,9 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-03-01"), Time.valueOf("10:10:00"), Time.valueOf("18:35:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2020-03-01"),
+                Time.valueOf("10:10:00"), Time.valueOf("18:35:00"),
+                "1", "2", "A", "B");
         assertEquals("CB-005", result_code, "Pass.");
     }
 
@@ -1176,7 +1197,10 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("06:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(
+                "booking1", Date.valueOf("2020-05-01"),
+                Time.valueOf("06:00:00"), Time.valueOf("07:00:00"),
+                "1", "2", "A", "B");
         assertEquals("CB-006", result_code, "Pass.");
     }
 
@@ -1227,7 +1251,7 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("07:10:00"), Time.valueOf("21:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2020-05-01"), Time.valueOf("07:10:00"), Time.valueOf("21:30:00"), "1", "2", "A", "B");
         assertEquals("CB-007", result_code, "Pass.");
     }
 
@@ -1278,7 +1302,7 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-01"), Time.valueOf("08:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2020-05-01"), Time.valueOf("08:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
         assertEquals("CB-008", result_code, "Pass.");
     }
 
@@ -1328,7 +1352,7 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
         assertEquals("CB-009", result_code, "Pass.");
     }
 
@@ -1397,10 +1421,10 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code1 = SQLStatement.createBooking("booking2", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
-        String result_code2 = SQLStatement.createBooking("booking3", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("09:30:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
-        String result_code3 = SQLStatement.createBooking("booking4", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("09:45:00"), Time.valueOf("11:00:00"), "1", "2", "A", "B");
-        String result_code4 = SQLStatement.createBooking("booking5", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
+        String result_code1 = SQLStatement.createBooking("booking2",  Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code2 = SQLStatement.createBooking("booking3", Date.valueOf("2021-05-01"), Time.valueOf("09:30:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
+        String result_code3 = SQLStatement.createBooking("booking4", Date.valueOf("2021-05-01"), Time.valueOf("09:45:00"), Time.valueOf("11:00:00"), "1", "2", "A", "B");
+        String result_code4 = SQLStatement.createBooking("booking5", Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
         assertEquals("CB-010", result_code1, "Pass.");
         assertEquals("CB-010", result_code2, "Pass.");
         assertEquals("CB-010", result_code3, "Pass.");
@@ -1441,7 +1465,7 @@ public class TestConnectionDBv2 {
         smt.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("1", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2020-05-03"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking("1", Date.valueOf("2020-05-03"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-011", result_code, "Pass.");
     }
 
@@ -1547,7 +1571,7 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking4", Timestamp.valueOf("2020-04-07 09:27:18"), Date.valueOf("2021-05-06"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking("booking4", Date.valueOf("2021-05-06"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-012", result_code, "Pass.");
     }
 
@@ -2770,6 +2794,6 @@ public class TestConnectionDBv2 {
         String result_code = SQLStatement.updateBookingStatus('1',"booking1","2","2","S2");
         assertEquals("UBS-008", result_code, "Pass.");
     }
-    
+
 }
 

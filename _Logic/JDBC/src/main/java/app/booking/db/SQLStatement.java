@@ -198,24 +198,23 @@ public class SQLStatement {
         return code;
     }
     // createBooking
-    public static String createBooking(String bookingId, Timestamp timestamp, Date date, Time start, Time end,
+    public static String createBooking(String bookingId, Date date, Time start, Time end,
                                 String cityId, String centerId, String courtId, String playerId) throws Exception {
         String code;
         CallableStatement stm = null;
         try {
-            stm = conn.prepareCall("{ CALL createBooking(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }");
+            stm = conn.prepareCall("{ CALL createBooking(?, ?, ?, ?, ?, ?, ?, ?, ?) }");
             stm.setString(1, bookingId);
-            stm.setTimestamp(2, timestamp);
-            stm.setDate(3, date);
-            stm.setTime(4, start);
-            stm.setTime(5, end);
-            stm.setString(6, cityId);
-            stm.setString(7, centerId);
-            stm.setString(8, courtId);
-            stm.setString(9, playerId);
-            stm.registerOutParameter(10, Types.VARCHAR);
+            stm.setDate(2, date);
+            stm.setTime(3, start);
+            stm.setTime(4, end);
+            stm.setString(5, cityId);
+            stm.setString(6, centerId);
+            stm.setString(7, courtId);
+            stm.setString(8, playerId);
+            stm.registerOutParameter(9, Types.VARCHAR);
             stm.executeUpdate();
-            code = stm.getString(10);
+            code = stm.getString(9);
         } catch (SQLException e) {
             throw e;
         } finally {
