@@ -1,21 +1,18 @@
-package app.booking.api.Handler;
+package app.booking.api.PostHandler;
 
 import app.booking.api.Constants;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
-import app.booking.db.ConnectionDB;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
-import java.io.IOException;
+
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Time;
-import java.sql.Timestamp;
 
 
 public class CreateBookingHandler extends Handler {

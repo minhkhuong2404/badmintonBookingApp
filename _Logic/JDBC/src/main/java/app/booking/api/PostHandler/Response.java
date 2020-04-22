@@ -1,4 +1,4 @@
-package app.booking.api.Handler;
+package app.booking.api.PostHandler;
 
 import lombok.Value;
 

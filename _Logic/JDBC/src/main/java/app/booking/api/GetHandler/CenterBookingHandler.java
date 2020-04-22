@@ -4,8 +4,8 @@ import app.booking.api.Constants;
 import app.booking.api.PostHandler.Handler;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
-import app.booking.db.CityCenterStaff;
-
+import app.booking.db.Booking;
+import app.booking.db.CityCenterCourt;
 import app.booking.db.JsonConverter;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
@@ -17,9 +17,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-public class StaffsHandler extends GetHandler {
+public class CenterBookingHandler extends GetHandler {
 
-    public StaffsHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
+    public CenterBookingHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
         super(objectMapper, exceptionHandler);
     }
 
@@ -42,8 +42,8 @@ public class StaffsHandler extends GetHandler {
     }
 
     private ResponseEntity doGet(InputStream is) throws Exception {
-        StaffRequest rq = super.readRequest(is, StaffRequest.class);
-        ArrayList<CityCenterStaff> ls = SQLStatement.getCityCenterStaffs(rq.getCityid(),rq.getCenterid());
+        CenterBookingRequest rqs = super.readRequest(is, CenterBookingRequest.class);
+        ArrayList<Booking> ls = SQLStatement.getCenterBookings(rqs.getCenterid());
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp,
                 getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);

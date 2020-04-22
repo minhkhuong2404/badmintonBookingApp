@@ -1,4 +1,5 @@
-package app.booking.api.Handler;
+package app.booking.api.GetHandler;
+
 
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
@@ -10,11 +11,11 @@ import io.vavr.control.Try;
 import java.io.InputStream;
 
 
-public abstract class Handler {
+public abstract class GetHandler{
     private final ObjectMapper objectMapper;
     private final GlobalExceptionHandler exceptionHandler;
 
-    public Handler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler){
+    public GetHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler){
         this.objectMapper = objectMapper;
         this.exceptionHandler = exceptionHandler;
     }
@@ -42,3 +43,4 @@ public abstract class Handler {
         return headers;
     }
 }
+
