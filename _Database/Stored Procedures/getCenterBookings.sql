@@ -32,8 +32,8 @@ CALL getCenterBookings('A', @code);
 
 /* Test if getCenterBookings is rejected when centerId is invalid */
 call getCenterBookings('#', @code);
-/* expected error code CEN-000 */
+/* expected error code GCB-000 */
 
 /* Test if getCenterBookings is rejected when centerId is not existed */
 call getCenterBookings('B', @code);
-/* expected error code CEN-001 */
+/* expected error code GCB-001 */
