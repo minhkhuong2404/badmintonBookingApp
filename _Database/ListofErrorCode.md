@@ -32,11 +32,11 @@ CS-003 | centerId is existed but cityId is not existed **OR** both centerId and 
 CS-004 | centerId is not existed but cityId is existed |
 CS-005 | staffId is existed |
 
-# ~~createPlayer
+# ~~createPlayer~~
 Error code | Test Description |
 ------------ | ---------------- | 
-CPL-000 | playerId is invalid |
-CPL-001 | playerId is existed~~
+~~CPL-000~~ | ~~playerId is invalid~~ |
+~~CPL-001~~ | ~~playerId is existed~~
 ***
 # createBooking
 Error code | Test Description |
