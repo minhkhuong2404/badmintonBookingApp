@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.activity_main_screen.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -60,7 +58,7 @@ class MainScreenActivity : AppCompatActivity(),
 //            .build()
 //
 //        mAPIService = retrofit.create(JsonPlaceHolderApi::class.java)
-
+        sendGetStaff()
         // findViewById
         cityChooser = findViewById<Spinner>(R.id.sp_city)
         dateChooser = findViewById<EditText>(R.id.et_date)
@@ -318,7 +316,57 @@ class MainScreenActivity : AppCompatActivity(),
         })
 
     }
+    private fun sendGetStaff()  {
+        val parameters: MutableMap<String, String> = HashMap()
+        parameters["cityid"] = "A"
+        parameters["centerid"] ="A1"
 
+        val staffRequest = StaffRequest("A","A1")
+        val call = mAPIService?.getStaff(parameters)
+//        var staffs : ArrayList<String> = ArrayList()
+
+        Log.i("bb",parameters.toString())
+
+        call?.enqueue(object : Callback<StaffRequest> {
+            override fun onResponse(
+                call: Call<StaffRequest>,
+                response: Response<StaffRequest>
+            ) {
+                Log.i("bb",call.toString())
+                if (!response.isSuccessful) {
+//                    staffs.add("City1")
+//                    staffs.add("City2")
+//                    cities.add("City3")
+//                    cities.add("City4")
+                    Log.i("bb",response.code().toString())
+                    Log.i("bb",response.message().toString())
+                    Log.i("bb","WOR444444444")
+                    return
+                }
+                val staffRequest : StaffRequest?  = response.body()
+                if (staffRequest != null) {
+//                    for (staff in staffRequest){
+//                        var content = ""
+//                        content += "" + city.getCityId()
+//                        cities.add(city.toString())
+//                    }
+                }
+                Log.i("bb",staffRequest.toString())
+                Log.i("bb","WORKKKKKKKKKKKKKKK")
+            }
+
+            override fun onFailure(
+                call: Call<StaffRequest>,
+                t: Throwable
+            ) {
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+//                cities.add("City??")
+                Log.i("bb","WOR222222222")
+
+            }
+        })
+
+    }
     // when press to select a city
     private fun sendGetCity() : ArrayList<String> {
         val parameters: MutableMap<String, String> = HashMap()
