@@ -1,9 +1,8 @@
--- createBooking(booking_id, timestamp, date, startTime, endTime, cityId, centerId, courtId, playerId)
+-- createBooking(booking_id, date, startTime, endTime, cityId, centerId, courtId, playerId)
 DROP PROCEDURE IF EXISTS CreateBooking;
 DELIMITER //
 CREATE PROCEDURE CreateBooking(
 in pbookingId varchar(50),
-in ptimestamp datetime, 
 in pdate date, 
 in pstartTime TIME,
 in pendTime TIME, 
@@ -84,7 +83,7 @@ THEN
     SET resultCode = 'CB-012'; 
 ELSE
 	INSERT INTO booking 
-    VALUES (pbookingId, ptimestamp, pdate, pstartTime, pendTime, pcityId, pcenterId, pcourtId, pplayerId, 0);
+    VALUES (pbookingId, NOW(), pdate, pstartTime, pendTime, pcityId, pcenterId, pcourtId, pplayerId, 0);
 	SET resultCode = '200';
 END IF;
 

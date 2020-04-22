@@ -20,7 +20,7 @@ CALL createCityCenterCourt("court1","city1","center1", @code);
 CALL createPlayer("player1", @code);
 
 /* Test if createBooking is accepted when all constraints are valid */
-CALL createBooking("booking1", "2020-04-07 09:27:18", "2021-05-01", "10:00:00" , "10:45:00" , 'city1', 'center1', 'court1', 'player1', @code);
+CALL createBooking("booking1", "2021-05-01", "10:00:00" , "10:45:00" , 'city1', 'center1', 'court1', 'player1', @code);
 /* expected no error code */
 
 /* Test if createBooking is rejected when bookingId is not alphanumeric */
