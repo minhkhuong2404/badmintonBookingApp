@@ -1,7 +1,7 @@
 package app.booking.Server;
 
 import app.booking.api.GetHandler.*;
-import app.booking.api.PostHandler.CreateBookingHandler;
+import app.booking.api.PostHandler.CreateBookingPostHandler;
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
 
@@ -17,7 +17,7 @@ public class ApiServer {
         int serverPort = 8003;
         HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 
-        CreateBookingHandler createBookingHandler = new CreateBookingHandler(getObjectMapper(), getErrorHandler());
+        CreateBookingPostHandler createBookingHandler = new CreateBookingPostHandler(getObjectMapper(), getErrorHandler());
         server.createContext("/api/booking/create/", createBookingHandler::handle);
 
         //Get context

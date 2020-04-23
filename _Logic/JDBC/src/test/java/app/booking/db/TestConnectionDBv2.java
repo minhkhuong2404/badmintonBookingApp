@@ -1,6 +1,7 @@
 package app.booking.db;
 
 import org.junit.jupiter.api.Test;
+
 import java.sql.*;
 
 
@@ -21,11 +22,11 @@ public class TestConnectionDBv2 {
         String result_code = SQLStatement.createCity("D");
         assertEquals("200", result_code, "Pass.");
     }
-    
+
     @Test
     public void createCity_Invalid() throws Exception {
         // initialize the connection to database
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         // scenario
@@ -38,7 +39,7 @@ public class TestConnectionDBv2 {
     @Test
     public void createCity_Existed() throws Exception {
         // initialize the connection to database
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         // scenario
@@ -60,7 +61,7 @@ public class TestConnectionDBv2 {
     @Test
     public void createCityCenter_Success() throws Exception {
         // initialize the connection to database
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -81,7 +82,7 @@ public class TestConnectionDBv2 {
     @Test
     public void createCityCenter_CityInvalid() throws Exception {
         // initialize the connection to database
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -95,7 +96,7 @@ public class TestConnectionDBv2 {
     @Test
     public void createCityCenter_CenterInvalid() throws Exception {
         // initialize the connection to database
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -109,7 +110,7 @@ public class TestConnectionDBv2 {
     @Test
     public void createCityCenter_CityNotExist() throws Exception {
         // initialize the connection to database
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -123,7 +124,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenter_CenterExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -154,7 +155,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_Success() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -183,7 +184,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_cityIdIsInvalid() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -213,7 +214,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_centerIdIsInvalid() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -243,7 +244,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_courtIdIsInvalid() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -273,7 +274,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_centerIdIsExistedButcityIdIsNotExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -303,7 +304,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_centerIdIsNotExistedButcityIdIsExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -333,7 +334,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_BothcenterIdAndcityIdAreNotExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -363,7 +364,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createCityCenterCourt_courtIdIsExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -404,7 +405,7 @@ public class TestConnectionDBv2 {
     // createPlayer
     @Test
     public void createPlayer_Success() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("player");
         // scenario
@@ -416,7 +417,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createPlayer_playerIdIsInvalid() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("player");
         // scenario
@@ -428,7 +429,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createPlayer_playerIdIsExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("player");
         // scenario
@@ -449,7 +450,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_Success() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -479,7 +480,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_cityIdIsInvalid() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -508,7 +509,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_centerIdIsInvalid() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -538,7 +539,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_staffIdIsInvalid() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -568,7 +569,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_centerIdIsExistedButcityIdIsNotExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -598,7 +599,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_centerIdIsNotExistedButcityIdIsExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -628,7 +629,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_BothcenterIdAndcityIdIsNotExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -658,7 +659,7 @@ public class TestConnectionDBv2 {
 
     @Test
     public void createStaff_staffIdIsExisted() throws Exception {
-        
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -697,112 +698,16 @@ public class TestConnectionDBv2 {
     }
 
     // createBooking
+
     @Test
     public void createBooking_Success() throws Exception {
-        
-        // clean up database
-        SQLStatement.cleanTable("city");
-        SQLStatement.cleanTable("center");
-        SQLStatement.cleanTable("staff");
-        SQLStatement.cleanTable("player");
-        SQLStatement.cleanTable("booking");
         // scenario
-        String sql = "INSERT INTO city VALUE (?)";
-
-        PreparedStatement smt = ConnectionDB.getInstance().getConnection().prepareStatement(sql);
-
-        smt.setString(1, "1");
-
-        smt.execute();
-
-        String sql2 = "INSERT INTO center VALUE (?, ?)";
-
-        PreparedStatement smt2 = ConnectionDB.getInstance().getConnection().prepareStatement(sql2);
-
-        smt2.setString(1, "2");
-        smt2.setString(2, "1");
-
-        smt2.execute();
-
-        String sql3 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt3 = ConnectionDB.getInstance().getConnection().prepareStatement(sql3);
-
-        smt3.setString(1, "A");
-        smt3.setString(2, "1");
-        smt3.setString(3, "2");
-
-        smt3.execute();
-
-        String sql4 = "INSERT INTO player VALUE (?)";
-
-        PreparedStatement smt4 = ConnectionDB.getInstance().getConnection().prepareStatement(sql4);
-
-        smt4.setString(1, "B");
-
-        smt4.execute();
-
-        // actual test
-        String result_code = SQLStatement.createBooking(
-                "booking1",
-                Date.valueOf("2021-05-01"),
-                Time.valueOf("10:00:00"),
-                Time.valueOf("10:45:00"),
-                "1",
-                "2",
-                "A",
-                "B");
-        assertEquals("200", result_code, "Pass.");
-    }
-
-    @Test
-    public void createBooking_WhenBookingIdIsNotAlphanumeric() throws Exception {
-        
-        // clean up database
-        SQLStatement.cleanTable("city");
-        SQLStatement.cleanTable("center");
-        SQLStatement.cleanTable("staff");
-        SQLStatement.cleanTable("booking");
-        SQLStatement.cleanTable("player");
-        //scenario
-        String sql = "INSERT INTO city VALUE (?)";
-
-        PreparedStatement smt = ConnectionDB.getInstance().getConnection().prepareStatement(sql);
-
-        smt.setString(1, "1");
-
-        smt.execute();
-
-        String sql2 = "INSERT INTO center VALUE (?, ?)";
-
-        PreparedStatement smt2 = ConnectionDB.getInstance().getConnection().prepareStatement(sql2);
-
-        smt2.setString(1, "2");
-        smt2.setString(2, "1");
-
-        smt2.execute();
-
-        String sql3 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt3 = ConnectionDB.getInstance().getConnection().prepareStatement(sql3);
-
-        smt3.setString(1, "A");
-        smt3.setString(2, "1");
-        smt3.setString(3, "2");
-
-        smt3.execute();
-
-        String sql4 = "INSERT INTO player VALUE (?)";
-
-        PreparedStatement smt4 = ConnectionDB.getInstance().getConnection().prepareStatement(sql4);
-
-        smt4.setString(1, "B");
-
-        smt4.execute();
+        // INSERT INTO `booking_app`.`city` (`city_id`) VALUES ('1');
+        // INSERT INTO `booking_app`.`center` (`center_id`, `city_id`) VALUES ('2', '1');
+        // INSERT INTO `booking_app`.`court` (`court_id`, `city_id`, `center_id`) VALUES ('A', '1', '2');
 
         //actual test
         String result_code = SQLStatement.createBooking(
-                "#booking",
                 Date.valueOf("2021-05-01"),
                 Time.valueOf("10:30:00"),
                 Time.valueOf("11:30:00"),
@@ -810,12 +715,12 @@ public class TestConnectionDBv2 {
                 "2",
                 "A",
                 "B");
-        assertEquals("CB-000", result_code, "Pass.");
+        assertEquals("CB-200", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenbookingIdIsExisted() throws  Exception{
-        
+    public void createBooking_WhenbookingIdIsExisted() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -879,15 +784,14 @@ public class TestConnectionDBv2 {
 
         //actual test
         String result_code = SQLStatement.createBooking(
-                "booking1",
                 Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"),
                 Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-100", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhencityIdIsNotexisted() throws Exception{
-        
+    public void createBooking_WhencityIdIsNotexisted() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -933,15 +837,14 @@ public class TestConnectionDBv2 {
 
         //actual test
         String result_code = SQLStatement.createBooking(
-                "booking1",
                 Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"),
                 Time.valueOf("11:30:00"), "2", "2", "A", "B");
         assertEquals("CB-001", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhencenterIdIsNotExisted()throws  Exception{
-        
+    public void createBooking_WhencenterIdIsNotExisted() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -985,13 +888,15 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "3", "A", "B");
+        String result_code = SQLStatement.createBooking(
+                Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"), "1", "3", "A", "B");
         assertEquals("CB-002", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenCourtIdIsNotExisted() throws Exception{
-        
+    public void createBooking_WhenCourtIdIsNotExisted() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1037,15 +942,15 @@ public class TestConnectionDBv2 {
 
         //actual test
         String result_code = SQLStatement.createBooking(
-                "booking1", Date.valueOf("2021-05-01"),
+                Date.valueOf("2021-05-01"),
                 Time.valueOf("10:30:00"), Time.valueOf("11:30:00"),
                 "1", "2", "C", "B");
         assertEquals("CB-003", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenPlayerIdIsNotExisted() throws Exception{
-        
+    public void createBooking_WhenPlayerIdIsNotExisted() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1091,15 +996,14 @@ public class TestConnectionDBv2 {
 
         //actual test
         String result_code = SQLStatement.createBooking(
-                "booking1", Date.valueOf("2021-05-01"),
-                Time.valueOf("10:30:00"), Time.valueOf("11:30:00"),
-                "1", "2", "A", "D");
+                Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"), "1", "2", "A", "D");
         assertEquals("CB-004", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenStartTimeLessThanDateNow() throws Exception{
-        
+    public void createBooking_WhenStartTimeLessThanDateNow() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1144,15 +1048,16 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2020-03-01"),
+        String result_code = SQLStatement.createBooking(
+                Date.valueOf("2020-03-01"),
                 Time.valueOf("10:10:00"), Time.valueOf("18:35:00"),
                 "1", "2", "A", "B");
         assertEquals("CB-005", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenStartTimeLessThanOpenTime() throws Exception{
-        
+    public void createBooking_WhenStartTimeLessThanOpenTime() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1198,15 +1103,15 @@ public class TestConnectionDBv2 {
 
         //actual test
         String result_code = SQLStatement.createBooking(
-                "booking1", Date.valueOf("2020-05-01"),
+                Date.valueOf("2020-05-01"),
                 Time.valueOf("06:00:00"), Time.valueOf("07:00:00"),
                 "1", "2", "A", "B");
         assertEquals("CB-006", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenEndTimeLongerThanCloseTime() throws Exception{
-        
+    public void createBooking_WhenEndTimeLongerThanCloseTime() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1251,13 +1156,13 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2020-05-01"), Time.valueOf("07:10:00"), Time.valueOf("21:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(Date.valueOf("2020-05-01"), Time.valueOf("07:10:00"), Time.valueOf("21:30:00"), "1", "2", "A", "B");
         assertEquals("CB-007", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenEndTimeLessThanStartTime() throws Exception{
-        
+    public void createBooking_WhenEndTimeLessThanStartTime() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1302,13 +1207,13 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2020-05-01"), Time.valueOf("08:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(Date.valueOf("2020-05-01"), Time.valueOf("08:00:00"), Time.valueOf("07:00:00"), "1", "2", "A", "B");
         assertEquals("CB-008", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenPlayTimeIsInvalid() throws Exception{
-        
+    public void createBooking_WhenPlayTimeIsInvalid() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1352,13 +1257,13 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking1", Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
         assertEquals("CB-009", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenOverlappedWithOtherBookings() throws Exception{
-        
+    public void createBooking_WhenOverlappedWithOtherBookings() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1421,10 +1326,18 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code1 = SQLStatement.createBooking("booking2",  Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
-        String result_code2 = SQLStatement.createBooking("booking3", Date.valueOf("2021-05-01"), Time.valueOf("09:30:00"), Time.valueOf("10:30:00"), "1", "2", "A", "B");
-        String result_code3 = SQLStatement.createBooking("booking4", Date.valueOf("2021-05-01"), Time.valueOf("09:45:00"), Time.valueOf("11:00:00"), "1", "2", "A", "B");
-        String result_code4 = SQLStatement.createBooking("booking5", Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"), Time.valueOf("10:45:00"), "1", "2", "A", "B");
+        String result_code1 = SQLStatement.createBooking(
+                Date.valueOf("2021-05-01"), Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code2 = SQLStatement.createBooking(
+                Date.valueOf("2021-05-01"), Time.valueOf("09:30:00"),
+                Time.valueOf("10:30:00"), "1", "2", "A", "B");
+        String result_code3 = SQLStatement.createBooking(
+                Date.valueOf("2021-05-01"), Time.valueOf("09:45:00"),
+                Time.valueOf("11:00:00"), "1", "2", "A", "B");
+        String result_code4 = SQLStatement.createBooking(
+                Date.valueOf("2021-05-01"), Time.valueOf("10:00:00"),
+                Time.valueOf("10:45:00"), "1", "2", "A", "B");
         assertEquals("CB-010", result_code1, "Pass.");
         assertEquals("CB-010", result_code2, "Pass.");
         assertEquals("CB-010", result_code3, "Pass.");
@@ -1432,8 +1345,8 @@ public class TestConnectionDBv2 {
     }
 
     @Test
-    public void createBooking_WhenPlayerIdHavePendingBooking() throws Exception{
-        
+    public void createBooking_WhenPlayerIdHavePendingBooking() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1465,13 +1378,15 @@ public class TestConnectionDBv2 {
         smt.execute();
 
         //actual test
-        String result_code = SQLStatement.createBooking("1", Date.valueOf("2020-05-03"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(
+                Date.valueOf("2020-05-03"), Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-011", result_code, "Pass.");
     }
 
     @Test
-    public void createBooking_WhenPlayerIdHaveNoMoreThan3Booking() throws Exception{
-        
+    public void createBooking_WhenPlayerIdHaveNoMoreThan3Booking() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1571,14 +1486,16 @@ public class TestConnectionDBv2 {
 
 
         //actual test
-        String result_code = SQLStatement.createBooking("booking4", Date.valueOf("2021-05-06"), Time.valueOf("10:30:00"), Time.valueOf("11:30:00"), "1", "2", "A", "B");
+        String result_code = SQLStatement.createBooking(
+                Date.valueOf("2021-05-06"), Time.valueOf("10:30:00"),
+                Time.valueOf("11:30:00"), "1", "2", "A", "B");
         assertEquals("CB-012", result_code, "Pass.");
     }
 
     //test cancel booking
     @Test
-    public void cancelBooking_WhenBookingIdIsInvalid() throws Exception{
-        
+    public void cancelBooking_WhenBookingIdIsInvalid() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1622,13 +1539,13 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("#booking","B");
+        String result_code = SQLStatement.cancelBooking("#booking", "B");
         assertEquals("CA-000", result_code, "Pass.");
     }
 
     @Test
-    public void cancelBooking_WhenPlayerIdIsInvalid() throws Exception{
-        
+    public void cancelBooking_WhenPlayerIdIsInvalid() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1689,13 +1606,13 @@ public class TestConnectionDBv2 {
 
         smt5.execute();
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1","#B");
+        String result_code = SQLStatement.cancelBooking("booking1", "#B");
         assertEquals("CA-001", result_code, "Pass.");
     }
 
     @Test
-    public void cancelBooking_WhenPlayerIdIsNotExited() throws Exception{
-        
+    public void cancelBooking_WhenPlayerIdIsNotExited() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1758,13 +1675,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1","C");
+        String result_code = SQLStatement.cancelBooking("booking1", "C");
         assertEquals("CA-002", result_code, "Pass.");
     }
 
     @Test
-    public void cancelBooking_WhenBookingIdIsNotExisted() throws Exception{
-        
+    public void cancelBooking_WhenBookingIdIsNotExisted() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1827,13 +1744,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking2","B");
+        String result_code = SQLStatement.cancelBooking("booking2", "B");
         assertEquals("CA-003", result_code, "Pass.");
     }
 
     @Test
-    public void cancelBooking_WhenPlayerIdDoesNotOwnTheBooking() throws Exception{
-        
+    public void cancelBooking_WhenPlayerIdDoesNotOwnTheBooking() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1904,13 +1821,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1","C");
+        String result_code = SQLStatement.cancelBooking("booking1", "C");
         assertEquals("CA-004", result_code, "Pass.");
     }
 
     @Test
-    public void cancelBooking_WhenViolating24HoursBeforeStartTime() throws Exception{
-        
+    public void cancelBooking_WhenViolating24HoursBeforeStartTime() throws Exception {
+
         // clean up database
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -1973,14 +1890,14 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1","B");
+        String result_code = SQLStatement.cancelBooking("booking1", "B");
         assertEquals("CA-005", result_code, "Pass.");
     }
 
     //test update booking
     @Test
-    public void updateBookingStatus_success() throws  Exception{
-        
+    public void updateBookingStatus_success() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2053,13 +1970,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","1","2","S");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "1", "2", "S");
         assertEquals("200", result_code, "Pass.");
     }
 
     @Test
-    public void updateBooingStatus_WhenBookingIdIsInvalid() throws  Exception{
-        
+    public void updateBooingStatus_WhenBookingIdIsInvalid() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2131,13 +2048,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"#booking","1","2","S");
+        String result_code = SQLStatement.updateBookingStatus('1', "#booking", "1", "2", "S");
         assertEquals("UBS-000", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_WhenCityIdIsInvalid() throws Exception{
-        
+    public void updateBookingStatus_WhenCityIdIsInvalid() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2208,13 +2125,13 @@ public class TestConnectionDBv2 {
 
         smt5.execute();
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","#","2","S");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "#", "2", "S");
         assertEquals("UBS-001", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_WhenCenterIdIsInvalid() throws Exception{
-        
+    public void updateBookingStatus_WhenCenterIdIsInvalid() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2286,13 +2203,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","1","#","S");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "1", "#", "S");
         assertEquals("UBS-002", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_WhenStaffIdIsInvalid() throws Exception{
-        
+    public void updateBookingStatus_WhenStaffIdIsInvalid() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2364,13 +2281,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","1","2","#");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "1", "2", "#");
         assertEquals("UBS-003", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_WhenBookingIdIsNotExisted() throws Exception{
-        
+    public void updateBookingStatus_WhenBookingIdIsNotExisted() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2442,13 +2359,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking2","1","2","S");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking2", "1", "2", "S");
         assertEquals("UBS-004", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_WhenCityIdIsNotExisted() throws Exception{
-        
+    public void updateBookingStatus_WhenCityIdIsNotExisted() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2520,13 +2437,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","3","2","S");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "3", "2", "S");
         assertEquals("UBS-005", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_WhenCenterIdIsNotExisted() throws Exception{
-        
+    public void updateBookingStatus_WhenCenterIdIsNotExisted() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2597,13 +2514,13 @@ public class TestConnectionDBv2 {
 
         smt5.execute();
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","1","404","S");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "1", "404", "S");
         assertEquals("UBS-006", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId() throws Exception{
-        
+    public void updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2675,13 +2592,13 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","1","2","S2");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "1", "2", "S2");
         assertEquals("UBS-007", result_code, "Pass.");
     }
 
     @Test
-    public void updateBookingStatus_bookingIdDoesNotBelongTocityIdcenterId() throws Exception{
-        
+    public void updateBookingStatus_bookingIdDoesNotBelongTocityIdcenterId() throws Exception {
+
         // clean up some data
         SQLStatement.cleanTable("city");
         SQLStatement.cleanTable("center");
@@ -2791,7 +2708,7 @@ public class TestConnectionDBv2 {
         smt10.execute();
 
         //actual test
-        String result_code = SQLStatement.updateBookingStatus('1',"booking1","2","2","S2");
+        String result_code = SQLStatement.updateBookingStatus('1', "booking1", "2", "2", "S2");
         assertEquals("UBS-008", result_code, "Pass.");
     }
 

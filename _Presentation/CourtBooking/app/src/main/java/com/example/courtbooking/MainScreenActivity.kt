@@ -11,7 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.booking.*
 import com.example.courtbooking.request.*
+import com.facebook.AccessToken
+import com.facebook.GraphRequest
+import com.facebook.GraphResponse
 import kotlinx.android.synthetic.main.activity_main_screen.*
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +31,8 @@ class MainScreenActivity : AppCompatActivity(),
     FinishBookingFragment.MyBookingInterface,
     BookingAdapter.CancelInterface,
     CancelBookingFragment.CancelFinishInterface {
+
+    lateinit var userId : String
 
     lateinit var cityChooser : Spinner
     lateinit var dateChooser : EditText
@@ -49,6 +56,15 @@ class MainScreenActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
+
+        // get user id
+        userId = "user id"
+        Toast.makeText(this, userId, Toast.LENGTH_SHORT).show()
+        if (AccessToken.getCurrentAccessToken() != null) {
+            Log.i("k", "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
+            loadUserId(AccessToken.getCurrentAccessToken())
+        }
+
 
         // new
         mAPIService = ApiUtils.aPIService
@@ -115,7 +131,7 @@ class MainScreenActivity : AppCompatActivity(),
 
         // On button clicked Show Available Slots
         b_show_slots.setOnClickListener {
-            Toast.makeText(this, "City: " + city + "\nDate: " + date, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "City: " + city + "\nDate: " + date, Toast.LENGTH_SHORT).show()
 
             val selectedCity = cityChooser.selectedItem
             val randomCenter = listOfCities.indexOf(selectedCity) + (1..3).random()
@@ -238,10 +254,11 @@ class MainScreenActivity : AppCompatActivity(),
         }
     }
 
-    // override passDataCallback from CenterAdapter.CallbackInterface
+    // override method passDataCallback from interface CenterAdapter.CallbackInterface
+    // after the user choose a slot in center adapter, get the information of the chosen slot
+    // and open the AskForBookingFragment to ask the user if he/she want to make the booking with this slot (yes/no question)
     override fun passDataCallback(message: Slot) {
-        Log.i("Main", "Finished")
-        Toast.makeText(this, ("You choose " + dateChooser.text + "\n" + cityChooser.selectedItem + "\n" + message.id), Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, ("You choose " + dateChooser.text + "\n" + cityChooser.selectedItem + "\n" + message.id), Toast.LENGTH_SHORT).show()
 
         val slotInfo = message.id.split("/")
 
@@ -265,6 +282,8 @@ class MainScreenActivity : AppCompatActivity(),
         requestFragment.show(fm, "Booking Request")
     }
 
+    // override method callback from interface AskForBookingFragment.CallbackRequestFragment
+    // when the user choose 'yes' for a booking requirement in AskForBookingFragment, open BookingFragment
     override fun callBack(date: String, city: String, center: String, court: String, slot: String) {
         val fm= supportFragmentManager
         val bookingFragment = BookingFragment(
@@ -277,6 +296,88 @@ class MainScreenActivity : AppCompatActivity(),
             this
         )
         bookingFragment.show(fm, "Booking Process")
+    }
+
+    // override method callBackFail from interface AskForBookingFragment.CallbackRequestFragment
+    // when the user choose 'yes' for a booking requirement but the number of booking and ending is already 3
+    // open MoreThan3Fragment to inform the user
+    override fun callBackFail() {
+        val fm= supportFragmentManager
+        val bookingFragment = MoreThan3Fragment()
+        bookingFragment.show(fm, "Booking Stop")
+    }
+
+    // override method confirm from interface BookingFragment.ConfirmBookingInterface
+    // when the user confirm the booking in BookingFragment after fill in all information
+    // open FinishBookingFragment to inform the user
+    override fun confirm(date: String, city: String, center: String, court: String, slot: String, start: String, end: String) {
+        val fm= supportFragmentManager
+        val bookingFragment = FinishBookingFragment(date, city, center, court, start, end, this)
+        bookingFragment.show(fm, "Booking Finish")
+
+        sendPostBooking("Booking Id", date, start, end, city, center, court, userId)
+        Toast.makeText(this, "User id: $userId\nDate: $date\nCenter: $center\nCourt: $court\nSlot: $slot\nStart: $start End: $end", Toast.LENGTH_SHORT).show()
+    }
+
+    // override method showBooking from interface FinishBookingFragment.MyBookingInterface
+    // if the user want to go to the booking list from the FinishBookingFragment
+    // bring the RelativeLayout booking_view to the front
+    override fun showBooking() {
+        // Initialize the BOOKING recycler view
+        initRecyclerViewBooking()
+        // Hide welcome texts
+        welcomeText.text = ""
+        welcomeText2.text = ""
+        // Hide 'Show Available Slots'
+        rv_center.adapter = null
+        findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
+        sendGetBooking()
+        Log.i("bb","Hiii")
+    }
+
+    // override method moveToCancelFragment from BookingAdapter.CancelInterface
+    // when the user press 'cancel' in a booking,
+    // open CancelBookingFragment to ask the user for cancellation permission
+    override fun moveToCancelFragment(message: String) {
+        val fm= supportFragmentManager
+        val bookingFragment =
+            CancelBookingFragment(message, this)
+        bookingFragment.show(fm, "Cancel Booking")
+    }
+
+    // override method moveToFinishCancel from CancelBookingFragment.CancelFinishInterface
+    // after the user send 'yes' for the cancellation permission in CancelBookingFragment
+    // open CancelResultFragment to inform that the cancellation is success (or not)
+    override fun moveToFinishCancel(message: String) {
+
+        val fm= supportFragmentManager
+
+        var bookingFragment =
+            CancelResultFragment(message, false)
+
+        if (message == "0004") {
+            // remove the booking in the list
+            for (booking in bookList) {
+                if (booking.id == message) {
+                    bookList.remove(booking)
+                    break
+                }
+            }
+
+            //
+            rv_booking.adapter = BookingAdapter(
+                bookList,
+                this@MainScreenActivity
+            )
+            bookingFragment =
+                CancelResultFragment(
+                    message,
+                    true
+                )
+        }
+
+        bookingFragment.show(fm, "Cancel Result")
+
     }
 
     // when press show all bookings
@@ -655,20 +756,8 @@ class MainScreenActivity : AppCompatActivity(),
 
     }
 
-    override fun callBackFail() {
-        val fm= supportFragmentManager
-        val bookingFragment = MoreThan3Fragment()
-        bookingFragment.show(fm, "Booking Stop")
-    }
 
-    override fun confirm(date: String, city: String, center: String, court: String, slot: String, start: String, end: String) {
-        val fm= supportFragmentManager
-        val bookingFragment = FinishBookingFragment(date, city, center, court, start, end, this)
-        bookingFragment.show(fm, "Booking Finish")
 
-        sendPostBooking("Booking Id", date, start, end, city, center, court, "Player Id")
-        Toast.makeText(this, "Date: $date\nCenter: $center\nCourt: $court\nSlot: $slot\nStart: $start End: $end", Toast.LENGTH_SHORT).show()
-    }
 
     override fun showBooking() {
         // Initialize the BOOKING recycler view
@@ -681,13 +770,9 @@ class MainScreenActivity : AppCompatActivity(),
         findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
     }
 
-    // override function from BookingAdapter.CancelInterface, open cancel dialog fragment
-    override fun moveToCancelFragment(message: String) {
-        val fm= supportFragmentManager
-        val bookingFragment =
-            CancelBookingFragment(message, this)
-        bookingFragment.show(fm, "Cancel Booking")
-    }
+
+
+
 
     fun aaa(view: View) {
         Log.i("bb", "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
@@ -695,36 +780,25 @@ class MainScreenActivity : AppCompatActivity(),
         Log.i("bb", view.toString())
     }
 
-    override fun moveToFinishCancel(message: String) {
 
-        val fm= supportFragmentManager
 
-        var bookingFragment =
-            CancelResultFragment(message, false)
-
-        if (message == "0004") {
-            // remove the booking in the list
-            for (booking in bookList) {
-                if (booking.id == message) {
-                    bookList.remove(booking)
-                    break
+    //
+    fun loadUserId(newAccessToken: AccessToken) {
+        val request = GraphRequest.newMeRequest(newAccessToken, object : GraphRequest.GraphJSONObjectCallback {
+            override fun onCompleted(`object`: JSONObject?, response: GraphResponse?) {
+                try {
+                    userId = `object`?.getString("id").toString()
+                } catch(e: JSONException) {
+                    e.printStackTrace()
                 }
-            }
+            } // end onCompleted
 
-            //
-            rv_booking.adapter = BookingAdapter(
-                bookList,
-                this@MainScreenActivity
-            )
-            bookingFragment =
-                CancelResultFragment(
-                    message,
-                    true
-                )
-        }
+        })
 
-        bookingFragment.show(fm, "Cancel Result")
-
+        val parameter = Bundle()
+        parameter.putString("fields", "id")
+        request.parameters = parameter
+        request.executeAsync()
     }
 
 }
