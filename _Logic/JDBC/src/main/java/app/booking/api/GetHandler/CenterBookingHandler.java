@@ -1,16 +1,13 @@
 package app.booking.api.GetHandler;
 
 import app.booking.api.Constants;
-import app.booking.api.PostHandler.Handler;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
 import app.booking.db.Booking;
-import app.booking.db.CityCenterCourt;
 import app.booking.db.JsonConverter;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.io.InputStream;

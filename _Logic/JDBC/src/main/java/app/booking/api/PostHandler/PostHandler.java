@@ -10,11 +10,11 @@ import io.vavr.control.Try;
 import java.io.InputStream;
 
 
-public abstract class Handler {
+public abstract class PostHandler {
     private final ObjectMapper objectMapper;
     private final GlobalExceptionHandler exceptionHandler;
 
-    public Handler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler){
+    public PostHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler){
         this.objectMapper = objectMapper;
         this.exceptionHandler = exceptionHandler;
     }
