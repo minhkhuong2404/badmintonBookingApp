@@ -1,0 +1,2 @@
+# Solution for authentication
+* we put centerId in both booking and staff, so when authorize staff, the server will compare the centerId in both table, if they are the same, then the staff can change the status of booking, else it will reject it.
