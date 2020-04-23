@@ -21,36 +21,35 @@ import java.util.Map;
 
 public class CenterBookingHandler extends GetHandler {
 
-    public CenterBookingHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
-        super(objectMapper, exceptionHandler);
+    public CenterBookingHandler(GlobalExceptionHandler exceptionHandler) {
+        super(exceptionHandler);
     }
 
     @Override
     protected void execute(HttpExchange exchange) throws Exception {
-        byte [] response;
+        String response;
         if ("GET".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doGet(exchange.getRequestBody());
             exchange.getResponseHeaders().putAll(e.getHeaders());
             exchange.sendResponseHeaders(e.getStatusCode().getCode(), 0);
-            response = super.writeResponse(e.getBody());
+            response = (String) e.getBody();
         } else {
             throw ApplicationExceptions.methodNotAllowed(
                     "Method " + exchange.getRequestMethod() + " is not allowed for " + exchange.getRequestURI()).get();
         }
 
         OutputStream os = exchange.getResponseBody();
-        os.write(response);
+        os.write(response.getBytes());
         os.close();
     }
 
     private ResponseEntity doGet(InputStream is) throws Exception {
-//        CenterBookingRequest rqs = super.readRequest(is, CenterBookingRequest.class);
-//        ArrayList<Booking> ls = SQLStatement.getCenterBookings(rqs.getCenterid());
         Map<String, List<String>> params = this.getParameters();
         String centerid = params.get("centerid").get(0);
+
         ArrayList<Booking> ls = SQLStatement.getCenterBookings(centerid);
+
         String rsp = JsonConverter.convert(ls);
-        return new ResponseEntity<>(rsp,
-                getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }

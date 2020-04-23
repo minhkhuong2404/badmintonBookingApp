@@ -41,7 +41,6 @@ public class CreateBookingHandler extends Handler {
     private ResponseEntity<Response> doPost(InputStream is) throws Exception {
         CreateBookingRequest CBrequest = super.readRequest(is, CreateBookingRequest.class);
 
-
         System.out.println(CBrequest);
 
         String result_code = SQLStatement.createBooking(CBrequest.getPbookingid(),

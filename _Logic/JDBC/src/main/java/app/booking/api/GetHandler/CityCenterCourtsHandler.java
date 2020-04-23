@@ -19,25 +19,25 @@ import java.util.List;
 import java.util.Map;
 
 public class CityCenterCourtsHandler extends GetHandler {
-    public CityCenterCourtsHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
-        super(objectMapper, exceptionHandler);
+    public CityCenterCourtsHandler(GlobalExceptionHandler exceptionHandler) {
+        super(exceptionHandler);
     }
 
     @Override
     protected void execute(HttpExchange exchange) throws Exception {
-        byte [] response;
+        String response;
         if ("GET".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doGet(exchange.getRequestBody());
             exchange.getResponseHeaders().putAll(e.getHeaders());
             exchange.sendResponseHeaders(e.getStatusCode().getCode(), 0);
-            response = super.writeResponse(e.getBody());
+            response = (String) e.getBody();
         } else {
             throw ApplicationExceptions.methodNotAllowed(
                     "Method " + exchange.getRequestMethod() + " is not allowed for " + exchange.getRequestURI()).get();
         }
 
         OutputStream os = exchange.getResponseBody();
-        os.write(response);
+        os.write(response.getBytes());
         os.close();
     }
 
@@ -47,15 +47,10 @@ public class CityCenterCourtsHandler extends GetHandler {
         String cityId = params.get("cityid").get(0);
         String centerId = params.get("centerid").get(0);
 
-        System.out.println(cityId);
-        System.out.println(centerId);
-
         // TODO: handle the case of missing/incorrect params
-
-        // CityCenterCourtsRequest rqs = super.readRequest(is, CityCenterCourtsRequest.class);
         ArrayList<CityCenterCourt> ls = SQLStatement.getCityCenterCourts(cityId, centerId);
+
         String rsp = JsonConverter.convert(ls);
-        return new ResponseEntity<>(rsp,
-                getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }
