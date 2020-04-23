@@ -32,7 +32,7 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+
         profileImage = findViewById(R.id.profileImage)
         userNameTV = findViewById(R.id.usernameTextView)
         userEmailTV = findViewById(R.id.emailTextView)
@@ -117,7 +117,9 @@ class MainActivity: AppCompatActivity() {
                             Log.i("Login", "Get user's name")
                             val firstName = `object`?.getString("first_name")
                             val lastName = `object`?.getString("last_name")
-                            userNameTV.text = "$firstName $lastName"
+                            if (!firstName.equals(null) && !lastName.equals(null)) {
+                                userNameTV.text = "$firstName $lastName"
+                            }
 
                             // get user's profile picture
                             Log.i("Login", "Get user's profile picture")
@@ -151,6 +153,7 @@ class MainActivity: AppCompatActivity() {
 
     fun checkLoginStatus(){
         if (AccessToken.getCurrentAccessToken() != null){
+            Log.i("main", "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
             // setup the screen if the user already login (token is still valid)
             loadUserData(AccessToken.getCurrentAccessToken())
             customFacebookButton.text = "Log out"
