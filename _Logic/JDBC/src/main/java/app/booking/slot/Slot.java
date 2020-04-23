@@ -1,35 +1,19 @@
 package app.booking.slot;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import java.sql.Time;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class Slot {
-    private SimpleTime start;
-    private SimpleTime end;
+    private Time start;
+    private Time end;
 
-    // construct from string
     public Slot(String newStart, String newEnd) {
-        start = new SimpleTime(newStart);
-        end = new SimpleTime(newEnd);
-    }
-
-    // construct from time type
-    public Slot(SimpleTime newStart, SimpleTime newEnd) {
-        start = newStart;
-        end = newEnd;
-    }
-
-    // set, get methods
-    public void setStart(SimpleTime newStart) {
-        start = newStart;
-    }
-
-    public void setEnd(SimpleTime newEnd) {
-        end = newEnd;
-    }
-
-    public SimpleTime getStart() {
-        return start;
-    }
-
-    public SimpleTime getEnd() {
-        return end;
+        start = Time.valueOf(newStart);
+        end = Time.valueOf(newEnd);
     }
 }

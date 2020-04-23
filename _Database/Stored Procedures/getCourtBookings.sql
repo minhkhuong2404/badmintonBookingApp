@@ -2,6 +2,7 @@ DROP PROCEDURE IF EXISTS getCourtBookings;
 DELIMITER //
 CREATE PROCEDURE getCourtBookings(
   in courtId varchar(50),
+  in pdate date,
   out resultCode varchar(50))
 BEGIN
 
@@ -10,11 +11,13 @@ THEN SET resultCode = 'GCB-000';
 ELSEIF NOT EXISTS (SELECT * FROM booking WHERE court_id = courtId)
 THEN SET resultCode ="GCB-001";
 ELSE
-	select * from booking where court_id = courtId;
+	select * from booking 
+    where court_id = courtId and pdate = date
+    order by startTime;
   SET resultCode = '200';
 END IF;
 end//
 DELIMITER ;
 
 
--- call getCourtBookings("A", @code);
+-- call getCourtBookings("A1C", date("2020-06-10"), @code);

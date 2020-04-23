@@ -25,7 +25,7 @@ public class SQLStatement {
             stm = conn.prepareStatement("DELETE from " + table);
             stm.executeUpdate();
         } catch (SQLException e) {
-            throw e;
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -39,7 +39,6 @@ public class SQLStatement {
     // createCity
     public static String createCity(String cityId) throws Exception {
         String code;
-
         CallableStatement stm = null;
         try {
             stm = conn.prepareCall("{ CALL createCity(? , ?) }");
@@ -48,13 +47,16 @@ public class SQLStatement {
             stm.executeUpdate();
             code = stm.getString(2);
         } catch (SQLException e) {
-            throw e;
+            code = e.getMessage();
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
                     stm.close();
                 }
             } catch (Exception e) {
+                code = e.getMessage();
+                System.out.println(e);
             }
         }
         return code;
@@ -73,13 +75,16 @@ public class SQLStatement {
             stm.executeUpdate();
             code = stm.getString(3);
         } catch (SQLException e) {
-            throw e;
+            code = e.getMessage();
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
                     stm.close();
                 }
             } catch (Exception e) {
+                code = e.getMessage();
+                System.out.println(e);
             }
         }
         return code;
@@ -98,13 +103,16 @@ public class SQLStatement {
             stm.executeUpdate();
             code = stm.getString(4);
         } catch (SQLException e) {
-            throw e;
+            code = e.getMessage();
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
                     stm.close();
                 }
             } catch (Exception e) {
+                code = e.getMessage();
+                System.out.println(e);
             }
         }
         return code;
@@ -123,36 +131,16 @@ public class SQLStatement {
             stm.executeUpdate();
             code = stm.getString(4);
         } catch (SQLException e) {
-            throw e;
+            code = e.getMessage();
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
                     stm.close();
                 }
             } catch (Exception e) {
-            }
-        }
-        return code;
-    }
-
-    // createPlayer
-    public static String createPlayer(String playerId) throws Exception {
-        String code;
-        CallableStatement stm = null;
-        try {
-            stm = conn.prepareCall("{ CALL createPlayer(? , ?) }");
-            stm.setString(1, playerId);
-            stm.registerOutParameter(2, Types.VARCHAR);
-            stm.executeUpdate();
-            code = stm.getString(2);
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            try {
-                if (stm != null) {
-                    stm.close();
-                }
-            } catch (Exception e) {
+                code = e.getMessage();
+                System.out.println(e);
             }
         }
         return code;
@@ -174,13 +162,16 @@ public class SQLStatement {
             stm.executeUpdate();
             code = stm.getString(6);
         } catch (SQLException e) {
-            throw e;
+            code = e.getMessage();
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
                     stm.close();
                 }
             } catch (Exception e) {
+                code = e.getMessage();
+                System.out.println(e);
             }
         }
         return code;
@@ -199,13 +190,16 @@ public class SQLStatement {
             stm.executeUpdate();
             code = stm.getString(3);
         } catch (SQLException e) {
-            throw e;
+            code = e.getMessage();
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
                     stm.close();
                 }
             } catch (Exception e) {
+                code = e.getMessage();
+                System.out.println(e);
             }
         }
         return code;
@@ -229,20 +223,23 @@ public class SQLStatement {
             stm.executeUpdate();
             code = stm.getString(8);
         } catch (SQLException e) {
-            throw e;
+            code = e.getMessage();
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
                     stm.close();
                 }
             } catch (Exception e) {
+                code = e.getMessage();
+                System.out.println(e);
             }
         }
         return code;
     }
 
     // getCities
-    public static ArrayList<City> getCities() throws Exception {
+    public static ArrayList<City> getCities() throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<City> cityList = new ArrayList<>();
 
@@ -256,8 +253,8 @@ public class SQLStatement {
             while (resultSet.next()) {
                 cityList.add(new City(resultSet.getString("city_id")));
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -272,7 +269,7 @@ public class SQLStatement {
         return cityList;
     }
 
-    public static ArrayList<CityCenter> getCityCenters(String cityId) throws Exception {
+    public static ArrayList<CityCenter> getCityCenters(String cityId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<CityCenter> cityCenterList = new ArrayList<>();
         try {
@@ -289,8 +286,8 @@ public class SQLStatement {
                         resultSet.getString("city_id"))
                 );
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -306,7 +303,7 @@ public class SQLStatement {
     }
 
     // getCityCenterCourts
-    public static ArrayList<CityCenterCourt> getCityCenterCourts(String cityId, String centerId) throws Exception {
+    public static ArrayList<CityCenterCourt> getCityCenterCourts(String cityId, String centerId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<CityCenterCourt> cityCenterCourtList = new ArrayList<>();
 
@@ -326,8 +323,8 @@ public class SQLStatement {
                         resultSet.getString("center_id")
                 ));
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -342,7 +339,7 @@ public class SQLStatement {
         return cityCenterCourtList;
     }
     // getCityCenterStaffs
-    public static ArrayList<CityCenterStaff> getCityCenterStaffs(String cityId, String centerId) throws Exception {
+    public static ArrayList<CityCenterStaff> getCityCenterStaffs(String cityId, String centerId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<CityCenterStaff> cityCenterCourtList = new ArrayList<>();
 
@@ -362,8 +359,8 @@ public class SQLStatement {
                         resultSet.getString("center_id")
                 ));
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -379,7 +376,7 @@ public class SQLStatement {
     }
 
     // getStaffs
-    public static ArrayList<CityCenterStaff> getStaffs() throws Exception {
+    public static ArrayList<CityCenterStaff> getStaffs() throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<CityCenterStaff> cityCenterCourtList = new ArrayList<>();
 
@@ -397,8 +394,8 @@ public class SQLStatement {
                         resultSet.getString("center_id")
                 ));
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -413,16 +410,17 @@ public class SQLStatement {
         return cityCenterCourtList;
     }
     // getCityBookings
-    public static ArrayList<Booking> getCityBookings(String cityId) throws Exception {
+    public static ArrayList<Booking> getCityBookings(String cityId, Date pdate) throws NullPointerException, SQLException {
         CallableStatement stm = null;
-        ArrayList<Booking> bookingList = new ArrayList<>();
+        ArrayList<Booking> bookingList = new ArrayList<Booking>();
 
         try {
-            stm = conn.prepareCall("{ CALL getCityBookings(?, ?) }");
+            stm = conn.prepareCall("{ CALL getCityBookings(?, ?, ?) }");
             stm.setString(1, cityId);
-            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.setDate(2, pdate);
+            stm.registerOutParameter(3, Types.VARCHAR);
             stm.executeUpdate();
-            String resultCode = stm.getString(2);
+            String resultCode = stm.getString(3);
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCityBookings() executed with result code: " + resultCode);
 
@@ -440,8 +438,8 @@ public class SQLStatement {
                         resultSet.getInt("status")
                 ));
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -457,16 +455,17 @@ public class SQLStatement {
     }
 
     // getCenterBookings
-    public static ArrayList<Booking> getCenterBookings(String centerId) throws Exception {
+    public static ArrayList<Booking> getCenterBookings(String centerId, Date pdate) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
 
         try {
-            stm = conn.prepareCall("{ CALL getCenterBookings(?, ?) }");
+            stm = conn.prepareCall("{ CALL getCenterBookings(?, ?, ?) }");
             stm.setString(1, centerId);
-            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.setDate(2, pdate);
+            stm.registerOutParameter(3, Types.VARCHAR);
             stm.executeUpdate();
-            String resultCode = stm.getString(2);
+            String resultCode = stm.getString(3);
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCenterBookings() executed with result code: " + resultCode);
 
@@ -484,8 +483,8 @@ public class SQLStatement {
                         resultSet.getInt("status")
                 ));
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -501,16 +500,17 @@ public class SQLStatement {
     }
 
     // getCourtBookings
-    public static ArrayList<Booking> getCourtBookings(String courtId) throws Exception {
+    public static ArrayList<Booking> getCourtBookings(String courtId, Date pdate) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
 
         try {
-            stm = conn.prepareCall("{ CALL getCourtBookings(?, ?) }");
+            stm = conn.prepareCall("{ CALL getCourtBookings(?, ?, ?) }");
             stm.setString(1, courtId);
-            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.setDate(2, pdate);
+            stm.registerOutParameter(3, Types.VARCHAR);
             stm.executeUpdate();
-            String resultCode = stm.getString(2);
+            String resultCode = stm.getString(3);
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCourtBookings() executed with result code: " + resultCode);
 
@@ -528,8 +528,8 @@ public class SQLStatement {
                         resultSet.getInt("status")
                 ));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {
@@ -544,7 +544,7 @@ public class SQLStatement {
         return bookingList;
     }
 
-    public static ArrayList<Booking> getPlayerBookings(String playerId) throws SQLException {
+    public static ArrayList<Booking> getPlayerBookings(String playerId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
 
@@ -570,8 +570,8 @@ public class SQLStatement {
                         resultSet.getInt("status")
                 ));
             }
-        } catch (SQLException e) {
-            throw e;
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
         } finally {
             try {
                 if (stm != null) {

@@ -12,6 +12,7 @@ import com.sun.net.httpserver.HttpExchange;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +44,9 @@ public class CenterBookingHandler extends GetHandler {
     private ResponseEntity doGet(InputStream is) throws Exception {
         Map<String, List<String>> params = this.getParameters();
         String centerid = params.get("centerid").get(0);
+        Date date = Date.valueOf(params.get("date").get(0));
 
-        ArrayList<Booking> ls = SQLStatement.getCenterBookings(centerid);
+        ArrayList<Booking> ls = SQLStatement.getCenterBookings(centerid, date);
 
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);

@@ -2,6 +2,7 @@ DROP PROCEDURE IF EXISTS getCityBookings;
 DELIMITER //
 CREATE PROCEDURE getCityBookings(
   in cityId varchar(50),
+  in pdate date,
   out resultCode varchar(50))
 BEGIN
 
@@ -10,10 +11,13 @@ THEN SET resultCode = 'GCB-000';
 ELSEIF NOT EXISTS (SELECT * FROM booking WHERE city_id = cityId)
 THEN SET resultCode ="GCB-001";
 ELSE
-	select * from booking where city_id = cityId;
+	select * 
+    from booking 
+    where city_id = cityId and pdate = date
+    order by startTime;
   SET resultCode = '200';
 END IF;
 end//
 DELIMITER ;
 
--- call getCityBookings("1", @code);
+-- call getCityBookings("A", date("2020-05-10"), @code);

@@ -402,49 +402,6 @@ public class TestConnectionDBv2 {
         assertEquals("CRT-005", result_code, "Pass.");
     }
 
-    // createPlayer
-    @Test
-    public void createPlayer_Success() throws Exception {
-
-        // clean up database
-        SQLStatement.cleanTable("player");
-        // scenario
-
-        // actual test
-        String result_code = SQLStatement.createPlayer("A");
-        assertEquals("200", result_code, "Pass.");
-    }
-
-    @Test
-    public void createPlayer_playerIdIsInvalid() throws Exception {
-
-        // clean up database
-        SQLStatement.cleanTable("player");
-        // scenario
-
-        // actual test
-        String result_code = SQLStatement.createPlayer("#A");
-        assertEquals("CPL-000", result_code, "Pass.");
-    }
-
-    @Test
-    public void createPlayer_playerIdIsExisted() throws Exception {
-
-        // clean up database
-        SQLStatement.cleanTable("player");
-        // scenario
-        String sql = "INSERT INTO player VALUE (?)";
-
-        PreparedStatement smt = ConnectionDB.getInstance().getConnection().prepareStatement(sql);
-
-        smt.setString(1, "A");
-
-        smt.execute();
-
-        // actual test
-        String result_code = SQLStatement.createPlayer("A");
-        assertEquals("CPL-001", result_code, "Pass.");
-    }
 
     // createStaff
 
@@ -1358,7 +1315,6 @@ public class TestConnectionDBv2 {
         SQLStatement.createCityCenter("2", "1");
         SQLStatement.createCityCenterCourt("A", "1", "2");
         SQLStatement.createStaff("A", "1", "2");
-        SQLStatement.createPlayer("B");
         String sql = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement smt = ConnectionDB.getInstance().getConnection().prepareStatement(sql);
