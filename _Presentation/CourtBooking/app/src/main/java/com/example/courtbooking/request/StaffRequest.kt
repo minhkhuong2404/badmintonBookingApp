@@ -1,6 +1,11 @@
 package com.example.courtbooking.request
 
-class StaffRequest(
-    val cityid : String,
-    val centerid: String
-)
+class StaffRequest{
+    var staffid : String = ""
+    constructor(staff : String){
+        this.staffid =staff
+    }
+    fun getStaffId(): String{
+        return staffid
+    }
+}

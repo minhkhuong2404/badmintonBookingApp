@@ -2,7 +2,6 @@ package com.example.courtbooking.request
 
 class BookingRequest(
     val pbookingid: String,
-    val ptimestamp : String,
     val pdate: String,
     val pstarttime: String,
     val pendtime: String,

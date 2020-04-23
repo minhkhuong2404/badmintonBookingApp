@@ -1,15 +1,16 @@
 package com.example.courtbooking.request
 
 class CourtRequest {
-    private var pcourtid: String = ""
-    private var pcityid: String = ""
-    private var pcenterid: String = ""
+    var cityid : String = ""
+    var centerid : String = ""
+    var courtid : String = ""
 
-    fun getCourtId(center : String, city : String): String{
-        this.pcenterid = center
-        this.pcityid = city
-        return pcourtid
+    constructor(city : String, center : String, court : String){
+        this.cityid = city
+        this.centerid = center
+        this.courtid = court
     }
-
-
+    fun getCourtId(): String{
+        return courtid
+    }
 }
