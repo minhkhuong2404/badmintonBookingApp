@@ -93,7 +93,7 @@
       <recent name="app.booking.db" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.ApiServer">
     <configuration name="ApiServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="app.booking.Server.ApiServer" />
       <module name="JDBC" />
@@ -229,6 +229,7 @@
       <workItem from="1587318275590" duration="11510000" />
       <workItem from="1587545686764" duration="1548000" />
       <workItem from="1587625693287" duration="264000" />
+      <workItem from="1587636794193" duration="377000" />
     </task>
     <servers />
   </component>

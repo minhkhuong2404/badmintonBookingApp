@@ -64,17 +64,9 @@ class MainScreenActivity : AppCompatActivity(),
             Log.i("k", "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
             loadUserId(AccessToken.getCurrentAccessToken())
         }
-
-
         // new
         mAPIService = ApiUtils.aPIService
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("http://10.0.2.2:8000/api/hello/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        mAPIService = retrofit.create(JsonPlaceHolderApi::class.java)
-        sendGetStaff()
+
         // findViewById
         cityChooser = findViewById<Spinner>(R.id.sp_city)
         dateChooser = findViewById<EditText>(R.id.et_date)
@@ -85,16 +77,14 @@ class MainScreenActivity : AppCompatActivity(),
         sendGetCenterBookings()
         sendGetCityCenterStaffs()
         sendGetCourt()
-        sendGetPLayerBooking()
         sendGetStaff()
 
         // City list store here
-        var listOfCities = ArrayList<String>()
-        listOfCities = sendGetCity()
+        val listOfCities = sendGetCity()
         listOfCities.add(0,"Choose a city")
 
         // Show first item on the cities array on the chosenCity spinner
-        cityChooser.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfCities)
+        cityChooser.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfCities)
 
         // On City Choosing Listener
         cityChooser.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -107,7 +97,7 @@ class MainScreenActivity : AppCompatActivity(),
         // Set calendar
         val cal = Calendar.getInstance(TimeZone.getDefault()) // Get current date
         val year = cal.get(Calendar.YEAR)
-        val month = cal.get(Calendar.MONTH)
+        val month = cal.get(Calendar.MONTH) + 1
         val day = cal.get(Calendar.DAY_OF_MONTH)
         // Set default as current day
         et_date.setText("$day/$month/$year")
@@ -162,32 +152,36 @@ class MainScreenActivity : AppCompatActivity(),
 
     // Generate fake data for testing recycler view
     private fun getBookingList() : ArrayList<Booking> {
-        val list = ArrayList<Booking>()
+        val list = sendGetPLayerBooking() as ArrayList<Booking>
 
-        list += Booking(
-            "0001",
-            "27/04/2020",
-            "07:00 - 9:00",
-            "Undue",
-            "City#B, Center#C, Court#12",
-            "06/04/2020 18:43"
-        )
-        list += Booking(
-            "0004",
-            "26/04/2020",
-            "08:00 - 9:00",
-            "Undue",
-            "City#B, Center#1, Court#12",
-            "06/04/2020 18:43"
-        )
-        list += Booking(
-            "0008",
-            "19/04/2020",
-            "08:30 - 9:00",
-            "Overdue",
-            "City#1, Center#2, Court#12",
-            "06/04/2020 18:43"
-        )
+//        list += Booking(
+//             1,
+//            1587574789000,
+//            1619802000000,
+//            "10:00:00",
+//            "10:45:00",
+//             "city1",
+//            "center1",
+//            "court1",
+//             "player1",
+//            0
+//        )
+//        list += Booking(
+//            "0004",
+//            "26/04/2020",
+//            "08:00 - 9:00",
+//            "Undue",
+//            "City#B, Center#1, Court#12",
+//            "06/04/2020 18:43"
+//        )
+//        list += Booking(
+//            "0008",
+//            "19/04/2020",
+//            "08:30 - 9:00",
+//            "Overdue",
+//            "City#1, Center#2, Court#12",
+//            "06/04/2020 18:43"
+//        )
 
         return list
     }
@@ -315,7 +309,7 @@ class MainScreenActivity : AppCompatActivity(),
         val bookingFragment = FinishBookingFragment(date, city, center, court, start, end, this)
         bookingFragment.show(fm, "Booking Finish")
 
-        sendPostBooking("Booking Id", date, start, end, city, center, court, userId)
+        sendPostBooking(date, start, end, city, center, court, userId)
         Toast.makeText(this, "User id: $userId\nDate: $date\nCenter: $center\nCourt: $court\nSlot: $slot\nStart: $start End: $end", Toast.LENGTH_SHORT).show()
     }
 
@@ -331,8 +325,6 @@ class MainScreenActivity : AppCompatActivity(),
         // Hide 'Show Available Slots'
         rv_center.adapter = null
         findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
-        sendGetBooking()
-        Log.i("bb","Hiii")
     }
 
     // override method moveToCancelFragment from BookingAdapter.CancelInterface
@@ -358,7 +350,7 @@ class MainScreenActivity : AppCompatActivity(),
         if (message == "0004") {
             // remove the booking in the list
             for (booking in bookList) {
-                if (booking.id == message) {
+                if (booking.getBookingId() == message) {
                     bookList.remove(booking)
                     break
                 }
@@ -381,13 +373,13 @@ class MainScreenActivity : AppCompatActivity(),
     }
 
     // when press show all bookings
-    private fun sendGetPLayerBooking() {
+    private fun sendGetPLayerBooking(): ArrayList<PlayerBookingRequest> {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["name"] = "Khuong"
 
         val call = mAPIService?.getPlayerBookings("player1")
 
-        Log.i("bb",parameters.toString())
+        val listOfPlayerBookingRequest = ArrayList<PlayerBookingRequest>()
+//        Log.i("bb",parameters.toString())
 
         call?.enqueue(object : Callback<List<PlayerBookingRequest>> {
             override fun onResponse(
@@ -403,7 +395,20 @@ class MainScreenActivity : AppCompatActivity(),
                 val bookingRequest : List<PlayerBookingRequest>?  = response.body()
                 if (bookingRequest != null) {
                     for (booking in bookingRequest){
-
+                        var content = ""
+                        content += "Booking ID: " + booking.getBookingId()
+                        content += "\nTimestamp: " + java.time.format.DateTimeFormatter.ISO_INSTANT
+                            .format(java.time.Instant.ofEpochSecond(booking.getTimestamp().toLong() * 1000))
+                        content += "\nDate: " + booking.getDate()
+                        content += "\nStart time " + booking.getStartTime()
+                        content += "\nEnd time: " + booking.getEndTime()
+                        content += "\nCityId: " + booking.getCityId()
+                        content += "\nCenterId: " + booking.getCenterID()
+                        content += "\nCourtId: " + booking.getCourtId()
+                        content += "\nPlayerId: " + booking.getPlayerId()
+                        content += "\nStatus: " + booking.getStatus()
+                        listOfPlayerBookingRequest.add(booking)
+                        Log.i("bb",content)
                     }
                 }
                 Log.i("bb","PlayerBooking")
@@ -418,6 +423,7 @@ class MainScreenActivity : AppCompatActivity(),
 
             }
         })
+        return listOfPlayerBookingRequest
 
     }
 
@@ -427,7 +433,7 @@ class MainScreenActivity : AppCompatActivity(),
         val call = mAPIService?.getStaffs()
 //        var staffs : ArrayList<String> = ArrayList()
 
-        Log.i("bb",parameters.toString())
+//        Log.i("bb",parameters.toString())
 
         call?.enqueue(object : Callback<List<StaffRequest>> {
             override fun onResponse(
@@ -436,10 +442,6 @@ class MainScreenActivity : AppCompatActivity(),
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
-//                    staffs.add("City1")
-//                    staffs.add("City2")
-//                    cities.add("City3")
-//                    cities.add("City4")
                     Log.i("bb",response.code().toString())
                     Log.i("bb",response.message().toString())
                     Log.i("bb","Staff444444444")
@@ -447,11 +449,14 @@ class MainScreenActivity : AppCompatActivity(),
                 }
                 val staffRequest : List<StaffRequest>?  = response.body()
                 if (staffRequest != null) {
-//                    for (staff in staffRequest){
-//                        var content = ""
-//                        content += "" + city.getCityId()
-//                        cities.add(city.toString())
-//                    }
+                    for (staff in staffRequest){
+                        var content = ""
+                        content += "StaffId: " + staff.getStaffId()
+                        content += "\nCityId: " + staff.getCityId()
+                        content += "\nCourtId: " + staff.getCourtId()
+                        Log.i("bb",content)
+
+                    }
                 }
                 Log.i("bb",staffRequest.toString())
                 Log.i("bb","Staff")
@@ -464,7 +469,6 @@ class MainScreenActivity : AppCompatActivity(),
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
 //                cities.add("City??")
                 Log.i("bb","Staff222222222")
-
             }
         })
 
@@ -478,7 +482,7 @@ class MainScreenActivity : AppCompatActivity(),
         val call = mAPIService?.getCities()
         var cities : ArrayList<String> = ArrayList()
 
-        Log.i("bb",parameters.toString())
+//        Log.i("bb",parameters.toString())
 
         call?.enqueue(object : Callback<List<CityRequest>> {
             override fun onResponse(
@@ -491,7 +495,6 @@ class MainScreenActivity : AppCompatActivity(),
                     cities.add("BB")
                     cities.add("CCCC")
 
-//                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
                     Log.i("bb","Cities444444444")
                     return
                 }
@@ -501,6 +504,7 @@ class MainScreenActivity : AppCompatActivity(),
                         var content = ""
                         content += "" + city.getCityId()
                         cities.add(content)
+                        Log.i("bb", "City id: $content")
                     }
                 }
                 Log.i("bb","Cities")
@@ -521,13 +525,12 @@ class MainScreenActivity : AppCompatActivity(),
 
     private fun sendGetCenter() : ArrayList<String> {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["pcityid"] = "all"
 //        val cityRequest = CityRequest("pcityid" )
 
         val call = mAPIService?.getCityCenters("C")
-        var centers : ArrayList<String> = ArrayList()
+        var listOfCenters : ArrayList<String> = ArrayList()
 
-        Log.i("bb",parameters.toString())
+//        Log.i("bb",parameters.toString())
 
         call?.enqueue(object : Callback<List<CenterRequest>> {
             override fun onResponse(
@@ -540,12 +543,14 @@ class MainScreenActivity : AppCompatActivity(),
                     Log.i("bb","Center444444444")
                     return
                 }
-                val centerRequest : List<CenterRequest>?  = response.body()
-                if (centerRequest != null) {
-                    for (center in centerRequest){
+                val  centers: List<CenterRequest>?  = response.body()
+                if (centers != null) {
+                    for (center in centers){
                         var content = ""
-                        content += "" + center.getCenterId()
-                        centers.add(center.toString())
+                        content += "Center Id: " + center.getCenterId()
+                        content += "\nCity Id: " + center.getCityId()
+                        listOfCenters.add(center.toString())
+                        Log.i("bb",content)
                     }
                 }
                 Log.i("bb","Center")
@@ -560,16 +565,16 @@ class MainScreenActivity : AppCompatActivity(),
 
             }
         })
-        return centers
+        return listOfCenters
     }
 
-    private fun sendGetCourt() {
+    private fun sendGetCourt() : ArrayList<String> {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["pcourtid"] = "all"
 
         val call = mAPIService?.getCityCenterCourts("A","A1")
 
-        Log.i("bb",parameters.toString())
+        val listOfCourts = ArrayList<String>()
+//        Log.i("bb",parameters.toString())
 
         call?.enqueue(object : Callback<List<CourtRequest>> {
             override fun onResponse(
@@ -581,6 +586,17 @@ class MainScreenActivity : AppCompatActivity(),
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
                     Log.i("bb","Court444444444")
                     return
+                }
+                val courts : List<CourtRequest>?  = response.body()
+                if (courts != null) {
+                    for ( court in courts){
+                        var content = ""
+                        content += "City ID: " + court.getCityId() + "\n"
+                        content += "Center ID: " + court.getCenterId() + "\n"
+                        content += "Court ID: " + court.getCourtId() + "\n"
+                        Log.i("bb", content)
+                        listOfCourts.add(content)
+                    }
                 }
                 Log.i("bb","Court")
             }
@@ -594,21 +610,21 @@ class MainScreenActivity : AppCompatActivity(),
 
             }
         })
+        return listOfCourts
     }
 
     // when press to select a date
     private fun sendGetCenterBookings() {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["pdate"] = "all"
 
         val call = mAPIService?.getCenterBookings("A1")
 
-        Log.i("bb",parameters.toString())
+//        Log.i("bb",parameters.toString())
 
-        call?.enqueue(object : Callback<List<CenterBooking>> {
+        call?.enqueue(object : Callback<List<CenterBookingRequest>> {
             override fun onResponse(
-                call: Call<List<CenterBooking>>,
-                response: Response<List<CenterBooking>>
+                call: Call<List<CenterBookingRequest>>,
+                response: Response<List<CenterBookingRequest>>
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
@@ -616,11 +632,20 @@ class MainScreenActivity : AppCompatActivity(),
                     Log.i("bb","CenterBooking444444444")
                     return
                 }
+                val centerBookingRequests : List<CenterBookingRequest>?  = response.body()
+                if (centerBookingRequests != null) {
+                    for ( centerBooking in centerBookingRequests){
+                        var content = ""
+                        content += "Booking ID: " + centerBooking.getBookingId() + "\n"
+                        content += "Center ID: " + centerBooking.getCenterId() + "\n"
+                        Log.i("bb", content)
+                    }
+                }
                 Log.i("bb","CenterBooking")
             }
 
             override fun onFailure(
-                call: Call<List<CenterBooking>>,
+                call: Call<List<CenterBookingRequest>>,
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
@@ -638,7 +663,7 @@ class MainScreenActivity : AppCompatActivity(),
 
         val call = mAPIService?.getCityCenterStaffs("A","A1")
 
-        Log.i("bb",parameters.toString())
+//        Log.i("bb",parameters.toString())
 
         call?.enqueue(object : Callback<List<CityCenterStaff>> {
             override fun onResponse(
@@ -679,19 +704,27 @@ class MainScreenActivity : AppCompatActivity(),
     }
 
     // when press create a new booking
-    private fun sendPostBooking(bookingId:String, date: String, startTime: String, endTime:String, cityId:String, centerId: String, courtId: String, playerId: String) {
+    private fun sendPostBooking( date: String, startTime: String, endTime:String, cityId:String, centerId: String, courtId: String, playerId: String) {
 //        val bookingRequest = BookingRequest(
 //            "booking1",
 //            "2021-05-01", "10:00:00", "10:45:00",
 //            "1", "2", "A", "B"
 //        )
-        val bookingRequest = BookingRequest(bookingId,  date, startTime, endTime, cityId, centerId, courtId, playerId)
+        val bookingRequests = BookingRequest(date, startTime, endTime, cityId, centerId, courtId, playerId)
 
-//        val fields: MutableMap<String, String> = HashMap()
+        val fields: MutableMap<String, String> = HashMap()
+        fields["pdate"] = date
+        fields["pstarttime"] = startTime
+        fields["pendtime"] = endTime
+        fields["pcityid"] = cityId
+        fields["pcenterid"] = centerId
+        fields["pcourtid"] = courtId
+        fields["pplayerid"] = playerId
 
-        val call = mAPIService?.createBookings(bookingRequest)
+        val call = mAPIService?.createBookings(bookingRequests)
 
-        Log.i("bb",bookingRequest.toString())
+//        Log.i("bb",bookingRequests.toString())
+        Log.i("bb",fields.toString())
 
         call?.enqueue(object : Callback<BookingRequest?> {
             override fun onResponse(
@@ -701,6 +734,9 @@ class MainScreenActivity : AppCompatActivity(),
 
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb", response.body().toString())
+                    Log.i("bb",response.message())
+                    Log.i("bb",response.code().toString())
                     Log.i("bb","CreateBooking44444444")
                     return
                 }
@@ -710,37 +746,33 @@ class MainScreenActivity : AppCompatActivity(),
                     Code: ${response.code()}
 
                     """.trimIndent()
-                    content += """
-                    Booking ID: ${bookingRequest!!.pbookingid}
-
-                    """.trimIndent()
 
                     content += """
-                    Date: ${bookingRequest!!.pdate}
+                    Date: ${bookingRequest!!.getDate()}
 
                     """.trimIndent()
                     content += """
-                    Start Time: ${bookingRequest!!.pstarttime}
+                    Start Time: ${bookingRequest.getStartTime()}
 
                     """.trimIndent()
                     content += """
-                    End Time: ${bookingRequest!!.pendtime}
+                    End Time: ${bookingRequest.getEndTime()}
 
                     """.trimIndent()
                     content += """
-                    City Id: ${bookingRequest!!.pcityid}
+                    City Id: ${bookingRequest.getCityID()}
 
                     """.trimIndent()
                     content += """
-                    Center Id: ${bookingRequest!!.pcenterid}
+                    Center Id: ${bookingRequest.getCenterID()}
 
                     """.trimIndent()
                     content += """
-                    Court Id: ${bookingRequest!!.pcourtid}
+                    Court Id: ${bookingRequest.getCourtId()}
 
                     """.trimIndent()
                     content += """
-                    Facebook Id: ${bookingRequest!!.pplayerid}
+                    Facebook Id: ${bookingRequest.getPlayerId()}
 
                     """.trimIndent()
                     Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
@@ -755,23 +787,6 @@ class MainScreenActivity : AppCompatActivity(),
         })
 
     }
-
-
-
-
-    override fun showBooking() {
-        // Initialize the BOOKING recycler view
-        initRecyclerViewBooking()
-        // Hide welcome texts
-        welcomeText.text = ""
-        welcomeText2.text = ""
-        // Hide 'Show Available Slots'
-        rv_center.adapter = null
-        findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
-    }
-
-
-
 
 
     fun aaa(view: View) {

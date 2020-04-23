@@ -26,7 +26,7 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>, private var 
     }
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
-        return if (listBooking[position].paymentStatus == "Overdue") {
+        return if (listBooking[position].getStatus() == "Overdue") {
             bookingViewTypeOverdue
         } else {
             bookingViewTypeDefault
@@ -58,17 +58,17 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>, private var 
         val currentItem = listBooking[position]
 
         // - replace the contents of the view with that element
-        holder.tvId.text = currentItem.id
-        holder.tvDate.text = currentItem.date
-        holder.tvTime.text = currentItem.time
-        holder.tvCourt.text = currentItem.court
-        holder.tvCreatedOn.text = currentItem.createdOn
+        holder.tvId.text = currentItem.getBookingId()
+        holder.tvDate.text = currentItem.getDate()
+        holder.tvTime.text = currentItem.getStartTime()
+        holder.tvCourt.text = currentItem.getCourtId()
+        holder.tvCreatedOn.text = currentItem.getTimestamp()
 
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)
 
         holder.cancelBtn.setOnClickListener {
-            cancelInterface.moveToCancelFragment(currentItem.id)
+            cancelInterface.moveToCancelFragment(currentItem.getBookingId())
         }
 
     }

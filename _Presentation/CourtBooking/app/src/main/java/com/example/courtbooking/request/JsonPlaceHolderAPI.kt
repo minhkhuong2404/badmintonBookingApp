@@ -34,7 +34,7 @@ interface JsonPlaceHolderApi {
     @GET("api/booking/view")
     fun getCenterBookings(
         @Query("centerid") centerid : String
-    ): Call<List<CenterBooking>>?
+    ): Call<List<CenterBookingRequest>>?
 
     @GET("api/staff/view")
     fun getCityCenterStaffs(
@@ -73,8 +73,6 @@ interface JsonPlaceHolderApi {
 //        @Field("title") title: String?,
 //        @Field("body") text: String?
 //        @Body requestBody: RequestBody
-        @Field("pbookingid") pbookingid : String,
-        @Field("ptimestamp") ptimestamp : String,
         @Field("pdate") pdate : String,
         @Field("pstarttime") pstarttime : String,
         @Field("pendtime") pendtime : String,
@@ -86,6 +84,6 @@ interface JsonPlaceHolderApi {
     ): Call<BookingRequest?>?
 
     @FormUrlEncoded
-    @POST(".")
+    @POST("api/bookings/create")
     fun createBookings(@FieldMap fields: Map<String, String>): Call<BookingRequest>?
 }
