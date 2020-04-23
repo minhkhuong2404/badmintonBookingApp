@@ -2,32 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../JDBC.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../JDBC.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterBookings.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/Server/ApiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/Server/ApiServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CenterBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CenterBookingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitiesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitiesHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterCourtsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterCourtsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterStaffsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterStaffsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/PlayerBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/PlayerBookingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/CreateBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/CreateBookingPostHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/CreateBookingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/CreateBookingRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/PostHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/Booking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/SQLStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/SQLStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/db/TestConnectionDBv2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/db/TestConnectionDBv2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/Server/ApiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/Server/ApiServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CenterBookingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CenterBookingHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CitiesHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CitiesHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterCourtsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterCourtsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterStaffsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterStaffsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/PlayerBookingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/PlayerBookingHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/PostHandler/CreateBookingHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/PostHandler/CreateBookingRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/PostHandler/CreateBookingRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/PostHandler/Handler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimplifiedBooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CourtSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/CourtSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/Slot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimpleTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/slot/TestCourtSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/slot/TestCourtSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/db/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/db/Booking.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/app/booking/db/SQLStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/db/SQLStatement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/app/booking/db/TestConnectionDBv2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/booking/db/TestConnectionDBv2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/Booking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/CourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slot/CourtSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slot/Slot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/Time.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/app/booking/slot/TestCourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/booking/slot/TestCourtSlot.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +78,7 @@
       <recent name="app.booking.db" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ApiServer">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ApiServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="app.booking.Server.ApiServer" />
       <module name="JDBC" />
@@ -97,69 +89,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JDBC" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestConnectionDB.updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JDBC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.booking.db.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="app.booking.db" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDB" />
-      <option name="METHOD_NAME" value="updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestConnectionDBv2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JDBC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.booking.db.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="app.booking.db" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDBv2" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestConnectionDBv2.createBooking_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JDBC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.booking.db.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="app.booking.db" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDBv2" />
-      <option name="METHOD_NAME" value="createBooking_Success" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestConnectionDBv2.createBooking_WhenBookingIdIsNotAlphanumeric" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JDBC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.booking.db.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="app.booking.db" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.db.TestConnectionDBv2" />
-      <option name="METHOD_NAME" value="createBooking_WhenBookingIdIsNotAlphanumeric" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -190,18 +119,10 @@
     <list>
       <item itemvalue="Application.ApiServer" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.TestConnectionDBv2" />
-      <item itemvalue="JUnit.TestConnectionDB.updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId" />
-      <item itemvalue="JUnit.TestConnectionDBv2.createBooking_Success" />
-      <item itemvalue="JUnit.TestConnectionDBv2.createBooking_WhenBookingIdIsNotAlphanumeric" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestConnectionDBv2.createBooking_Success" />
-        <item itemvalue="JUnit.TestConnectionDBv2.createBooking_WhenBookingIdIsNotAlphanumeric" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestConnectionDBv2" />
-        <item itemvalue="JUnit.TestConnectionDB.updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId" />
       </list>
     </recent_temporary>
   </component>
@@ -239,56 +160,58 @@
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
     <state x="460" y="398" key="#com.intellij.debugger.actions.ViewTextAction/40.23.1640.1027@40.23.1640.1027" timestamp="1587617562436" />
-    <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587602318144" />
-    <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1587602318144" />
-    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1587624813632">
+    <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587631593146">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser/40.23.1640.1027@40.23.1640.1027" timestamp="1587624813632" />
+    <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587631593146" />
+    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1587602318144" />
+    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
+    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1587633203494">
+      <screen x="40" y="23" width="1640" height="1027" />
+    </state>
+    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser/40.23.1640.1027@40.23.1640.1027" timestamp="1587633203494" />
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587602318144" />
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587626803958">
+    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587634139153">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587626803958" />
+    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587634139153" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587602318144" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state width="1598" height="144" key="GridCell.Tab.0.bottom" timestamp="1587626848755">
+    <state width="1399" height="331" key="GridCell.Tab.0.bottom" timestamp="1587634151517">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1598" height="144" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587626848755" />
-    <state width="1598" height="144" key="GridCell.Tab.0.center" timestamp="1587626848755">
+    <state width="1399" height="331" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587634151517" />
+    <state width="1399" height="331" key="GridCell.Tab.0.center" timestamp="1587634151516">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1598" height="144" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587626848755" />
-    <state width="1598" height="144" key="GridCell.Tab.0.left" timestamp="1587626848754">
+    <state width="1399" height="331" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587634151516" />
+    <state width="1399" height="331" key="GridCell.Tab.0.left" timestamp="1587634151515">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1598" height="144" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587626848754" />
-    <state width="1598" height="144" key="GridCell.Tab.0.right" timestamp="1587626848755">
+    <state width="1399" height="331" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587634151515" />
+    <state width="1399" height="331" key="GridCell.Tab.0.right" timestamp="1587634151516">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1598" height="144" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587626848755" />
-    <state width="1367" height="331" key="GridCell.Tab.1.bottom" timestamp="1587621739253">
+    <state width="1399" height="331" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587634151516" />
+    <state width="1399" height="331" key="GridCell.Tab.1.bottom" timestamp="1587634152211">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
-    <state width="1367" height="331" key="GridCell.Tab.1.center" timestamp="1587621739253">
+    <state width="1399" height="331" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587634152211" />
+    <state width="1399" height="331" key="GridCell.Tab.1.center" timestamp="1587634152211">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
-    <state width="1367" height="331" key="GridCell.Tab.1.left" timestamp="1587621739253">
+    <state width="1399" height="331" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587634152211" />
+    <state width="1399" height="331" key="GridCell.Tab.1.left" timestamp="1587634152211">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
-    <state width="1367" height="331" key="GridCell.Tab.1.right" timestamp="1587621739253">
+    <state width="1399" height="331" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587634152211" />
+    <state width="1399" height="331" key="GridCell.Tab.1.right" timestamp="1587634152211">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
+    <state width="1399" height="331" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587634152211" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog" timestamp="1587602318144" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="324" y="155" key="SettingsEditor" timestamp="1587602318144" />

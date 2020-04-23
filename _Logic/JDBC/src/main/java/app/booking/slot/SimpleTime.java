@@ -1,20 +1,17 @@
 package app.booking.slot;
 
-public class Time {
+public class SimpleTime {
     private int minute;
 
-    // construct time as specified time
-    Time(Time newTime) {
-        this.minute = newTime.minute;
+    SimpleTime(SimpleTime newSimpleTime) {
+        this.minute = newSimpleTime.minute;
     }
 
-    // construction time from int
-    Time(int newH, int newM) {
+    SimpleTime(int newH, int newM) {
         minute = newH * 60 + newM;
     }
 
-    // construct time from string
-    Time(String newTime) {
+    SimpleTime(String newTime) {
         String[] timeSplit = newTime.split(":");
         minute = 60 * Integer.parseInt(timeSplit[0]);
         minute += Integer.parseInt(timeSplit[1]);
@@ -53,9 +50,11 @@ public class Time {
         minute = hour.length() == 1 ? " " + minute : minute;
         return hour + ":" + minute;
     }
-
+    public static SimpleTime valueOf(java.sql.Time t) {
+        return new SimpleTime(t.toString());
+    }
     // compare this with specified time t
-    public int compare(Time t) {
+    public int compare(SimpleTime t) {
         // if t1 is after t2 then t1 is larger than t2
         if (this.minute < t.minute) {
             return -1;

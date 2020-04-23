@@ -412,20 +412,20 @@ public class SQLStatement {
 
         return cityCenterCourtList;
     }
-
-    // getCenterBookings
-    public static ArrayList<Booking> getCenterBookings(String centerId) throws Exception {
+    // getCityBookings
+    public static ArrayList<Booking> getCityBookings(String cityId) throws Exception {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
 
         try {
-            stm = conn.prepareCall("{ CALL getCenterBookings(?, ?) }");
-            stm.setString(1, centerId);
+            stm = conn.prepareCall("{ CALL getCityBookings(?, ?) }");
+            stm.setString(1, cityId);
             stm.registerOutParameter(2, Types.VARCHAR);
             stm.executeUpdate();
             String resultCode = stm.getString(2);
             ResultSet resultSet = stm.getResultSet();
-            System.out.println("getCenterBookings() executed with result code: " + resultCode);
+            System.out.println("getCityBookings() executed with result code: " + resultCode);
+
             while (resultSet.next()) {
                 bookingList.add(new Booking(
                         resultSet.getInt("booking_id"),
@@ -442,6 +442,94 @@ public class SQLStatement {
             }
         } catch (SQLException e) {
             throw e;
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (bookingList.isEmpty())
+            System.out.println("getCourtBookings returns empty list");
+
+        return bookingList;
+    }
+
+    // getCenterBookings
+    public static ArrayList<Booking> getCenterBookings(String centerId) throws Exception {
+        CallableStatement stm = null;
+        ArrayList<Booking> bookingList = new ArrayList<>();
+
+        try {
+            stm = conn.prepareCall("{ CALL getCenterBookings(?, ?) }");
+            stm.setString(1, centerId);
+            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.executeUpdate();
+            String resultCode = stm.getString(2);
+            ResultSet resultSet = stm.getResultSet();
+            System.out.println("getCenterBookings() executed with result code: " + resultCode);
+
+            while (resultSet.next()) {
+                bookingList.add(new Booking(
+                        resultSet.getInt("booking_id"),
+                        resultSet.getTimestamp("timestamp"),
+                        resultSet.getDate("date"),
+                        resultSet.getTime("startTime"),
+                        resultSet.getTime("endTime"),
+                        resultSet.getString("city_id"),
+                        resultSet.getString("center_id"),
+                        resultSet.getString("court_id"),
+                        resultSet.getString("player_id"),
+                        resultSet.getInt("status")
+                ));
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (bookingList.isEmpty())
+            System.out.println("getCenterBookings returns empty list");
+
+        return bookingList;
+    }
+
+    // getCourtBookings
+    public static ArrayList<Booking> getCourtBookings(String courtId) throws Exception {
+        CallableStatement stm = null;
+        ArrayList<Booking> bookingList = new ArrayList<>();
+
+        try {
+            stm = conn.prepareCall("{ CALL getCourtBookings(?, ?) }");
+            stm.setString(1, courtId);
+            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.executeUpdate();
+            String resultCode = stm.getString(2);
+            ResultSet resultSet = stm.getResultSet();
+            System.out.println("getCourtBookings() executed with result code: " + resultCode);
+
+            while (resultSet.next()) {
+                bookingList.add(new Booking(
+                        resultSet.getInt("booking_id"),
+                        resultSet.getTimestamp("timestamp"),
+                        resultSet.getDate("date"),
+                        resultSet.getTime("startTime"),
+                        resultSet.getTime("endTime"),
+                        resultSet.getString("city_id"),
+                        resultSet.getString("center_id"),
+                        resultSet.getString("court_id"),
+                        resultSet.getString("player_id"),
+                        resultSet.getInt("status")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             try {
                 if (stm != null) {

@@ -1,35 +1,35 @@
 package app.booking.slot;
 
 public class Slot {
-    private Time start;
-    private Time end;
+    private SimpleTime start;
+    private SimpleTime end;
 
     // construct from string
     public Slot(String newStart, String newEnd) {
-        start = new Time(newStart);
-        end = new Time(newEnd);
+        start = new SimpleTime(newStart);
+        end = new SimpleTime(newEnd);
     }
 
     // construct from time type
-    public Slot(Time newStart, Time newEnd) {
+    public Slot(SimpleTime newStart, SimpleTime newEnd) {
         start = newStart;
         end = newEnd;
     }
 
     // set, get methods
-    public void setStart(Time newStart) {
+    public void setStart(SimpleTime newStart) {
         start = newStart;
     }
 
-    public void setEnd(Time newEnd) {
+    public void setEnd(SimpleTime newEnd) {
         end = newEnd;
     }
 
-    public Time getStart() {
+    public SimpleTime getStart() {
         return start;
     }
 
-    public Time getEnd() {
+    public SimpleTime getEnd() {
         return end;
     }
 }

@@ -13,6 +13,7 @@ ELSE
 	select * from booking where centerId = center_id;
   SET resultCode = '200';
 END IF;
-SELECT resultCode;
 end//
 DELIMITER ;
+
+-- call getCenterBookings("A1C", @code);
