@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class   JsonConverter {
-    public static String convert(ArrayList ls) throws SQLException, JSONException {
+    public static String convert(ArrayList ls) throws JSONException {
         ObjectMapper mapper = new ObjectMapper();
         try{
             mapper.writeValue(new File("op.json"), ls);
@@ -17,6 +17,7 @@ public class   JsonConverter {
         } catch (Exception e){
             e.printStackTrace();
         }
+
         return null;
     }
 }

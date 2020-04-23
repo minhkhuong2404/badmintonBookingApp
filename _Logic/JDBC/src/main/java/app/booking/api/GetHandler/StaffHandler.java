@@ -1,7 +1,6 @@
 package app.booking.api.GetHandler;
 
 import app.booking.api.Constants;
-import app.booking.api.PostHandler.Handler;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
 import app.booking.db.CityCenterStaff;
@@ -18,25 +17,25 @@ import java.util.ArrayList;
 
 public class StaffHandler extends GetHandler {
 
-    public StaffHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
-        super(objectMapper, exceptionHandler);
+    public StaffHandler(GlobalExceptionHandler exceptionHandler) {
+        super(exceptionHandler);
     }
 
     @Override
     protected void execute(HttpExchange exchange) throws Exception {
-        byte[] response;
+
+        String responseBody;
         if ("GET".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doGet(exchange.getRequestBody());
             exchange.getResponseHeaders().putAll(e.getHeaders());
             exchange.sendResponseHeaders(e.getStatusCode().getCode(), 0);
-            response = super.writeResponse(e.getBody());
+            responseBody = (String) e.getBody();
         } else {
             throw ApplicationExceptions.methodNotAllowed(
                     "Method " + exchange.getRequestMethod() + " is not allowed for " + exchange.getRequestURI()).get();
         }
-
         OutputStream os = exchange.getResponseBody();
-        os.write(response);
+        os.write(responseBody.getBytes());
         os.close();
     }
 
@@ -44,8 +43,7 @@ public class StaffHandler extends GetHandler {
         ArrayList<CityCenterStaff> ls = SQLStatement.getStaffs();
 
         String rsp = JsonConverter.convert(ls);
-        return new ResponseEntity<>(rsp,
-                getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        return new ResponseEntity(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }
 

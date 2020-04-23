@@ -8,11 +8,11 @@ import lombok.Setter;
 //@Getter
 //@AllArgsConstructor
 public class CityCenterStaff {
-    String courtId;
-    String cityId;
     String staffId;
+    String cityId;
+    String courtId;
 
-    public CityCenterStaff(String courtId, String cityId, String staffId) {
+    public CityCenterStaff(String staffId, String cityId, String courtId) {
         this.courtId = courtId;
         this.cityId = cityId;
         this.staffId = staffId;

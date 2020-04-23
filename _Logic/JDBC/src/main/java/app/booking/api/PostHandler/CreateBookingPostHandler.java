@@ -8,6 +8,7 @@ import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
+import io.vavr.control.Try;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -15,8 +16,8 @@ import java.sql.Date;
 import java.sql.Time;
 
 
-public class CreateBookingHandler extends Handler {
-    public CreateBookingHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
+public class CreateBookingPostHandler extends PostHandler {
+    public CreateBookingPostHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
         super(objectMapper, exceptionHandler);
     }
 
@@ -38,13 +39,10 @@ public class CreateBookingHandler extends Handler {
         os.close();
     }
 
-    private ResponseEntity<Response> doPost(InputStream is) throws Exception {
+    private ResponseEntity<String> doPost(InputStream is) throws Exception {
         CreateBookingRequest CBrequest = super.readRequest(is, CreateBookingRequest.class);
 
-
-        System.out.println(CBrequest);
-
-        String result_code = SQLStatement.createBooking(CBrequest.getPbookingid(),
+        String result_code = SQLStatement.createBooking(
                 Date.valueOf(CBrequest.getPdate()),
                 Time.valueOf(CBrequest.getPstarttime()),
                 Time.valueOf(CBrequest.getPendtime()),
@@ -52,12 +50,11 @@ public class CreateBookingHandler extends Handler {
                 CBrequest.getPcenterid(),
                 CBrequest.getPcourtid(),
                 CBrequest.getPplayerid());
+        String response;
+        if (result_code == "200") {
+            response = "Created. Booking info: " + CBrequest.toString();
+        } else response = "Create Failed. Error code: " + result_code;
 
-        System.out.println("Database execution with result code: " + result_code);
-
-        Response response = new Response("1");
-
-        return new ResponseEntity<>(response,
-                getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        return new ResponseEntity<>(response, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }

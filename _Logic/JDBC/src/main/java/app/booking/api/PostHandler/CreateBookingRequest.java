@@ -4,7 +4,6 @@ import lombok.Value;
 
 @Value
 class CreateBookingRequest {
-    String pbookingid;
     String pdate;
     String pstarttime;
     String pendtime;
