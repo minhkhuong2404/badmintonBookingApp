@@ -1,5 +1,6 @@
 package app.booking.api.GetHandler;
 
+import app.booking.api.ApiUtils;
 import app.booking.api.Constants;
 import app.booking.api.PostHandler.Handler;
 import app.booking.api.ResponseEntity;
@@ -16,15 +17,18 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public class StaffsHandler extends GetHandler {
+public class CityCenterStaffsHandler extends GetHandler {
 
-    public StaffsHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
+    public CityCenterStaffsHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
         super(objectMapper, exceptionHandler);
     }
 
     @Override
     protected void execute(HttpExchange exchange) throws Exception {
+
         byte [] response;
         if ("GET".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doGet(exchange.getRequestBody());
@@ -42,8 +46,18 @@ public class StaffsHandler extends GetHandler {
     }
 
     private ResponseEntity doGet(InputStream is) throws Exception {
-        StaffRequest rq = super.readRequest(is, StaffRequest.class);
-        ArrayList<CityCenterStaff> ls = SQLStatement.getCityCenterStaffs(rq.getCityid(),rq.getCenterid());
+
+        // get params
+        Map<String, List<String>> params = this.getParameters();
+        String cityId = params.get("cityid").get(0);
+        String centerId = params.get("centerid").get(0);
+
+        System.out.println(cityId);
+        System.out.println(centerId);
+
+        // TODO: handle the case of missing/incorrect params
+
+        ArrayList<CityCenterStaff> ls = SQLStatement.getCityCenterStaffs(cityId, centerId);
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp,
                 getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);

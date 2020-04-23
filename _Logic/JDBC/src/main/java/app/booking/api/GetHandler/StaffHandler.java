@@ -24,7 +24,7 @@ public class StaffHandler extends GetHandler {
 
     @Override
     protected void execute(HttpExchange exchange) throws Exception {
-        byte [] response;
+        byte[] response;
         if ("GET".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doGet(exchange.getRequestBody());
             exchange.getResponseHeaders().putAll(e.getHeaders());
@@ -42,6 +42,7 @@ public class StaffHandler extends GetHandler {
 
     private ResponseEntity doGet(InputStream is) throws Exception {
         ArrayList<CityCenterStaff> ls = SQLStatement.getStaffs();
+
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp,
                 getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);

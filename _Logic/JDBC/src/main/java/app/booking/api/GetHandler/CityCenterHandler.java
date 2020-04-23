@@ -15,6 +15,8 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class CityCenterHandler extends GetHandler {
 
@@ -41,8 +43,14 @@ public class CityCenterHandler extends GetHandler {
     }
 
     private ResponseEntity doGet(InputStream is) throws Exception {
-        CityCenterRequest rqs = super.readRequest(is, CityCenterRequest.class);
-        ArrayList<CityCenter> ls = SQLStatement.getCityCenters(rqs.getCityid());
+        //CityCenterRequest rqs = super.readRequest(is, CityCenterRequest.class);
+        Map<String, List<String>> params = this.getParameters();
+        String cityId = params.get("cityid").get(0);
+
+        System.out.println(cityId);
+
+        // TODO: handle the case of missing/incorrect params
+        ArrayList<CityCenter> ls = SQLStatement.getCityCenters(cityId);
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp,
                 getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);

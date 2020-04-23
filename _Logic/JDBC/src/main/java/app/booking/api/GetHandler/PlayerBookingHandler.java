@@ -15,6 +15,8 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class PlayerBookingHandler extends GetHandler {
 
@@ -41,8 +43,19 @@ public class PlayerBookingHandler extends GetHandler {
     }
 
     private ResponseEntity doGet(InputStream is) throws Exception {
-        PlayerBookingRequest rqs = super.readRequest(is, PlayerBookingRequest.class);
-        ArrayList<Booking> ls = SQLStatement.getCenterBookings(rqs.getPlayerid());
+//        PlayerBookingRequest rqs = super.readRequest(is, PlayerBookingRequest.class);
+//        ArrayList<Booking> ls = SQLStatement.getCenterBookings(rqs.getPlayerid());
+
+        Map<String, List<String>> params = this.getParameters();
+        String playerid = params.get("playerid").get(0);
+
+        System.out.println(playerid);
+
+        // TODO: handle the case of missing/incorrect params
+
+        ArrayList<Booking> ls = SQLStatement.getPlayerBookings(playerid);
+
+
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp,
                 getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);

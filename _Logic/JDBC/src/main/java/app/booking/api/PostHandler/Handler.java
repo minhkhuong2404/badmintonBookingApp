@@ -20,6 +20,8 @@ public abstract class Handler {
     }
 
     protected <T> T readRequest(InputStream is, Class<T> type) {
+        // InputStream has content of json
+        // Map InputStream to object "type" using Jackson ObjectMapper
         return Try.of(() -> objectMapper.readValue(is, type))
                 .getOrElseThrow(ApplicationExceptions.invalidRequest());
     }

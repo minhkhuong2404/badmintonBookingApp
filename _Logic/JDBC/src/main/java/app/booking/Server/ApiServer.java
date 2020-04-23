@@ -3,7 +3,6 @@ package app.booking.Server;
 import app.booking.api.GetHandler.*;
 import app.booking.api.PostHandler.CreateBookingHandler;
 import com.sun.net.httpserver.HttpContext;
-import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 
@@ -23,8 +22,8 @@ public class ApiServer {
 
         //Get context
 
-        StaffsHandler staffsHandler = new StaffsHandler(getObjectMapper(),getErrorHandler());
-        HttpContext context1 =server.createContext("/api/staff/view", staffsHandler::handle);
+        CityCenterStaffsHandler cityCenterStaffsHandler = new CityCenterStaffsHandler(getObjectMapper(),getErrorHandler());
+        HttpContext context1 =server.createContext("/api/staff/view", cityCenterStaffsHandler::handle);
 
         StaffHandler staffHandler = new StaffHandler(getObjectMapper(),getErrorHandler());
         HttpContext context2 =server.createContext("/api/staff/view2", staffHandler::handle);
