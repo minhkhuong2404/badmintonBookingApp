@@ -1,1 +1,1 @@
-[{"staffId":"s1","cityId":"A","courtId":"A1"},{"staffId":"s2","cityId":"A","courtId":"A1"},{"staffId":"s3","cityId":"A","courtId":"A1"},{"staffId":"sc","cityId":"C","courtId":"C1"},{"staffId":"sc1","cityId":"C","courtId":"C1"}]
+[{"cityId":"A"},{"cityId":"B"},{"cityId":"C"},{"cityId":"city1"}]

@@ -13,4 +13,10 @@ class CourtRequest {
     fun getCourtId(): String{
         return courtid
     }
+    fun getCityId(): String{
+        return cityid
+    }
+    fun getCenterId() : String{
+        return centerid
+    }
 }

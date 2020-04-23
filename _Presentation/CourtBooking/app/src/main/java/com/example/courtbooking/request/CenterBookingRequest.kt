@@ -1,6 +1,6 @@
 package com.example.courtbooking.request
 
-class CenterBooking {
+class CenterBookingRequest {
     var centerid : String = ""
     var bookingid : String = ""
     constructor(center : String, booking: String){
