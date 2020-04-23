@@ -3,40 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/op.json" beforeDir="false" afterPath="$PROJECT_DIR$/op.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CenterBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CenterBookingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitiesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitiesHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterCourtsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterCourtsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterStaffsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CityCenterStaffsHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/GetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/GetHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/PlayerBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/PlayerBookingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/StaffHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/StaffHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/CreateBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/PostHandler/CreateBookingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/ResponseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/ResponseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/CityCenterStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/CityCenterStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/JsonConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/JsonConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CenterBookingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CenterBookingHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CitiesHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CitiesHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterCourtsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterCourtsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterStaffsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CityCenterStaffsHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/PlayerBookingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/PlayerBookingHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/StaffHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/StaffHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/ResponseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/ResponseEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/db/CityCenterStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/db/CityCenterStaff.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/db/JsonConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/db/JsonConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Presentation/CourtBooking/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Presentation/CourtBooking/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Presentation/CourtBooking/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Presentation/CourtBooking/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Presentation/CourtBooking/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Presentation/CourtBooking/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Presentation/CourtBooking/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Presentation/CourtBooking/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Presentation/CourtBooking/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Presentation/CourtBooking/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
@@ -65,6 +42,9 @@
         <entry key="$PROJECT_DIR$/../.." value="0990aebc7951b6e108d7b9b945898bdbf32c670e" />
       </map>
     </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1aFj75jhfBnrkPL6UhMdbH7rHrn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -128,6 +108,7 @@
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="TestConnectionDB.updateBookingStatus_WhenstaffIdDoesNotManageIncityIdcourtId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -234,14 +215,12 @@
       <workItem from="1587273529574" duration="11749000" />
       <workItem from="1587318275590" duration="11510000" />
       <workItem from="1587545686764" duration="1548000" />
+      <workItem from="1587625693287" duration="264000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58523000" />
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="423" y="183" width="813" height="666" key="#Project_Structure" timestamp="1587602318142" />
@@ -270,38 +249,38 @@
     <state x="634" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587606231125" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587602318144" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state width="1367" height="144" key="GridCell.Tab.0.bottom" timestamp="1587624731082">
+    <state width="1598" height="261" key="GridCell.Tab.0.bottom" timestamp="1587626815768">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="144" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587624731082" />
-    <state width="1367" height="144" key="GridCell.Tab.0.center" timestamp="1587624731082">
+    <state width="1598" height="261" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587626815768" />
+    <state width="1598" height="261" key="GridCell.Tab.0.center" timestamp="1587626815766">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="144" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587624731082" />
-    <state width="1367" height="144" key="GridCell.Tab.0.left" timestamp="1587624731081">
+    <state width="1598" height="261" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587626815766" />
+    <state width="1598" height="261" key="GridCell.Tab.0.left" timestamp="1587626815764">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="144" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587624731081" />
-    <state width="1367" height="144" key="GridCell.Tab.0.right" timestamp="1587624731082">
+    <state width="1598" height="261" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587626815764" />
+    <state width="1598" height="261" key="GridCell.Tab.0.right" timestamp="1587626815767">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="144" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587624731082" />
-    <state width="1367" height="331" key="GridCell.Tab.1.bottom" timestamp="1587621739253">
+    <state width="1598" height="261" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587626815767" />
+    <state width="1598" height="336" key="GridCell.Tab.1.bottom" timestamp="1587625687464">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
-    <state width="1367" height="331" key="GridCell.Tab.1.center" timestamp="1587621739253">
+    <state width="1598" height="336" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587625687464" />
+    <state width="1598" height="336" key="GridCell.Tab.1.center" timestamp="1587625687463">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
-    <state width="1367" height="331" key="GridCell.Tab.1.left" timestamp="1587621739253">
+    <state width="1598" height="336" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587625687463" />
+    <state width="1598" height="336" key="GridCell.Tab.1.left" timestamp="1587625687463">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
-    <state width="1367" height="331" key="GridCell.Tab.1.right" timestamp="1587621739253">
+    <state width="1598" height="336" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587625687463" />
+    <state width="1598" height="336" key="GridCell.Tab.1.right" timestamp="1587625687464">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1367" height="331" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587621739253" />
+    <state width="1598" height="336" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587625687464" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog" timestamp="1587602318144" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="324" y="155" key="SettingsEditor" timestamp="1587602318144" />

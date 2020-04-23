@@ -65,6 +65,13 @@ class MainScreenActivity : AppCompatActivity(),
         welcomeText = findViewById<TextView>(R.id.welcome_text_1)
         welcomeText2 = findViewById<TextView>(R.id.welcome_text_2)
 
+        sendGetCenter()
+        sendGetCenterBookings()
+        sendGetCityCenterStaffs()
+        sendGetCourt()
+        sendGetPLayerBooking()
+        sendGetStaff()
+
         // City list store here
         var listOfCities = ArrayList<String>()
         listOfCities = sendGetCity()
@@ -126,7 +133,6 @@ class MainScreenActivity : AppCompatActivity(),
         b_show_bookings.setOnClickListener {
             // Initialize the BOOKING recycler view
             Toast.makeText(this,"Show booking",Toast.LENGTH_SHORT).show()
-            sendGetBooking()
             initRecyclerViewBooking()
             // Hide welcome texts
             welcomeText.text = ""
@@ -134,7 +140,6 @@ class MainScreenActivity : AppCompatActivity(),
             // Hide 'Show Available Slots'
             rv_center.adapter = null
             findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
-            Log.i("bb","Bookinggggg")
         }
 
     }
@@ -275,62 +280,58 @@ class MainScreenActivity : AppCompatActivity(),
     }
 
     // when press show all bookings
-    private fun sendGetBooking() {
-        Log.i("bb","Uaaaaaa")
+    private fun sendGetPLayerBooking() {
         val parameters: MutableMap<String, String> = HashMap()
         parameters["name"] = "Khuong"
 
-        val call = mAPIService?.getBookings(parameters)
+        val call = mAPIService?.getPlayerBookings("player1")
 
         Log.i("bb",parameters.toString())
 
-        call?.enqueue(object : Callback<List<GetBookingRequest>> {
+        call?.enqueue(object : Callback<List<PlayerBookingRequest>> {
             override fun onResponse(
-                call: Call<List<GetBookingRequest>>,
-                response: Response<List<GetBookingRequest>>
+                call: Call<List<PlayerBookingRequest>>,
+                response: Response<List<PlayerBookingRequest>>
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
-                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
-
+                    Log.i("bb","PlayerBooking444444444")
                     return
                 }
-                val bookingRequest : List<GetBookingRequest>?  = response.body()
+                val bookingRequest : List<PlayerBookingRequest>?  = response.body()
                 if (bookingRequest != null) {
                     for (booking in bookingRequest){
 
                     }
                 }
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                Log.i("bb","PlayerBooking")
             }
 
             override fun onFailure(
-                call: Call<List<GetBookingRequest>>,
+                call: Call<List<PlayerBookingRequest>>,
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
-                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+                Log.i("bb","PlayerBooking222222222")
 
             }
         })
 
     }
+
     private fun sendGetStaff()  {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["cityid"] = "A"
-        parameters["centerid"] ="A1"
 
-        val staffRequest = StaffRequest("A","A1")
-        val call = mAPIService?.getStaff(parameters)
+        val call = mAPIService?.getStaffs()
 //        var staffs : ArrayList<String> = ArrayList()
 
         Log.i("bb",parameters.toString())
 
-        call?.enqueue(object : Callback<StaffRequest> {
+        call?.enqueue(object : Callback<List<StaffRequest>> {
             override fun onResponse(
-                call: Call<StaffRequest>,
-                response: Response<StaffRequest>
+                call: Call<List<StaffRequest>>,
+                response: Response<List<StaffRequest>>
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
@@ -340,10 +341,10 @@ class MainScreenActivity : AppCompatActivity(),
 //                    cities.add("City4")
                     Log.i("bb",response.code().toString())
                     Log.i("bb",response.message().toString())
-                    Log.i("bb","WOR444444444")
+                    Log.i("bb","Staff444444444")
                     return
                 }
-                val staffRequest : StaffRequest?  = response.body()
+                val staffRequest : List<StaffRequest>?  = response.body()
                 if (staffRequest != null) {
 //                    for (staff in staffRequest){
 //                        var content = ""
@@ -352,16 +353,16 @@ class MainScreenActivity : AppCompatActivity(),
 //                    }
                 }
                 Log.i("bb",staffRequest.toString())
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                Log.i("bb","Staff")
             }
 
             override fun onFailure(
-                call: Call<StaffRequest>,
+                call: Call<List<StaffRequest>>,
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
 //                cities.add("City??")
-                Log.i("bb","WOR222222222")
+                Log.i("bb","Staff222222222")
 
             }
         })
@@ -373,7 +374,7 @@ class MainScreenActivity : AppCompatActivity(),
         parameters["cityId"] = "all"
 //        val cityRequest = CityRequest("pcityid" )
 
-        val call = mAPIService?.getCity(parameters)
+        val call = mAPIService?.getCities()
         var cities : ArrayList<String> = ArrayList()
 
         Log.i("bb",parameters.toString())
@@ -385,13 +386,12 @@ class MainScreenActivity : AppCompatActivity(),
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
-                    cities.add("City1")
-                    cities.add("City2")
-                    cities.add("City3")
-                    cities.add("City4")
+                    cities.add("A")
+                    cities.add("BB")
+                    cities.add("CCCC")
 
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
-                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    Log.i("bb","Cities444444444")
                     return
                 }
                 val cityRequest : List<CityRequest>?  = response.body()
@@ -399,10 +399,10 @@ class MainScreenActivity : AppCompatActivity(),
                     for (city in cityRequest){
                         var content = ""
                         content += "" + city.getCityId()
-                        cities.add(city.toString())
+                        cities.add(content)
                     }
                 }
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                Log.i("bb","Cities")
             }
 
             override fun onFailure(
@@ -411,19 +411,19 @@ class MainScreenActivity : AppCompatActivity(),
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
                 cities.add("City??")
-                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+                Log.i("bb","Cities222222222")
 
             }
         })
         return cities
     }
 
-    private fun sendGetCenter(cityid : String) : ArrayList<String> {
+    private fun sendGetCenter() : ArrayList<String> {
         val parameters: MutableMap<String, String> = HashMap()
         parameters["pcityid"] = "all"
 //        val cityRequest = CityRequest("pcityid" )
 
-        val call = mAPIService?.getCenter(parameters)
+        val call = mAPIService?.getCityCenters("C")
         var centers : ArrayList<String> = ArrayList()
 
         Log.i("bb",parameters.toString())
@@ -436,18 +436,18 @@ class MainScreenActivity : AppCompatActivity(),
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
-                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    Log.i("bb","Center444444444")
                     return
                 }
                 val centerRequest : List<CenterRequest>?  = response.body()
                 if (centerRequest != null) {
                     for (center in centerRequest){
                         var content = ""
-                        content += "" + center.getCenterId(cityid)
+                        content += "" + center.getCenterId()
                         centers.add(center.toString())
                     }
                 }
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                Log.i("bb","Center")
             }
 
             override fun onFailure(
@@ -455,7 +455,7 @@ class MainScreenActivity : AppCompatActivity(),
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
-                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+                Log.i("bb","Center222222222")
 
             }
         })
@@ -466,7 +466,7 @@ class MainScreenActivity : AppCompatActivity(),
         val parameters: MutableMap<String, String> = HashMap()
         parameters["pcourtid"] = "all"
 
-        val call = mAPIService?.getCourt(parameters)
+        val call = mAPIService?.getCityCenterCourts("A","A1")
 
         Log.i("bb",parameters.toString())
 
@@ -478,10 +478,10 @@ class MainScreenActivity : AppCompatActivity(),
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
-                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    Log.i("bb","Court444444444")
                     return
                 }
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                Log.i("bb","Court")
             }
 
             override fun onFailure(
@@ -489,83 +489,88 @@ class MainScreenActivity : AppCompatActivity(),
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
-                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+                Log.i("bb","Court222222222")
 
             }
         })
     }
 
     // when press to select a date
-    private fun sendGetDate() {
+    private fun sendGetCenterBookings() {
         val parameters: MutableMap<String, String> = HashMap()
         parameters["pdate"] = "all"
 
-        val call = mAPIService?.getDate(parameters)
+        val call = mAPIService?.getCenterBookings("A1")
 
         Log.i("bb",parameters.toString())
 
-        call?.enqueue(object : Callback<List<DateRequest>> {
+        call?.enqueue(object : Callback<List<CenterBooking>> {
             override fun onResponse(
-                call: Call<List<DateRequest>>,
-                response: Response<List<DateRequest>>
+                call: Call<List<CenterBooking>>,
+                response: Response<List<CenterBooking>>
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
-                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    Log.i("bb","CenterBooking444444444")
                     return
                 }
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                Log.i("bb","CenterBooking")
             }
 
             override fun onFailure(
-                call: Call<List<DateRequest>>,
+                call: Call<List<CenterBooking>>,
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
-                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+                Log.i("bb","CenterBooking222222222")
             }
         })
 
     }
 
     // when press show all slots
-    private fun sendGetSlot(city: String, date: String) {
+    private fun sendGetCityCenterStaffs() {
         val parameters: MutableMap<String, String> = HashMap()
-        parameters["pcityid"] = city
-        parameters["pdate"] = date
+//        parameters["pcityid"] =
+//        parameters["pdate"] = date
 
-        val call = mAPIService?.getSlots(parameters)
+        val call = mAPIService?.getCityCenterStaffs("A","A1")
 
         Log.i("bb",parameters.toString())
 
-        call?.enqueue(object : Callback<List<SlotRequest>> {
+        call?.enqueue(object : Callback<List<CityCenterStaff>> {
             override fun onResponse(
-                call: Call<List<SlotRequest>>,
-                response: Response<List<SlotRequest>>
+                call: Call<List<CityCenterStaff>>,
+                response: Response<List<CityCenterStaff>>
             ) {
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
-                    Log.i("bb","WORKKKKKKKKKKKKKKK444444444")
+                    Log.i("bb","CityCenterStaff444444444")
                     return
                 }
-                val slotRequests : List<SlotRequest>?  = response.body()
-                if (slotRequests != null) {
-                    for (slot in slotRequests){
+                val cityCenterStaffs : List<CityCenterStaff>?  = response.body()
+                if (cityCenterStaffs != null) {
+                    for ( cityCenterStaff in cityCenterStaffs){
+                        var content = ""
+                        content += "Staff ID: " + cityCenterStaff.getStaff() + "\n"
+                        content += "City ID: " + cityCenterStaff.getCity() + "\n"
+                        content += "Court ID: " + cityCenterStaff.getCenter()  + "\n"
+
+                        Log.i("bb", content)
 
                     }
                 }
-
-                Log.i("bb","WORKKKKKKKKKKKKKKK")
+                Log.i("bb","CityCenterStaff")
             }
 
             override fun onFailure(
-                call: Call<List<SlotRequest>>,
+                call: Call<List<CityCenterStaff>>,
                 t: Throwable
             ) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
-                Log.i("bb","WORKKKKKKKKKKKKKKK222222222")
+                Log.i("bb","CityCenterStaff222222222")
 
             }
         })
@@ -579,8 +584,7 @@ class MainScreenActivity : AppCompatActivity(),
 //            "2021-05-01", "10:00:00", "10:45:00",
 //            "1", "2", "A", "B"
 //        )
-        val bookingRequest = BookingRequest(bookingId, "2020-04-11 13:00:00", date, startTime, endTime, cityId, centerId, courtId, playerId)
-
+        val bookingRequest = BookingRequest(bookingId,  date, startTime, endTime, cityId, centerId, courtId, playerId)
 
 //        val fields: MutableMap<String, String> = HashMap()
 
@@ -596,7 +600,7 @@ class MainScreenActivity : AppCompatActivity(),
 
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
-                    Log.i("bb","WOWWWWWWWWWWWWWW44444444")
+                    Log.i("bb","CreateBooking44444444")
                     return
                 }
                 val bookingRequest: BookingRequest? = response.body()
@@ -640,12 +644,12 @@ class MainScreenActivity : AppCompatActivity(),
                     """.trimIndent()
                     Toast.makeText(this@MainScreenActivity, content , Toast.LENGTH_SHORT).show()
                 Log.i("bb",content)
-                Log.i("bb","WOWWWWWWWWWWWWWW")
+                Log.i("bb","CreateBooking")
             }
 
             override fun onFailure(call: Call<BookingRequest?>, t: Throwable) {
                 Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
-                Log.i("bb","WOWWWWWWWWWWWWWW22222")
+                Log.i("bb","CreateBooking22222")
             }
         })
 
@@ -675,8 +679,6 @@ class MainScreenActivity : AppCompatActivity(),
         // Hide 'Show Available Slots'
         rv_center.adapter = null
         findViewById<RelativeLayout>(R.id.booking_view).bringToFront()
-        sendGetBooking()
-        Log.i("bb","Hiii")
     }
 
     // override function from BookingAdapter.CancelInterface, open cancel dialog fragment
