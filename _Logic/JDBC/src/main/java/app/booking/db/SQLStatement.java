@@ -147,8 +147,7 @@ public class SQLStatement {
     }
 
     // updateBookingStatus
-    public static String updateBookingStatus(int status, String bookingId, String cityId, String centerId, String staffId)
-            throws Exception {
+    public static String updateBookingStatus(int status, String bookingId, String cityId, String centerId, String staffId) throws Exception {
         String code;
         CallableStatement stm = null;
         try {
@@ -178,8 +177,7 @@ public class SQLStatement {
     }
 
     // cancelBooking
-    public static String cancelBooking(String bookingId, String playerId)
-            throws Exception {
+    public static String cancelBooking(String bookingId, String playerId) throws Exception {
         String code;
         CallableStatement stm = null;
         try {
@@ -237,7 +235,6 @@ public class SQLStatement {
         }
         return code;
     }
-
     // getCities
     public static ArrayList<City> getCities() throws NullPointerException, SQLException {
         CallableStatement stm = null;
@@ -269,9 +266,9 @@ public class SQLStatement {
         return cityList;
     }
 
-    public static ArrayList<CityCenter> getCityCenters(String cityId) throws NullPointerException, SQLException {
+    public static ArrayList<Center> getCityCenters(String cityId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
-        ArrayList<CityCenter> cityCenterList = new ArrayList<>();
+        ArrayList<Center> centerList = new ArrayList<>();
         try {
             stm = conn.prepareCall("{ CALL getCityCenters(?, ?) }");
             stm.setString(1, cityId);
@@ -281,7 +278,7 @@ public class SQLStatement {
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCityCenters() executed with result code: " + resultCode);
             while (resultSet.next()) {
-                cityCenterList.add(new CityCenter(
+                centerList.add(new Center(
                         resultSet.getString("center_id"),
                         resultSet.getString("city_id"))
                 );
@@ -296,16 +293,16 @@ public class SQLStatement {
             } catch (Exception e) {
             }
         }
-        if (cityCenterList.isEmpty())
+        if (centerList.isEmpty())
             System.out.println("getCityCenters returns empty list");
 
-        return cityCenterList;
+        return centerList;
     }
 
     // getCityCenterCourts
-    public static ArrayList<CityCenterCourt> getCityCenterCourts(String cityId, String centerId) throws NullPointerException, SQLException {
+    public static ArrayList<Court> getCityCenterCourts(String cityId, String centerId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
-        ArrayList<CityCenterCourt> cityCenterCourtList = new ArrayList<>();
+        ArrayList<Court> courtList = new ArrayList<>();
 
         try {
             stm = conn.prepareCall("{ CALL getCityCenterCourts(?, ?, ?) }");
@@ -317,7 +314,7 @@ public class SQLStatement {
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCityCenterCourts() executed with result code: " + resultCode);
             while (resultSet.next()) {
-                cityCenterCourtList.add(new CityCenterCourt(
+                courtList.add(new Court(
                         resultSet.getString("court_id"),
                         resultSet.getString("city_id"),
                         resultSet.getString("center_id")
@@ -333,15 +330,15 @@ public class SQLStatement {
             } catch (Exception e) {
             }
         }
-        if (cityCenterCourtList.isEmpty())
+        if (courtList.isEmpty())
             System.out.println("getCityCenterCourts returns empty list");
 
-        return cityCenterCourtList;
+        return courtList;
     }
     // getCityCenterStaffs
-    public static ArrayList<CityCenterStaff> getCityCenterStaffs(String cityId, String centerId) throws NullPointerException, SQLException {
+    public static ArrayList<Staff> getCityCenterStaffs(String cityId, String centerId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
-        ArrayList<CityCenterStaff> cityCenterCourtList = new ArrayList<>();
+        ArrayList<Staff> cityCenterCourtList = new ArrayList<>();
 
         try {
             stm = conn.prepareCall("{ CALL getCityCenterStaffs(?, ?, ?) }");
@@ -353,7 +350,7 @@ public class SQLStatement {
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCityCenterStaffs() executed with result code: " + resultCode);
             while (resultSet.next()) {
-                cityCenterCourtList.add(new CityCenterStaff(
+                cityCenterCourtList.add(new Staff(
                         resultSet.getString("staff_id"),
                         resultSet.getString("city_id"),
                         resultSet.getString("center_id")
@@ -376,9 +373,9 @@ public class SQLStatement {
     }
 
     // getStaffs
-    public static ArrayList<CityCenterStaff> getStaffs() throws NullPointerException, SQLException {
+    public static ArrayList<Staff> getStaffs() throws NullPointerException, SQLException {
         CallableStatement stm = null;
-        ArrayList<CityCenterStaff> cityCenterCourtList = new ArrayList<>();
+        ArrayList<Staff> cityCenterCourtList = new ArrayList<>();
 
         try {
             stm = conn.prepareCall("{ CALL getStaffs(?) }");
@@ -388,7 +385,7 @@ public class SQLStatement {
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getStaffs() executed with result code: " + resultCode);
             while (resultSet.next()) {
-                cityCenterCourtList.add(new CityCenterStaff(
+                cityCenterCourtList.add(new Staff(
                         resultSet.getString("staff_id"),
                         resultSet.getString("city_id"),
                         resultSet.getString("center_id")
@@ -544,16 +541,17 @@ public class SQLStatement {
         return bookingList;
     }
 
-    public static ArrayList<Booking> getPlayerBookings(String playerId) throws NullPointerException, SQLException {
+    public static ArrayList<Booking> getPlayerBookings(String playerId, Date date) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
 
         try {
-            stm = conn.prepareCall("{ CALL getPlayerBookings(?, ?) }");
+            stm = conn.prepareCall("{ CALL getPlayerBookings(?, ?, ?) }");
             stm.setString(1, playerId);
-            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.setDate(2, date);
+            stm.registerOutParameter(3, Types.VARCHAR);
             stm.executeUpdate();
-            String resultCode = stm.getString(2);
+            String resultCode = stm.getString(3);
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getPlayerBookings() executed with result code: " + resultCode);
             while (resultSet.next()) {

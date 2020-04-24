@@ -3,22 +3,24 @@ package app.booking.api.GetHandler;
 import app.booking.api.Constants;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
-import app.booking.db.CityCenter;
-import app.booking.db.JsonConverter;
+import app.booking.db.Booking;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
+import app.booking.slot.GetSlots;
+import app.booking.slot.Slot;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CityCenterHandler extends GetHandler {
-
-    public CityCenterHandler(GlobalExceptionHandler exceptionHandler) {
+public class CitySlotHandler extends GetHandler{
+    public CitySlotHandler(GlobalExceptionHandler exceptionHandler) {
         super(exceptionHandler);
     }
 
@@ -42,12 +44,15 @@ public class CityCenterHandler extends GetHandler {
 
     private ResponseEntity doGet(InputStream is) throws Exception {
         Map<String, List<String>> params = this.getParameters();
-        String cityId = params.get("cityid").get(0);
-
+        String cityId = params.get("id").get(0);
+        Date date = Date.valueOf(params.get("date").get(0));
         // TODO: handle the case of missing/incorrect params
-        ArrayList<CityCenter> ls = SQLStatement.getCityCenters(cityId);
 
-        String rsp = JsonConverter.convert(ls);
+        ArrayList<Booking> bookings = SQLStatement.getCityBookings(cityId, date);
+        GetSlots getSlots = new GetSlots(bookings);
+        Map<String, Map<String, Map<String, ArrayList<Slot>>>> slotMaps = getSlots.getSlotMap();
+        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(slotMaps);
+
         return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }

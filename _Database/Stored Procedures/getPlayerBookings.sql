@@ -2,6 +2,7 @@ DROP PROCEDURE IF EXISTS getPlayerBookings;
 DELIMITER //
 CREATE PROCEDURE getPlayerBookings(
 IN playerId varchar(50),
+IN pdate date,
 OUT resultCode varchar(50))
 BEGIN
 
@@ -12,9 +13,10 @@ ELSEIF NOT EXISTS (SELECT * FROM booking WHERE player_id = playerId)
 THEN SET resultCode = "GPB-001";
 ELSE select * 
      from booking 
-     where playerId = player_id;
+     where playerId = player_id and date = pdate;
      SET resultCode = '200';
 END IF;
-SELECT resultCode;
 end//
 DELIMITER ;
+
+call getPlayerBookings("player1", DATE("2020-05-10"), @code);

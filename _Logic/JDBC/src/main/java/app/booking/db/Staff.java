@@ -3,12 +3,12 @@ package app.booking.db;
 //@Setter
 //@Getter
 //@AllArgsConstructor
-public class CityCenterStaff {
+public class Staff {
     String staffId;
     String cityId;
     String centerId;
 
-    public CityCenterStaff(String staffId, String cityId, String centerId) {
+    public Staff(String staffId, String cityId, String centerId) {
         this.centerId = centerId;
         this.cityId = cityId;
         this.staffId = staffId;

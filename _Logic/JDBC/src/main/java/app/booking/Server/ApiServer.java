@@ -22,26 +22,29 @@ public class ApiServer {
 
         //Get context
 
-        CityCenterStaffsHandler cityCenterStaffsHandler = new CityCenterStaffsHandler(getErrorHandler());
-        HttpContext context1 =server.createContext("/api/staff/view", cityCenterStaffsHandler::handle);
+        UnusedCityCenterStaffsHandler unusedCityCenterStaffsHandler = new UnusedCityCenterStaffsHandler(getErrorHandler());
+        HttpContext context1 =server.createContext("/api/staff/view", unusedCityCenterStaffsHandler::handle);
 
-        StaffHandler staffHandler = new StaffHandler(getErrorHandler());
-        HttpContext context2 =server.createContext("/api/staff/view2", staffHandler::handle);
+        UnusedStaffHandler unusedStaffHandler = new UnusedStaffHandler(getErrorHandler());
+        HttpContext context2 =server.createContext("/api/staff/view2", unusedStaffHandler::handle);
 
-        CityCenterHandler cityCenterHandler = new CityCenterHandler(getErrorHandler());
-        HttpContext context3 = server.createContext("/api/city/view",cityCenterHandler::handle);
+        UnusedCityCenterHandler unusedCityCenterHandler = new UnusedCityCenterHandler(getErrorHandler());
+        HttpContext context3 = server.createContext("/api/city/view", unusedCityCenterHandler::handle);
 
         CitiesHandler citiesHandler = new CitiesHandler(getErrorHandler());
         HttpContext context4 = server.createContext("/api/city/view2",citiesHandler::handle);
 
-        CityCenterCourtsHandler cityCenterCourtsHandler = new CityCenterCourtsHandler(getErrorHandler());
-        HttpContext context5 = server.createContext("/api/city/view3",cityCenterCourtsHandler::handle);
+        UnusedCityCenterCourtsHandler unusedCityCenterCourtsHandler = new UnusedCityCenterCourtsHandler(getErrorHandler());
+        HttpContext context5 = server.createContext("/api/city/view3", unusedCityCenterCourtsHandler::handle);
 
-        CenterBookingHandler centerBookingHandler = new CenterBookingHandler(getErrorHandler());
-        HttpContext context6 = server.createContext("/api/booking/view",centerBookingHandler::handle);
+        UnusedCenterBookingHandler unusedCenterBookingHandler = new UnusedCenterBookingHandler(getErrorHandler());
+        HttpContext context6 = server.createContext("/api/booking/view", unusedCenterBookingHandler::handle);
 
         PlayerBookingHandler playerBookingHandler = new PlayerBookingHandler(getErrorHandler());
         HttpContext context7 = server.createContext("/api/booking/view2",playerBookingHandler::handle);
+
+        CitySlotHandler citySlotHanler = new CitySlotHandler(getErrorHandler());
+        HttpContext context8 = server.createContext("/api/slot/city",citySlotHanler::handle);
 
 
         server.setExecutor(null); // creates a default executor

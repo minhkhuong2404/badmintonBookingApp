@@ -13,7 +13,7 @@ ELSE
 	select * from center where cityId = city_id;
   SET resultCode = "200";
 END IF;
-
-SELECT resultCode;
 end//
 DELIMITER ;
+
+-- call getCityCenters("C", @code);

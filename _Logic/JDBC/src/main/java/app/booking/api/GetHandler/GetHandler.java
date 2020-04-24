@@ -2,6 +2,8 @@ package app.booking.api.GetHandler;
 
 import app.booking.api.ApiUtils;
 import app.booking.errors.GlobalExceptionHandler;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import io.vavr.control.Try;
@@ -23,7 +25,7 @@ public abstract class GetHandler {
         this.exceptionHandler = exceptionHandler;
     }
 
-    public void handle(HttpExchange exchange) {
+    public void handle(HttpExchange exchange) throws JsonProcessingException {
         // get and map URL parameters
         parameters = ApiUtils.splitQuery(exchange.getRequestURI().getRawQuery());
 

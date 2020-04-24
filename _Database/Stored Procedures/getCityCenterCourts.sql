@@ -1,8 +1,8 @@
 DROP PROCEDURE IF EXISTS getCityCenterCourts;
 DELIMITER //
 CREATE PROCEDURE getCityCenterCourts(
-	in centerId varchar(50), 
 	in cityId varchar(50),
+	in centerId varchar(50), 
 	out resultCode varchar(50))
 BEGIN
 
@@ -19,9 +19,10 @@ ELSEIF NOT EXISTS (SELECT * FROM center WHERE center_id = centerId)
 THEN
 	SET resultCode ="GCCC-003";
 ELSE 
-	select * from court where cityId = city_id and centerId = center_id;
+	select * 
+    from court 
+    where cityId = city_id and centerId = center_id;
 	SET resultCode = "200";
 END IF;
-SELECT resultCode;
 end//
 DELIMITER ;

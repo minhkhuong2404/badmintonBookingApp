@@ -14,6 +14,5 @@ ELSE
 	select * from staff where centerId = center_id;
   SET resultCode = '200';
 END IF;
-SELECT resultCode;
 end//
 DELIMITER ;
