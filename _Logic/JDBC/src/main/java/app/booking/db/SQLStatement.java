@@ -299,6 +299,41 @@ public class SQLStatement {
         return centerList;
     }
 
+    // getCenterCourts
+    public static ArrayList<Court> getCenterCourts(String centerId) throws NullPointerException, SQLException {
+        CallableStatement stm = null;
+        ArrayList<Court> courtList = new ArrayList<>();
+        try {
+            stm = conn.prepareCall("{ CALL getCenterCourts(?, ?) }");
+            stm.setString(1, centerId);
+            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.executeUpdate();
+            String resultCode = stm.getString(2);
+            ResultSet resultSet = stm.getResultSet();
+            System.out.println("getCenterCourts() executed with result code: " + resultCode);
+            while (resultSet.next()) {
+                courtList.add(new Court(
+                        resultSet.getString("court_id"),
+                        resultSet.getString("city_id"),
+                        resultSet.getString("center_id")
+                ));
+            }
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (courtList.isEmpty())
+            System.out.println("getCenterCourts returns empty list");
+
+        return courtList;
+    }
+
     // getCityCenterCourts
     public static ArrayList<Court> getCityCenterCourts(String cityId, String centerId) throws NullPointerException, SQLException {
         CallableStatement stm = null;

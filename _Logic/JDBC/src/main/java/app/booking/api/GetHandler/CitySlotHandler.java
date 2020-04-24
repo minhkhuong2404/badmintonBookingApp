@@ -7,7 +7,7 @@ import app.booking.db.Booking;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
-import app.booking.slot.GetSlots;
+import app.booking.slot.CitySlot;
 import app.booking.slot.Slot;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,10 +49,14 @@ public class CitySlotHandler extends GetHandler{
         Date date = Date.valueOf(params.get("date").get(0));
         // TODO: handle the case of missing/incorrect params
 
-        ArrayList<Booking> bookings = SQLStatement.getCityBookings(cityId, date);
-        GetSlots getSlots = new GetSlots(bookings);
-        Map<String, Map<String, Map<String, ArrayList<Slot>>>> slotMaps = getSlots.getSlotMap();
-        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(slotMaps);
+        // Get bookings of city
+        ArrayList<Booking> bookingArrayList = SQLStatement.getCityBookings(cityId, date);
+
+        // Get city slot
+        CitySlot citySlot = new CitySlot(cityId, bookingArrayList);
+        HashMap<String, HashMap<String, ArrayList<Slot>>> slotMap = citySlot.getCitySlot();
+
+        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(slotMap);
 
         return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }

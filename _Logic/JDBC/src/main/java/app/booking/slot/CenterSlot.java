@@ -9,39 +9,38 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CenterSlot {
-    private Center center;
-    private HashMap<Court, ArrayList<Booking>> courtBookingMap = new HashMap<>();
-    private HashMap<Court, ArrayList<Slot>> centerSlot = new HashMap<>();
+public class CenterSlot extends CourtSlot {
 
-    public CenterSlot(Center center, HashMap<Court, ArrayList<Booking>> courtBookingMapIn) throws SQLException {
+    public CenterSlot(String centerId, ArrayList<Booking> bookingArrayList) throws SQLException {
         // TODO: check center existence
-        this.center = center;
-        this.courtBookingMap = courtBookingMapIn;
+        super(centerId, bookingArrayList);
+    }
 
-        ArrayList<Court> courtArrayList = SQLStatement.getCityCenterCourts(center.getCityId(), center.getCenterId());
+    public HashMap<String, ArrayList<Slot>> getCenterSlot() throws SQLException {
+        HashMap<String, ArrayList<Slot>> centerSlot = new HashMap<>();
 
-        for (Court court : courtArrayList){
-            if (courtBookingMap.get(court) == null){
-                // initialize new slot arraylist
-                ArrayList<Slot> slot = new ArrayList<>();
-                slot.add(new Slot("07:00:00", "21:00:00"));
-                centerSlot.put(court, slot);
-            } else {
-                ArrayList<Booking> courtBookingList = courtBookingMap.get(court);
-                CourtSlot courtSlotMap = new CourtSlot(court, courtBookingList);
-                centerSlot.put(court, courtSlotMap.getCourtSlot());
-            }
+        initializeCenterSlot(centerSlot);
+
+        for (Booking booking : this.getBookingArrayList()) {
+            String courtId = booking.getCourtId();
+            splitSlot(centerSlot.get(courtId), booking);
         }
 
-        System.out.println("End");
-    }
-
-    public Center getCenter() {
-        return center;
-    }
-
-    public HashMap<Court, ArrayList<Slot>> getCenterSlot() {
         return centerSlot;
+    }
+
+    private void initializeCenterSlot(HashMap<String, ArrayList<Slot>> centerSlot) throws SQLException {
+        // Get center's courts
+        String centerId = this.getId();
+        ArrayList<Court> courtArrayList = SQLStatement.getCenterCourts(centerId);
+
+        for (Court court : courtArrayList) {
+            // Add court's empty slot
+            String courtId = court.getCourtId();
+            centerSlot.put(courtId, new ArrayList<>());
+
+            // Add slot [7AM - 21PM] to court slot list
+            centerSlot.get(courtId).add(new Slot("07:00:00", "21:00:00"));
+        }
     }
 }

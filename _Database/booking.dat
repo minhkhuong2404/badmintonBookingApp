@@ -1,9 +1,0 @@
-/*
--- Query: SELECT * FROM booking_app.booking
-LIMIT 0, 1000
-
--- Date: 2020-04-22 23:58
-*/
-INSERT INTO `` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) VALUES (1,'2020-04-22 18:23:18','2020-05-10','10:30:00','11:30:00','A','A1','A1C','player1',0);
-INSERT INTO `` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) VALUES (8,'2020-04-22 19:08:48','2020-05-10','12:31:00','13:31:00','A','A1','A1C','player1',0);
-INSERT INTO `` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) VALUES (9,'2020-04-22 19:09:13','2020-05-10','13:31:00','14:31:00','A','A1','A1C','player1',0);
