@@ -2,30 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/CenterSlots.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/CitySlots.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/CourtSlots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterBookings.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCityBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCityBookings.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCourtBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCourtBookings.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/GetSlots.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/op.json" beforeDir="false" afterPath="$PROJECT_DIR$/op.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CenterBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CenterBookingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/SQLStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/SQLStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CourtSlot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimpleTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimpleTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimplifiedBooking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/db/TestConnectionDBv2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/db/TestConnectionDBv2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/CityCenterStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/CityCenterStaff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/JsonConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/JsonConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CenterSlots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CitySlots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CourtSlots.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CenterBookingHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/api/GetHandler/CenterBookingHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/db/SQLStatement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/db/SQLStatement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/CourtSlot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/SimpleTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slot/SimpleTime.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/SimplifiedBooking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slot/Slot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/JDBC.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/app/booking/db/TestConnectionDBv2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/booking/db/TestConnectionDBv2.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +79,7 @@
       <recent name="app.booking.db" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ApiServer">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="ApiServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="app.booking.Server.ApiServer" />
       <module name="JDBC" />
@@ -251,52 +237,52 @@
     <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587631593146" />
     <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1587602318144" />
     <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1587642962396">
+    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1587705263900">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser/40.23.1640.1027@40.23.1640.1027" timestamp="1587642962396" />
+    <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser/40.23.1640.1027@40.23.1640.1027" timestamp="1587705263900" />
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587602318144" />
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587634139153">
+    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587697112939">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587634139153" />
+    <state x="618" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587697112939" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587602318144" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state width="1288" height="770" key="GridCell.Tab.0.bottom" timestamp="1587657609912">
+    <state width="1288" height="535" key="GridCell.Tab.0.bottom" timestamp="1587707402989">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="770" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609912" />
-    <state width="1288" height="770" key="GridCell.Tab.0.center" timestamp="1587657609911">
+    <state width="1288" height="535" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402989" />
+    <state width="1288" height="535" key="GridCell.Tab.0.center" timestamp="1587707402987">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="770" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609911" />
-    <state width="1288" height="770" key="GridCell.Tab.0.left" timestamp="1587657609911">
+    <state width="1288" height="535" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402987" />
+    <state width="1288" height="535" key="GridCell.Tab.0.left" timestamp="1587707402986">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="770" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609911" />
-    <state width="1288" height="770" key="GridCell.Tab.0.right" timestamp="1587657609912">
+    <state width="1288" height="535" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402986" />
+    <state width="1288" height="535" key="GridCell.Tab.0.right" timestamp="1587707402988">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="770" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609912" />
-    <state width="1288" height="535" key="GridCell.Tab.1.bottom" timestamp="1587657609909">
+    <state width="1288" height="535" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402988" />
+    <state width="1288" height="535" key="GridCell.Tab.1.bottom" timestamp="1587707402991">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="535" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609909" />
-    <state width="1288" height="535" key="GridCell.Tab.1.center" timestamp="1587657609909">
+    <state width="1288" height="535" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402991" />
+    <state width="1288" height="535" key="GridCell.Tab.1.center" timestamp="1587707402990">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="535" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609909" />
-    <state width="1288" height="535" key="GridCell.Tab.1.left" timestamp="1587657609909">
+    <state width="1288" height="535" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402990" />
+    <state width="1288" height="535" key="GridCell.Tab.1.left" timestamp="1587707402989">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="535" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609909" />
-    <state width="1288" height="535" key="GridCell.Tab.1.right" timestamp="1587657609909">
+    <state width="1288" height="535" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402989" />
+    <state width="1288" height="535" key="GridCell.Tab.1.right" timestamp="1587707402990">
       <screen x="40" y="23" width="1640" height="1027" />
     </state>
-    <state width="1288" height="535" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587657609909" />
+    <state width="1288" height="535" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587707402990" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog" timestamp="1587602318144" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="324" y="155" key="SettingsEditor" timestamp="1587641911923">

@@ -12,7 +12,6 @@ public class   JsonConverter {
     public static String convert(ArrayList ls) throws JSONException {
         ObjectMapper mapper = new ObjectMapper();
         try{
-            mapper.writeValue(new File("op.json"), ls);
             return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(ls);
         } catch (Exception e){
             e.printStackTrace();
