@@ -76,7 +76,7 @@ ELSE
 	SET resultCode = '200';
 END IF;
 
-SELECT resultCode;
-
 END //
 DELIMITER ;
+
+-- call CreateBooking(DATE("2021-04-23"),maketime(11, 30, 00),maketime(12, 30, 00),"A","A1", "A1C","player10",@code);

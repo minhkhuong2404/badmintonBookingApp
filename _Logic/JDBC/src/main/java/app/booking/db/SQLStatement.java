@@ -177,12 +177,12 @@ public class SQLStatement {
     }
 
     // cancelBooking
-    public static String cancelBooking(String bookingId, String playerId) throws Exception {
+    public static String cancelBooking(int bookingId, String playerId) throws Exception {
         String code;
         CallableStatement stm = null;
         try {
             stm = conn.prepareCall("{ CALL cancelBooking(?, ?, ?) }");
-            stm.setString(1, bookingId);
+            stm.setInt(1, bookingId);
             stm.setString(2, playerId);
             stm.registerOutParameter(3, Types.VARCHAR);
             stm.executeUpdate();

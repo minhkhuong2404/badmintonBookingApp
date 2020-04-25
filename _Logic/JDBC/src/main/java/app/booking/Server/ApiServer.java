@@ -1,7 +1,8 @@
 package app.booking.Server;
 
 import app.booking.api.GetHandler.*;
-import app.booking.api.PostHandler.CreateBookingPostHandler;
+import app.booking.api.PostHandler.BookingCancelHandler;
+import app.booking.api.PostHandler.BookingCreateHandler;
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
 
@@ -14,37 +15,67 @@ import static app.booking.Server.Configuration.getObjectMapper;
 
 public class ApiServer {
     public static void main(String[] args) throws IOException {
-        int serverPort = 8003;
-        HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 
-        CreateBookingPostHandler createBookingHandler = new CreateBookingPostHandler(getObjectMapper(), getErrorHandler());
-        server.createContext("/api/booking/create/", createBookingHandler::handle);
+        // Create http server
+        HttpServer server = HttpServer.create(new InetSocketAddress(Constant.PORT_NUMBER), 0);
 
-        //Get context
 
-        UnusedCityCenterStaffsHandler unusedCityCenterStaffsHandler = new UnusedCityCenterStaffsHandler(getErrorHandler());
-        HttpContext context1 =server.createContext("/api/staff/view", unusedCityCenterStaffsHandler::handle);
+        // GET Context
 
-        UnusedStaffHandler unusedStaffHandler = new UnusedStaffHandler(getErrorHandler());
-        HttpContext context2 =server.createContext("/api/staff/view2", unusedStaffHandler::handle);
-
-        UnusedCityCenterHandler unusedCityCenterHandler = new UnusedCityCenterHandler(getErrorHandler());
-        HttpContext context3 = server.createContext("/api/city/view", unusedCityCenterHandler::handle);
-
+        // Get all cities
         CitiesHandler citiesHandler = new CitiesHandler(getErrorHandler());
-        HttpContext context4 = server.createContext("/api/city/view2",citiesHandler::handle);
+        HttpContext getCities = server.createContext(Constant.URL_GET_CITY_ALL, citiesHandler::handle);
 
-        UnusedCityCenterCourtsHandler unusedCityCenterCourtsHandler = new UnusedCityCenterCourtsHandler(getErrorHandler());
-        HttpContext context5 = server.createContext("/api/city/view3", unusedCityCenterCourtsHandler::handle);
-
-        UnusedCenterBookingHandler unusedCenterBookingHandler = new UnusedCenterBookingHandler(getErrorHandler());
-        HttpContext context6 = server.createContext("/api/booking/view", unusedCenterBookingHandler::handle);
-
+        // Get player's bookings
         PlayerBookingHandler playerBookingHandler = new PlayerBookingHandler(getErrorHandler());
-        HttpContext context7 = server.createContext("/api/booking/view2",playerBookingHandler::handle);
+        HttpContext getPlayerBookings = server.createContext(Constant.URL_GET_BOOKING_BY_PLAYER,playerBookingHandler::handle);
 
+        // Get city slots
         CitySlotHandler citySlotHanler = new CitySlotHandler(getErrorHandler());
-        HttpContext context8 = server.createContext("/api/slot/city",citySlotHanler::handle);
+        HttpContext getCitySlots = server.createContext(Constant.URL_GET_CITY_SLOT,citySlotHanler::handle);
+
+
+        // POST Context
+
+        // Create booking
+        BookingCreateHandler bookingCreateHandler = new BookingCreateHandler(getObjectMapper(), getErrorHandler());
+        server.createContext(Constant.URL_BOOKING_CREATE, bookingCreateHandler::handle);
+
+        // TODO: Cancel Booking
+        BookingCancelHandler bookingCancelHandler = new BookingCancelHandler(getObjectMapper(), getErrorHandler());
+        server.createContext(Constant.URL_BOOKING_CANCEL, bookingCancelHandler::handle);
+
+
+
+//        // POST Context
+//        CreateBookingPostHandler createBookingHandler = new CreateBookingPostHandler(getObjectMapper(), getErrorHandler());
+//        server.createContext("/api/booking/create/", createBookingHandler::handle);
+//
+//        // GET context
+//
+//        UnusedCityCenterStaffsHandler unusedCityCenterStaffsHandler = new UnusedCityCenterStaffsHandler(getErrorHandler());
+//        HttpContext context1 =server.createContext("/api/staff/view", unusedCityCenterStaffsHandler::handle);
+//
+//        UnusedStaffHandler unusedStaffHandler = new UnusedStaffHandler(getErrorHandler());
+//        HttpContext context2 =server.createContext("/api/staff/view2", unusedStaffHandler::handle);
+//
+//        UnusedCityCenterHandler unusedCityCenterHandler = new UnusedCityCenterHandler(getErrorHandler());
+//        HttpContext context3 = server.createContext("/api/city/view", unusedCityCenterHandler::handle);
+//
+//        CitiesHandler citiesHandler = new CitiesHandler(getErrorHandler());
+//        HttpContext context4 = server.createContext("/api/city/view2",citiesHandler::handle);
+//
+//        UnusedCityCenterCourtsHandler unusedCityCenterCourtsHandler = new UnusedCityCenterCourtsHandler(getErrorHandler());
+//        HttpContext context5 = server.createContext("/api/city/view3", unusedCityCenterCourtsHandler::handle);
+//
+//        UnusedCenterBookingHandler unusedCenterBookingHandler = new UnusedCenterBookingHandler(getErrorHandler());
+//        HttpContext context6 = server.createContext("/api/booking/view", unusedCenterBookingHandler::handle);
+//
+//        PlayerBookingHandler playerBookingHandler = new PlayerBookingHandler(getErrorHandler());
+//        HttpContext context7 = server.createContext("/api/booking/view2",playerBookingHandler::handle);
+//
+//        CitySlotHandler citySlotHanler = new CitySlotHandler(getErrorHandler());
+//        HttpContext context8 = server.createContext("/api/slot/city",citySlotHanler::handle);
 
 
         server.setExecutor(null); // creates a default executor

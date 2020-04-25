@@ -1495,7 +1495,7 @@ public class TestConnectionDBv2 {
         smt4.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("#booking", "B");
+        String result_code = SQLStatement.cancelBooking(1, "B");
         assertEquals("CA-000", result_code, "Pass.");
     }
 
@@ -1562,7 +1562,7 @@ public class TestConnectionDBv2 {
 
         smt5.execute();
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1", "#B");
+        String result_code = SQLStatement.cancelBooking(1, "#B");
         assertEquals("CA-001", result_code, "Pass.");
     }
 
@@ -1631,7 +1631,7 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1", "C");
+        String result_code = SQLStatement.cancelBooking(1, "C");
         assertEquals("CA-002", result_code, "Pass.");
     }
 
@@ -1700,7 +1700,7 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking2", "B");
+        String result_code = SQLStatement.cancelBooking(2, "B");
         assertEquals("CA-003", result_code, "Pass.");
     }
 
@@ -1777,7 +1777,7 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1", "C");
+        String result_code = SQLStatement.cancelBooking(1, "C");
         assertEquals("CA-004", result_code, "Pass.");
     }
 
@@ -1846,7 +1846,7 @@ public class TestConnectionDBv2 {
         smt5.execute();
 
         //actual test
-        String result_code = SQLStatement.cancelBooking("booking1", "B");
+        String result_code = SQLStatement.cancelBooking(1, "B");
         assertEquals("CA-005", result_code, "Pass.");
     }
 

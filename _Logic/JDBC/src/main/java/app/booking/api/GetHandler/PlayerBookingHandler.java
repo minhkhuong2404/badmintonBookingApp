@@ -44,7 +44,7 @@ public class PlayerBookingHandler extends GetHandler {
     private ResponseEntity doGet(InputStream is) throws Exception {
 
         Map<String, List<String>> params = this.getParameters();
-        String playerid = params.get("playerid").get(0);
+        String playerid = params.get("id").get(0);
         Date date = Date.valueOf(params.get("date").get(0));
 
         // TODO: handle the case of missing/incorrect params

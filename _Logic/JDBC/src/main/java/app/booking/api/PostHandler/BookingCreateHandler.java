@@ -8,7 +8,6 @@ import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
-import io.vavr.control.Try;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -16,8 +15,8 @@ import java.sql.Date;
 import java.sql.Time;
 
 
-public class CreateBookingPostHandler extends PostHandler {
-    public CreateBookingPostHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
+public class BookingCreateHandler extends PostHandler {
+    public BookingCreateHandler(ObjectMapper objectMapper, GlobalExceptionHandler exceptionHandler) {
         super(objectMapper, exceptionHandler);
     }
 
@@ -40,7 +39,7 @@ public class CreateBookingPostHandler extends PostHandler {
     }
 
     private ResponseEntity<String> doPost(InputStream is) throws Exception {
-        CreateBookingRequest CBrequest = super.readRequest(is, CreateBookingRequest.class);
+        BookingCreateRequest CBrequest = super.readRequest(is, BookingCreateRequest.class);
 
         String result_code = SQLStatement.createBooking(
                 Date.valueOf(CBrequest.getPdate()),
@@ -50,10 +49,13 @@ public class CreateBookingPostHandler extends PostHandler {
                 CBrequest.getPcenterid(),
                 CBrequest.getPcourtid(),
                 CBrequest.getPplayerid());
-        String response;
-        if (result_code == "200") {
-            response = "Created. Booking info: " + CBrequest.toString();
-        } else response = "Create Failed. Error code: " + result_code;
+        String response = result_code;
+
+        System.out.println("Create Booking executed with result code: " + result_code);
+
+//        if (result_code == "200") {
+//            response = "Created. Booking info: " + CBrequest.toString();
+//        } else response = "Create Failed. Error code: " + result_code;
 
         return new ResponseEntity<>(response, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }

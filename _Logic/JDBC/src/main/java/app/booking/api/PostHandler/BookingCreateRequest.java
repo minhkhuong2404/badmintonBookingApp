@@ -3,7 +3,7 @@ package app.booking.api.PostHandler;
 import lombok.Value;
 
 @Value
-class CreateBookingRequest {
+class BookingCreateRequest {
     String pdate;
     String pstarttime;
     String pendtime;
@@ -11,5 +11,4 @@ class CreateBookingRequest {
     String pcenterid;
     String pcourtid;
     String pplayerid;
-
 }
