@@ -36,40 +36,42 @@ class MainScreenActivity : AppCompatActivity(),
     BookingAdapter.CancelInterface,
     CancelBookingFragment.CancelFinishInterface {
 
+    // Activity vars
     lateinit var userId : String
+    lateinit var accessToken: AccessToken
+    private var mAPIService: JsonPlaceHolderApi? = null
+    private val bookNum = 0
 
+    // View vars
     lateinit var cityChooser : Spinner
     lateinit var dateChooser : EditText
     lateinit var welcomeText : TextView
     lateinit var welcomeText2 : TextView
-    lateinit var bookList: ArrayList<Booking>
-    lateinit var centerList: List<Center>
 
+    lateinit var cityList: ArrayList<String>
+    lateinit var centerList: List<Center>
+    lateinit var bookList: ArrayList<Booking>
+
+    // Chooser view var
     lateinit var city: String   // for later choosing
     lateinit var date: String   // for later choosing
 
+    // Recycler view var
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    // random user's number of booking
-    private val bookNum = 0
-
-    private var mAPIService: JsonPlaceHolderApi? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
 
-        // get user id
-        userId = "user id"
-        Toast.makeText(this, userId, Toast.LENGTH_SHORT).show()
-        if (AccessToken.getCurrentAccessToken() != null) {
-            Log.i("k", "KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
-            loadUserId(AccessToken.getCurrentAccessToken())
-        }
-        // new
-        mAPIService = ApiUtils.aPIService
+        // Get token & user id
+        accessToken = AccessToken.getCurrentAccessToken()
+        userId = accessToken.userId
+
+        // New API Server
+        mAPIService = ApiUtils.APIService
 
         // findViewById
         cityChooser = findViewById<Spinner>(R.id.sp_city)
@@ -264,6 +266,7 @@ class MainScreenActivity : AppCompatActivity(),
 
         }
     }
+
     private  fun initRecyclerViewBooking(){
         bookList = getBookingList()
         rv_booking.apply {

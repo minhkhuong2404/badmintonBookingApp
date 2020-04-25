@@ -16,7 +16,7 @@ interface JsonPlaceHolderApi {
     fun getStaffs(
     ): Call<List<StaffRequest>>?
 
-    @GET("api/city/view2")
+    @GET("api/city/all")
     fun getCities(
     ): Call<List<CityRequest>>?
 
