@@ -1619,7 +1619,6 @@ id disableHome
 id display_always
 id dropdown_menu
 id edit_query
-id emailTextView
 id end
 id endSpinner
 id endTextView
@@ -1632,7 +1631,6 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
-id fakeFacebookButton
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1816,6 +1814,8 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView2
+id textView3
+id textView4
 id text_input_end_icon
 id text_input_start_icon
 id textinput_counter
@@ -2079,6 +2079,7 @@ string com_facebook_smart_login_confirmation_cancel
 string com_facebook_smart_login_confirmation_continue_as
 string com_facebook_smart_login_confirmation_title
 string com_facebook_tooltip_default
+string continue_to_app
 string court
 string created_on
 string date

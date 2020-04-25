@@ -9,6 +9,10 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.courtbooking.adapter.Center
+import com.example.courtbooking.adapter.CenterAdapter
+import com.example.courtbooking.adapter.Court
+import com.example.courtbooking.adapter.Slot
 import com.example.courtbooking.booking.*
 import com.example.courtbooking.request.*
 import com.facebook.AccessToken
@@ -191,7 +195,10 @@ class MainScreenActivity : AppCompatActivity(),
         //val exampleCourtList = getCourtList()
         for (i in 0 until size) {
             //val slot = Center("Center#$i", exampleCourtList)
-            val slot = Center("Center#$i", getCourtList())
+            val slot = Center(
+                "Center#$i",
+                getCourtList()
+            )
             list += slot
         }
 
@@ -207,21 +214,53 @@ class MainScreenActivity : AppCompatActivity(),
         return list
     }
     private fun getCourtList(): List<Court> {
-        return listOf(Court("Court#1", getSlotList(1)), Court("Court#2", getSlotList(2)),
-            Court("Court#3", getSlotList(3)), Court("Court#4", getSlotList(4)),Court("Court#5",
+        return listOf(
+            Court("Court#1", getSlotList(1)),
+            Court("Court#2", getSlotList(2)),
+            Court("Court#3", getSlotList(3)),
+            Court("Court#4", getSlotList(4)),
+            Court(
+                "Court#5",
                 getSlotList(5)
-            ))
+            )
+        )
     }
     private fun getSlotList(type : Int): List<Slot> {
         return when (type) {
-            1 -> listOf(Slot("7:00 - 8:00"), Slot("7:30 - 8:30"), Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
-            2 -> listOf(Slot("7:30 - 8:30"), Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
-            3 -> listOf(Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
-            4 -> listOf(Slot("9:00 - 10:00"), Slot("10:00 - 11:00"), Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
-            else -> listOf(Slot("12:00 - 13:00"), Slot("13:00 - 21:00"))
+            1 -> listOf(
+                Slot("7:00 - 8:00"),
+                Slot("7:30 - 8:30"),
+                Slot("8:30 - 9:00"),
+                Slot("9:00 - 10:00"),
+                Slot("10:00 - 11:00"),
+                Slot("12:00 - 13:00"),
+                Slot("13:00 - 21:00")
+            )
+            2 -> listOf(
+                Slot("7:30 - 8:30"),
+                Slot("8:30 - 9:00"),
+                Slot("9:00 - 10:00"),
+                Slot("10:00 - 11:00"),
+                Slot("12:00 - 13:00"),
+                Slot("13:00 - 21:00")
+            )
+            3 -> listOf(
+                Slot("8:30 - 9:00"),
+                Slot("9:00 - 10:00"),
+                Slot("10:00 - 11:00"),
+                Slot("12:00 - 13:00"),
+                Slot("13:00 - 21:00")
+            )
+            4 -> listOf(
+                Slot("9:00 - 10:00"),
+                Slot("10:00 - 11:00"),
+                Slot("12:00 - 13:00"),
+                Slot("13:00 - 21:00")
+            )
+            else -> listOf(
+                Slot("12:00 - 13:00"),
+                Slot("13:00 - 21:00")
+            )
 
         }
     }
@@ -243,7 +282,10 @@ class MainScreenActivity : AppCompatActivity(),
         centerList = getCenterCourtSlotList(numOfCenter)
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@MainScreenActivity, LinearLayout.VERTICAL, false)
-            adapter = CenterAdapter(centerList, this@MainScreenActivity)
+            adapter = CenterAdapter(
+                centerList,
+                this@MainScreenActivity
+            )
             setHasFixedSize(true)
         }
     }
