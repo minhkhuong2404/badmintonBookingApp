@@ -17,33 +17,33 @@ public class ApiServer {
     public static void main(String[] args) throws IOException {
 
         // Create http server
-        HttpServer server = HttpServer.create(new InetSocketAddress(Constant.PORT_NUMBER), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(Constants.PORT_NUMBER), 0);
 
 
         // GET Context
 
         // Get all cities
         CitiesHandler citiesHandler = new CitiesHandler(getErrorHandler());
-        HttpContext getCities = server.createContext(Constant.URL_GET_CITY_ALL, citiesHandler::handle);
+        HttpContext getCities = server.createContext(Constants.URL_GET_CITY_ALL, citiesHandler::handle);
 
         // Get player's bookings
         PlayerBookingHandler playerBookingHandler = new PlayerBookingHandler(getErrorHandler());
-        HttpContext getPlayerBookings = server.createContext(Constant.URL_GET_BOOKING_BY_PLAYER,playerBookingHandler::handle);
+        HttpContext getPlayerBookings = server.createContext(Constants.URL_GET_BOOKING_BY_PLAYER,playerBookingHandler::handle);
 
         // Get city slots
         CitySlotHandler citySlotHanler = new CitySlotHandler(getErrorHandler());
-        HttpContext getCitySlots = server.createContext(Constant.URL_GET_CITY_SLOT,citySlotHanler::handle);
+        HttpContext getCitySlots = server.createContext(Constants.URL_GET_CITY_SLOT,citySlotHanler::handle);
 
 
         // POST Context
 
         // Create booking
         BookingCreateHandler bookingCreateHandler = new BookingCreateHandler(getObjectMapper(), getErrorHandler());
-        server.createContext(Constant.URL_BOOKING_CREATE, bookingCreateHandler::handle);
+        server.createContext(Constants.URL_BOOKING_CREATE, bookingCreateHandler::handle);
 
         // TODO: Cancel Booking
         BookingCancelHandler bookingCancelHandler = new BookingCancelHandler(getObjectMapper(), getErrorHandler());
-        server.createContext(Constant.URL_BOOKING_CANCEL, bookingCancelHandler::handle);
+        server.createContext(Constants.URL_BOOKING_CANCEL, bookingCancelHandler::handle);
 
 
 

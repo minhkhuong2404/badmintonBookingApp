@@ -1,6 +1,6 @@
 package app.booking.Server;
 
-public class Constant {
+public class Constants {
     // PORT
     public static final int PORT_NUMBER = 8003;
 
