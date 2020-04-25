@@ -59,7 +59,7 @@ CB-012 | playerId no more than 3 bookings |
 # cancelBooking
 Error code | Test Description |
 ------------ | ---------------- |
-CA-000 | bookingId is invalid |
+~~CA-000~~ | bookingId is invalid |
 ~~CA-001~~ | playerId is invalid |
 ~~CA-002~~ | playerId is not existed |
 CA-003 | bookingId is not existed |
