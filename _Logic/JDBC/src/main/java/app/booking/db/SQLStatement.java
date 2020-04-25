@@ -236,9 +236,9 @@ public class SQLStatement {
         return code;
     }
     // getCities
-    public static ArrayList<City> getCities() throws NullPointerException, SQLException {
+    public static ArrayList<String> getCities() throws NullPointerException, SQLException {
         CallableStatement stm = null;
-        ArrayList<City> cityList = new ArrayList<>();
+        ArrayList<String> cityList = new ArrayList<>();
 
         try {
             stm = conn.prepareCall("{ CALL getCities(?) }");
@@ -248,7 +248,7 @@ public class SQLStatement {
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCities() executed with result code: " + resultCode);
             while (resultSet.next()) {
-                cityList.add(new City(resultSet.getString("city_id")));
+                cityList.add(resultSet.getString("city_id"));
             }
         } catch (NullPointerException | SQLException e) {
             System.out.println(e);

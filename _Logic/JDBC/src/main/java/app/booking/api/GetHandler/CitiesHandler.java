@@ -39,7 +39,7 @@ public class CitiesHandler extends GetHandler {
     }
 
     private ResponseEntity doGet(InputStream is) throws Exception {
-        ArrayList<City> ls = SQLStatement.getCities();
+        ArrayList<String> ls = SQLStatement.getCities();
 
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp,

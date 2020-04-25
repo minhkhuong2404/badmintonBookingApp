@@ -4,6 +4,13 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface JsonPlaceHolderApi {
+
+    @GET("api/city/all")
+    fun getCities(
+    ): Call<List<String>>?
+
+
+
     @GET("api/booking/view2")
     fun getPlayerBookings(
 //        @Query("userId") userId: Int,
@@ -15,10 +22,6 @@ interface JsonPlaceHolderApi {
     @GET("api/staff/view2")
     fun getStaffs(
     ): Call<List<StaffRequest>>?
-
-    @GET("api/city/all")
-    fun getCities(
-    ): Call<List<CityRequest>>?
 
     @GET("api/city/view")
     fun getCityCenters(
