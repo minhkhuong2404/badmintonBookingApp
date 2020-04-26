@@ -1,6 +1,6 @@
 package com.example.courtbooking.request
 
-class BookingRequest{
+class NewBookingRequest{
     constructor(
         pdate: String,
         pstarttime: String,

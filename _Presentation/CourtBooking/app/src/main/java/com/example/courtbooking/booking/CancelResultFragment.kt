@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.courtbooking.R
 
-class CancelResultFragment(var bookingId: String, var success: Boolean): DialogFragment() {
+class CancelResultFragment(var bookingId: Int, var success: Boolean): DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

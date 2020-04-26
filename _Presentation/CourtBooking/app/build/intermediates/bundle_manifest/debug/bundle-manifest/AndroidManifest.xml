@@ -23,14 +23,24 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name="com.example.courtbooking.MainActivity" >
+        <activity
+            android:name="com.example.courtbooking.UserBookingActivity"
+            android:label="My Bookings" />
+        <activity
+            android:name="com.example.courtbooking.CitySlotActivity"
+            android:label="Available Slots" />
+        <activity
+            android:name="com.example.courtbooking.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.courtbooking.MainScreenActivity" />
+        <activity
+            android:name="com.example.courtbooking.SelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

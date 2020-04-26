@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.courtbooking.R
 
-class CancelBookingFragment(var bookingId: String, private var cancelIterface: CancelFinishInterface): DialogFragment() {
+class CancelBookingFragment(var bookingId: Int, private var cancelIterface: CancelFinishInterface): DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -37,6 +37,6 @@ class CancelBookingFragment(var bookingId: String, private var cancelIterface: C
     }
 
     interface CancelFinishInterface {
-        fun moveToFinishCancel(message: String)
+        fun moveToFinishCancel(id: Int)
     }
 }

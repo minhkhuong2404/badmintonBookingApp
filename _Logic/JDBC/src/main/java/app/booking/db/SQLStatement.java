@@ -576,17 +576,18 @@ public class SQLStatement {
         return bookingList;
     }
 
-    public static ArrayList<Booking> getPlayerBookings(String playerId, Date date) throws NullPointerException, SQLException {
+    public static ArrayList<Booking> getPlayerBookings(String playerId, String cityId, Date date) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
 
         try {
-            stm = conn.prepareCall("{ CALL getPlayerBookings(?, ?, ?) }");
+            stm = conn.prepareCall("{ CALL getPlayerBookings(?, ?, ?, ?) }");
             stm.setString(1, playerId);
-            stm.setDate(2, date);
-            stm.registerOutParameter(3, Types.VARCHAR);
+            stm.setString(2, cityId);
+            stm.setDate(3, date);
+            stm.registerOutParameter(4, Types.VARCHAR);
             stm.executeUpdate();
-            String resultCode = stm.getString(3);
+            String resultCode = stm.getString(4);
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getPlayerBookings() executed with result code: " + resultCode);
             while (resultSet.next()) {

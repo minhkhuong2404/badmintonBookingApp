@@ -45,11 +45,12 @@ public class PlayerBookingHandler extends GetHandler {
 
         Map<String, List<String>> params = this.getParameters();
         String playerid = params.get("id").get(0);
+        String cityid = params.get("cityid").get(0);
         Date date = Date.valueOf(params.get("date").get(0));
 
         // TODO: handle the case of missing/incorrect params
 
-        ArrayList<Booking> ls = SQLStatement.getPlayerBookings(playerid, date);
+        ArrayList<Booking> ls = SQLStatement.getPlayerBookings(playerid, cityid, date);
 
         String rsp = JsonConverter.convert(ls);
         return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);

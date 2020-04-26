@@ -16,13 +16,13 @@
     <string name="time">Time:</string>
     <string name="payment_status">Payment Status:</string>
     <string name="time_stamp">30/04/2020 09:30:24</string>
-    <string name="welcome_text_1">1. Please select a city and a date.</string>
-    <string name="welcome_text_2">2. Tap "Show Available Slots" or "Show My Bookings".</string>
+    <string name="continue_to_app">Continue to app</string>
+    <string name="choose_a_city">Choose a city:</string>
+    <string name="choose_a_date">Choose a date:</string>
     <string name="facebook_app_id">624133635106948</string>
-<!--    <string name="facebook_app_id">208036937303298</string>-->
+    <!--    <string name="facebook_app_id">208036937303298</string>-->
 
     <string name="fb_login_protocol_scheme">fb624133635106948</string>
-    <string name="continue_to_app">Continue to app</string>
     <!--    <string name="fb_login_protocol_scheme">fb208036937303298</string>-->
 
 </resources>

@@ -19,11 +19,10 @@ import org.json.JSONException
 import org.json.JSONObject
 
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     // Activity var
     lateinit var callBackManager: CallbackManager
-    lateinit var accessToken: AccessToken
     lateinit var fullname : String
     lateinit var fbid : String
 
@@ -36,11 +35,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         // Assign values
         callBackManager = CallbackManager.Factory.create()
-        accessToken = AccessToken.getCurrentAccessToken()
+        val accessToken = AccessToken.getCurrentAccessToken()
 
         profileImage = findViewById(R.id.profileImage)
         usernameTextView = findViewById(R.id.usernameTextView)
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         toBookingButton = findViewById(R.id.toMainScreenButton)
         toBookingButton.setOnClickListener {
             // Preparing to next activity
-            val toMainScreen = Intent(this@MainActivity, MainScreenActivity::class.java)
+            val toMainScreen = Intent(this@LoginActivity, SelectionActivity::class.java)
             // To next activity
             startActivity(toMainScreen)
         }
@@ -92,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                             val imageURL = "https://graph.facebook.com/$id/picture?type=normal"
                             val requestOptions = RequestOptions()
                             requestOptions.dontAnimate()
-                            Glide.with(this@MainActivity).load(imageURL).into(profileImage)
+                            Glide.with(this@LoginActivity).load(imageURL).into(profileImage)
 
                         } else if (permission.equals("email")) {
                             // get user's email
