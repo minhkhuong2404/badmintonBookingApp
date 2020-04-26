@@ -1,7 +1,13 @@
-#Sun Apr 26 04:57:49 ICT 2020
-base.0=/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
+#Sun Apr 26 16:53:24 ICT 2020
+path.3=classes.dex
+path.2=classes.dex
 path.1=classes.dex
-renamed.1=classes2.dex
 path.0=classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
-base.1=/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
+base.3=C\:\\Users\\bill\\Documents\\GitHub\\teamepe2020\\_Presentation\\CourtBooking\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+base.2=C\:\\Users\\bill\\Documents\\GitHub\\teamepe2020\\_Presentation\\CourtBooking\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+base.1=C\:\\Users\\steven\\Github\\teamepe2020\\_Presentation\\CourtBooking\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+base.0=C\:\\Users\\steven\\Github\\teamepe2020\\_Presentation\\CourtBooking\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex

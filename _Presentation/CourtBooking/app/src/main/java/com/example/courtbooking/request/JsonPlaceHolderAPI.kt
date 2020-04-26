@@ -9,6 +9,22 @@ interface JsonPlaceHolderApi {
     fun getCities(
     ): Call<List<String>>?
 
+    @GET("/api/city/slot")
+    fun getCitySlot(
+        @Query("cityId") cityId: String,
+        @Query("date") date: String
+    ): Call<
+            HashMap<        // center list
+                String,         // centerId
+                HashMap<        // court list
+                        String,         // courtId
+                        List<           // slot list
+                                List<String>        // startTime and endTime of slot
+                                >
+                        >
+                >
+            >?
+
 
 
     @GET("api/booking/view2")

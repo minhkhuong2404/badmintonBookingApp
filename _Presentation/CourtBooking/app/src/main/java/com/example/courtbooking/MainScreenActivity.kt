@@ -26,6 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class MainScreenActivity :
@@ -90,10 +91,11 @@ class MainScreenActivity :
         b_show_slots.setOnClickListener {
 //            Toast.makeText(this, "City: " + city + "\nDate: " + date, Toast.LENGTH_SHORT).show()
 
-            val selectedCity = cityChooser.selectedItem
-//            val randomCenter = cityList.indexOf(selectedCity) + (1..3).random()
+//            val selectedCity = cityChooser.selectedItem
+
+            val centerCourtSlotList = sendGetCitySlot()
             // Initialize the CENTER recycler view
-//            initRecyclerViewCenter(randomCenter)
+            initRecyclerViewCenter(centerCourtSlotList)
             // Hide welcome texts
             welcomeText.text = ""
             welcomeText2.text = ""
@@ -360,9 +362,10 @@ class MainScreenActivity :
     }
 
     // init recycler view center
-    private fun initRecyclerViewCenter(numOfCenter: Int){
+    @SuppressLint("WrongConstant")
+    private fun initRecyclerViewCenter(centerList: List<Center>){
         // Calling the recycler view for Center
-        centerList = getCenterCourtSlotList(numOfCenter)
+//        centerList = getCenterCourtSlotList(numOfCenter)
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@MainScreenActivity, LinearLayout.VERTICAL, false)
             adapter = CenterAdapter(
@@ -375,7 +378,7 @@ class MainScreenActivity :
 
     // get player bookings from server
     private fun sendGetPLayerBooking(): ArrayList<PlayerBookingRequest> {
-        val parameters: MutableMap<String, String> = HashMap()
+//        val parameters: MutableMap<String, String> = HashMap()
 
         val call = mAPIService?.getPlayerBookings("player1")
 
@@ -515,6 +518,72 @@ class MainScreenActivity :
 
 
 
+    private fun sendGetCitySlot(): List<Center> {
+        val call = mAPIService?.getCitySlot(selectedCity, selectedDate)
+
+        var centerCourtSlotList = ArrayList<Center>()
+
+        call?.enqueue(object: Callback<HashMap<String, HashMap<String, List<List<String>>>>> {
+            override fun onResponse(
+                call: Call<HashMap<String, HashMap<String, List<List<String>>>>>,
+                response: Response<HashMap<String, HashMap<String, List<List<String>>>>>
+            ) {
+                if (!response.isSuccessful) {
+                    Log.i("bb",response.code().toString())
+                    Log.i("bb",response.message().toString())
+                    Log.i("bb","CitySlot444444444")
+                    return
+                }
+
+                val citySlotList = response.body()
+                val centerList = ArrayList<Center>()
+                // for each center id create a center object
+                for (centerId in citySlotList!!.keys) {
+                    // create court list
+                    val courtList = ArrayList<Court>()
+
+                    // for each court id create a court object
+                    for (courtId in citySlotList[centerId]!!.keys) {
+                        // create a slot list
+                        val slotList = ArrayList<Slot>()
+
+                        // for each slot create a slot object
+                        for (slot in citySlotList[centerId]!![courtId]!!) {
+                            val startSlot = slot[0]    // start time
+                            val endSlot = slot[1]    // end time
+
+                            // add new slot to slotList
+                            slotList.add(Slot("$startSlot - $endSlot"))
+                        }
+
+                        // add new court to courtList
+                        courtList.add( Court(courtId, slotList))
+                    }
+
+                    // add new center to centerList
+                    centerList.add(Center(centerId, courtList))
+
+                }
+
+                centerCourtSlotList = centerList
+
+            }
+
+            override fun onFailure(
+                call: Call<HashMap<String, HashMap<String, List<List<String>>>>>,
+                t: Throwable
+            ) {
+                Toast.makeText(this@MainScreenActivity, t.message , Toast.LENGTH_SHORT).show()
+//                cities.add("City??")
+                Log.i("bb","CitySlot222222222")
+            }
+        })
+
+        return centerCourtSlotList
+    }
+
+
+
     private fun sendGetStaff()  {
         val parameters: MutableMap<String, String> = HashMap()
 
@@ -566,7 +635,7 @@ class MainScreenActivity :
 //        val cityRequest = CityRequest("pcityid" )
 
         val call = mAPIService?.getCityCenters("C")
-        var listOfCenters : ArrayList<String> = ArrayList()
+        val listOfCenters : ArrayList<String> = ArrayList()
 
 //        Log.i("bb",parameters.toString())
 
