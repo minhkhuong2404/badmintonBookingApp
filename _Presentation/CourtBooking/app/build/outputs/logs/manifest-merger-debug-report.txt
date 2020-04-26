@@ -59,9 +59,9 @@ INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/sr
 INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:2:1-55:12
 INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:2:1-55:12
 	package
-		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:3:5-39
-		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
 		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:2:1-55:12
@@ -71,11 +71,11 @@ INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/sr
 		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:2:1-55:12
 		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:5:22-64
+		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:5:22-64
 application
 ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:7:5-53:19
 MERGED from [com.google.android.material:material:1.1.0] /Users/steven/.gradle/caches/transforms-2/files-2.1/ad62cdd3b372bb81e612ecadb6ca9d76/material-1.1.0/AndroidManifest.xml:22:5-20
@@ -105,7 +105,7 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /Users/steven/.gradle/
 MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/steven/.gradle/caches/transforms-2/files-2.1/8a8b6c94a15881c341370d2d83435246/jetified-installreferrer-1.0/AndroidManifest.xml:11:5-20
 MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/steven/.gradle/caches/transforms-2/files-2.1/8a8b6c94a15881c341370d2d83435246/jetified-installreferrer-1.0/AndroidManifest.xml:11:5-20
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.2.0] /Users/steven/.gradle/caches/transforms-2/files-2.1/0b96859a3cdf2530aa3d77dcfaeaf2fb/core-1.2.0/AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.2.0] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/0b96859a3cdf2530aa3d77dcfaeaf2fb/core-1.2.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
 		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:12:9-35
 	android:label
@@ -169,7 +169,7 @@ MERGED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/
 	android:configChanges
 		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:39:13-96
 	android:theme
-		ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:33:13-63
+		ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/38f5dddda46984e5ea901822c0d0546c/jetified-facebook-common-5.15.3/AndroidManifest.xml:33:13-63
 	android:name
 		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:38:13-57
 activity#com.facebook.CustomTabActivity
@@ -177,7 +177,7 @@ ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/m
 MERGED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:35:9-49:20
 MERGED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:35:9-49:20
 	tools:node
-		ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:38:13-31
+		ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/38f5dddda46984e5ea901822c0d0546c/jetified-facebook-common-5.15.3/AndroidManifest.xml:38:13-31
 	android:exported
 		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml:43:13-36
 	android:name
@@ -309,50 +309,50 @@ MERGED from [com.android.installreferrer:installreferrer:1.0] /Users/steven/.gra
 INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
 INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
-		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
-		ADDED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		ADDED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/minhkhuonglu/Documents/GitHub/teamepe2020/_Presentation/CourtBooking/app/src/main/AndroidManifest.xml
 activity#com.facebook.CustomTabMainActivity
-ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:9-71
+ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/38f5dddda46984e5ea901822c0d0546c/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:9-71
 	android:name
-		ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:19-68
+		ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/38f5dddda46984e5ea901822c0d0546c/jetified-facebook-common-5.15.3/AndroidManifest.xml:34:19-68
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:cct.${applicationId}+data:scheme:fbconnect
-ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:39:13-48:29
+ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/38f5dddda46984e5ea901822c0d0546c/jetified-facebook-common-5.15.3/AndroidManifest.xml:39:13-48:29
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:cct.com.example.courtbooking+data:scheme:fbconnect
-ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/9d38c94fd335ba9ac97df0bf3ae64577/jetified-facebook-common-5.15.3/AndroidManifest.xml:39:13-48:29
+ADDED from [com.facebook.android:facebook-common:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/38f5dddda46984e5ea901822c0d0546c/jetified-facebook-common-5.15.3/AndroidManifest.xml:39:13-48:29
 provider#com.squareup.picasso.PicassoProvider
-ADDED from [com.squareup.picasso:picasso:2.71828] /Users/steven/.gradle/caches/transforms-2/files-2.1/870d4a52a7b27f29c12d5ab0058464e8/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+ADDED from [com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/068610c9670ef0946dd139a7988ec5f1/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
 	android:authorities
-		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/steven/.gradle/caches/transforms-2/files-2.1/870d4a52a7b27f29c12d5ab0058464e8/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/068610c9670ef0946dd139a7988ec5f1/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
 	android:exported
-		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/steven/.gradle/caches/transforms-2/files-2.1/870d4a52a7b27f29c12d5ab0058464e8/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/068610c9670ef0946dd139a7988ec5f1/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
 	android:name
-		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/steven/.gradle/caches/transforms-2/files-2.1/870d4a52a7b27f29c12d5ab0058464e8/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+		ADDED from [com.squareup.picasso:picasso:2.71828] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/068610c9670ef0946dd139a7988ec5f1/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
 provider#com.facebook.internal.FacebookInitProvider
-ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:39:9-42:40
+ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:39:9-42:40
 	android:authorities
-		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:41:13-72
+		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:41:13-72
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:42:13-37
+		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:42:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:40:13-70
+		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:40:13-70
 receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
-ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:44:9-50:20
+ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:44:9-50:20
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:46:13-37
+		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:46:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:45:13-86
+		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:45:13-86
 intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:47:13-49:29
+ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:47:13-49:29
 action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:17-95
+ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:17-95
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/steven/.gradle/caches/transforms-2/files-2.1/d44817ce52808e942f015d01a3f106d3/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:25-92
+		ADDED from [com.facebook.android:facebook-core:5.15.3] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/67117c3a74453b57e4b8b96eee09046c/jetified-facebook-core-5.15.3/AndroidManifest.xml:48:25-92
 uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
-ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/steven/.gradle/caches/transforms-2/files-2.1/8a8b6c94a15881c341370d2d83435246/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/2498b84bbdc6ce0bfe64fdb773dc50cd/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
 	android:name
-		ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/steven/.gradle/caches/transforms-2/files-2.1/8a8b6c94a15881c341370d2d83435246/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+		ADDED from [com.android.installreferrer:installreferrer:1.0] /Users/minhkhuonglu/.gradle/caches/transforms-2/files-2.1/2498b84bbdc6ce0bfe64fdb773dc50cd/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
