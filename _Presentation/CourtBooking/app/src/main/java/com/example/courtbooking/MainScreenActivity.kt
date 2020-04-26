@@ -380,7 +380,7 @@ class MainScreenActivity :
     private fun sendGetPLayerBooking(): ArrayList<PlayerBookingRequest> {
 //        val parameters: MutableMap<String, String> = HashMap()
 
-        val call = mAPIService?.getPlayerBookings(userId ,selectedDate)
+        val call = mAPIService?.getPlayerBookings("player1" ,"2020-05-10")
 
         val listOfPlayerBookingRequest = ArrayList<PlayerBookingRequest>()
 //        Log.i("bb",parameters.toString())
@@ -567,6 +567,7 @@ class MainScreenActivity :
                     centerList.add(Center(centerId, courtList))
 
                 }
+                Log.i("bb",centerList.toString())
                 Log.i("bb","CitySlot")
 
                 centerCourtSlotList = centerList
