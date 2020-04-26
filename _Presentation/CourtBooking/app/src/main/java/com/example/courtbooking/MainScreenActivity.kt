@@ -83,7 +83,6 @@ class MainScreenActivity :
 
         // Send get city request to server, then show city chooser
         sendGetCity()
-
         // Set date chooser
         setDateChooser()
 
@@ -94,6 +93,7 @@ class MainScreenActivity :
 //            val selectedCity = cityChooser.selectedItem
 
             val centerCourtSlotList = sendGetCitySlot()
+
             // Initialize the CENTER recycler view
             initRecyclerViewCenter(centerCourtSlotList)
             // Hide welcome texts
@@ -380,7 +380,7 @@ class MainScreenActivity :
     private fun sendGetPLayerBooking(): ArrayList<PlayerBookingRequest> {
 //        val parameters: MutableMap<String, String> = HashMap()
 
-        val call = mAPIService?.getPlayerBookings("player1")
+        val call = mAPIService?.getPlayerBookings(userId ,selectedDate)
 
         val listOfPlayerBookingRequest = ArrayList<PlayerBookingRequest>()
 //        Log.i("bb",parameters.toString())
@@ -393,6 +393,9 @@ class MainScreenActivity :
                 Log.i("bb",call.toString())
                 if (!response.isSuccessful) {
 //                    Toast.makeText(this@MainScreenActivity, response.code() , Toast.LENGTH_SHORT).show()
+                    Log.i("bb",response.message())
+                    Log.i("bb",response.body().toString())
+                    Log.i("bb",response.code().toString())
                     Log.i("bb","PlayerBooking444444444")
                     return
                 }
@@ -564,6 +567,7 @@ class MainScreenActivity :
                     centerList.add(Center(centerId, courtList))
 
                 }
+                Log.i("bb","CitySlot")
 
                 centerCourtSlotList = centerList
 
@@ -765,7 +769,7 @@ class MainScreenActivity :
 //        parameters["pcityid"] =
 //        parameters["pdate"] = date
 
-        val call = mAPIService?.getCityCenterStaffs("A","A1")
+        val call = mAPIService?.getCityCenterStaffs(selectedCity,"A1")
 
 //        Log.i("bb",parameters.toString())
 

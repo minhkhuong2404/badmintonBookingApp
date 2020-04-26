@@ -11,7 +11,7 @@ interface JsonPlaceHolderApi {
 
     @GET("/api/city/slot")
     fun getCitySlot(
-        @Query("cityId") cityId: String,
+        @Query("id") id: String,
         @Query("date") date: String
     ): Call<
             HashMap<        // center list
@@ -27,12 +27,13 @@ interface JsonPlaceHolderApi {
 
 
 
-    @GET("api/booking/view2")
+    @GET("api/booking/player")
     fun getPlayerBookings(
 //        @Query("userId") userId: Int,
 //        @Query("_sort") sort: String?,
 //        @Query("_order") order: String?
-        @Query("playerid") playerid : String
+        @Query("id") id : String,
+        @Query("date") date : String
     ): Call<List<PlayerBookingRequest>>?
 
     @GET("api/staff/view2")
