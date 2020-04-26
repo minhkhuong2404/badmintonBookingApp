@@ -1,5 +1,6 @@
 package com.example.courtbooking.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +9,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.courtbooking.CitySlotActivity
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.center.view.*
 
 
-class CenterAdapter(private val centerList: List<Center>, private val callbackInterface: CallbackInterface) : RecyclerView.Adapter<CenterAdapter.CenterViewHolder>(),
+class CenterAdapter(private val centerList: List<Center>, private val callbackInterface: CitySlotActivity) : RecyclerView.Adapter<CenterAdapter.CenterViewHolder>(),
     CourtAdapter.CallbackInterface {
     // Create ViewPool for child RecyclerView
     private var viewPool = RecyclerView.RecycledViewPool()
@@ -39,6 +41,7 @@ class CenterAdapter(private val centerList: List<Center>, private val callbackIn
         )
     }
     // Assign the contents to a view (invoked by the layout manager)
+    @SuppressLint("WrongConstant")
     override fun onBindViewHolder(holder: CenterViewHolder, position: Int) {
         // - get  element from your dataset at this position
         val currentCenter = centerList[position]
@@ -89,8 +92,6 @@ class CenterAdapter(private val centerList: List<Center>, private val callbackIn
         Log.i("Center", "Transfer Slot, Court  to Main")
 
 
-        callbackInterface.passDataCallback(message)
+        //callbackInterface.passDataCallback(message)
     }
-
-
 }

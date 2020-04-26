@@ -1,4 +1,4 @@
-package com.example.courtbooking.booking
+package com.example.courtbooking.adapter
 
 import android.icu.text.StringPrepParseException
 

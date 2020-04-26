@@ -1,11 +1,14 @@
-package com.example.courtbooking.booking
+package com.example.courtbooking.adapter
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.booking.view.*
@@ -47,10 +50,14 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
 
         return if (viewType == BOOKING_VIEW_TYPE_OVERDUE) {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.booking_overdue, parent, false)
-            BookingViewHolder(itemView)
+            BookingViewHolder(
+                itemView
+            )
         } else {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.booking, parent, false)
-            BookingViewHolder(itemView)
+            BookingViewHolder(
+                itemView
+            )
         }
 
         // Set the view's size, margins, paddings and layout parameters...
@@ -80,7 +87,7 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
         // on click cancel
         holder.cancelBtn.setOnClickListener {
             Log.i("cancel", "clicked")
-
+            cancelBookingDialog(holder.tvId)
         }
 
     }
@@ -88,7 +95,26 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = listBooking.length()
 
-    interface CancelInterface {
-        fun moveToCancelFragment(id: Int)
+    fun cancelBookingDialog(tvId: TextView) {
+
+        val positiveButtonClick = { dialog: DialogInterface, which: Int ->
+            // handle cancel booking here
+
+            Toast.makeText(tvId.context, "Booking #${tvId.text} was canceled.", Toast.LENGTH_SHORT).show()
+        }
+        val negativeButtonClick = { dialog: DialogInterface, which: Int ->
+            Toast.makeText(tvId.context, "Booking #${tvId.text} was not canceled", Toast.LENGTH_SHORT).show()
+        }
+
+        val builder = AlertDialog.Builder(tvId.context)
+
+        with(builder)
+        {
+            setTitle("Cancel Booking ")
+            setMessage("We have a message")
+            setPositiveButton("OK", DialogInterface.OnClickListener(function = positiveButtonClick))
+            setNegativeButton(android.R.string.no, negativeButtonClick)
+            show()
+        }
     }
 }

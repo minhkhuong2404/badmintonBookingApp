@@ -1400,7 +1400,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
-drawable bbbbb
+drawable blurry
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1409,7 +1409,6 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
-drawable ccccc
 drawable com_facebook_auth_dialog_background
 drawable com_facebook_auth_dialog_cancel_background
 drawable com_facebook_auth_dialog_header_background
@@ -1472,7 +1471,8 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable ripple
 drawable ripple2
-drawable rounded_shape
+drawable ripple_shape
+drawable ripple_shape2
 drawable selection_band_overlay
 drawable test_custom_background
 drawable tooltip_frame_dark
@@ -2087,7 +2087,6 @@ string com_facebook_smart_login_confirmation_cancel
 string com_facebook_smart_login_confirmation_continue_as
 string com_facebook_smart_login_confirmation_title
 string com_facebook_tooltip_default
-string continue_to_app
 string court
 string created_on
 string date

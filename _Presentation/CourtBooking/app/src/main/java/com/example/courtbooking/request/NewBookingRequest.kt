@@ -1,6 +1,15 @@
 package com.example.courtbooking.request
 
+
 class NewBookingRequest{
+    private var pdate: String = ""
+    private var pstarttime: String = ""
+    private var pendtime: String = ""
+    private var pcityid: String = ""
+    private var pcenterid: String = ""
+    private var pcourtid: String = ""
+    private var pplayerid: String = ""
+
     constructor(
         pdate: String,
         pstarttime: String,
@@ -18,14 +27,6 @@ class NewBookingRequest{
         this.pcourtid = pcourtid
         this.pplayerid = pplayerid
     }
-
-    private var pdate: String = ""
-    private var pstarttime: String =""
-    private var pendtime: String = ""
-    private var pcityid: String = ""
-    private var pcenterid: String = ""
-    private var pcourtid: String = ""
-    private var pplayerid: String = ""
 
     fun getDate(): String{
         return pdate

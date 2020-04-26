@@ -1,18 +1,18 @@
 package com.example.courtbooking
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.courtbooking.adapter.Center
+import com.example.courtbooking.adapter.CenterAdapter
 import com.example.courtbooking.adapter.Court
 import com.example.courtbooking.adapter.Slot
-import com.facebook.AccessToken
+import kotlinx.android.synthetic.main.activity_city_slot.*
 
 class CitySlotActivity : AppCompatActivity() {
-    // Activity vars
-    lateinit var userId : String
-    lateinit var accessToken: AccessToken
-
     lateinit var selectedCity: String
     lateinit var selectedDate: String
 
@@ -22,16 +22,18 @@ class CitySlotActivity : AppCompatActivity() {
 
         selectedCity = intent.getStringExtra("city")
         selectedDate = intent.getStringExtra("date")
+        val jsonString = intent.getStringExtra("jsonString")
 
-        // Get token & user id
-        accessToken = AccessToken.getCurrentAccessToken()
-        userId = accessToken.userId
+        if (jsonString.length > 0) {
+            // Initialize the CENTER recycler view
+            //initRecyclerViewCenter(randomCenter)
+        }
 
-        Log.i("UserBookingActivity", "$selectedCity | $selectedDate")
-        // Initialize the CENTER recycler view
-        //initRecyclerViewCenter(randomCenter)
+        // For testing
+        Log.i("CitySlotActivity", "City: $selectedCity | Date: $selectedDate")
+        Log.i("CitySlotActivity", "Data Response: $jsonString")
     }
-    // request city slot
+
 
     // generate fake data for slot
     private fun getCenterCourtSlotList(size: Int): List<Center> {
@@ -113,19 +115,19 @@ class CitySlotActivity : AppCompatActivity() {
 
 
     // init recycler view center
-//    @SuppressLint("WrongConstant")
-//    private fun initRecyclerViewCenter(){
-//        // Calling the recycler view for Center
-//        centerList = getCenterCourtSlotList(numOfCenter)
-//        rv_center.apply {
-//            layoutManager = LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
-//            adapter = CenterAdapter(
-//                centerList,
-//                this@CitySlotActivity
-//            )
-//            setHasFixedSize(true)
-//        }
-//    }
+    @SuppressLint("WrongConstant")
+    private fun initRecyclerViewCenter(){
+        // Calling the recycler view for Center
+        var centerList = getCenterCourtSlotList(5)
+        rv_center.apply {
+            layoutManager = LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
+            adapter = CenterAdapter(
+                centerList,
+                this@CitySlotActivity
+            )
+            setHasFixedSize(true)
+        }
+    }
 //    override fun passDataCallback(slot: Slot) {
 //        Toast.makeText(this, ("You choose " + dateChooser.text + "\n" + cityChooser.selectedItem + "\n" + slot.id), Toast.LENGTH_SHORT).show()
 //

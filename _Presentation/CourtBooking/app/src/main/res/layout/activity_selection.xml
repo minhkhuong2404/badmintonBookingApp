@@ -4,22 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/aaaaa"
     tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:text="@string/choose_a_city"
-
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF"
+        android:textColor="#005CF7"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,14 +23,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="25dp"
         android:gravity="center"
         android:text="@string/choose_a_date"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF"
+        android:textColor="#005CF7"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -42,17 +36,16 @@
         android:id="@+id/sp_city"
         android:layout_width="190dp"
         android:layout_height="45dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/ripple2"
         android:backgroundTintMode="src_in"
-        android:outlineAmbientShadowColor="#1565C0"
-        android:outlineSpotShadowColor="#1565C0"
-        android:spinnerMode="dropdown"
         android:gravity="center"
+        android:spinnerMode="dropdown"
         android:textAlignment="center"
+        android:textColor="#005CF7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/ripple2"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_date"
@@ -60,38 +53,41 @@
         android:layout_width="190dp"
         android:layout_height="45dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/ripple2"
         android:clickable="true"
         android:focusable="false"
         android:hint="@string/enter_date"
         android:inputType="date"
         android:textAlignment="center"
+        android:textColor="#005CF7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_city"
-        android:background="@drawable/ripple2"/>
+        app:layout_constraintTop_toBottomOf="@+id/sp_city" />
 
     <Button
         android:id="@+id/b_show_slots"
         android:layout_width="245dp"
         android:layout_height="45dp"
         android:layout_marginBottom="25dp"
+        android:background="@drawable/ripple2"
+        android:textColor="#005CF7"
         android:text="@string/show_available_slots"
         app:layout_constraintBottom_toTopOf="@+id/b_show_bookings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="18sp"
-        android:background="@drawable/ripple2"/>
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/b_show_bookings"
         android:layout_width="245dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/ripple2"
         android:text="@string/show_my_bookings"
+        android:textColor="#005CF7"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/ripple2"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
