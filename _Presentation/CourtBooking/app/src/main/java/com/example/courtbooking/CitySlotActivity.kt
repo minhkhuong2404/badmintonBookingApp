@@ -11,6 +11,8 @@ import com.example.courtbooking.adapter.CenterAdapter
 import com.example.courtbooking.adapter.Court
 import com.example.courtbooking.adapter.Slot
 import kotlinx.android.synthetic.main.activity_city_slot.*
+import org.json.JSONArray
+import org.json.JSONObject
 
 class CitySlotActivity : AppCompatActivity() {
     lateinit var selectedCity: String
@@ -24,10 +26,40 @@ class CitySlotActivity : AppCompatActivity() {
         selectedDate = intent.getStringExtra("date")
         val jsonString = intent.getStringExtra("jsonString")
 
-        if (jsonString.length > 0) {
-            // Initialize the CENTER recycler view
-            //initRecyclerViewCenter(randomCenter)
+
+        var cityObj = JSONObject(jsonString)
+        var cityIter = cityObj.keys()
+
+        var centerList = ArrayList<Center>()
+
+        while (cityIter.hasNext()) {
+            var centerKey = cityIter.next()
+            Log.i("Center", "$centerKey")
+            var centerObj = JSONObject(cityObj.get(centerKey).toString())
+            var centerIter = centerObj.keys()
+
+            var courtList = ArrayList<Court>()
+            while (centerIter.hasNext()) {
+                var courtKey = centerIter.next()
+                var slotArray = JSONArray(centerObj.get(courtKey).toString())
+
+                var slotList = ArrayList<Slot>()
+                for (i in 0 until slotArray.length()) {
+                    var slotObj = JSONObject(slotArray[i].toString())
+                    var start = slotObj.getString("start").subSequence(0, 5)
+                    var end = slotObj.getString("end").subSequence(0, 5)
+                    var slotId = "$centerKey/$courtKey/$start - $end"
+                    var slot = Slot(slotId)
+                    slotList.add(slot)
+                }
+                var court = Court(courtKey, slotList)
+                courtList.add(court)
+            }
+            var center = Center(centerKey, courtList)
+            centerList.add(center)
         }
+
+        initRecyclerViewCenter(centerList)
 
         // For testing
         Log.i("CitySlotActivity", "City: $selectedCity | Date: $selectedDate")
@@ -35,90 +67,10 @@ class CitySlotActivity : AppCompatActivity() {
     }
 
 
-    // generate fake data for slot
-    private fun getCenterCourtSlotList(size: Int): List<Center> {
-        val list = ArrayList<Center>()
-        //val exampleCourtList = getCourtList()
-        for (i in 0 until size) {
-            //val slot = Center("Center#$i", exampleCourtList)
-            val slot = Center(
-                "Center#$i",
-                getCourtList()
-            )
-            list += slot
-        }
-
-        // change id of
-        for (center in list) {
-            for (court in center.courtList) {
-                for (slot in court.slotList) {
-                    slot.id = center.name + "/" + court.name + "/" + slot.id
-                }
-            }
-        }
-
-        return list
-    }
-
-    private fun getCourtList(): List<Court> {
-        return listOf(
-            Court("Court#1", getSlotList(1)),
-            Court("Court#2", getSlotList(2)),
-            Court("Court#3", getSlotList(3)),
-            Court("Court#4", getSlotList(4)),
-            Court(
-                "Court#5",
-                getSlotList(5)
-            )
-        )
-    }
-
-    private fun getSlotList(type: Int): List<Slot> {
-        return when (type) {
-            1 -> listOf(
-                Slot("7:00 - 8:00"),
-                Slot("7:30 - 8:30"),
-                Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00")
-            )
-            2 -> listOf(
-                Slot("7:30 - 8:30"),
-                Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00")
-            )
-            3 -> listOf(
-                Slot("8:30 - 9:00"),
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00")
-            )
-            4 -> listOf(
-                Slot("9:00 - 10:00"),
-                Slot("10:00 - 11:00"),
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00")
-            )
-            else -> listOf(
-                Slot("12:00 - 13:00"),
-                Slot("13:00 - 21:00")
-            )
-
-        }
-    }
-
-
     // init recycler view center
     @SuppressLint("WrongConstant")
-    private fun initRecyclerViewCenter(){
+    private fun initRecyclerViewCenter(centerList: ArrayList<Center>) {
         // Calling the recycler view for Center
-        var centerList = getCenterCourtSlotList(5)
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
             adapter = CenterAdapter(

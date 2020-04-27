@@ -12,12 +12,11 @@
     <Button
         android:id="@+id/b_slot"
         android:layout_width="wrap_content"
-        android:layout_height="28dp"
+        android:layout_height="30dp"
         android:background="@drawable/ripple"
-        android:minWidth="91dp"
+        android:minWidth="120dp"
         android:text="@string/example_time_2"
         android:textAlignment="center"
-        android:textSize="13sp"
-        android:textStyle="bold" />
+        android:textSize="16sp"/>
 
 </LinearLayout>

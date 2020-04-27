@@ -21,4 +21,4 @@ END IF;
 end//
 DELIMITER ;
 
-call getPlayerBookings("player1", "B", date("2020-05-10"), @code);
+-- call getPlayerBookings("player1", "B", date("2020-05-10"), @code);

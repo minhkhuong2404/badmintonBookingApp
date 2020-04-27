@@ -10,7 +10,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.example.courtbooking.R
+import com.example.courtbooking.request.ApiUtils
+import com.example.courtbooking.request.MySingleton
 import kotlinx.android.synthetic.main.booking.view.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -73,6 +78,7 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
         val city : String = currentItem.getString("cityId")
         val center : String = currentItem.getString("centerId")
         val court : String = currentItem.getString("courtId")
+        val playerid: String = currentItem.getString("playerId")
 
         // - replace the contents of the view with that element
         holder.tvId.text = currentItem.getInt("bookingId").toString()
@@ -87,7 +93,7 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
         // on click cancel
         holder.cancelBtn.setOnClickListener {
             Log.i("cancel", "clicked")
-            cancelBookingDialog(holder.tvId)
+            cancelBookingDialog(holder.tvId, playerid, position)
         }
 
     }
@@ -95,12 +101,11 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = listBooking.length()
 
-    fun cancelBookingDialog(tvId: TextView) {
+    fun cancelBookingDialog(tvId: TextView, playerid: String, position: Int) {
 
         val positiveButtonClick = { dialog: DialogInterface, which: Int ->
             // handle cancel booking here
-
-            Toast.makeText(tvId.context, "Booking #${tvId.text} was canceled.", Toast.LENGTH_SHORT).show()
+            requestCancelBooking(tvId, playerid, position)
         }
         val negativeButtonClick = { dialog: DialogInterface, which: Int ->
             Toast.makeText(tvId.context, "Booking #${tvId.text} was not canceled", Toast.LENGTH_SHORT).show()
@@ -110,11 +115,53 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
 
         with(builder)
         {
-            setTitle("Cancel Booking ")
-            setMessage("We have a message")
-            setPositiveButton("OK", DialogInterface.OnClickListener(function = positiveButtonClick))
-            setNegativeButton(android.R.string.no, negativeButtonClick)
+            setTitle("Confirm cancellation")
+            setMessage("Cancellation must be done before 24 hours of start time. Please confirm to cancel booking #${tvId.text}.")
+            setPositiveButton("CONFIRM", DialogInterface.OnClickListener(function = positiveButtonClick))
+            setNegativeButton("KEEP", negativeButtonClick)
             show()
         }
+    }
+
+    private fun removeCancelledBooking(position: Int) {
+        listBooking.remove(position)
+        if (listBooking.length() == 0){
+        }
+        notifyDataSetChanged()
+    }
+
+    // request cancel booking
+    private fun requestCancelBooking(tvId: TextView, playerId: String, position: Int) {
+        var cancelObj = JSONObject()
+        cancelObj.put("id", tvId.text)
+        cancelObj.put("playerid", playerId)
+
+        // Get a RequestQueue
+        val jsonArrayRequest = JsonObjectRequest(
+            Request.Method.POST, ApiUtils.URL_BOOKING_CANCEL, cancelObj,
+            Response.Listener { response ->
+                val result_code = response.getString("code")
+                var msg = ""
+                if (result_code == "200") {
+                    removeCancelledBooking(position)
+                    msg = "Booking #${tvId.text} was cancelled."
+                } else {
+                    if (result_code == "CA-005")
+                        msg = "Cancellation can only be done before 24 hours of start time."
+                    else msg = "Booking #${tvId.text} was not cancelled."
+                }
+                Toast.makeText(tvId.context, msg, Toast.LENGTH_SHORT).show()
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(
+                    tvId.context,
+                    "Cancellation Error: #${error.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        )
+
+        // Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(tvId.context).addToRequestQueue(jsonArrayRequest)
     }
 }

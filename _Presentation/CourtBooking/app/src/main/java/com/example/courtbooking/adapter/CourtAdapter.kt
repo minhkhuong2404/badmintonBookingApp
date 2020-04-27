@@ -1,5 +1,6 @@
 package com.example.courtbooking.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,94 +11,91 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.court.view.*
 
-class CourtAdapter(private val courtList: List<Court>, private val callbackInterface: CallbackInterface) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>(),
-    SlotAdapter.OnItemClickListener {
-    // Constant for two types of view
-    private var courtViewTypeDefault = 0
-    private var courtViewTypeLightBlue = 1
-    // Create ViewPool for child RecyclerView
+class CourtAdapter(
+    private val courtList: ArrayList<Court>,
+    private val parentContext : Context
+    ) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
+
+    // Constants
+    private var COURT_VIEW_TYPE_DEFAULT = 0
+    private var COURT_VIEW_TYPE_BLUE = 1
+    private var COLUMN_OF_SLOT = 3
+
+    // Create view pool for child recycler view
     private var viewPool = RecyclerView.RecycledViewPool()
     private var adapterPosition: Int = 0
 
-    // Setting up view holder
     class CourtViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         // Assign to the views for each item
         val courtTextView: TextView = itemView.tv_court
-
         // Load recycler view of child: rv_court
         val recyclerViewSlot: RecyclerView = itemView.findViewById(R.id.rv_slot)
     }
 
-    // Determine COURTVIEWTYPE of item
+    // Determine court view type of item
     override fun getItemViewType(position: Int): Int {
-        if (position % 2 == 0){
-            return courtViewTypeLightBlue
+        if (position % 2 == 0) {
+            return COURT_VIEW_TYPE_BLUE
         } else {
-            return courtViewTypeDefault
+            return COURT_VIEW_TYPE_DEFAULT
         }
     }
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourtViewHolder {
-
         // Create a new view for "court"
-        return if (viewType == courtViewTypeLightBlue){
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.court, parent, false)
+        return if (viewType == COURT_VIEW_TYPE_BLUE) {
+            val itemView =
+                LayoutInflater.from(parent.context).inflate(R.layout.court, parent, false)
             CourtViewHolder(
                 itemView
             )
         } else {
-            val itemView = LayoutInflater.from(parent.context).inflate(R.layout.court_gray, parent, false)
+            val itemView =
+                LayoutInflater.from(parent.context).inflate(R.layout.court_gray, parent, false)
             CourtViewHolder(
                 itemView
             )
         }
-        // Set the view's size, margins, paddings and layout parameters...
     }
 
     // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: CourtViewHolder, position: Int) {
-        // - get  element from your dataset at this position
         val currentCourt = courtList[position]
-
-        // - replace the contents of the view with that element
         holder.courtTextView.text = currentCourt.name
-
-        // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)
 
-        // Setting the background for the court layout
-        
-
-        // Call child adapter to show child recyclerview
+        // Call child adapter to show child recycler view
         holder.recyclerViewSlot.apply {
-            layoutManager = GridLayoutManager(holder.recyclerViewSlot.context, 4, GridLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(
+                holder.recyclerViewSlot.context,
+                COLUMN_OF_SLOT,
+                GridLayoutManager.VERTICAL,
+                false
+            )
             adapter = SlotAdapter(
                 currentCourt.slotList,
-                this@CourtAdapter
+                parentContext
             )
             setRecycledViewPool(viewPool)
         }
         adapterPosition = holder.adapterPosition
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = courtList.size
 
-    // override onClickListener from SlotAdapter.OnItemClickListener
-    override fun onClickListener(item: Slot, position: Int) {
-        Log.i("Court", "Transfer Slot to Center")
-        Log.i("Position Slot", position.toString())
-        Log.i("Position Court", adapterPosition.toString())
-        val slotTime = item.id
-        callbackInterface.passDataCallback(item)
-    }
-
-    // create interface CallbackInterface
-    interface CallbackInterface {
-        fun passDataCallback(message: Slot)
-    }
-
-
+//    // override onClickListener from SlotAdapter.OnItemClickListener
+//    override fun onClickListener(item: Slot, position: Int) {
+//        Log.i("Court", "Transfer Slot to Center")
+//        Log.i("Position Slot", position.toString())
+//        Log.i("Position Court", adapterPosition.toString())
+//        val slotTime = item.id
+//        callbackInterface.passDataCallback(item)
+//    }
+//
+//    // create interface CallbackInterface
+//    interface CallbackInterface {
+//        fun passDataCallback(message: Slot)
+//    }
 }

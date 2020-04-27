@@ -45,5 +45,4 @@ public class CitiesHandler extends GetHandler {
         return new ResponseEntity<>(rsp,
                 getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
-
 }

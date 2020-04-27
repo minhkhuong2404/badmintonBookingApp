@@ -1,59 +1,79 @@
 package com.example.courtbooking.adapter
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.courtbooking.PlayerBookingActivity
 import com.example.courtbooking.R
+import com.example.courtbooking.SelectionActivity
 import kotlinx.android.synthetic.main.slot.view.*
 
-class SlotAdapter(private val listSlot: List<Slot>, var clickListener: OnItemClickListener) : RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
+class SlotAdapter(private val slotList: ArrayList<Slot>, private val parentContext: Context) :
+    RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
 
-    // Setting up view holder
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // Assign to the views for each item
-        val textView: Button = itemView.b_slot
+        val slotBtn: Button = itemView.b_slot
     }
 
-    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlotViewHolder {
-        // Create a new view for "court"
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.slot, parent, false)
-        // Set the view's size, margins, paddings and layout parameters...
-
-        return SlotViewHolder(
-            itemView
-        )
+        return SlotViewHolder(itemView)
     }
 
-    // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: SlotViewHolder, position: Int) {
-        // - get  element from your dataset at this position
-        val currentItem = listSlot[position]
-
-        // - replace the contents of the view with that element
-        holder.textView.text = currentItem.id.split("/").last()
-
-        // setIsRecyclerable: avoid lag when scrolling
+        val currentItem = slotList[position]
+        holder.slotBtn.text = currentItem.id.split("/").last()
         holder.setIsRecyclable(false)
+        holder.slotBtn.setOnClickListener {
+//            Log.i(
+//                "Slot",
+//                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+//            )
+//            //clickListener.onClickListener(listOf(currentItem.time), holder.adapterPosition)
+//            clickListener.onClickListener(currentItem, holder.adapterPosition)
+            createBookingDialog(parentContext, currentItem, "player1", position)
+        }
+    }
 
-        holder.textView.setOnClickListener {
-            Log.i("Slot","XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-            Log.i("Slot","Transfer to court")
-            //clickListener.onClickListener(listOf(currentItem.time), holder.adapterPosition)
-            clickListener.onClickListener(currentItem, holder.adapterPosition)
+    override fun getItemCount() = slotList.size
+
+    fun createBookingDialog(context: Context, slot: Slot, playerid: String, position: Int) {
+        val center = slot.id.split("/")[0]
+        val court = slot.id.split("/")[1]
+        val time_slot = slot.id.split("/")[2]
+
+        val positiveButtonClick = { dialog: DialogInterface, which: Int ->
+            // handle create booking
+
+            // Preparing to next activity
+            val toPlayerBookingActivity = Intent(parentContext, PlayerBookingActivity::class.java)
+            // To next activity
+            startActivity(parentContext, toPlayerBookingActivity, Bundle())
+        }
+        val negativeButtonClick = { dialog: DialogInterface, which: Int ->
+            // handle cancel create booking
         }
 
+        val builder = AlertDialog.Builder(context)
+        with(builder)
+        {
+            setTitle("Create new booking")
+            setMessage("Place: $center, $court. Time slot: $time_slot.")
+            setPositiveButton("CREATE", DialogInterface.OnClickListener(function = positiveButtonClick))
+            setNegativeButton("CANCEL", negativeButtonClick)
+            show()
+        }
     }
-
-    // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = listSlot.size
-
-    // create interface OnItemClickListener
-    interface OnItemClickListener {
-        fun onClickListener(item: Slot, position: Int)
-    }
-
 }

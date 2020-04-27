@@ -68,7 +68,6 @@ class SelectionActivity : AppCompatActivity() {
                 } else {
                     // request player booking to server
                     requestCitySlot(selectedCity, selectedDate)
-                    Log.i("City Slot", "Request called.")
                 }
             } else {
                 Toast.makeText(this, "No internet connection.", Toast.LENGTH_SHORT).show()
@@ -88,9 +87,13 @@ class SelectionActivity : AppCompatActivity() {
                 if (selectedCity.length == 0) {
                     Toast.makeText(this, "Please select a city.", Toast.LENGTH_SHORT).show()
                 } else {
-                    // request player booking to server
-                    requestPlayerBooking("player1", selectedCity, selectedDate)
-                    Log.i("Button Booking", "Request called.")
+                    // Prepare intent
+                    val toPlayerBookingActivity =
+                        Intent(this@SelectionActivity, PlayerBookingActivity::class.java)
+                    toPlayerBookingActivity.putExtra("city", selectedCity)
+                    toPlayerBookingActivity.putExtra("date", selectedDate)
+                    // Turn  PlayerBookingActivit
+                    startActivity(toPlayerBookingActivity)
                 }
             } else {
                 Toast.makeText(this, "No internet connection.", Toast.LENGTH_SHORT).show()
@@ -235,7 +238,7 @@ class SelectionActivity : AppCompatActivity() {
         var query = "?id=$cityid&date=$date"
 
         // Get a RequestQueue
-        val jsonArrayRequest =
+        val jsonObjectRequest =
             JsonObjectRequest(
                 Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
                 Response.Listener { response ->
@@ -255,36 +258,7 @@ class SelectionActivity : AppCompatActivity() {
             )
 
         // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
-    }
-
-    // request player booking list
-    private fun requestPlayerBooking(playerid: String, cityid: String, date: String) {
-        // Preparing query
-        var query = "?id=$playerid&cityid=$cityid&date=$date"
-
-        // Get a RequestQueue
-        val jsonArrayRequest =
-            JsonArrayRequest(
-                Request.Method.GET, ApiUtils.URL_GET_BOOKING_BY_PLAYER + query, null,
-                Response.Listener { response ->
-                    Log.i("player booking response", "Response: %s".format(response.toString()))
-                    // Prepare intent
-                    val toPlayerBookingActivity =
-                        Intent(this@SelectionActivity, PlayerBookingActivity::class.java)
-                    toPlayerBookingActivity.putExtra("city", selectedCity)
-                    toPlayerBookingActivity.putExtra("date", selectedDate)
-                    toPlayerBookingActivity.putExtra("jsonString", response.toString())
-                    // Turn  PlayerBookingActivit
-                    startActivity(toPlayerBookingActivity)
-                },
-                Response.ErrorListener { error ->
-                    Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
-                }
-            )
-
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 
     // cache city list

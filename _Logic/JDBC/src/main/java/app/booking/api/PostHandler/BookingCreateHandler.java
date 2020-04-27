@@ -22,19 +22,19 @@ public class BookingCreateHandler extends PostHandler {
 
     @Override
     protected void execute(HttpExchange exchange) throws Exception {
-        byte[] response ;
+        String response ;
         if ("POST".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doPost(exchange.getRequestBody());
             exchange.getResponseHeaders().putAll(e.getHeaders());
             exchange.sendResponseHeaders(e.getStatusCode().getCode(), 0);
-            response = super.writeResponse(e.getBody());
+            response = (String) e.getBody();
         } else {
             throw ApplicationExceptions.methodNotAllowed(
                     "Method " + exchange.getRequestMethod() + " is not allowed for " + exchange.getRequestURI()).get();
         }
 
         OutputStream os = exchange.getResponseBody();
-        os.write(response);
+        os.write(response.getBytes());
         os.close();
     }
 
@@ -49,14 +49,13 @@ public class BookingCreateHandler extends PostHandler {
                 CBrequest.getPcenterid(),
                 CBrequest.getPcourtid(),
                 CBrequest.getPplayerid());
-        String response = result_code;
 
         System.out.println("Create Booking executed with result code: " + result_code);
 
-//        if (result_code == "200") {
-//            response = "Created. Booking info: " + CBrequest.toString();
-//        } else response = "Create Failed. Error code: " + result_code;
+        // preparing response to client
+        Response response = new Response(result_code);
+        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
 
-        return new ResponseEntity<>(response, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }
