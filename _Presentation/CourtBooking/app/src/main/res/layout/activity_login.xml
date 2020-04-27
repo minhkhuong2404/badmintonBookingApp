@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:text="BOOKING APPLICATION"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#005CF7"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

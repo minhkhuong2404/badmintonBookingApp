@@ -20,12 +20,12 @@
         "source": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/res/layout/fragment_more_than_3.xml"
     },
     {
-        "merged": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
-    },
-    {
         "merged": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
         "source": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },
     {
         "merged": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/drawable_ripple2.xml.flat",

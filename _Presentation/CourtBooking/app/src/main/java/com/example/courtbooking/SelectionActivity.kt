@@ -17,11 +17,15 @@ import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
 import com.facebook.AccessToken
 import kotlinx.android.synthetic.main.activity_selection.*
+import org.json.JSONArray
+import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class SelectionActivity : AppCompatActivity() {
+    // cache file name
+    var cacheFilename = "city.json"
     // User vars
     lateinit var userId : String
     lateinit var accessToken: AccessToken
@@ -53,6 +57,12 @@ class SelectionActivity : AppCompatActivity() {
         // On button clicked Show Available Slots
         b_show_slots.setOnClickListener {
             if (isNetworkAvailable(this)) {
+                // check city spinner empty
+                if (citySpinner.count == 0){
+                    // try to load city list again
+                    requestCityList()
+                }
+                // if user has not chosen city
                 if (selectedCity.length == 0) {
                     Toast.makeText(this, "Please select a city.", Toast.LENGTH_SHORT).show()
                 } else {
@@ -67,9 +77,14 @@ class SelectionActivity : AppCompatActivity() {
 
         // On button clicked Show My Bookings
         b_show_bookings.setOnClickListener {
-            Log.i("Button Booking", "Hitted")
             // Check internet connection
             if (isNetworkAvailable(this)) {
+                // check city spinner empty
+                if (citySpinner.count == 0){
+                    // try to load city list again
+                    requestCityList()
+                }
+                // if user has not chosen city
                 if (selectedCity.length == 0) {
                     Toast.makeText(this, "Please select a city.", Toast.LENGTH_SHORT).show()
                 } else {
@@ -82,8 +97,8 @@ class SelectionActivity : AppCompatActivity() {
             }
         }
 
-        // Request city from server then set city spinner
-        if (isNetworkAvailable(this)) requestCityList()
+        // Request city from server (or get from cached) then set city spinner
+        requestCityList()
 
         // Set date picker, today is default
         setDatePicker()
@@ -155,14 +170,18 @@ class SelectionActivity : AppCompatActivity() {
     }
 
     // set city spinner
-    private fun setCitySpinner(cityList: ArrayList<String>) {
+    private fun setCitySpinner(cityJSONArray: JSONArray) {
+        // if city list not empty, update the spinner
+        var cityList = ArrayList<String>()
+        for (i in 0 until cityJSONArray.length()) {
+            cityList.add(cityJSONArray.get(i).toString())
+        }
         // Show first item on the cities array on the chosenCity spinner
         citySpinner.adapter = ArrayAdapter<String>(
             this@SelectionActivity,
             android.R.layout.simple_list_item_1,
             cityList
         )
-
         // On City Choosing Listener
         citySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) { /* Just a place holder */
@@ -183,15 +202,26 @@ class SelectionActivity : AppCompatActivity() {
         val jsonArrayRequest = JsonArrayRequest(
             Request.Method.GET, ApiUtils.URL_GET_CITY_ALL, null,
             Response.Listener { response ->
-                Log.i("City List", "Response: %s".format(response.toString()))
-                for (i in 0 until response.length()) {
-                    cityList.add(response.get(i).toString())
+                if (response.length() > 0) {
+                    // set city chooser
+                    setCitySpinner(response)
+                    // cache city list
+                    cacheCity(response)
+                } else {
+                    Toast.makeText(this, "Received no city at all.", Toast.LENGTH_SHORT).show()
                 }
-                // set city chooser
-                setCitySpinner(cityList)
             },
             Response.ErrorListener { error ->
-                Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
+                // load cache city list
+                var cached_cityJSONArray : JSONArray? = loadCacheCity()
+
+                // if cache not existed
+                if (cached_cityJSONArray == null) {
+                    Toast.makeText(this, "Unable to load cities.", Toast.LENGTH_SHORT).show()
+                } else {
+                    // use cache to set city chooser
+                    setCitySpinner(cached_cityJSONArray)
+                }
             }
         )
 
@@ -255,6 +285,27 @@ class SelectionActivity : AppCompatActivity() {
 
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
+    }
+
+    // cache city list
+    fun cacheCity(cityJSONArray: JSONArray) {
+        // prepare content
+        val json = cityJSONArray.toString()
+        // prepare cache file
+        File.createTempFile(cacheFilename, null, this.cacheDir)
+        val cacheFile = File(this.cacheDir, cacheFilename)
+        // write cache
+        cacheFile.writeText(json, Charsets.UTF_8)
+    }
+
+    // load city list from cache
+    fun loadCacheCity(): JSONArray? {
+        // read cache
+        val cacheFile = File(this.cacheDir, cacheFilename)
+        if (cacheFile.exists()) {
+            val json = cacheFile.readText(Charsets.UTF_8)
+            return JSONArray(json) // return city json array
+        } else return null // return null city list
     }
 }
 
