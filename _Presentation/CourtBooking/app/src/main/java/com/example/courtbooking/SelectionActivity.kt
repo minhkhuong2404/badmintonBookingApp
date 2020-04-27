@@ -24,24 +24,16 @@ import kotlin.collections.ArrayList
 
 
 class SelectionActivity : AppCompatActivity() {
-    // cache file name
-    var cacheFilename = "city.json"
     // User vars
-    lateinit var userId : String
     lateinit var accessToken: AccessToken
+    lateinit var playerId : String
+    lateinit var selectedCity: String
+    lateinit var selectedDate: String
     // View
     lateinit var citySpinner: Spinner
     lateinit var datePicker: EditText
-
-    // Chosen city & date
-    var selectedCity: String = "" // for later choosing
-    var selectedDate: String = ""   // for later choosing
-
-    // Get current date
-    val cal = Calendar.getInstance(TimeZone.getDefault())
-    var selectedYear = cal.get(Calendar.YEAR)
-    var selectedMonth = cal.get(Calendar.MONTH)
-    var selectedDay = cal.get(Calendar.DAY_OF_MONTH)
+    // cache file name
+    var cacheFilename = "city.json"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +44,7 @@ class SelectionActivity : AppCompatActivity() {
 
         // Get token & user id
         accessToken = AccessToken.getCurrentAccessToken()
-        userId = accessToken.userId
+        playerId = accessToken.userId
 
         // On button clicked Show Available Slots
         b_show_slots.setOnClickListener {
@@ -66,8 +58,14 @@ class SelectionActivity : AppCompatActivity() {
                 if (selectedCity.length == 0) {
                     Toast.makeText(this, "Please select a city.", Toast.LENGTH_SHORT).show()
                 } else {
-                    // request player booking to server
-                    requestCitySlot(selectedCity, selectedDate)
+                    // Prepare intent
+                    val toCitySlotActivity =
+                        Intent(this@SelectionActivity, CitySlotActivity::class.java)
+                    toCitySlotActivity.putExtra("player", playerId)
+                    toCitySlotActivity.putExtra("city", selectedCity)
+                    toCitySlotActivity.putExtra("date", selectedDate)
+                    // Turn to CitySlotActivity
+                    startActivity(toCitySlotActivity)
                 }
             } else {
                 Toast.makeText(this, "No internet connection.", Toast.LENGTH_SHORT).show()
@@ -90,9 +88,10 @@ class SelectionActivity : AppCompatActivity() {
                     // Prepare intent
                     val toPlayerBookingActivity =
                         Intent(this@SelectionActivity, PlayerBookingActivity::class.java)
+                    toPlayerBookingActivity.putExtra("player", playerId)
                     toPlayerBookingActivity.putExtra("city", selectedCity)
                     toPlayerBookingActivity.putExtra("date", selectedDate)
-                    // Turn  PlayerBookingActivit
+                    // Turn to PlayerBookingActivity
                     startActivity(toPlayerBookingActivity)
                 }
             } else {
@@ -118,7 +117,11 @@ class SelectionActivity : AppCompatActivity() {
 
     // set date chooser
     private fun setDatePicker() {
-
+         // Get current date
+        val cal = Calendar.getInstance(TimeZone.getDefault())
+        var selectedYear = cal.get(Calendar.YEAR)
+        var selectedMonth = cal.get(Calendar.MONTH)
+        var selectedDay = cal.get(Calendar.DAY_OF_MONTH)
         // Show on view
         et_date.setText(dateConvert(selectedDay, selectedMonth, selectedYear, '/'))
         selectedDate = dateConvert(selectedDay, selectedMonth, selectedYear, '-')
@@ -197,6 +200,7 @@ class SelectionActivity : AppCompatActivity() {
             }
         }
     }
+
     // request city list
     private fun requestCityList() {
         var cityList: ArrayList<String> = ArrayList()
@@ -230,35 +234,6 @@ class SelectionActivity : AppCompatActivity() {
 
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
-    }
-
-    // request available slot
-    private fun requestCitySlot(cityid: String, date: String) {
-        // Preparing query
-        var query = "?id=$cityid&date=$date"
-
-        // Get a RequestQueue
-        val jsonObjectRequest =
-            JsonObjectRequest(
-                Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
-                Response.Listener { response ->
-                    Log.i("City Slot", "Response: %s".format(response.toString()))
-                    // Prepare intent
-                    val toCitySlotActivity =
-                        Intent(this@SelectionActivity, CitySlotActivity::class.java)
-                    toCitySlotActivity.putExtra("city", selectedCity)
-                    toCitySlotActivity.putExtra("date", selectedDate)
-                    toCitySlotActivity.putExtra("jsonString", response.toString())
-                    // Turn to CitySlotActivity
-                    startActivity(toCitySlotActivity)
-                },
-                Response.ErrorListener { error ->
-                    Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
-                }
-            )
-
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 
     // cache city list

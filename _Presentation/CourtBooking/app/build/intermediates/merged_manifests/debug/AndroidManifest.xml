@@ -25,6 +25,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.courtbooking.CreateBookingActivity"
+            android:label="Create A Booking" >
+        </activity>
+        <activity
             android:name="com.example.courtbooking.PlayerBookingActivity"
             android:label="My Bookings" />
         <activity

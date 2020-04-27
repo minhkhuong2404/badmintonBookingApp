@@ -5,22 +5,23 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.courtbooking.PlayerBookingActivity
+import com.example.courtbooking.CreateBookingActivity
 import com.example.courtbooking.R
-import com.example.courtbooking.SelectionActivity
 import kotlinx.android.synthetic.main.slot.view.*
 
-class SlotAdapter(private val slotList: ArrayList<Slot>, private val parentContext: Context) :
+class SlotAdapter(
+    private val slotList: ArrayList<Slot>,
+    private val parentContext: Context,
+    private val playerId: String,
+    private val selectedCity: String,
+    private val selectedDate: String
+) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
 
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,13 +38,8 @@ class SlotAdapter(private val slotList: ArrayList<Slot>, private val parentConte
         holder.slotBtn.text = currentItem.id.split("/").last()
         holder.setIsRecyclable(false)
         holder.slotBtn.setOnClickListener {
-//            Log.i(
-//                "Slot",
-//                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-//            )
-//            //clickListener.onClickListener(listOf(currentItem.time), holder.adapterPosition)
-//            clickListener.onClickListener(currentItem, holder.adapterPosition)
-            createBookingDialog(parentContext, currentItem, "player1", position)
+            // Show confirm booking creation dialog
+            createBookingDialog(parentContext, currentItem, playerId, position)
         }
     }
 
@@ -53,14 +49,22 @@ class SlotAdapter(private val slotList: ArrayList<Slot>, private val parentConte
         val center = slot.id.split("/")[0]
         val court = slot.id.split("/")[1]
         val time_slot = slot.id.split("/")[2]
+        val start = time_slot.split(" - ").get(0)
+        val end = time_slot.split(" - ").get(1)
 
         val positiveButtonClick = { dialog: DialogInterface, which: Int ->
-            // handle create booking
+            // Prepare intent
+            val toCreateBookingActivity = Intent(parentContext, CreateBookingActivity::class.java)
+            toCreateBookingActivity.putExtra("player", playerId)
+            toCreateBookingActivity.putExtra("city", selectedCity)
+            toCreateBookingActivity.putExtra("date", selectedDate)
+            toCreateBookingActivity.putExtra("center", center)
+            toCreateBookingActivity.putExtra("court", court)
+            toCreateBookingActivity.putExtra("start", start)
+            toCreateBookingActivity.putExtra("end", end)
 
-            // Preparing to next activity
-            val toPlayerBookingActivity = Intent(parentContext, PlayerBookingActivity::class.java)
-            // To next activity
-            startActivity(parentContext, toPlayerBookingActivity, Bundle())
+            // Go to CreateBookingActivity
+            startActivity(parentContext, toCreateBookingActivity, Bundle())
         }
         val negativeButtonClick = { dialog: DialogInterface, which: Int ->
             // handle cancel create booking
@@ -69,9 +73,12 @@ class SlotAdapter(private val slotList: ArrayList<Slot>, private val parentConte
         val builder = AlertDialog.Builder(context)
         with(builder)
         {
-            setTitle("Create new booking")
-            setMessage("Place: $center, $court. Time slot: $time_slot.")
-            setPositiveButton("CREATE", DialogInterface.OnClickListener(function = positiveButtonClick))
+            setTitle("Confirm booking creation")
+            setMessage("On ${selectedDate} with time slot from $start to $end in city $selectedCity center $center court $court. Do you want to create?")
+            setPositiveButton(
+                "CREATE",
+                DialogInterface.OnClickListener(function = positiveButtonClick)
+            )
             setNegativeButton("CANCEL", negativeButtonClick)
             show()
         }

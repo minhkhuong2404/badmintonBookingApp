@@ -13,7 +13,13 @@ import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.center.view.*
 
 
-class CenterAdapter(private val centerList: List<Center>, private val parentContext: Context) :
+class CenterAdapter(
+    private val centerList: List<Center>,
+    private val parentContext: Context,
+    private val playerId: String,
+    private val selectedCity: String,
+    private val selectedDate: String
+) :
     RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
     private var viewPool = RecyclerView.RecycledViewPool()
 
@@ -36,7 +42,10 @@ class CenterAdapter(private val centerList: List<Center>, private val parentCont
             layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
             adapter = CourtAdapter(
                 currentCenter.courtList,
-                parentContext
+                parentContext,
+                playerId,
+                selectedCity,
+                selectedDate
             )
             setRecycledViewPool(viewPool)
         }

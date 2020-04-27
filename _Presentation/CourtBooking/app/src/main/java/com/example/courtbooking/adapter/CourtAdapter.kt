@@ -1,7 +1,6 @@
 package com.example.courtbooking.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,10 @@ import kotlinx.android.synthetic.main.court.view.*
 
 class CourtAdapter(
     private val courtList: ArrayList<Court>,
-    private val parentContext : Context
+    private val parentContext: Context,
+    private val playerId: String,
+    private val selectedCity: String,
+    private val selectedDate: String
     ) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
 
     // Constants
@@ -75,7 +77,10 @@ class CourtAdapter(
             )
             adapter = SlotAdapter(
                 currentCourt.slotList,
-                parentContext
+                parentContext,
+                playerId,
+                selectedCity,
+                selectedDate
             )
             setRecycledViewPool(viewPool)
         }

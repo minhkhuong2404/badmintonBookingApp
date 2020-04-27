@@ -4,17 +4,27 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.example.courtbooking.adapter.Center
 import com.example.courtbooking.adapter.CenterAdapter
 import com.example.courtbooking.adapter.Court
 import com.example.courtbooking.adapter.Slot
+import com.example.courtbooking.request.ApiUtils
+import com.example.courtbooking.request.MySingleton
+import com.facebook.AccessToken
 import kotlinx.android.synthetic.main.activity_city_slot.*
 import org.json.JSONArray
 import org.json.JSONObject
 
 class CitySlotActivity : AppCompatActivity() {
+    // User vars
+    lateinit var accessToken: AccessToken
+    lateinit var playerId: String
     lateinit var selectedCity: String
     lateinit var selectedDate: String
 
@@ -22,16 +32,47 @@ class CitySlotActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city_slot)
 
+        // get data from previous activity
+        playerId = intent.getStringExtra("player")
         selectedCity = intent.getStringExtra("city")
         selectedDate = intent.getStringExtra("date")
-        val jsonString = intent.getStringExtra("jsonString")
 
+        // request available slot to server
+        requestCitySlot(playerId, selectedCity, selectedDate)
+    }
+
+    // request available slot
+    private fun requestCitySlot(player: String, city: String, date: String) {
+        // Preparing query
+        var query = "?id=$city&date=$date"
+
+        // Get a RequestQueue
+        val jsonObjectRequest =
+            JsonObjectRequest(
+                Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
+                Response.Listener { response ->
+                    Log.i("City Slot", "Response: %s".format(response.toString()))
+                    // data for center adapter
+                    var centerList = serializeJson(response.toString())
+                    // show available slot
+                    initRecyclerViewCenter(centerList, playerId, selectedCity, selectedDate)
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
+                }
+            )
+
+        // Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
+    }
+
+    // serialize json for recycler view
+    private fun serializeJson(jsonString: String): ArrayList<Center> {
+        // return
+        var centerList = ArrayList<Center>()
 
         var cityObj = JSONObject(jsonString)
         var cityIter = cityObj.keys()
-
-        var centerList = ArrayList<Center>()
-
         while (cityIter.hasNext()) {
             var centerKey = cityIter.next()
             Log.i("Center", "$centerKey")
@@ -58,89 +99,34 @@ class CitySlotActivity : AppCompatActivity() {
             var center = Center(centerKey, courtList)
             centerList.add(center)
         }
-
-        initRecyclerViewCenter(centerList)
-
-        // For testing
-        Log.i("CitySlotActivity", "City: $selectedCity | Date: $selectedDate")
-        Log.i("CitySlotActivity", "Data Response: $jsonString")
+        return centerList
     }
-
 
     // init recycler view center
     @SuppressLint("WrongConstant")
-    private fun initRecyclerViewCenter(centerList: ArrayList<Center>) {
+    private fun initRecyclerViewCenter(
+        centerList: ArrayList<Center>,
+        player: String,
+        city: String,
+        date: String
+    ) {
         // Calling the recycler view for Center
         rv_center.apply {
             layoutManager = LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
             adapter = CenterAdapter(
                 centerList,
-                this@CitySlotActivity
+                this@CitySlotActivity,
+                player,
+                city,
+                date
             )
             setHasFixedSize(true)
         }
     }
-//    override fun passDataCallback(slot: Slot) {
-//        Toast.makeText(this, ("You choose " + dateChooser.text + "\n" + cityChooser.selectedItem + "\n" + slot.id), Toast.LENGTH_SHORT).show()
-//
-//        val slotInfo = slot.id.split("/")
-//
-//        val date = dateChooser.text.toString()
-//        val city = cityChooser.selectedItem.toString()
-//        val center = slotInfo[0]    // get center
-//        val court = slotInfo[1]     // get court
-//        val slot = slotInfo[2]      // slot
-//
-//        val fm=supportFragmentManager
-//        val requestFragment =
-//            AskForBookingFragment(
-//                date,
-//                city,
-//                center,
-//                court,
-//                slot,
-//                0, // booking number of user
-//                this
-//            )
-//        requestFragment.show(fm, "Booking Request")
-//    }
-//
-//    // override method callback from interface AskForBookingFragment.CallbackRequestFragment
-//    // when the user choose 'yes' for a booking requirement in AskForBookingFragment, open BookingFragment
-//    override fun callBack(date: String, city: String, center: String, court: String, slot: String) {
-//        val fm= supportFragmentManager
-//        val bookingFragment = BookingFragment(
-//            date,
-//            city,
-//            center,
-//            court,
-//            slot,
-//            this,
-//            this
-//        )
-//        bookingFragment.show(fm, "Booking Process")
-//    }
-//
-//    // override method callBackFail from interface AskForBookingFragment.CallbackRequestFragment
-//    // when the user choose 'yes' for a booking requirement but the number of booking and ending is already 3
-//    // open MoreThan3Fragment to inform the user
-//    override fun callBackFail() {
-//        val fm= supportFragmentManager
-//        val bookingFragment = MoreThan3Fragment()
-//        bookingFragment.show(fm, "Booking Stop")
-//    }
-//
-//
-//
-//    // override method confirm from interface BookingFragment.ConfirmBookingInterface
-//    // when the user confirm the booking in BookingFragment after fill in all information
-//    // open FinishBookingFragment to inform the user
-//    override fun confirm(date: String, city: String, center: String, court: String, slot: String, start: String, end: String) {
-//        val fm= supportFragmentManager
-//        val bookingFragment = FinishBookingFragment(date, city, center, court, start, end, this)
-//        bookingFragment.show(fm, "Booking Finish")
-//
-//        //sendPostBooking(date, start, end, city, center, court, userId)
-//        Toast.makeText(this, "User id: $userId\nDate: $date\nCenter: $center\nCourt: $court\nSlot: $slot\nStart: $start End: $end", Toast.LENGTH_SHORT).show()
-//    }
+    // reload slot when go back
+    override fun onResume() {
+        super.onResume()
+        // request available slot to server
+        requestCitySlot(playerId, selectedCity, selectedDate)
+    }
 }

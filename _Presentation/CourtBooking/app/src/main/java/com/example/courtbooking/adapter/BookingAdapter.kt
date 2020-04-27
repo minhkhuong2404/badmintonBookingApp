@@ -137,7 +137,7 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
         cancelObj.put("playerid", playerId)
 
         // Get a RequestQueue
-        val jsonArrayRequest = JsonObjectRequest(
+        val jsonObjectRequest = JsonObjectRequest(
             Request.Method.POST, ApiUtils.URL_BOOKING_CANCEL, cancelObj,
             Response.Listener { response ->
                 val result_code = response.getString("code")
@@ -162,6 +162,6 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
         )
 
         // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(tvId.context).addToRequestQueue(jsonArrayRequest)
+        MySingleton.getInstance(tvId.context).addToRequestQueue(jsonObjectRequest)
     }
 }

@@ -21,10 +21,13 @@ import org.json.JSONArray
 
 
 class PlayerBookingActivity : AppCompatActivity() {
+    // User vars
+    // User vars
     lateinit var accessToken: AccessToken
-    lateinit var cityid: String
-    lateinit var date: String
-    lateinit var playerid: String
+    lateinit var playerId : String
+    lateinit var selectedCity: String
+    lateinit var selectedDate: String
+    // View
     lateinit var noBookingTextview : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,35 +37,34 @@ class PlayerBookingActivity : AppCompatActivity() {
         // create no booking text view
         noBookingTextview = findViewById(R.id.noBookingTextView)
 
-        // get response json from previous activity
-        cityid = intent.getStringExtra("cityid")
-        date = intent.getStringExtra("date")
+        // get data from previous activity
+        selectedCity = intent.getStringExtra("city")
+        selectedDate = intent.getStringExtra("date")
+        playerId = intent.getStringExtra("player")
+        var jsonString = intent.getStringExtra("jsonString")
 
-        var jsonString: String = intent.getStringExtra("jsonString")
-        // json string to json array
-        val bookingJSONArray = JSONArray(jsonString)
-
-        if (bookingJSONArray.length() > 0) {
-            // hide no booking text view
-            findViewById<TextView>(R.id.noBookingTextView).visibility = View.INVISIBLE
-            // display data
-            initRecyclerViewBooking(bookingJSONArray)
-        }
-        requestPlayerBooking("player1", cityid, date)
+        // requestPlayerBooking to server
+        requestPlayerBooking(playerId, selectedCity, selectedDate)
     }
 
     // request player booking list
-    private fun requestPlayerBooking(playerid: String, cityid: String, date: String) {
+    private fun requestPlayerBooking(player: String, city: String, date: String) {
         // Preparing query
-        var query = "?id=$playerid&cityid=$cityid&date=$date"
+        var query = "?id=$player&cityid=$city&date=$date"
 
         // Get a RequestQueue
         val jsonArrayRequest =
             JsonArrayRequest(
                 Request.Method.GET, ApiUtils.URL_GET_BOOKING_BY_PLAYER + query, null,
                 Response.Listener { response ->
-                    Log.i("player booking response", "Response: %s".format(response.toString()))
-                    initRecyclerViewBooking(response)
+                    Log.i("Player Booking", "Response: %s".format(response.toString()))
+                    // initialize recycler view booking
+                    if (response.length() > 0) {
+                        // hide no booking text view
+                        findViewById<TextView>(R.id.noBookingTextView).visibility = View.INVISIBLE
+                        // display data
+                        initRecyclerViewBooking(response)
+                    }
                 },
                 Response.ErrorListener { error ->
                     Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
@@ -72,7 +74,6 @@ class PlayerBookingActivity : AppCompatActivity() {
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
     }
-
 
     // init recycler view booking
     private fun initRecyclerViewBooking(bookingList: JSONArray) {

@@ -116,6 +116,10 @@
         "source": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/res/layout/fragment_ask_for_booking.xml"
     },
     {
+        "merged": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/layout_activity_create_booking.xml.flat",
+        "source": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/res/layout/activity_create_booking.xml"
+    },
+    {
         "merged": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/build/intermediates/res/merged/debug/layout_court.xml.flat",
         "source": "/Users/steven/Github/teamepe2020/_Presentation/CourtBooking/app/src/main/res/layout/court.xml"
     },

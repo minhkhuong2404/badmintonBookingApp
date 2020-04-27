@@ -14,6 +14,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CreateBookingActivity"
+            android:label="Create A Booking">
+
+        </activity>
+        <activity
             android:name=".PlayerBookingActivity"
             android:label="My Bookings" />
         <activity
@@ -24,6 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
