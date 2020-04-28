@@ -254,7 +254,6 @@ class CreateBookingActivity : AppCompatActivity() {
             Request.Method.GET, ApiUtils.URL_GET_CENTER_MIN_LENGTH + query,
             Response.Listener { response -> // Display the first 500 characters of the response string.
                 min = response.toInt()
-                Log.i("fjdfdfdsjghffd", "dljfdskjfhkjdhfdk")
             }, Response.ErrorListener {
                 //
             })

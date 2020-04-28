@@ -23,19 +23,19 @@ public abstract class CourtSlot {
 
         for (Booking booking : bookingArrayList) {
             // split the slot
-            splitSlot(courtSlot, booking);
+            //splitSlot(courtSlot, booking);
         }
         return courtSlot;
     }
 
-    protected void splitSlot(ArrayList<Slot> slotArrayList, Booking booking) {
+    protected void splitSlot(Integer minLength, ArrayList<Slot> slotArrayList, Booking booking) {
         Slot slot = slotArrayList.get(slotArrayList.size() - 1);
 
-        if (leftMinusRight(slot.getEnd(), booking.getEnd()) >= 45) {
+        if (leftMinusRight(slot.getEnd(), booking.getEnd()) >= minLength) {
             slotArrayList.add(new Slot(booking.getEnd(), slot.getEnd()));
         }
 
-        if (leftMinusRight(booking.getStart(), slot.getStart()) >= 45) {
+        if (leftMinusRight(booking.getStart(), slot.getStart()) >= minLength) {
             slot.setEnd(booking.getStart());
         } else {
             slotArrayList.remove(slot);

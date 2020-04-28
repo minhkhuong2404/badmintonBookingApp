@@ -28,7 +28,8 @@ public class CitySlot extends CourtSlot {
         for (Booking booking : this.getBookingArrayList()) {
             String centerId = booking.getCenterId();
             String courtId = booking.getCourtId();
-            splitSlot(citySlot.get(centerId).get(courtId), booking);
+            Integer minLength = SQLStatement.getCenterMinLength(centerId);
+            splitSlot(minLength, citySlot.get(centerId).get(courtId), booking);
         }
         return citySlot;
     }

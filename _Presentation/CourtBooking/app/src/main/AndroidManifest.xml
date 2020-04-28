@@ -22,6 +22,9 @@
             android:name=".PlayerBookingActivity"
             android:label="My Bookings" />
         <activity
+            android:name=".CenterActivity"
+            android:label="Center Activity" />
+        <activity
             android:name=".CitySlotActivity"
             android:label="Available Slots" />
         <activity

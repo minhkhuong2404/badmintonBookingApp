@@ -8,7 +8,7 @@ BEGIN
 IF NOT EXISTS (SELECT * FROM center WHERE center_id = centerId)
 THEN SET resultCode ="GCH-000";
 ELSE
-SELECT h.city_id, h.holiday_day, h.holiday_month, c.center_id
+SELECT h.holiday_day, h.holiday_month
 FROM holiday h, center c
 WHERE h.city_id = c.city_id and c.center_id = centerId;
 SET resultCode = '200';

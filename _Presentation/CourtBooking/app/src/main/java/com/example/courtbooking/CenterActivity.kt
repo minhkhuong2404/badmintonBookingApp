@@ -2,13 +2,13 @@ package com.example.courtbooking
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
 import org.json.JSONArray
@@ -26,8 +26,8 @@ class CenterActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.centerIdTextView).text = "Center $centerId"
 
-        requestCenterHoliday(centerId)
-        requestCenterOpeningHour(centerId)
+//        requestCenterHoliday(centerId)
+//        requestCenterOpeningHour(centerId)
 
 
     }
@@ -72,8 +72,8 @@ class CenterActivity : AppCompatActivity() {
         var query = "?id=$centerId"
 
         // Get a RequestQueue
-        val jsonArrayRequest =
-            JsonArrayRequest(
+        val jsonObjectRequest =
+            JsonObjectRequest(
                 Request.Method.GET, ApiUtils.URL_GET_CENTER_OPENING_HOUR + query, null,
                 Response.Listener { response ->
                     Log.i("Center Opening hour", "Response: %s".format(response.toString()))
@@ -89,8 +89,7 @@ class CenterActivity : AppCompatActivity() {
                         openingList += openingKey + ": " + openingHour + "\n"
                     }
 
-                    findViewById<TextView>(R.id.centerOpeningTextView).text = openingList
-
+                    //findViewById<TextView>(R.id.centerOpeningTextView).text = openingList
 
                 },
                 Response.ErrorListener { error ->
@@ -99,7 +98,7 @@ class CenterActivity : AppCompatActivity() {
             )
 
         // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
 
 //    // request center opening hour

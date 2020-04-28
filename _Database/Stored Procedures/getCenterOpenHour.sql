@@ -8,7 +8,7 @@ BEGIN
 IF NOT EXISTS (SELECT * FROM center WHERE center_id = centerId)
 THEN SET resultCode ="GCH-000";
 ELSE
-SELECT *
+SELECT open_hour, close_hour, date_of_week
 FROM openhour
 WHERE center = centerId;
 SET resultCode = '200';

@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS center;
 CREATE TABLE center(
   center_id varchar(50) NOT NULL PRIMARY KEY,
   city_id varchar(50) NOT NULL,
+  min_length int default 45,
   CONSTRAINT city_fk
 	 FOREIGN KEY (city_id) REFERENCES city (city_id) ON DELETE CASCADE
 );
@@ -24,7 +25,6 @@ CREATE TABLE court(
 	 FOREIGN KEY (center_id) REFERENCES center (center_id) ON DELETE CASCADE,
   CONSTRAINT court_city_fk   
      FOREIGN KEY (city_id) REFERENCES city (city_id) ON DELETE CASCADE
-     
 );
 
 DROP TABLE IF EXISTS staff;

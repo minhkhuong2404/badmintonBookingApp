@@ -1,9 +1,7 @@
 package com.example.courtbooking.adapter
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +13,6 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.CenterActivity
-import com.example.courtbooking.CreateBookingActivity
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.center.view.*
 

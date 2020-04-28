@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CenterSlot extends CourtSlot {
-
+    private String centerId;
     public CenterSlot(String centerId, ArrayList<Booking> bookingArrayList) throws SQLException {
         // TODO: check center existence
         super(centerId, bookingArrayList);
+        this.centerId = centerId;
     }
 
     public HashMap<String, ArrayList<Slot>> getCenterSlot() throws SQLException {
@@ -23,7 +24,8 @@ public class CenterSlot extends CourtSlot {
 
         for (Booking booking : this.getBookingArrayList()) {
             String courtId = booking.getCourtId();
-            splitSlot(centerSlot.get(courtId), booking);
+            Integer minLength = SQLStatement.getCenterMinLength(centerId);
+            splitSlot(minLength, centerSlot.get(courtId), booking);
         }
 
         return centerSlot;

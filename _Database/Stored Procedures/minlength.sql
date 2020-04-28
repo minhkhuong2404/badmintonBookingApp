@@ -2,7 +2,6 @@ DROP PROCEDURE IF EXISTS getCenterMinLength;
 DELIMITER //
 CREATE PROCEDURE getCenterMinLength(
   in centerId varchar(50),
-  out min_length int,
   out resultCode varchar(50))
 BEGIN
 
@@ -18,5 +17,4 @@ end//
 DELIMITER ;
 
 
-call getCenterMinLength("A1", @min_length, @out);
-select @min_length;
+call getCenterMinLength("A1", @out);

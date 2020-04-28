@@ -28,5 +28,5 @@ DELIMITER ;
 
 -- call getCityBookings("A", date("2020-05-10"), @code);
 
-call getCityBookings("B", date("2020-09-02"), @code);
+call getCityBookings("A", date("2020-09-02"), @code);
 select @code;

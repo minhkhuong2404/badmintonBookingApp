@@ -32,6 +32,9 @@
             android:name="com.example.courtbooking.PlayerBookingActivity"
             android:label="My Bookings" />
         <activity
+            android:name="com.example.courtbooking.CenterActivity"
+            android:label="Center Activity" />
+        <activity
             android:name="com.example.courtbooking.CitySlotActivity"
             android:label="Available Slots" />
         <activity

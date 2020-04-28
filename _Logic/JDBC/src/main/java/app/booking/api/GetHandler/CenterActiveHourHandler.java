@@ -45,7 +45,7 @@ public class CenterActiveHourHandler extends GetHandler {
         String centerid = params.get("id").get(0);
 
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, String> activeHour = SQLStatement.getCenterActiveHour("A1");
+        Map<String, String> activeHour = SQLStatement.getCenterActiveHour(centerid);
         String rsp = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(activeHour);
 
         return new ResponseEntity<>(rsp,
