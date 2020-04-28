@@ -3,6 +3,7 @@ package app.booking.Server;
 import app.booking.api.GetHandler.*;
 import app.booking.api.PostHandler.BookingCancelHandler;
 import app.booking.api.PostHandler.BookingCreateHandler;
+import app.booking.db.Center;
 import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpServer;
 
@@ -45,6 +46,11 @@ public class ApiServer {
         BookingCancelHandler bookingCancelHandler = new BookingCancelHandler(getObjectMapper(), getErrorHandler());
         server.createContext(Constants.URL_BOOKING_CANCEL, bookingCancelHandler::handle);
 
+        CenterActiveHourHandler centerActiveHourHandler = new CenterActiveHourHandler(getErrorHandler());
+        HttpContext getCenterActiveHour = server.createContext(Constants.URL_GET_CENTER_ACTIVE_HOUR, centerActiveHourHandler::handle);
+
+        CenterHolidayHandler centerHolidayHandler = new CenterHolidayHandler(getErrorHandler());
+        HttpContext getCenterHoliday = server.createContext(Constants.URL_GET_CENTER_HOLIDAY, centerHolidayHandler::handle);
 
 
 //        // POST Context

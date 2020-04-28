@@ -4,6 +4,8 @@ import lombok.Data;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 public class SQLStatement {
@@ -618,6 +620,75 @@ public class SQLStatement {
             System.out.println("getPlayerBookings returns empty list");
 
         return new BookingResultSet(resultCode, bookingList);
+    }
+    // getCourtBookings
+    public static Map<String, String> getCenterActiveHour(String centerId) throws NullPointerException, SQLException {
+        CallableStatement stm = null;
+         Map<String, String> activeHour = new HashMap<>();
+
+        try {
+            stm = conn.prepareCall("{ CALL getCenterOpenHour(?, ?) }");
+            stm.setString(1, centerId);
+            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.executeUpdate();
+            String resultCode = stm.getString(2);
+            ResultSet resultSet = stm.getResultSet();
+            System.out.println("getCenterOpenHour() executed with result code: " + resultCode);
+
+            while (resultSet.next()) {
+                String openclose = resultSet.getString("open_hour") + "/" +
+                        resultSet.getString("close_hour");
+                activeHour.put(
+                        resultSet.getString("date_of_week"),
+                        openclose
+                );
+            }
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (activeHour.isEmpty())
+            System.out.println("getCenterOpenHour returns empty list");
+        return activeHour;
+    }
+
+    public static ArrayList<String> getCenterHoliday(String centerId) throws NullPointerException, SQLException {
+        CallableStatement stm = null;
+        ArrayList<String> centerHoliday = new ArrayList<>();
+
+        try {
+            stm = conn.prepareCall("{ CALL getCenterHoliday(?, ?) }");
+            stm.setString(1, centerId);
+            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.executeUpdate();
+            String resultCode = stm.getString(2);
+            ResultSet resultSet = stm.getResultSet();
+            System.out.println("getCenterHoliday() executed with result code: " + resultCode);
+
+            while (resultSet.next()) {
+                String holiday = resultSet.getInt("holiday_day") + "/" +
+                        resultSet.getInt("holiday_month");
+                centerHoliday.add(holiday);
+            }
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (centerHoliday.isEmpty())
+            System.out.println("getCenterHoliday returns empty list");
+        return centerHoliday;
     }
 }
 
