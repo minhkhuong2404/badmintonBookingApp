@@ -8,6 +8,8 @@ public class Constants {
     public static final String URL_GET_CITY_ALL = "/api/city/all";
     public static final String URL_GET_BOOKING_BY_PLAYER = "/api/booking/player";
     public static final String URL_GET_CITY_SLOT = "/api/city/slot";
+    public static final String URL_GET_CENTER_ACTIVE_HOUR = "/api/center/holiday";
+    public static final String URL_GET_CENTER_HOLIDAY = "/api/center/activehour";
 
     // URL POST
     public static final String URL_BOOKING_CREATE = "/api/booking/create";
