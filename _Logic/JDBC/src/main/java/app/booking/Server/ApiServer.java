@@ -52,6 +52,8 @@ public class ApiServer {
         CenterHolidayHandler centerHolidayHandler = new CenterHolidayHandler(getErrorHandler());
         HttpContext getCenterHoliday = server.createContext(Constants.URL_GET_CENTER_HOLIDAY, centerHolidayHandler::handle);
 
+        CenterMinLengthHandler centerMinLength = new CenterMinLengthHandler(getErrorHandler());
+        HttpContext getCenterMinLength = server.createContext(Constants.URL_GET_CENTER_MIN_LENGTH, centerMinLength::handle);
 
 //        // POST Context
 //        CreateBookingPostHandler createBookingHandler = new CreateBookingPostHandler(getObjectMapper(), getErrorHandler());

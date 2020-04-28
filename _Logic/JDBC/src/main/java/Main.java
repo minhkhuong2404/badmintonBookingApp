@@ -31,7 +31,7 @@ public class Main {
         System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(activeHour));
 
         mapper = new ObjectMapper();
-        ArrayList<String> centerHoliday = SQLStatement.getCenterHoliday("A1");
-        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(centerHoliday));
+        int centerHoliday = SQLStatement.getCenterMinLength("A1");
+        System.out.println(centerHoliday);
     }
 }

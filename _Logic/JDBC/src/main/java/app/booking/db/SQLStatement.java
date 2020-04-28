@@ -690,5 +690,34 @@ public class SQLStatement {
             System.out.println("getCenterHoliday returns empty list");
         return centerHoliday;
     }
+
+    public static int getCenterMinLength(String centerId) throws NullPointerException, SQLException {
+        CallableStatement stm = null;
+        ArrayList<String> centerHoliday = new ArrayList<>();
+        int min = 45;
+        try {
+            stm = conn.prepareCall("{ CALL getCenterMinLength(?, ?) }");
+            stm.setString(1, centerId);
+            stm.registerOutParameter(2, Types.VARCHAR);
+            stm.executeUpdate();
+            String resultCode = stm.getString(2);
+            ResultSet resultSet = stm.getResultSet();
+            System.out.println("getCenterMinLength() executed with result code: " + resultCode);
+
+            resultSet.next();
+            min = resultSet.getInt("min_length");
+
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        return min;
+    }
 }
 
