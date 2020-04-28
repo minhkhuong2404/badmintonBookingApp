@@ -10,7 +10,7 @@ BEGIN
 IF NOT playerId REGEXP '^[a-zA-Z0-9]*$'
 THEN SET resultCode = 'GPB-000';
 ELSEIF NOT EXISTS (SELECT * FROM booking WHERE city_id = cityId)
-THEN SET resultCode = "GPB-001";
+THEN SET resultCode = "GPB-002";
 ELSEIF NOT EXISTS (SELECT * FROM booking WHERE player_id = playerId)
 THEN SET resultCode = "GPB-001";
 ELSE select * 

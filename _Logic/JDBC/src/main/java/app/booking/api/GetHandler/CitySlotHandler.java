@@ -4,6 +4,7 @@ import app.booking.api.Constants;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
 import app.booking.db.Booking;
+import app.booking.db.BookingResultSet;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
@@ -50,14 +51,20 @@ public class CitySlotHandler extends GetHandler{
         // TODO: handle the case of missing/incorrect params
 
         // Get bookings of city
-        ArrayList<Booking> bookingArrayList = SQLStatement.getCityBookings(cityId, date);
+        BookingResultSet resultSet = SQLStatement.getCityBookings(cityId, date);
+        String resultCode = resultSet.getResultCode();
+        ArrayList<Booking> bookingArrayList = resultSet.getBookingArrayList();
 
-        // Get city slot
-        CitySlot citySlot = new CitySlot(cityId, bookingArrayList);
-        HashMap<String, HashMap<String, ArrayList<Slot>>> slotMap = citySlot.getCitySlot();
+        if (resultCode.equals("200")){
+            // Get city slot
+            CitySlot citySlot = new CitySlot(cityId, bookingArrayList);
+            HashMap<String, HashMap<String, ArrayList<Slot>>> slotMap = citySlot.getCitySlot();
+            String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(slotMap);
+            return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        } else {
+            return new ResponseEntity<>(resultCode, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.NOT_FOUND);
+        }
 
-        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(slotMap);
-
-        return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+//        return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.NOT_FOUND);
     }
 }

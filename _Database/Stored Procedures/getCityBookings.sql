@@ -8,8 +8,14 @@ BEGIN
 
 IF NOT cityId REGEXP '^[a-zA-Z0-9]*$'
 THEN SET resultCode = 'GCB-000';
-ELSEIF NOT EXISTS (SELECT * FROM booking WHERE city_id = cityId)
+ELSEIF NOT EXISTS (SELECT * FROM city WHERE city_id = cityId)
 THEN SET resultCode ="GCB-001";
+ELSEIF EXISTS (SELECT * 
+				FROM holiday 
+				WHERE city_id = cityId and 
+                holiday_day = day(pdate) and
+                holiday_month = month(pdate))
+THEN SET resultCode ="GCB-HOL";
 ELSE
 	select * 
     from booking 
@@ -21,3 +27,6 @@ end//
 DELIMITER ;
 
 -- call getCityBookings("A", date("2020-05-10"), @code);
+
+call getCityBookings("B", date("2020-09-02"), @code);
+select @code;

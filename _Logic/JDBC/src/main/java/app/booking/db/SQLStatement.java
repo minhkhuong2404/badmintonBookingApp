@@ -442,17 +442,17 @@ public class SQLStatement {
         return cityCenterCourtList;
     }
     // getCityBookings
-    public static ArrayList<Booking> getCityBookings(String cityId, Date pdate) throws NullPointerException, SQLException {
+    public static BookingResultSet getCityBookings(String cityId, Date pdate) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<Booking>();
-
+        String resultCode = "GCB-404";
         try {
             stm = conn.prepareCall("{ CALL getCityBookings(?, ?, ?) }");
             stm.setString(1, cityId);
             stm.setDate(2, pdate);
             stm.registerOutParameter(3, Types.VARCHAR);
             stm.executeUpdate();
-            String resultCode = stm.getString(3);
+            resultCode = stm.getString(3);
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getCityBookings() executed with result code: " + resultCode);
 
@@ -483,7 +483,7 @@ public class SQLStatement {
         if (bookingList.isEmpty())
             System.out.println("getCourtBookings returns empty list");
 
-        return bookingList;
+        return new BookingResultSet(resultCode, bookingList);
     }
 
     // getCenterBookings
@@ -576,10 +576,10 @@ public class SQLStatement {
         return bookingList;
     }
 
-    public static ArrayList<Booking> getPlayerBookings(String playerId, String cityId, Date date) throws NullPointerException, SQLException {
+    public static BookingResultSet getPlayerBookings(String playerId, String cityId, Date date) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
-
+        String resultCode = "GPB-404";
         try {
             stm = conn.prepareCall("{ CALL getPlayerBookings(?, ?, ?, ?) }");
             stm.setString(1, playerId);
@@ -587,7 +587,7 @@ public class SQLStatement {
             stm.setDate(3, date);
             stm.registerOutParameter(4, Types.VARCHAR);
             stm.executeUpdate();
-            String resultCode = stm.getString(4);
+            resultCode = stm.getString(4);
             ResultSet resultSet = stm.getResultSet();
             System.out.println("getPlayerBookings() executed with result code: " + resultCode);
             while (resultSet.next()) {
@@ -617,7 +617,7 @@ public class SQLStatement {
         if (bookingList.isEmpty())
             System.out.println("getPlayerBookings returns empty list");
 
-        return bookingList;
+        return new BookingResultSet(resultCode, bookingList);
     }
 }
 

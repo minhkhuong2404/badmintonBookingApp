@@ -4,6 +4,7 @@ import app.booking.api.Constants;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
 import app.booking.db.Booking;
+import app.booking.db.BookingResultSet;
 import app.booking.db.JsonConverter;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
@@ -50,9 +51,15 @@ public class PlayerBookingHandler extends GetHandler {
 
         // TODO: handle the case of missing/incorrect params
 
-        ArrayList<Booking> ls = SQLStatement.getPlayerBookings(playerid, cityid, date);
+        BookingResultSet resultSet = SQLStatement.getPlayerBookings(playerid, cityid, date);
+        String resultCode = resultSet.getResultCode();
+        ArrayList<Booking> bookingArrayList = resultSet.getBookingArrayList();
 
-        String rsp = JsonConverter.convert(ls);
-        return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        if (resultCode.equals("200")) {
+            String rsp = JsonConverter.convert(bookingArrayList);
+            return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        } else {
+            return new ResponseEntity<>(resultCode, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.NOT_FOUND);
+        }
     }
 }
