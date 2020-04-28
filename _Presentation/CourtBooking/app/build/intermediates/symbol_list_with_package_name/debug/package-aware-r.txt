@@ -1655,6 +1655,7 @@ id groups
 id headerTV
 id headerTextView
 id hideable
+id holidayTextView
 id home
 id homeAsUp
 id horizontal

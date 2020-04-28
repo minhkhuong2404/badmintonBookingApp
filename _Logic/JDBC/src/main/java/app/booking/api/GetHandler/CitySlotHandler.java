@@ -31,9 +31,9 @@ public class CitySlotHandler extends GetHandler{
         String response;
         if ("GET".equals(exchange.getRequestMethod())) {
             ResponseEntity e = doGet(exchange.getRequestBody());
-            exchange.getResponseHeaders().putAll(e.getHeaders());
-            exchange.sendResponseHeaders(e.getStatusCode().getCode(), 0);
             response = (String) e.getBody();
+            exchange.getResponseHeaders().putAll(e.getHeaders());
+            exchange.sendResponseHeaders(e.getStatusCode().getCode(), response.length());
         } else {
             throw ApplicationExceptions.methodNotAllowed(
                     "Method " + exchange.getRequestMethod() + " is not allowed for " + exchange.getRequestURI()).get();

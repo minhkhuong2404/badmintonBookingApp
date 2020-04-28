@@ -3,7 +3,9 @@ package com.example.courtbooking
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +33,7 @@ class CitySlotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city_slot)
+        val holidayTextView = findViewById<TextView>(R.id.holidayTextView)
 
         // get data from previous activity
         playerId = intent.getStringExtra("player")
@@ -58,7 +61,16 @@ class CitySlotActivity : AppCompatActivity() {
                     initRecyclerViewCenter(centerList, playerId, selectedCity, selectedDate)
                 },
                 Response.ErrorListener { error ->
-                    Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
+                    val msg = String(error.networkResponse.data)
+                    if (msg == "GCB-HOL") {
+                        holidayTextView.visibility = View.VISIBLE
+                    }
+                    if (msg == "GCB-000") {
+                        Toast.makeText(this, "City id is not alphanumeric.", Toast.LENGTH_SHORT).show()
+                    }
+                    if (msg == "GCB-001") {
+                        Toast.makeText(this, "City is not existed.", Toast.LENGTH_SHORT).show()
+                    }
                 }
             )
 
