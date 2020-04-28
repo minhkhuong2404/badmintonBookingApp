@@ -27,6 +27,7 @@
 
 ### 1.3 Definition, Acronyms, and Abbreviations
 ## 2. Detailed System Description
+* Booking Application is the mobile application software which has online booking, via handheld as the main functions. The system has five user categories which are customer, staff. Below, all of the rights and capabilities of each user will be explained in detail.
 ### 2.1 Customer
 ### 2.2 Staff
 ## 3. Requirements
