@@ -29,8 +29,10 @@ class CreateBookingActivity : AppCompatActivity() {
         val tvDate = findViewById<TextView>(R.id.tvDate)
         val tvStart = findViewById<TextView>(R.id.tvStart)
         val tvEnd = findViewById<TextView>(R.id.tvEnd)
-        val endBtn = findViewById<Button>(R.id.endBtn)
+        val endBtn = findViewById<Button>(R.id.slotBtn)
         val doneBtn = findViewById<Button>(R.id.done)
+        val changeStartBtn = findViewById<Button>(R.id.changeStartBtn)
+        val timePicker = findViewById<TimePicker>(R.id.timepicker)
 
 //
 //        // get data from intent
@@ -51,6 +53,10 @@ class CreateBookingActivity : AppCompatActivity() {
         tvStart.text = start
         tvEnd.text = end
 //
+
+        changeStartBtn.setOnClickListener {
+
+        }
 
 //        --------------------------------------------------------------------------
 
