@@ -1,11 +1,13 @@
 package com.example.courtbooking
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
@@ -42,6 +44,9 @@ class CreateBookingActivity : AppCompatActivity() {
         var start = intent.getStringExtra("start").toString()
         var end = intent.getStringExtra("end").toString()
 
+        var minLength = 45
+        var maxLength = 90
+
         // get data from intent
         tvCity.text = city
         tvCenter.text = center
@@ -74,18 +79,30 @@ class CreateBookingActivity : AppCompatActivity() {
         startSlot = start
 
         var endForChoosing = ArrayList<String>()
-        if (toMinute(startSlot) + 45 <= toMinute(endSlot)) {
-            endForChoosing.add(toTimeString(toMinute(startTime) + 45))
-        }   // 45 minutes booking
-        if (toMinute(startSlot) + 60 <= toMinute(endSlot)) {
-            endForChoosing.add(toTimeString(toMinute(startTime) + 60))
-        }   // 60 minutes booking
-        if (toMinute(startSlot) + 75 <= toMinute(endSlot)) {
-            endForChoosing.add(toTimeString(toMinute(startTime) + 75))
-        }   // 75 minutes booking
-        if (toMinute(startSlot) + 90 <= toMinute(endSlot)) {
-            endForChoosing.add(toTimeString(toMinute(startTime) + 90))
-        }   // 90 minutes booking
+
+        var i = 0
+        // add available end time with length between minLength and maxLength
+        while(minLength + i * 15 <= maxLength) {
+            if (toMinute(startSlot) + minLength + i * 15 <= toMinute(endSlot)) {
+                endForChoosing.add(toTimeString(toMinute(startTime) + i * 15))
+                i++
+            } else {
+                break
+            }
+        }
+
+//        if (toMinute(startSlot) + 45 <= toMinute(endSlot)) {
+//            endForChoosing.add(toTimeString(toMinute(startTime) + 45))
+//        }   // 45 minutes booking
+//        if (toMinute(startSlot) + 60 <= toMinute(endSlot)) {
+//            endForChoosing.add(toTimeString(toMinute(startTime) + 60))
+//        }   // 60 minutes booking
+//        if (toMinute(startSlot) + 75 <= toMinute(endSlot)) {
+//            endForChoosing.add(toTimeString(toMinute(startTime) + 75))
+//        }   // 75 minutes booking
+//        if (toMinute(startSlot) + 90 <= toMinute(endSlot)) {
+//            endForChoosing.add(toTimeString(toMinute(startTime) + 90))
+//        }   // 90 minutes booking
         endSpinner.adapter = ArrayAdapter<String>(
             this@CreateBookingActivity,
             android.R.layout.simple_list_item_1,
@@ -106,18 +123,28 @@ class CreateBookingActivity : AppCompatActivity() {
                 startTime = startForChoosing[position] // For testing
                 endTime = toTimeString(toMinute(startTime) + 45)
                 endForChoosing = ArrayList<String>()
-                if (toMinute(startTime) + 45 <= toMinute(endSlot)) {
-                    endForChoosing.add(toTimeString(toMinute(startTime) + 45))
-                }   // 45 minutes booking
-                if (toMinute(startTime) + 60 <= toMinute(endSlot)) {
-                    endForChoosing.add(toTimeString(toMinute(startTime) + 60))
-                }   // 60 minutes booking
-                if (toMinute(startTime) + 75 <= toMinute(endSlot)) {
-                    endForChoosing.add(toTimeString(toMinute(startTime) + 75))
-                }   // 75 minutes booking
-                if (toMinute(startTime) + 90 <= toMinute(endSlot)) {
-                    endForChoosing.add(toTimeString(toMinute(startTime) + 90))
-                }   // 90 minutes booking
+                var i = 0
+                // add available end time with length between minLength and maxLength
+                while(minLength + i * 15 <= maxLength) {
+                    if (toMinute(startSlot) + minLength + i * 15 <= toMinute(endSlot)) {
+                        endForChoosing.add(toTimeString(toMinute(startTime) + i * 15))
+                        i++
+                    } else {
+                        break
+                    }
+                }
+//                if (toMinute(startTime) + 45 <= toMinute(endSlot)) {
+//                    endForChoosing.add(toTimeString(toMinute(startTime) + 45))
+//                }   // 45 minutes booking
+//                if (toMinute(startTime) + 60 <= toMinute(endSlot)) {
+//                    endForChoosing.add(toTimeString(toMinute(startTime) + 60))
+//                }   // 60 minutes booking
+//                if (toMinute(startTime) + 75 <= toMinute(endSlot)) {
+//                    endForChoosing.add(toTimeString(toMinute(startTime) + 75))
+//                }   // 75 minutes booking
+//                if (toMinute(startTime) + 90 <= toMinute(endSlot)) {
+//                    endForChoosing.add(toTimeString(toMinute(startTime) + 90))
+//                }   // 90 minutes booking
 
                 endSpinner.adapter = ArrayAdapter<String>(
                     this@CreateBookingActivity,
@@ -214,5 +241,29 @@ class CreateBookingActivity : AppCompatActivity() {
         }
 
         return result
+    }
+
+    // request player booking list
+    private fun requestCenterInfo(centerId:  String) {
+        // Preparing query
+        var query = "?id=$centerId"
+
+        // Get a RequestQueue
+        val jsonArrayRequest =
+            JsonArrayRequest(
+                Request.Method.GET, ApiUtils.URL_GET_CENTER_INFO + query, null,
+                Response.Listener { response ->
+                    Log.i("Player Booking", "Response: %s".format(response.toString()))
+
+
+
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
+                }
+            )
+
+        // Access the RequestQueue through your singleton class.
+        MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
     }
 }

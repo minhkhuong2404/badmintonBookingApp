@@ -62,6 +62,8 @@ class SlotAdapter(
             toCreateBookingActivity.putExtra("court", court)
             toCreateBookingActivity.putExtra("start", start)
             toCreateBookingActivity.putExtra("end", end)
+            toCreateBookingActivity.putExtra("Minimum length-of-playing", "45")
+            toCreateBookingActivity.putExtra("Maximum length-of-playing", "90")
 
             // Go to CreateBookingActivity
             startActivity(parentContext, toCreateBookingActivity, Bundle())

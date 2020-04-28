@@ -61,6 +61,10 @@ class CitySlotActivity : AppCompatActivity() {
                     initRecyclerViewCenter(centerList, playerId, selectedCity, selectedDate)
                 },
                 Response.ErrorListener { error ->
+<<<<<<< HEAD
+                    holiday_text_view.text = error.message
+                    Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
+=======
                     val msg = String(error.networkResponse.data)
                     if (msg == "GCB-HOL") {
                         holidayTextView.visibility = View.VISIBLE
@@ -71,6 +75,7 @@ class CitySlotActivity : AppCompatActivity() {
                     if (msg == "GCB-001") {
                         Toast.makeText(this, "City is not existed.", Toast.LENGTH_SHORT).show()
                     }
+>>>>>>> 28b1b0b7db4adb785c896d4572fd7e5d1e782693
                 }
             )
 
