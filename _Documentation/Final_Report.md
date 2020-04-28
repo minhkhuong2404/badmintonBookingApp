@@ -21,7 +21,10 @@
 
 ## 1. Introduction
 ### 1.1 Project Scope and Description
-### 1.2 Software Process Model and Team Organization
+### 1.2 Software Process Model and Team Organization  
+* In order to complete our project in total of nine months duration, what we should do exactly is following the analysis, design, and implementation and testing parts one by one and in each one of these parts returning the previous ones and do some modifications where necessary. we produced prototypes in some periods, and each prototype will have a certain part of the total project.  
+* Our project team is suitable for team organization. Decision on problems and approach are made by all of the group members. There is no hierarchy among the team members.
+
 ### 1.3 Definition, Acronyms, and Abbreviations
 ## 2. Detailed System Description
 ### 2.1 Customer
