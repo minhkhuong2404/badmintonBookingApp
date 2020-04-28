@@ -58,6 +58,7 @@ class CitySlotActivity : AppCompatActivity() {
                     initRecyclerViewCenter(centerList, playerId, selectedCity, selectedDate)
                 },
                 Response.ErrorListener { error ->
+                    holiday_text_view.text = error.message
                     Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
                 }
             )

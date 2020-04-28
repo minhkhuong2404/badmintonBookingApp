@@ -1,14 +1,21 @@
 package com.example.courtbooking.adapter
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.courtbooking.CenterActivity
+import com.example.courtbooking.CreateBookingActivity
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.center.view.*
 
@@ -48,6 +55,13 @@ class CenterAdapter(
                 selectedDate
             )
             setRecycledViewPool(viewPool)
+        }
+        holder.itemView.setOnClickListener {
+//            Log.i("bb", "Go to Center Activity")
+            val toCenterActivity = Intent(parentContext, CenterActivity::class.java)
+            toCenterActivity.putExtra("centerId", currentCenter.name)
+
+            startActivity(parentContext, toCenterActivity, Bundle())
         }
     }
     // Return the size of your dataset (invoked by the layout manager)

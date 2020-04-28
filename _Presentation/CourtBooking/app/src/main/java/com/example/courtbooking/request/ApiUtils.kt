@@ -8,6 +8,7 @@ object ApiUtils {
     const val URL_GET_CITY_ALL = BASE_URL + "/api/city/all"
     const val URL_GET_BOOKING_BY_PLAYER = BASE_URL + "/api/booking/player"
     const val URL_GET_CITY_SLOT = BASE_URL + "/api/city/slot"
+    const val URL_GET_CENTER_INFO = BASE_URL + "/api/center/info"
 
     // URL POST
     const val URL_BOOKING_CREATE = BASE_URL + "/api/booking/create"
