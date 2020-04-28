@@ -9,7 +9,7 @@
   
   
   
-<h2> Team E </h2>  
+## Team E  
 
 #### Nguyen Hoang Quan - 13387
 #### Nguyen Tri Nguyen - 13421
