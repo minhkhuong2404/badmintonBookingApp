@@ -24,7 +24,7 @@ class CenterActivity : AppCompatActivity() {
 
         val centerId = intent.getStringExtra("centerId").toString()
 
-        findViewById<TextView>(R.id.centrIdTextView).text = "Center $centerId"
+        findViewById<TextView>(R.id.centerIdTextView).text = "Center $centerId"
 
         requestCenterHoliday(centerId)
         requestCenterOpeningHour(centerId)
