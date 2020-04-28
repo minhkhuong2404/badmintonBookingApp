@@ -10,6 +10,11 @@ object ApiUtils {
     const val URL_GET_CITY_SLOT = BASE_URL + "/api/city/slot"
     const val URL_GET_CENTER_INFO = BASE_URL + "/api/center/info"
 
+    const val URL_GET_CENTER_HOLIDAY = BASE_URL + "/api/center/holiday"
+    const val URL_GET_CENTER_OPENING_HOUR = BASE_URL + "/api/center/activehour"
+//    const val URL_GET_CENTER_MIN_MAX = BASE_URL + "/api/center/info"
+
+
     // URL POST
     const val URL_BOOKING_CREATE = BASE_URL + "/api/booking/create"
     const val URL_BOOKING_CANCEL = BASE_URL + "/api/booking/cancel"
