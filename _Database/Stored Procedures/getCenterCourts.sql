@@ -10,12 +10,12 @@ THEN
 	SET resultCode = 'GCC-001';
 ELSEIF NOT EXISTS (SELECT * FROM center WHERE center_id = centerId)
 THEN
-	SET resultCode ="GCC-002";
+	SET resultCode = 'GCC-002';
 ELSE 
 	select * 
     from court 
     where centerId = center_id;
-	SET resultCode = "200";
+	SET resultCode = '200';
 END IF;
 end//
 DELIMITER ;

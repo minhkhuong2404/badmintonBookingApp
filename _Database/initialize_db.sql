@@ -41,7 +41,7 @@ CREATE TABLE staff(
 
 DROP TABLE IF EXISTS booking;
 CREATE TABLE booking(
-  booking_id int NOT NULL auto_increment PRIMARY KEY,
+  booking_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   timestamp datetime NOT NULL,
   date date NOT NULL,
   startTime TIME NOT NULL,

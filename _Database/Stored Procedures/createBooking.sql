@@ -28,13 +28,13 @@ SELECT TIMEDIFF(endTime, startTime) into playTime;
 
 IF NOT EXISTS (SELECT * FROM city WHERE city_id = pcityId)
 THEN
-	SET resultCode ="CB-001";
+	SET resultCode = 'CB-001';
 ELSEIF NOT EXISTS (SELECT * FROM center WHERE center_id = pcenterId)
 THEN
-	SET resultCode ="CB-002";
+	SET resultCode = 'CB-002';
 ELSEIF NOT EXISTS (SELECT * FROM court WHERE court_id = pcourtId)
 THEN
-	SET resultCode ="CB-003";
+	SET resultCode = 'CB-003';
 ELSEIF date_add(pdate, INTERVAL time_to_sec(startTime) SECOND) < DATE(NOW())
 THEN 
    SET resultCode = 'CB-005';
