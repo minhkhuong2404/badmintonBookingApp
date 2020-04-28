@@ -7,8 +7,9 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
 import com.facebook.AccessToken
@@ -44,7 +45,7 @@ class CreateBookingActivity : AppCompatActivity() {
         var start = intent.getStringExtra("start").toString()
         var end = intent.getStringExtra("end").toString()
 
-        var minLength = 45
+        var minLength = requestCenterMinLength(center)
         var maxLength = 90
 
         // get data from intent
@@ -244,26 +245,21 @@ class CreateBookingActivity : AppCompatActivity() {
     }
 
     // request player booking list
-    private fun requestCenterInfo(centerId:  String) {
-        // Preparing query
+    private fun requestCenterMinLength(centerId:  String) : Int {
+        var min = 45
         var query = "?id=$centerId"
+        val queue = Volley.newRequestQueue(this)
 
-        // Get a RequestQueue
-        val jsonArrayRequest =
-            JsonArrayRequest(
-                Request.Method.GET, ApiUtils.URL_GET_CENTER_INFO + query, null,
-                Response.Listener { response ->
-                    Log.i("Player Booking", "Response: %s".format(response.toString()))
+        val stringRequest = StringRequest(
+            Request.Method.GET, ApiUtils.URL_GET_CENTER_MIN_LENGTH + query,
+            Response.Listener { response -> // Display the first 500 characters of the response string.
+                min = response.toInt()
+                Log.i("fjdfdfdsjghffd", "dljfdskjfhkjdhfdk")
+            }, Response.ErrorListener {
+                //
+            })
 
-
-
-                },
-                Response.ErrorListener { error ->
-                    Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
-                }
-            )
-
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(this).addToRequestQueue(jsonArrayRequest)
+        queue.add(stringRequest)
+        return min;
     }
 }

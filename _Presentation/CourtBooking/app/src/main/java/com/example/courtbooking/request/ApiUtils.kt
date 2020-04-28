@@ -12,7 +12,7 @@ object ApiUtils {
 
     const val URL_GET_CENTER_HOLIDAY = BASE_URL + "/api/center/holiday"
     const val URL_GET_CENTER_OPENING_HOUR = BASE_URL + "/api/center/activehour"
-//    const val URL_GET_CENTER_MIN_MAX = BASE_URL + "/api/center/info"
+    const val URL_GET_CENTER_MIN_LENGTH = BASE_URL + "/api/center/minlength"
 
 
     // URL POST
