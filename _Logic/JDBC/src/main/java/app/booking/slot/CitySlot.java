@@ -2,15 +2,20 @@ package app.booking.slot;
 
 import app.booking.db.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CitySlot extends CourtSlot {
-
-    public CitySlot(String cityId, ArrayList<Booking> bookingArrayList) {
+    private Date date;
+    public CitySlot(String cityId, Date pdate, ArrayList<Booking> bookingArrayList) {
         // TODO: check city existence
         super(cityId, bookingArrayList);
+        this.date = pdate;
     }
 
     public HashMap<String, HashMap<String, ArrayList<Slot>>> getCitySlot() throws SQLException {
@@ -47,9 +52,30 @@ public class CitySlot extends CourtSlot {
                 String courtId = court.getCourtId();
                 citySlot.get(centerId).put(courtId, new ArrayList<>());
 
-                // Add slot [7AM - 21PM] to court slot list
-                citySlot.get(centerId).get(courtId).add(new Slot("07:00:00", "21:00:00"));
+
+                // Add slot [open - close] to court slot list
+                Map<String, String> activeHour = SQLStatement.getCenterActiveHour(centerId);
+                if (activeHour.containsKey(toDateOfWeek(date))){
+                    String todayActiveHour = (String) activeHour.get(toDateOfWeek(date));
+                    String[] splitted = todayActiveHour.split("/");
+                    String start = splitted[0];
+                    String end = splitted[1];
+                    System.out.println(start + "%" + end);
+                    citySlot.get(centerId).get(courtId).add(new Slot(start, end));
+                } else {
+                    citySlot.get(centerId).get(courtId).add(new Slot("07:00:00", "21:00:00"));
+                }
             }
         }
+    }
+    private String toDateOfWeek(Date pdate){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(pdate);
+        int weekday = cal.get(Calendar.DAY_OF_WEEK);
+        System.out.println("Weekday: " + weekday);
+        // Get weekday name
+        DateFormatSymbols dfs = new DateFormatSymbols();
+        System.out.println("Weekday: " + dfs.getWeekdays()[weekday]);
+        return dfs.getWeekdays()[weekday];
     }
 }

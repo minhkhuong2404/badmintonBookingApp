@@ -57,7 +57,7 @@ public class CitySlotHandler extends GetHandler{
 
         if (resultCode.equals("200")){
             // Get city slot
-            CitySlot citySlot = new CitySlot(cityId, bookingArrayList);
+            CitySlot citySlot = new CitySlot(cityId, date, bookingArrayList);
             HashMap<String, HashMap<String, ArrayList<Slot>>> slotMap = citySlot.getCitySlot();
             String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(slotMap);
             return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
