@@ -21,6 +21,16 @@
 
 ## 1. Introduction
 ### 1.1. Project Scope and Description
+  * Booking Application is a software which is mainly composed of the following parts:
+    -Booking slot management  
+    -Booking via handheld mobile phone  
+    -Online booking and booking management over the Internet  
+    -Customer management  
+    
+  * Booking slot management is the management of slots which are required for the sport center to be serviced. Possible functions provided by this system will be tracking of unavailable slots and avalable slots of the sport center.  
+  * With the help of operated handhelds, booking of the customers in the application will directly be transferred to the database and inform to the sport center where the court are prepared. It is easy communication among the customer and sport center. Increasing service efficiency are the qualifications of this system which makes our automation much more effectively and practical for all users of the application.  
+  *  Online booking and booking management module provides solutions for the online customers. By using the application constructed by the automation, customers will have list of any court provided by the sport centers in chosen city. In order to use this application, each customer has to have an Facebook account. This account will not only provide online booking but also be used by the users to keep track of all promotions, announcements prepared for registered customers.  
+  * Main concern of customer management system is customer related data. This data consists of individual information such as customer’s name, email, customer ID, telephone number, and order related information like booking amount. This module has a capability of identifying customers by the staff of the sport center. If the customer want to change the profile information, they can confirm this by editing account setting. The management module will also show the pending booking which the customer has not paid yet, improve the way of manage the booking list and available slot list.  
 ### 1.2. Software Process Model and Team Organization  
   * In order to complete our project in total of six weeks duration, what we should do exactly is following the requirement, analysis, design, and implementation and testing parts one by one and in each one of these parts returning the previous ones and do some modifications where necessary. we produced prototypes in some periods, and each prototype will have a certain part of the total project.  
   * Our project team is suitable for team organization. Decision on problems and approach are made by all of the group members. There is no hierarchy among the team members.
