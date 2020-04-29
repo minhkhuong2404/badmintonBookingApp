@@ -21,7 +21,7 @@
 
 ## 1. Introduction
 ### 1.1. Project Scope and Description
-  * Booking Application is a software which is mainly composed of the following parts:
+  * Booking Application is a software which is mainly composed of the following parts:  
     -Booking slot management  
     -Booking via handheld mobile phone  
     -Online booking and booking management over the Internet  
