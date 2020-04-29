@@ -160,7 +160,7 @@ bla bla bla bla
           
         - Table court:  
           - court_id(primary key)  
-          - center_id(primary key)  
+          - center_id(foreign key)  
           - city_id(foreign key)  
           
         - Table player:  
@@ -168,16 +168,16 @@ bla bla bla bla
           
         - Table staff:  
           - staff_id(primary key)  
-          - center_id(primary key)  
+          - center_id(foreign key)  
           - city_id(foreign key)  
           
         - Table booking:  
-          - booking_id(prmary key)  
+          - booking_id(primary key)  
           - date  
           - startTime
           - endTime  
-          - court_id(primary key)  
-          - center_id(primary key)  
+          - court_id(foreign key)  
+          - center_id(foreign key)  
           - city_id(foreign key)  
 
   **Store procedures:**  
