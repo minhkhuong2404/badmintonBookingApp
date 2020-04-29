@@ -3,7 +3,9 @@ package com.example.courtbooking
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +33,8 @@ class CitySlotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_city_slot)
+        // create no booking text view
+        val noSlotTextview = findViewById<TextView>(R.id.noSlotTextView)
 
         // get data from previous activity
         playerId = intent.getStringExtra("player")
@@ -51,11 +55,10 @@ class CitySlotActivity : AppCompatActivity() {
             JsonObjectRequest(
                 Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
                 Response.Listener { response ->
-                    Log.i("City Slot", "Response: %s".format(response.toString()))
-                    // data for center adapter
-                    var centerList = serializeJson(response.toString())
+                    val city = response
+                    val centerList = city.getJSONArray("citySlots")
                     // show available slot
-                    initRecyclerViewCenter(centerList, playerId, selectedCity, selectedDate)
+                    initRecyclerViewCenter(centerList)
                 },
                 Response.ErrorListener { error ->
                     Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
@@ -65,60 +68,19 @@ class CitySlotActivity : AppCompatActivity() {
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
     }
-
-    // serialize json for recycler view
-    private fun serializeJson(jsonString: String): ArrayList<Center> {
-        // return
-        var centerList = ArrayList<Center>()
-
-        var cityObj = JSONObject(jsonString)
-        var cityIter = cityObj.keys()
-        while (cityIter.hasNext()) {
-            var centerKey = cityIter.next()
-            Log.i("Center", "$centerKey")
-            var centerObj = JSONObject(cityObj.get(centerKey).toString())
-            var centerIter = centerObj.keys()
-
-            var courtList = ArrayList<Court>()
-            while (centerIter.hasNext()) {
-                var courtKey = centerIter.next()
-                var slotArray = JSONArray(centerObj.get(courtKey).toString())
-
-                var slotList = ArrayList<Slot>()
-                for (i in 0 until slotArray.length()) {
-                    var slotObj = JSONObject(slotArray[i].toString())
-                    var start = slotObj.getString("start").subSequence(0, 5)
-                    var end = slotObj.getString("end").subSequence(0, 5)
-                    var slotId = "$centerKey/$courtKey/$start - $end"
-                    var slot = Slot(slotId)
-                    slotList.add(slot)
-                }
-                var court = Court(courtKey, slotList)
-                courtList.add(court)
-            }
-            var center = Center(centerKey, courtList)
-            centerList.add(center)
-        }
-        return centerList
-    }
-
     // init recycler view center
     @SuppressLint("WrongConstant")
-    private fun initRecyclerViewCenter(
-        centerList: ArrayList<Center>,
-        player: String,
-        city: String,
-        date: String
-    ) {
+    private fun initRecyclerViewCenter(centerList: JSONArray) {
         // Calling the recycler view for Center
         rv_center.apply {
-            layoutManager = LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
             adapter = CenterAdapter(
-                centerList,
                 this@CitySlotActivity,
-                player,
-                city,
-                date
+                selectedDate,
+                selectedCity,
+                playerId,
+                centerList
             )
             setHasFixedSize(true)
         }

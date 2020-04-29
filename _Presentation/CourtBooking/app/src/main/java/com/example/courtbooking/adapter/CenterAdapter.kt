@@ -11,20 +11,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.center.view.*
+import org.json.JSONArray
 
 
 class CenterAdapter(
-    private val centerList: List<Center>,
     private val parentContext: Context,
-    private val playerId: String,
+    private val selectedDate: String,
     private val selectedCity: String,
-    private val selectedDate: String
+    private val playerId: String,
+    private val centerList: JSONArray
 ) :
     RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
     private var viewPool = RecyclerView.RecycledViewPool()
 
     class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.tv_center
+        val centerTextView: TextView = itemView.tv_center
         val recyclerViewCourt: RecyclerView = itemView.findViewById(R.id.rv_court)
     }
 
@@ -36,20 +37,35 @@ class CenterAdapter(
     }
     @SuppressLint("WrongConstant")
     override fun onBindViewHolder(holder: CenterViewHolder, position: Int) {
-        val currentCenter = centerList[position]
-        holder.textView.text = currentCenter.name
-        holder.recyclerViewCourt.apply {
-            layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
-            adapter = CourtAdapter(
-                currentCenter.courtList,
-                parentContext,
-                playerId,
-                selectedCity,
-                selectedDate
-            )
-            setRecycledViewPool(viewPool)
+        val currentCenter = centerList.getJSONObject(position)
+        val centerId = currentCenter.getString("centerId")
+        holder.centerTextView.text = centerId
+        val courtList = currentCenter.getJSONArray("centerSlots")
+
+        if (courtList.length() == 0) {
+            holder.centerTextView.visibility = View.GONE
+            holder.recyclerViewCourt.visibility = View.GONE
+        } else {
+            var count = 0
+            for(i in 0 until courtList.length()){
+                count += courtList.getJSONObject(i).getJSONArray("courtSlots").length()
+            }
+            if (count > 0){
+                holder.recyclerViewCourt.apply {
+                    layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
+                    adapter = CourtAdapter(
+                        parentContext,
+                        selectedDate,
+                        selectedCity,
+                        centerId,
+                        playerId,
+                        courtList
+                    )
+                    setRecycledViewPool(viewPool)
+                }
+            }
         }
     }
-    // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = centerList.size
+
+    override fun getItemCount() = centerList.length()
 }

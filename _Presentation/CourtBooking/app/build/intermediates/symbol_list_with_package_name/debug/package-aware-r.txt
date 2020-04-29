@@ -1578,11 +1578,11 @@ id center_horizontal
 id center_vertical
 id center_view
 id chains
-id changeStartBtn
 id checkbox
 id checked
 id chip
 id chip_group
+id chooseStartBtn
 id chronometer
 id cityLabel
 id clear_text
@@ -1607,6 +1607,7 @@ id contentPanel
 id coordinator
 id courtLabel
 id court_layout
+id createBookingBtn
 id custom
 id customPanel
 id cut
@@ -1626,7 +1627,6 @@ id dimensions
 id direct
 id disableHome
 id display_always
-id done
 id dropdown_menu
 id durationLabel
 id durationSpinner
@@ -1721,6 +1721,7 @@ id never_display
 id noBookingTextView
 id noButton
 id noScroll
+id noSlotTextView
 id none
 id normal
 id notification_background
@@ -1784,7 +1785,6 @@ id showHome
 id showTitle
 id skipCollapsed
 id slide
-id slotBtn
 id slotTextView
 id slotTitle
 id small
@@ -1841,6 +1841,10 @@ id textinput_error
 id textinput_helper_text
 id time
 id timepicker
+id timepickerChooseBtn
+id timepickerCloseBtn
+id timepickerLayout
+id timepickerTextView
 id title
 id titleDividerNoCustom
 id title_template

@@ -9,13 +9,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.court.view.*
+import org.json.JSONArray
 
 class CourtAdapter(
-    private val courtList: ArrayList<Court>,
     private val parentContext: Context,
-    private val playerId: String,
+    private val selectedDate: String,
     private val selectedCity: String,
-    private val selectedDate: String
+    private val centerId: String,
+    private val playerId: String,
+    private val courtList: JSONArray
+
     ) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
 
     // Constants
@@ -63,44 +66,38 @@ class CourtAdapter(
 
     // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: CourtViewHolder, position: Int) {
-        val currentCourt = courtList[position]
-        holder.courtTextView.text = currentCourt.name
+        val currentCourt = courtList.getJSONObject(position)
+        val courtId = currentCourt.getString("courtId")
+        holder.courtTextView.text = courtId
+        val slotList = currentCourt.getJSONArray("courtSlots")
         holder.setIsRecyclable(false)
-
-        // Call child adapter to show child recycler view
-        holder.recyclerViewSlot.apply {
-            layoutManager = GridLayoutManager(
-                holder.recyclerViewSlot.context,
-                COLUMN_OF_SLOT,
-                GridLayoutManager.VERTICAL,
-                false
-            )
-            adapter = SlotAdapter(
-                currentCourt.slotList,
-                parentContext,
-                playerId,
-                selectedCity,
-                selectedDate
-            )
-            setRecycledViewPool(viewPool)
+        if (slotList.length() == 0){
+            holder.recyclerViewSlot.visibility = View.GONE
+            holder.courtTextView.visibility = View.GONE
+        } else {
+            // Call child adapter to show child recycler view
+            holder.recyclerViewSlot.apply {
+                layoutManager = GridLayoutManager(
+                    holder.recyclerViewSlot.context,
+                    COLUMN_OF_SLOT,
+                    GridLayoutManager.VERTICAL,
+                    false
+                )
+                adapter = SlotAdapter(
+                    parentContext,
+                    selectedDate,
+                    selectedCity,
+                    centerId,
+                    courtId,
+                    playerId,
+                    slotList
+                )
+                setRecycledViewPool(viewPool)
+            }
+            adapterPosition = holder.adapterPosition
         }
-        adapterPosition = holder.adapterPosition
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = courtList.size
-
-//    // override onClickListener from SlotAdapter.OnItemClickListener
-//    override fun onClickListener(item: Slot, position: Int) {
-//        Log.i("Court", "Transfer Slot to Center")
-//        Log.i("Position Slot", position.toString())
-//        Log.i("Position Court", adapterPosition.toString())
-//        val slotTime = item.id
-//        callbackInterface.passDataCallback(item)
-//    }
-//
-//    // create interface CallbackInterface
-//    interface CallbackInterface {
-//        fun passDataCallback(message: Slot)
-//    }
+    override fun getItemCount() = courtList.length()
 }

@@ -14,13 +14,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.CreateBookingActivity
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.slot.view.*
+import org.json.JSONArray
+import org.json.JSONObject
 
 class SlotAdapter(
-    private val slotList: ArrayList<Slot>,
     private val parentContext: Context,
-    private val playerId: String,
+    private val selectedDate: String,
     private val selectedCity: String,
-    private val selectedDate: String
+    private val centerId: String,
+    private val courtId: String,
+    private val playerId: String,
+    private val slotList: JSONArray
 ) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
 
@@ -34,23 +38,22 @@ class SlotAdapter(
     }
 
     override fun onBindViewHolder(holder: SlotViewHolder, position: Int) {
-        val currentItem = slotList[position]
-        holder.slotBtn.text = currentItem.id.split("/").last()
+        val currentSlot = slotList.getJSONObject(position)
+        val start = currentSlot.getString("start").substring(0, 5)
+        val end = currentSlot.getString("end").substring(0, 5)
+        holder.slotBtn.text = "$start - $end"
         holder.setIsRecyclable(false)
         holder.slotBtn.setOnClickListener {
             // Show confirm booking creation dialog
-            createBookingDialog(parentContext, currentItem, playerId, position)
+            createBookingDialog(parentContext, currentSlot, position)
         }
     }
 
-    override fun getItemCount() = slotList.size
+    override fun getItemCount() = slotList.length()
 
-    fun createBookingDialog(context: Context, slot: Slot, playerid: String, position: Int) {
-        val center = slot.id.split("/")[0]
-        val court = slot.id.split("/")[1]
-        val time_slot = slot.id.split("/")[2]
-        val start = time_slot.split(" - ").get(0)
-        val end = time_slot.split(" - ").get(1)
+    fun createBookingDialog(context: Context, slot: JSONObject, position: Int) {
+        val start = slot.getString("start")
+        val end = slot.getString("end")
 
         val positiveButtonClick = { dialog: DialogInterface, which: Int ->
             // Prepare intent
@@ -58,8 +61,8 @@ class SlotAdapter(
             toCreateBookingActivity.putExtra("player", playerId)
             toCreateBookingActivity.putExtra("city", selectedCity)
             toCreateBookingActivity.putExtra("date", selectedDate)
-            toCreateBookingActivity.putExtra("center", center)
-            toCreateBookingActivity.putExtra("court", court)
+            toCreateBookingActivity.putExtra("center", centerId)
+            toCreateBookingActivity.putExtra("court", courtId)
             toCreateBookingActivity.putExtra("start", start)
             toCreateBookingActivity.putExtra("end", end)
 
@@ -74,7 +77,7 @@ class SlotAdapter(
         with(builder)
         {
             setTitle("Confirm booking creation")
-            setMessage("On ${selectedDate} with time slot from $start to $end in city $selectedCity center $center court $court. Do you want to create?")
+            setMessage("On ${selectedDate} with time slot from $start to $end in city $selectedCity center $centerId court $courtId. Do you want to create?")
             setPositiveButton(
                 "CREATE",
                 DialogInterface.OnClickListener(function = positiveButtonClick)
