@@ -22,36 +22,36 @@
 ## 1. Introduction
 ### 1.1 Project Scope and Description
 ### 1.2 Software Process Model and Team Organization  
-* In order to complete our project in total of six weeks duration, what we should do exactly is following the requirement, analysis, design, and implementation and testing parts one by one and in each one of these parts returning the previous ones and do some modifications where necessary. we produced prototypes in some periods, and each prototype will have a certain part of the total project.  
-* Our project team is suitable for team organization. Decision on problems and approach are made by all of the group members. There is no hierarchy among the team members.
+  * In order to complete our project in total of six weeks duration, what we should do exactly is following the requirement, analysis, design, and implementation and testing parts one by one and in each one of these parts returning the previous ones and do some modifications where necessary. we produced prototypes in some periods, and each prototype will have a certain part of the total project.  
+  * Our project team is suitable for team organization. Decision on problems and approach are made by all of the group members. There is no hierarchy among the team members.
 
 ### 1.3 Definition, Acronyms, and Abbreviations
 ## 2. Detailed System Description
-* Booking Application is the mobile application software which has online booking, via handheld as the main functions. The system has two user categories which are customer and staff. Below, all of the rights and capabilities of each user will be explained in detail.
+  * Booking Application is the mobile application software which has online booking, via handheld as the main functions. The system has two user categories which are customer and staff. Below, all of the rights and capabilities of each user will be explained in detail.
 ### 2.1 Customer
-* Customer is the user who participates in the system as a member of the service. To be a member, customers must login in the system by using their facebook accounts. Customers also have ability to logout. As a member, customer will have their right to access the main features of the application.  
+  * Customer is the user who participates in the system as a member of the service. To be a member, customers must login in the system by using their facebook accounts. Customers also have ability to logout. As a member, customer will have their right to access the main features of the application.  
   
-* The first feature is that customer can view the available slot at specific time and city. After login in to the application, customer can choose the city and the time of that court which they want to book. Then customer can click the button "Show available slot" to see the list of available slots at the city and time which they have chosen.  
+  * The first feature is that customer can view the available slot at specific time and city. After login in to the application, customer can choose the city and the time of that court which they want to book. Then customer can click the button "Show available slot" to see the list of available slots at the city and time which they have chosen.  
 
-* The second feature is to book a court. After customers show all available slots, they can pick a court by clicking the time interval in the center they would like to play in. Then a window will pop-up and confirm the time and center which are chosen. By clicking "No", customer will be return to the main sreen. By clicking "Yes", customer can customize the play time. Finally, to create that booking, customer can click the button "Create".  
+  * The second feature is to book a court. After customers show all available slots, they can pick a court by clicking the time interval in the center they would like to play in. Then a window will pop-up and confirm the time and center which are chosen. By clicking "No", customer will be return to the main sreen. By clicking "Yes", customer can customize the play time. Finally, to create that booking, customer can click the button "Create".  
   
-* The third feature is showing customer's booking. To use this feature, at the main screen, customer have to click the button "Show my bookings". Then customer will be processed to their booking screen. In here, customer can see the detail list of their bookings which include booking ID, Date, Time, Payment Status, Court and created date. In addtion, the booking which is overdue will be highlight in red color.  
+  * The third feature is showing customer's booking. To use this feature, at the main screen, customer have to click the button "Show my bookings". Then customer will be processed to their booking screen. In here, customer can see the detail list of their bookings which include booking ID, Date, Time, Payment Status, Court and created date. In addtion, the booking which is overdue will be highlight in red color.  
   
-* The last feature is to cancel their booking. First, customer must go to their booking list by using the third feature. Then they can cancel their book by clicking the button "Cancel this booking". A window will pop-up to confirm the cancellation. By clicking "No", customer will return to the booking list screen. By clicking "Yes", customer can cancel that booking if the cancellation is 24 hours before the start time.  
+  * The last feature is to cancel their booking. First, customer must go to their booking list by using the third feature. Then they can cancel their book by clicking the button "Cancel this booking". A window will pop-up to confirm the cancellation. By clicking "No", customer will return to the booking list screen. By clicking "Yes", customer can cancel that booking if the cancellation is 24 hours before the start time.  
 ### 2.2 Staff
 ## 3. Requirements
 ### 3.1 Hardware and Software Requirements
-  **Hardware requirement:**  
-    - Minimum: Android Pie x86 (API 28)  
-    - Recommendation: Android Q x86 (API 29)  
-    - RAM: 512MB  
-    - Storage: at least 10MB for storing the application  
-    - Internet connection required  
+   * **Hardware requirement:**  
+       - Minimum: Android Pie x86 (API 28)  
+       - Recommendation: Android Q x86 (API 29)  
+       - RAM: 512MB  
+       - Storage: at least 10MB for storing the application  
+       - Internet connection required  
       
-  **Sofware requirement:**  
-    - Android Studio  
-    - IntelJ IDEA with JDK version 8 241
-    - MySQL
+  * **Sofware requirement:**  
+       - Android Studio  
+       - IntelJ IDEA with JDK version 8 241
+       - MySQL
 ### 3.2 Constraints
 * General information/constraints:
   - Cities can have several public sport centres.
