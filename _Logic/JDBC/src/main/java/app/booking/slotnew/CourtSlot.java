@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Objects;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This class stores all slots of a court in a specific date                                            //
 //                                                                                                      //
@@ -29,12 +30,12 @@ import java.util.ArrayList;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class CourtSlot {
-    private String center_id;
-    private String court_id;
+    private String centerId;
+    private String courtId;
     private ArrayList<Slot> courtSlots = new ArrayList<>(); // slots of specified day
 
     public CourtSlot(String courtId, Date date) throws SQLException {
-        this.court_id = courtId;
+        this.courtId = courtId;
 
         // get court bookings from sql
         ArrayList<Booking> bookingArrayList = SQLStatement.getCourtBookings(courtId, date);
@@ -44,35 +45,29 @@ public class CourtSlot {
     }
 
     public CourtSlot(String courtId, Date date, Time open, Time close, Time min) throws SQLException {
-        this.court_id = courtId;
-
-        // get court bookings from sql
-        ArrayList<Booking> bookingArrayList = SQLStatement.getCourtBookings(courtId, date);
-
-        // calculate slots from bookings list
-        setSlots(bookingArrayList, open, close, min);
+        this.courtId = courtId;
+        final ArrayList<Booking> courtBookings = SQLStatement.getCourtBookings(courtId, date);
+        setCourtSlots(courtBookings, open, close, min);
     }
 
-    public CourtSlot(String courtId, ArrayList<Booking> bookingArrayList) {
-        this.court_id = courtId;
-        // calculate slots from bookings list
-        setCourtSlots(bookingArrayList);
+    public CourtSlot(String courtId, final ArrayList<Booking> courtBookings) {
+        this.courtId = courtId;
+        setCourtSlots(courtBookings);
     }
 
-    public CourtSlot(String courtId, ArrayList<Booking> bookingArrayList, Time open, Time close, Time min) {
-        this.court_id = courtId;
-        // calculate slots from bookings list
-        setSlots(bookingArrayList, open, close, min);
+    public CourtSlot(String courtId, final ArrayList<Booking> courtBookings, Time open, Time close, Time min) {
+        this.courtId = courtId;
+        setCourtSlots(courtBookings, open, close, min);
     }
 
-    private void setCourtSlots(ArrayList<Booking> bookingArrayList) {
+    private void setCourtSlots(final ArrayList<Booking> courtBookings) {
         Time open = Constants.DEFAULT_START_TIME; //        open : open time
         Time close = Constants.DEFAULT_END_TIME;//        close : close time
         Long min = Constants.DEFAULT_MIN_TIME;//        min : min length of slot
 
         Slot slot = new Slot(open, null);
 
-        for (Booking booking : bookingArrayList) {
+        for (Booking booking : courtBookings) {
             if (booking.getStart().getTime() - slot.getStart().getTime() >= min) {
                 slot.setEnd(booking.getStart());
                 this.courtSlots.add(new Slot(slot));
@@ -86,12 +81,12 @@ public class CourtSlot {
         }
     }
 
-    private void setSlots(ArrayList<Booking> bookingArrayList, Time open, Time close, Time min) {
+    private void setCourtSlots(final ArrayList<Booking> courtBookings, Time open, Time close, Time min) {
         Long MINIMUM = min.getTime() - Time.valueOf("00:00:00").getTime(); // convert to long
 
         Slot slot = new Slot(open, null);
 
-        for (Booking booking : bookingArrayList) {
+        for (Booking booking : courtBookings) {
             if (booking.getStart().getTime() - slot.getStart().getTime() >= MINIMUM) {
                 slot.setEnd(booking.getStart());
                 this.courtSlots.add(new Slot(slot));
@@ -105,19 +100,34 @@ public class CourtSlot {
         }
     }
 
-    public void setCenter_id(String center_id) {
-        this.center_id = center_id;
+    public void setCenterId(String centerId) {
+        this.centerId = centerId;
     }
 
-    public String getCenter_id() {
-        return center_id;
+    public String getCenterId() {
+        return centerId;
     }
 
-    public String getCourt_id() {
-        return court_id;
+    public String getCourtId() {
+        return courtId;
     }
 
     public ArrayList<Slot> getCourtSlots() {
         return courtSlots;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CourtSlot courtSlot = (CourtSlot) o;
+        return Objects.equals(centerId, courtSlot.centerId) &&
+                courtId.equals(courtSlot.courtId) &&
+                courtSlots.equals(courtSlot.courtSlots);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(centerId, courtId, courtSlots);
     }
 }
