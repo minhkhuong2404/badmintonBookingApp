@@ -1,4 +1,4 @@
-package app.booking.slotnew;
+package app.booking.slot;
 
 import app.booking.db.Booking;
 import app.booking.db.SQLStatement;

@@ -4,7 +4,7 @@ import app.booking.api.Constants;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
 import app.booking.db.Staff;
-import app.booking.db.JsonConverter;
+import app.booking.api.JsonConverter;
 import app.booking.db.SQLStatement;
 import app.booking.errors.ApplicationExceptions;
 import app.booking.errors.GlobalExceptionHandler;
@@ -41,7 +41,7 @@ public class UnusedStaffHandler extends GetHandler {
     private ResponseEntity doGet(InputStream is) throws Exception {
         ArrayList<Staff> ls = SQLStatement.getStaffs();
 
-        String rsp = JsonConverter.convert(ls);
+        String rsp = JsonConverter.toJson(ls);
         return new ResponseEntity(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }

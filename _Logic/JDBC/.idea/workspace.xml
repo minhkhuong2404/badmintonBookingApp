@@ -5,21 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CitySlotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CenterSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CenterSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CitySlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CitySlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CourtSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CourtSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GetCourtSlotHashMapTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CenterSlotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CenterSlotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CourtSlotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CourtSlotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slotnew/CenterSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slotnew/CenterSlot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slotnew/CitySlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slotnew/CitySlot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slotnew/CourtSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slotnew/CourtSlot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/GetCourtSlotHashMapTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/app/booking/slotnew/CenterSlotTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/booking/slotnew/CenterSlotTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/app/booking/slotnew/CourtSlotTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/app/booking/slotnew/CourtSlotTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/FbAPI/Access.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/fbapi/Access.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/FbAPI/AccessFBGraphAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/fbapi/AccessFBGraphAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/FbAPI/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/fbapi/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/Server/ApiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/server/ApiServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/Server/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/server/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitiesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitiesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitySlotHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/CitySlotHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/PlayerBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/PlayerBookingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCenterBookingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCenterBookingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCityCenterCourtsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCityCenterCourtsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCityCenterHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCityCenterHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCityCenterStaffsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedCityCenterStaffsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedStaffHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/GetHandler/UnusedStaffHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/JsonConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/api/JsonConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/db/SQLStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/db/SQLStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CenterSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/CenterSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CitySlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/CitySlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/CourtSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/CourtSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimpleTime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/Slot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CenterSlot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CitySlot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CourtSlot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/Slot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/slot/TestCourtSlot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CenterSlotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/slot/CenterSlotTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CitySlotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/slot/CitySlotTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CourtSlotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/app/booking/slot/CourtSlotTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +92,10 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="app.booking" />
+      <recent name="app.booking.api" />
       <recent name="app.booking.slot" />
       <recent name="app.booking.slotnew" />
-      <recent name="app.booking" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -93,26 +110,23 @@
       <recent name="C:\Users\sonda\Desktop\teamepe2020\_Logic\JDBC\src\main\java\app\booking" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CitySlotTest.Construct_Given_Date">
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="Application.ApiServer">
+    <configuration name="ApiServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app.booking.server.ApiServer" />
       <module name="JDBC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CenterSlotTest.Construct_From_SQL_Given_Bookings_Arbitrary" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JDBC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.booking.slotnew.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CenterSlotTest" />
-      <option name="METHOD_NAME" value="Construct_From_SQL_Given_Bookings_Arbitrary" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,12 +135,12 @@
       <module name="JDBC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.booking.slotnew.*" />
+          <option name="PATTERN" value="app.booking.slot.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CenterSlotTest" />
+      <option name="PACKAGE_NAME" value="app.booking.slot" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slot.CenterSlotTest" />
       <option name="METHOD_NAME" value="Construct_Given_Date_EmptyBooking_Arbitrary" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -137,12 +151,12 @@
       <module name="JDBC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.booking.slotnew.*" />
+          <option name="PATTERN" value="app.booking.slot.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CenterSlotTest" />
+      <option name="PACKAGE_NAME" value="app.booking.slot" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slot.CenterSlotTest" />
       <option name="METHOD_NAME" value="Construct_Given_Date_No_Court" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -153,12 +167,12 @@
       <module name="JDBC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.booking.slotnew.*" />
+          <option name="PATTERN" value="app.booking.slot.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CitySlotTest" />
+      <option name="PACKAGE_NAME" value="app.booking.slot" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slot.CitySlotTest" />
       <option name="METHOD_NAME" value="Construct_Given_Date" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -169,12 +183,12 @@
       <module name="JDBC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.booking.slotnew.*" />
+          <option name="PATTERN" value="app.booking.slot.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
-      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CourtSlotTest" />
+      <option name="PACKAGE_NAME" value="app.booking.slot" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slot.CourtSlotTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -206,18 +220,18 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.CourtSlotTest" />
-      <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Bookings_Arbitrary" />
       <item itemvalue="JUnit.CenterSlotTest.Construct_Given_Date_No_Court" />
       <item itemvalue="JUnit.CenterSlotTest.Construct_Given_Date_EmptyBooking_Arbitrary" />
       <item itemvalue="JUnit.CitySlotTest.Construct_Given_Date" />
+      <item itemvalue="Application.ApiServer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ApiServer" />
         <item itemvalue="JUnit.CitySlotTest.Construct_Given_Date" />
         <item itemvalue="JUnit.CenterSlotTest.Construct_Given_Date_EmptyBooking_Arbitrary" />
         <item itemvalue="JUnit.CenterSlotTest.Construct_Given_Date_No_Court" />
         <item itemvalue="JUnit.CourtSlotTest" />
-        <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Bookings_Arbitrary" />
       </list>
     </recent_temporary>
   </component>
@@ -263,19 +277,19 @@
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="648" y="412" width="500" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588093712437">
+    <state x="648" y="412" width="500" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588147187180">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="648" y="412" width="500" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1680.1027@0.23.1680.1027" timestamp="1588093712437" />
+    <state x="648" y="412" width="500" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1680.1027@0.23.1680.1027" timestamp="1588147187180" />
     <state x="454" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588139193579">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="454" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1588139193579" />
     <state x="483" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587718779367" />
-    <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587756557773">
+    <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588147059374">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1587756557773" />
+    <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1588147059374" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="1137" y="173" key="#xdebugger.evaluate" timestamp="1588136432671">
       <screen x="0" y="23" width="1680" height="1027" />
@@ -285,7 +299,7 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="410" y="252" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1680.1027@0.23.1680.1027" timestamp="1588138857776" />
-    <state width="1638" height="323" key="GridCell.Tab.0.bottom" timestamp="1588145995112">
+    <state width="1638" height="323" key="GridCell.Tab.0.bottom" timestamp="1588146271169">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1587727820574">
@@ -293,9 +307,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820574" />
     <state width="1638" height="272" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804686" />
-    <state width="1638" height="323" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588145995112" />
+    <state width="1638" height="323" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271169" />
     <state width="1549" height="243" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587717657087" />
-    <state width="1638" height="323" key="GridCell.Tab.0.center" timestamp="1588145995111">
+    <state width="1638" height="323" key="GridCell.Tab.0.center" timestamp="1588146271168">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1587727820573">
@@ -303,10 +317,10 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.center.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820573" />
     <state width="1638" height="272" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804680" />
-    <state width="1638" height="323" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588145995111" />
+    <state width="1638" height="323" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271168" />
     <state width="1598" height="260" key="GridCell.Tab.0.center/39.23.1641.1027@39.23.1641.1027" timestamp="1587898346790" />
     <state width="1598" height="260" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587901001094" />
-    <state width="1638" height="323" key="GridCell.Tab.0.left" timestamp="1588145995110">
+    <state width="1638" height="323" key="GridCell.Tab.0.left" timestamp="1588146271167">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1587727820420">
@@ -314,10 +328,10 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.left.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820420" />
     <state width="1638" height="272" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804531" />
-    <state width="1638" height="323" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588145995110" />
+    <state width="1638" height="323" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271167" />
     <state width="1598" height="260" key="GridCell.Tab.0.left/39.23.1641.1027@39.23.1641.1027" timestamp="1587898346790" />
     <state width="1598" height="260" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587901001094" />
-    <state width="1638" height="323" key="GridCell.Tab.0.right" timestamp="1588145995111">
+    <state width="1638" height="323" key="GridCell.Tab.0.right" timestamp="1588146271169">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1587727820574">
@@ -325,10 +339,10 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.right.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820574" />
     <state width="1638" height="272" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804682" />
-    <state width="1638" height="323" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588145995111" />
+    <state width="1638" height="323" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271169" />
     <state width="1598" height="260" key="GridCell.Tab.0.right/39.23.1641.1027@39.23.1641.1027" timestamp="1587898346790" />
     <state width="1598" height="260" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587901001094" />
-    <state width="1638" height="323" key="GridCell.Tab.1.bottom" timestamp="1588145996196">
+    <state width="1638" height="323" key="GridCell.Tab.1.bottom" timestamp="1588146271171">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.bottom.inPresentationMode" timestamp="1587727820577">
@@ -336,9 +350,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.bottom.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820577" />
     <state width="1638" height="272" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804690" />
-    <state width="1638" height="323" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588145996196" />
+    <state width="1638" height="323" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271171" />
     <state width="1335" height="235" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
-    <state width="1638" height="323" key="GridCell.Tab.1.center" timestamp="1588145996196">
+    <state width="1638" height="323" key="GridCell.Tab.1.center" timestamp="1588146271170">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.center.inPresentationMode" timestamp="1587727820576">
@@ -346,9 +360,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.center.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820576" />
     <state width="1638" height="272" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804688" />
-    <state width="1638" height="323" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588145996196" />
+    <state width="1638" height="323" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271170" />
     <state width="1335" height="235" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
-    <state width="1638" height="323" key="GridCell.Tab.1.left" timestamp="1588145996195">
+    <state width="1638" height="323" key="GridCell.Tab.1.left" timestamp="1588146271170">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.left.inPresentationMode" timestamp="1587727820575">
@@ -356,9 +370,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.left.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820575" />
     <state width="1638" height="272" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804687" />
-    <state width="1638" height="323" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588145996195" />
+    <state width="1638" height="323" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271170" />
     <state width="1335" height="235" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
-    <state width="1638" height="323" key="GridCell.Tab.1.right" timestamp="1588145996196">
+    <state width="1638" height="323" key="GridCell.Tab.1.right" timestamp="1588146271170">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.right.inPresentationMode" timestamp="1587727820576">
@@ -366,7 +380,7 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.right.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820576" />
     <state width="1638" height="272" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804689" />
-    <state width="1638" height="323" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588145996196" />
+    <state width="1638" height="323" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588146271170" />
     <state width="1335" height="235" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog" timestamp="1587898054680" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
@@ -390,15 +404,6 @@
     <state x="330" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1588138531341" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/booking/slotnew/CitySlot.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo typeName="com.fasterxml.jackson.databind.ObjectMapper" fieldName="_subtypeResolver" />

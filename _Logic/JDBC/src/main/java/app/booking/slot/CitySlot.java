@@ -1,55 +1,117 @@
 package app.booking.slot;
 
-import app.booking.db.*;
+import app.booking.db.Booking;
+import app.booking.db.Center;
+import app.booking.db.SQLStatement;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class CitySlot extends CourtSlot {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// This class stores all slots of a center in a specific date                                           //
+//                                                                                                      //
+// CitySlot(String city_id, Date date):                                                                 //
+//    + Constructor takes Date type as input to retrieve bookings list on that date from database       //
+//    + Use default open, close time and min length of slot                                             //
+//                                                                                                      //
+// CitySlot(String city_id, Date date, Time open, Time close, Time min):                                //
+//    + Constructor takes Date type as input to retrieve bookings list on that date from database       //
+//    + Use arbitrary open, close time and min length of slot                                           //
+//                                                                                                      //
+// CitySlot(String city_id, ArrayList<Booking> bookings):                                               //
+//    + Constructor takes given bookings list as input (they must be on the same day)                   //
+//    + Use default open, close time and min length of slot                                             //
+//                                                                                                      //
+// CitySlot(String city_id, ArrayList<Booking> bookings,Time open, Time close, Time min):               //
+//    + Constructor takes given bookings list as input (they must be on the same day)                   //
+//    + Use arbitrary open, close time and min length of slot                                           //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public CitySlot(String cityId, ArrayList<Booking> bookingArrayList) {
-        // TODO: check city existence
-        super(cityId, bookingArrayList);
+public class CitySlot {
+    private String cityId;
+    private ArrayList<CenterSlot> citySlots;
+
+    public CitySlot(String cityId, Date date) throws SQLException {
+        final ArrayList<Booking> cityBookings = SQLStatement.getCityBookings(cityId, date);
+
+        this.cityId = cityId;
+        setCitySlots(cityBookings);
     }
 
-    public HashMap<String, HashMap<String, ArrayList<Slot>>> getCitySlot() throws SQLException {
-        HashMap<String, HashMap<String, ArrayList<Slot>>> citySlot = new HashMap<>();
+    public CitySlot(String cityId, Date date, Time open, Time close, Time min) throws SQLException {
+        final ArrayList<Booking> cityBookings = SQLStatement.getCityBookings(cityId, date);
 
-        // Add slot [ 7AM - 21PM ] to each courts of city
-        initializeCitySlot(citySlot);
-
-        // For each booking, split corresponding slot
-        for (Booking booking : this.getBookingArrayList()) {
-            String centerId = booking.getCenterId();
-            String courtId = booking.getCourtId();
-            splitSlot(citySlot.get(centerId).get(courtId), booking);
-        }
-        return citySlot;
+        this.cityId = cityId;
+        setCitySlots(cityBookings, open, close, min);
     }
 
-    private void initializeCitySlot(HashMap<String, HashMap<String, ArrayList<Slot>>> citySlot) throws SQLException {
-        // Get city's centers
-        ArrayList<Center> centerArrayList = SQLStatement.getCityCenters(this.getId());
+    public CitySlot(String cityId, final ArrayList<Booking> cityBookings) throws SQLException {
+        this.cityId = cityId;
+        setCitySlots(cityBookings);
+    }
 
-        // For each center // TODO: in case of no center?
-        for (Center center : centerArrayList) {
-            // Add center's empty slot list
-            String centerId = center.getCenterId();
-            citySlot.put(centerId, new HashMap<>());
+    public CitySlot(String cityId, final ArrayList<Booking> cityBookings, Time open, Time close, Time min) throws SQLException {
+        this.cityId = cityId;
+        setCitySlots(cityBookings, open, close, min);
+    }
 
-            // Get center's courts
-            ArrayList<Court> courtArrayList = SQLStatement.getCenterCourts(center.getCenterId());
+    private void setCitySlots(final ArrayList<Booking> cityBookings) throws SQLException {
+        ArrayList<Center> centers = SQLStatement.getCityCenters(cityId);
+        this.citySlots = new ArrayList<>();
 
-            // For each court // TODO: in case of no court?
-            for (Court court : courtArrayList) {
-                // Add court's empty slot
-                String courtId = court.getCourtId();
-                citySlot.get(centerId).put(courtId, new ArrayList<>());
-
-                // Add slot [7AM - 21PM] to court slot list
-                citySlot.get(centerId).get(courtId).add(new Slot("07:00:00", "21:00:00"));
+        Integer j = 0;
+        for (int i = 0; i < centers.size(); i++) {
+            String center_id = centers.get(i).getCenterId();
+            // new court bookings arraylist
+            ArrayList<Booking> centerBookings = new ArrayList<>();
+            // collect bookings of this center
+            while (j < cityBookings.size()) {
+                if (cityBookings.get(j).getCenterId().equals(centers.get(i).getCenterId())) {
+                    centerBookings.add(cityBookings.get(j));
+                } else break;
+                j++;
             }
+            // create new center with collected booking
+            CenterSlot centerSlot = new CenterSlot(center_id, centerBookings);
+            centerSlot.setCityId(this.cityId);
+            this.citySlots.add(centerSlot);
         }
+    }
+
+    private void setCitySlots(final ArrayList<Booking> cityBookings, Time open, Time close, Time min) throws SQLException {
+        ArrayList<Center> centers = SQLStatement.getCityCenters(cityId);
+        this.citySlots = new ArrayList<>();
+
+        Integer j = 0;
+        for (int i = 0; i < centers.size(); i++) {
+            String center_id = centers.get(i).getCenterId();
+            // new court bookings arraylist
+            ArrayList<Booking> centerBookings = new ArrayList<>();
+            // collect bookings of this center
+            while (j < cityBookings.size()) {
+                if (cityBookings.get(j).getCenterId().equals(centers.get(i).getCenterId())) {
+                    centerBookings.add(cityBookings.get(j));
+                } else break;
+                j++;
+            }
+            // create new center with collected booking
+            CenterSlot centerSlot = new CenterSlot(center_id, centerBookings, open, close, min);
+            centerSlot.setCityId(this.cityId);
+            this.citySlots.add(centerSlot);
+        }
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public ArrayList<CenterSlot> getCitySlots() {
+        return citySlots;
     }
 }

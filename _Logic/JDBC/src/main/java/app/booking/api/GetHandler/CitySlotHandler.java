@@ -1,6 +1,7 @@
 package app.booking.api.GetHandler;
 
 import app.booking.api.Constants;
+import app.booking.api.JsonConverter;
 import app.booking.api.ResponseEntity;
 import app.booking.api.StatusCode;
 import app.booking.db.Booking;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CitySlotHandler extends GetHandler{
+public class CitySlotHandler extends GetHandler {
     public CitySlotHandler(GlobalExceptionHandler exceptionHandler) {
         super(exceptionHandler);
     }
@@ -50,14 +51,12 @@ public class CitySlotHandler extends GetHandler{
         // TODO: handle the case of missing/incorrect params
 
         // Get bookings of city
-        ArrayList<Booking> bookingArrayList = SQLStatement.getCityBookings(cityId, date);
-
+        ArrayList<Booking> cityBookings = SQLStatement.getCityBookings(cityId, date);
         // Get city slot
-        CitySlot citySlot = new CitySlot(cityId, bookingArrayList);
-        HashMap<String, HashMap<String, ArrayList<Slot>>> slotMap = citySlot.getCitySlot();
+        CitySlot citySlot = new CitySlot(cityId, cityBookings);
+        // Convert to json
+        String response = JsonConverter.toJson(citySlot);
 
-        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(slotMap);
-
-        return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
+        return new ResponseEntity<>(response, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
 }

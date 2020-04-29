@@ -3,8 +3,12 @@ package app.booking;
 import java.sql.Time;
 
 public class Constants {
+
     // PORT
     public static final int PORT_NUMBER = 8003;
+
+    public static final String CONTENT_TYPE = "Content-Type";
+    public static final String APPLICATION_JSON = "application/json";
 
     // URL GET
     public static final String URL_GET_CITY_ALL = "/api/city/all";

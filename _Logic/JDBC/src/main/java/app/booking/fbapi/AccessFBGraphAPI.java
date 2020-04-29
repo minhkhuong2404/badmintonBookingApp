@@ -1,4 +1,4 @@
-package app.booking.FbAPI;
+package app.booking.fbapi;
 
 public class AccessFBGraphAPI {
     private String id;

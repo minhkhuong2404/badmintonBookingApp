@@ -1,4 +1,4 @@
-package app.booking.Server;
+package app.booking.server;
 
 import app.booking.Constants;
 import app.booking.api.GetHandler.*;
@@ -11,8 +11,8 @@ import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 import java.io.IOException;
 
-import static app.booking.Server.Configuration.getErrorHandler;
-import static app.booking.Server.Configuration.getObjectMapper;
+import static app.booking.server.Configuration.getErrorHandler;
+import static app.booking.server.Configuration.getObjectMapper;
 
 public class ApiServer {
     public static void main(String[] args) throws IOException {

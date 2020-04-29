@@ -1,4 +1,4 @@
-package app.booking.Server;
+package app.booking.server;
 
 import app.booking.errors.GlobalExceptionHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;

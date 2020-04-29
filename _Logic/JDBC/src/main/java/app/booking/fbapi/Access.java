@@ -1,4 +1,4 @@
-package app.booking.FbAPI;
+package app.booking.fbapi;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;

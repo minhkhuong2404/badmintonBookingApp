@@ -1,6 +1,5 @@
-package app.booking.slotnew;
+package app.booking.slot;
 
-import app.booking.db.Court;
 import app.booking.db.SQLStatement;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

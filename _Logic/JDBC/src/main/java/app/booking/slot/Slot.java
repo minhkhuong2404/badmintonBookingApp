@@ -1,19 +1,35 @@
 package app.booking.slot;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.sql.Time;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class Slot {
     private Time start;
     private Time end;
 
-    public Slot(String newStart, String newEnd) {
-        start = Time.valueOf(newStart);
-        end = Time.valueOf(newEnd);
+    public Slot(Time start, Time end) {
+        this.start = start;
+        this.end = end;
+    }
+    public Slot(String start, String end) {
+        this.start = Time.valueOf(start);
+        this.end = Time.valueOf(end);
+    }
+
+    public Slot(Slot slot) {
+        this.start = slot.start;
+        this.end = slot.end;
+    }
+
+    public Time getStart() {
+        return start;
+    }
+
+    public Time getEnd() {
+        return end;
     }
 }

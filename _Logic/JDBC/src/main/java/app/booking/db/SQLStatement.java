@@ -235,6 +235,7 @@ public class SQLStatement {
         }
         return code;
     }
+
     // getCities
     public static ArrayList<String> getCities() throws NullPointerException, SQLException {
         CallableStatement stm = null;
@@ -370,6 +371,7 @@ public class SQLStatement {
 
         return courtList;
     }
+
     // getCityCenterStaffs
     public static ArrayList<Staff> getCityCenterStaffs(String cityId, String centerId) throws NullPointerException, SQLException {
         CallableStatement stm = null;
@@ -441,6 +443,7 @@ public class SQLStatement {
 
         return cityCenterCourtList;
     }
+
     // getCityBookings
     public static ArrayList<Booking> getCityBookings(String cityId, Date pdate) throws NullPointerException, SQLException {
         CallableStatement stm = null;

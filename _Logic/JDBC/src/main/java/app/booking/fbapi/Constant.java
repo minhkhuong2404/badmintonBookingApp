@@ -1,4 +1,4 @@
-package app.booking.FbAPI;
+package app.booking.fbapi;
 
 public class Constant {
     public static final String REDIRECT_URI
