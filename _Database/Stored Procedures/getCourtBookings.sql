@@ -9,7 +9,7 @@ BEGIN
 IF NOT courtId REGEXP '^[a-zA-Z0-9]*$'
 THEN SET resultCode = 'GCB-000';
 ELSEIF NOT EXISTS (SELECT * FROM booking WHERE court_id = courtId)
-THEN SET resultCode ="GCB-001";
+THEN SET resultCode = 'GCB-001';
 ELSE
 	select * from booking 
     where court_id = courtId and pdate = date
@@ -20,4 +20,4 @@ end//
 DELIMITER ;
 
 
--- call getCourtBookings("A1C", date("2020-06-10"), @code);
+call getCourtBookings('A1C', date('2020-05-10'), @code);

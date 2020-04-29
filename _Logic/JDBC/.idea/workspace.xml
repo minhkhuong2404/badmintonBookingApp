@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="" />
+    <list default="true" id="bf0f1e68-5df5-492e-9ace-f7ab4ac23ce1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CenterSlot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CitySlot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/CourtSlot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/booking/slotnew/Slot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/GetCourtSlotHashMapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CenterSlotTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/app/booking/slotnew/CourtSlotTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterBookings.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterCourts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCenterCourts.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCities.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCities.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCityBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCityBookings.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCityCenters.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCityCenters.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCourtBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getCourtBookings.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../_Database/Stored Procedures/getPlayerBookings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../_Database/Stored Procedures/getPlayerBookings.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/Server/ApiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/Server/ApiServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/Server/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimpleTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/booking/slot/SimpleTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/Server/ApiServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/Server/ApiServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/Server/Constant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/Server/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/booking/slot/SimpleTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/booking/slot/SimpleTime.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../new slot algo.md" beforeDir="false" afterPath="$PROJECT_DIR$/../new slot algo.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +48,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -41,6 +70,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/bookingapp" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Problems" />
@@ -49,6 +80,18 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="app.booking.slotnew" />
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="app.booking.slot" />
+      <recent name="app.booking.slotnew" />
+      <recent name="app.booking" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="app.booking.api.Handler" />
       <recent name="app.booking.api" />
@@ -59,33 +102,7 @@
       <recent name="C:\Users\sonda\Desktop\teamepe2020\_Logic\JDBC\src\main\java\app\booking" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ApiServer">
-    <configuration name="Access" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="app.booking.FbAPI.Access" />
-      <module name="JDBC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.booking.FbAPI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApiServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="app.booking.Server.ApiServer" />
-      <module name="JDBC" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.booking.Server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.CourtSlotTest.CourtTest_Construct_WithDate_Given_Time_Constraint">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JDBC" />
@@ -93,37 +110,84 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="httpServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="app.booking.Test.httpServer" />
+    <configuration name="CenterSlotTest.Construct_From_SQL_Given_Bookings" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JDBC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.booking.FbAPI.*" />
+          <option name="PATTERN" value="app.booking.slotnew.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCourtSlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JDBC" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCourtSlot.getAvailableSlot_14Bookings_14" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JDBC" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestCourtSlot" />
-      <option name="METHOD_NAME" value="getAvailableSlot_14Bookings_14" />
+      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CenterSlotTest" />
+      <option name="METHOD_NAME" value="Construct_From_SQL_Given_Bookings" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CenterSlotTest.Construct_From_SQL_Given_Bookings_Arbitrary" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.slotnew.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CenterSlotTest" />
+      <option name="METHOD_NAME" value="Construct_From_SQL_Given_Bookings_Arbitrary" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CenterSlotTest.Construct_From_SQL_Given_Date" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.slotnew.CourtSlot" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CenterSlotTest" />
+      <option name="METHOD_NAME" value="Construct_From_SQL_Given_Date" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CenterSlotTest.Construct_From_SQL_Given_Date_Arbitrary" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.slotnew.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CenterSlotTest" />
+      <option name="METHOD_NAME" value="Construct_From_SQL_Given_Date_Arbitrary" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CourtSlotTest.CourtTest_Construct_WithDate_Given_Time_Constraint" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JDBC" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.booking.slotnew.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="app.booking.slotnew" />
+      <option name="MAIN_CLASS_NAME" value="app.booking.slotnew.CourtSlotTest" />
+      <option name="METHOD_NAME" value="CourtTest_Construct_WithDate_Given_Time_Constraint" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -151,19 +215,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.httpServer" />
-      <item itemvalue="Application.Access" />
-      <item itemvalue="Application.ApiServer" />
-      <item itemvalue="JUnit.TestCourtSlot" />
-      <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14" />
+      <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Date" />
+      <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Bookings" />
+      <item itemvalue="JUnit.CourtSlotTest.CourtTest_Construct_WithDate_Given_Time_Constraint" />
+      <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Date_Arbitrary" />
+      <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Bookings_Arbitrary" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ApiServer" />
-        <item itemvalue="Application.httpServer" />
-        <item itemvalue="Application.Access" />
-        <item itemvalue="JUnit.TestCourtSlot.getAvailableSlot_14Bookings_14" />
-        <item itemvalue="JUnit.TestCourtSlot" />
+        <item itemvalue="JUnit.CourtSlotTest.CourtTest_Construct_WithDate_Given_Time_Constraint" />
+        <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Bookings_Arbitrary" />
+        <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Date_Arbitrary" />
+        <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Bookings" />
+        <item itemvalue="JUnit.CenterSlotTest.Construct_From_SQL_Given_Date" />
       </list>
     </recent_temporary>
   </component>
@@ -195,28 +259,39 @@
     <state x="423" y="183" width="813" height="666" key="#Project_Structure/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
     <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587898054680" />
     <state x="319" y="151" width="1071" height="773" key="#com.intellij.execution.impl.EditConfigurationsDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587631593146" />
-    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1587602318144" />
-    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="865" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1587756370407">
+    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1588135419932">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="865" y="259" key="#com.intellij.ide.util.MemberChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1587756370407" />
+    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1588135419932" />
+    <state x="363" y="123" width="1217" height="827" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
+    <state x="865" y="259" key="#com.intellij.ide.util.MemberChooser" timestamp="1588134009403">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="865" y="259" key="#com.intellij.ide.util.MemberChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1588134009403" />
     <state x="884" y="259" key="#com.intellij.ide.util.MemberChooser/40.23.1640.1027@40.23.1640.1027" timestamp="1587719669571" />
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1587602318144" />
     <state x="622" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587602318144" />
     <state x="802" y="434" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state x="454" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587741407510">
+    <state x="648" y="412" width="500" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1588093712437">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="454" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1587741407510" />
+    <state x="648" y="412" width="500" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1680.1027@0.23.1680.1027" timestamp="1588093712437" />
+    <state x="454" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588129862763">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="454" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1588129862763" />
     <state x="483" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587718779367" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587756557773">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1587756557773" />
     <state x="709" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587602318144" />
-    <state width="1408" height="831" key="GridCell.Tab.0.bottom" timestamp="1588071355283">
+    <state x="1137" y="173" key="#xdebugger.evaluate" timestamp="1588136432671">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="1137" y="173" key="#xdebugger.evaluate/0.23.1680.1027@0.23.1680.1027" timestamp="1588136432671" />
+    <state width="1289" height="323" key="GridCell.Tab.0.bottom" timestamp="1588136605768">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1587727820574">
@@ -224,9 +299,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820574" />
     <state width="1638" height="272" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804686" />
-    <state width="1408" height="831" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355283" />
+    <state width="1289" height="323" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605768" />
     <state width="1549" height="243" key="GridCell.Tab.0.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587717657087" />
-    <state width="1408" height="831" key="GridCell.Tab.0.center" timestamp="1588071355283">
+    <state width="1289" height="323" key="GridCell.Tab.0.center" timestamp="1588136605767">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1587727820573">
@@ -234,10 +309,10 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.center.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820573" />
     <state width="1638" height="272" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804680" />
-    <state width="1408" height="831" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355283" />
+    <state width="1289" height="323" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605767" />
     <state width="1598" height="260" key="GridCell.Tab.0.center/39.23.1641.1027@39.23.1641.1027" timestamp="1587898346790" />
     <state width="1598" height="260" key="GridCell.Tab.0.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587901001094" />
-    <state width="1408" height="831" key="GridCell.Tab.0.left" timestamp="1588071355282">
+    <state width="1289" height="323" key="GridCell.Tab.0.left" timestamp="1588136605766">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1587727820420">
@@ -245,10 +320,10 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.left.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820420" />
     <state width="1638" height="272" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804531" />
-    <state width="1408" height="831" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355282" />
+    <state width="1289" height="323" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605766" />
     <state width="1598" height="260" key="GridCell.Tab.0.left/39.23.1641.1027@39.23.1641.1027" timestamp="1587898346790" />
     <state width="1598" height="260" key="GridCell.Tab.0.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587901001094" />
-    <state width="1408" height="831" key="GridCell.Tab.0.right" timestamp="1588071355283">
+    <state width="1289" height="323" key="GridCell.Tab.0.right" timestamp="1588136605768">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1587727820574">
@@ -256,10 +331,10 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.0.right.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820574" />
     <state width="1638" height="272" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804682" />
-    <state width="1408" height="831" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355283" />
+    <state width="1289" height="323" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605768" />
     <state width="1598" height="260" key="GridCell.Tab.0.right/39.23.1641.1027@39.23.1641.1027" timestamp="1587898346790" />
     <state width="1598" height="260" key="GridCell.Tab.0.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587901001094" />
-    <state width="1408" height="831" key="GridCell.Tab.1.bottom" timestamp="1588071355285">
+    <state width="1289" height="323" key="GridCell.Tab.1.bottom" timestamp="1588136605770">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.bottom.inPresentationMode" timestamp="1587727820577">
@@ -267,9 +342,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.bottom.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820577" />
     <state width="1638" height="272" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804690" />
-    <state width="1408" height="831" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355285" />
+    <state width="1289" height="323" key="GridCell.Tab.1.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605770" />
     <state width="1335" height="235" key="GridCell.Tab.1.bottom/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
-    <state width="1408" height="831" key="GridCell.Tab.1.center" timestamp="1588071355284">
+    <state width="1289" height="323" key="GridCell.Tab.1.center" timestamp="1588136605769">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.center.inPresentationMode" timestamp="1587727820576">
@@ -277,9 +352,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.center.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820576" />
     <state width="1638" height="272" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804688" />
-    <state width="1408" height="831" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355284" />
+    <state width="1289" height="323" key="GridCell.Tab.1.center/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605769" />
     <state width="1335" height="235" key="GridCell.Tab.1.center/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
-    <state width="1408" height="831" key="GridCell.Tab.1.left" timestamp="1588071355284">
+    <state width="1289" height="323" key="GridCell.Tab.1.left" timestamp="1588136605769">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.left.inPresentationMode" timestamp="1587727820575">
@@ -287,9 +362,9 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.left.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820575" />
     <state width="1638" height="272" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804687" />
-    <state width="1408" height="831" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355284" />
+    <state width="1289" height="323" key="GridCell.Tab.1.left/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605769" />
     <state width="1335" height="235" key="GridCell.Tab.1.left/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
-    <state width="1408" height="831" key="GridCell.Tab.1.right" timestamp="1588071355285">
+    <state width="1289" height="323" key="GridCell.Tab.1.right" timestamp="1588136605769">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.right.inPresentationMode" timestamp="1587727820576">
@@ -297,7 +372,7 @@
     </state>
     <state width="1638" height="293" key="GridCell.Tab.1.right.inPresentationMode/0.0.1680.1050@0.0.1680.1050" timestamp="1587727820576" />
     <state width="1638" height="272" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1587727804689" />
-    <state width="1408" height="831" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588071355285" />
+    <state width="1289" height="323" key="GridCell.Tab.1.right/0.23.1680.1027@0.23.1680.1027" timestamp="1588136605769" />
     <state width="1335" height="235" key="GridCell.Tab.1.right/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog" timestamp="1587898054680" />
     <state x="526" y="200" key="Maven.ArtifactSearchDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
@@ -305,15 +380,43 @@
     <state x="324" y="155" key="SettingsEditor/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
     <state x="828" y="323" key="chooseDestDirectoryDialog" timestamp="1587898054680" />
     <state x="828" y="323" key="chooseDestDirectoryDialog/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
+    <state x="287" y="372" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1588127790339">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="287" y="372" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1588127790339" />
+    <state x="276" y="272" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588124951371">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="276" y="272" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1680.1027@0.23.1680.1027" timestamp="1588124951371" />
     <state x="804" y="168" width="821" height="601" key="new project wizard" timestamp="1587898054680" />
     <state x="804" y="168" width="821" height="601" key="new project wizard/40.23.1640.1027@40.23.1640.1027" timestamp="1587898054680" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/app/booking/slotnew/CenterSlotTest.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/app/booking/slotnew/CourtSlotTest.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo typeName="com.fasterxml.jackson.databind.ObjectMapper" fieldName="_subtypeResolver" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="slot" />
+        <watch expression="this.slots" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="masterDetails">
     <states>

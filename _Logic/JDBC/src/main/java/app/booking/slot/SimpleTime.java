@@ -11,10 +11,9 @@ public class SimpleTime {
         minute += Integer.parseInt(timeSplit[1]);
     }
 
-    SimpleTime(Time newTime) {
-        String[] timeSplit = newTime.toString().split(":");
-        minute = 60 * Integer.parseInt(timeSplit[0]);
-        minute += Integer.parseInt(timeSplit[1]);
+    SimpleTime(Time time) {
+        minute = 60 * time.getHours();
+        minute += time.getMinutes();
     }
 
     public int toMinute() {

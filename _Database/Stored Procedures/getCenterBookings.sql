@@ -16,11 +16,10 @@ BEGIN
         from booking
         where centerId = center_id
           and pdate = date
-        group by court_id
-        order by startTime;
+        order by court_id, startTime;
         SET resultCode = '200';
     END IF;
 end//
 DELIMITER ;
 
--- call getCenterBookings("A1", date("2020-05-10"), @code);
+# call getCenterBookings('A1', date('2020-05-10'), @code);

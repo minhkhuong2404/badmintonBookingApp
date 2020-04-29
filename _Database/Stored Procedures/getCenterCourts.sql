@@ -14,10 +14,11 @@ THEN
 ELSE 
 	select * 
     from court 
-    where centerId = center_id;
+    where centerId = center_id
+	order by court_id;
 	SET resultCode = '200';
 END IF;
 end//
 DELIMITER ;
 
--- call getCenterCourts("C1", @code);
+call getCenterCourts('C1', @code);

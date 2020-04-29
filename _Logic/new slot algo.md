@@ -17,4 +17,5 @@ for each booking in bookings:
 
 if (close - slot.start >= min):
     slot.end = close
+    list.add(slot)
 

@@ -11,10 +11,13 @@ BEGIN
     THEN
         SET resultCode = 'GCC-001';
     ELSE
-        select * from center where cityId = city_id;
+        select *
+        from center
+        where cityId = city_id
+        order by center_id;
         SET resultCode = '200';
     END IF;
 end//
 DELIMITER ;
 
--- call getCityCenters("C", @code);
+call getCityCenters('C', @code);
