@@ -3,8 +3,7 @@
 
   
   
-# Programming Exercise 
-# Final Report   
+# Programming Exercise Final Report   
 ### For   
 # Booking App  
   
