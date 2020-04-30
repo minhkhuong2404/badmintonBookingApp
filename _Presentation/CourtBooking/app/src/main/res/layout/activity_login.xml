@@ -43,7 +43,7 @@
         android:textColor="#005CF7"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/realFacebookButton"
+        app:layout_constraintBottom_toTopOf="@+id/facebookButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.facebook.login.widget.LoginButton
-        android:id="@+id/realFacebookButton"
+        android:id="@+id/facebookButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
