@@ -24,6 +24,16 @@ class CenterAdapter(
     RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
     private var viewPool = RecyclerView.RecycledViewPool()
 
+    init{
+        // remove center that have no court
+        for (i in (centerList.length() - 1) downTo 0) {
+            val courtList = centerList.getJSONObject(i).getJSONArray("centerSlots")
+            if (courtList.length() == 0) {
+                centerList.remove(i)
+            }
+        }
+    }
+
     class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val centerTextView: TextView = itemView.tv_center
         val recyclerViewCourt: RecyclerView = itemView.findViewById(R.id.rv_court)
