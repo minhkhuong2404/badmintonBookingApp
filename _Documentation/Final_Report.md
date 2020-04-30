@@ -11,13 +11,13 @@
   
 ## Team E  
 
-#### Nguyen Hoang Quan - 13387
-#### Nguyen Tri Nguyen - 13421
+#### Dang Chi Cong - 13725
 #### Lam Hai Son - 11946
 #### Luu Nguyen Phat - 13322
 #### Lu Minh Khuong - 13156
 #### Ngo Minh Thong - 14077
-#### Dang Chi Cong - 13725 </div>
+#### Nguyen Tri Nguyen - 13421
+#### Nguyen Hoang Quan - 13387 </div>
 
 ## 1. Introduction
 ### 1.1. Project Scope and Description
