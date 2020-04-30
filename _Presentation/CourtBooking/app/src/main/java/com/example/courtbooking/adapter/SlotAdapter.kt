@@ -31,7 +31,7 @@ class SlotAdapter(
     private var slotList: JSONArray
 ) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
-
+    val PLAYTIME_MINIMUM:Long = 45
     init {
         val current = LocalTime.now()
         for (i in (slotList.length() - 1) downTo 0) {
@@ -39,7 +39,7 @@ class SlotAdapter(
             val endString = slotList.getJSONObject(i).getString("end")
             val start = LocalTime.parse(startString)
             val end = LocalTime.parse(endString)
-            if (current.isAfter( end.minusMinutes(45) )) {
+            if (current.isAfter( end.minusMinutes(PLAYTIME_MINIMUM) )) {
                 // remove the slot whose length from now to end is less than 45 minutes
                 slotList.remove(i)
             } else if (current.isAfter(start)) {
