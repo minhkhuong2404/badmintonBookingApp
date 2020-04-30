@@ -33,27 +33,18 @@ class SlotAdapter(
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
 
     init {
-        Log.i("jfjfdkjfksjdfj", "sldfjldkfjldkjsfd")
-        for (i in 0 until slotList.length()) {
-            val startString = slotList.getJSONObject(i).getString("start").substring(0, 5)
-            val endString = slotList.getJSONObject(i).getString("end").substring(0, 5)
+        val current = LocalTime.now()
+        for (i in (slotList.length() - 1) downTo 0) {
+            val startString = slotList.getJSONObject(i).getString("start")
+            val endString = slotList.getJSONObject(i).getString("end")
             val start = LocalTime.parse(startString)
             val end = LocalTime.parse(endString)
-
-            val current = LocalTime.now()
-
             if (current.isAfter( end.minusMinutes(45) )) {
                 // remove the slot whose length from now to end is less than 45 minutes
                 slotList.remove(i)
             } else if (current.isAfter(start)) {
-                // change start of slot if current pass start
-                val a = HashMap<String, String>()
-                a.put("start", current.format(DateTimeFormatter.ofPattern("HH:mm")))
-                a.put("end", endString)
-                val updateSlot = JSONObject(a as Map<*, *>)
-
-                slotList.remove(i)
-                slotList.put(i, updateSlot)
+                // if current > start: change start = current
+                slotList.getJSONObject(i).put("start", current.toString())
             }
         }
     }

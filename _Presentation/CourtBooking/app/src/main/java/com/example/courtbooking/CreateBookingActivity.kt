@@ -16,6 +16,7 @@ import com.facebook.AccessToken
 import kotlinx.android.synthetic.main.activity_create_booking.*
 import org.json.JSONObject
 import java.sql.Time
+import java.time.LocalTime
 
 
 class CreateBookingActivity : AppCompatActivity() {
@@ -45,8 +46,8 @@ class CreateBookingActivity : AppCompatActivity() {
         val court = intent.getStringExtra("court")
         val slotStartString = intent.getStringExtra("start")
         val slotEndString = intent.getStringExtra("end")
-        val slotStartTime = Time.valueOf(slotStartString)
-        val slotEndTime = Time.valueOf(slotEndString)
+        val slotStartTime = LocalTime.parse(slotStartString)
+        val slotEndTime = LocalTime.parse(slotEndString)
         val slotStartInt = toMinute(slotStartTime)
         val slotEndInt = toMinute(slotEndTime)
 
@@ -206,8 +207,8 @@ class CreateBookingActivity : AppCompatActivity() {
     private fun setTimePicker(
         timePicker: TimePicker,
         timePickerTextview: TextView,
-        slotStartTime: Time,
-        slotEndTime: Time,
+        slotStartTime: LocalTime,
+        slotEndTime: LocalTime,
         SLOT_MIN_LENGTH: Int
     ) {
         val start = toMinute(slotStartTime)
@@ -238,10 +239,8 @@ class CreateBookingActivity : AppCompatActivity() {
         return hour * 60 + minute
     }
 
-    private fun toMinute(time: Time): Int {
-        val hour = time.hours
-        val minute = time.minutes % 60
-        return hour * 60 + minute
+    private fun toMinute(time: LocalTime): Int {
+        return time.hour * 60 + time.minute
     }
 //    private fun requestMinLengthPlaytime(){}
 }
