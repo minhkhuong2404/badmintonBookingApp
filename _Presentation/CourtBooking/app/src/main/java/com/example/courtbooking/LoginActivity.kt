@@ -56,8 +56,10 @@ class LoginActivity : AppCompatActivity() {
             // load user data
             if (isNetworkAvailable(this)) {
                 // load user data from internet
+                Toast.makeText(this, "akk", Toast.LENGTH_SHORT).show()
                 loadUserDataFb(accessToken)
             } else {
+                Toast.makeText(this, "s1", Toast.LENGTH_SHORT).show()
                 // load user data cache
                 loadUserDataCache()
             }
@@ -67,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun isNetworkAvailable(activity: AppCompatActivity): Boolean {
+    private fun isNetworkAvailable(activity: AppCompatActivity): Boolean {
         val connectivityManager =
             activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
@@ -99,6 +101,7 @@ class LoginActivity : AppCompatActivity() {
 
     // user logged in, load data from fb graph api
     fun loadUserDataFb(accessToken: AccessToken) {
+        Toast.makeText(this, "aaa", Toast.LENGTH_SHORT).show()
         val request = GraphRequest.newMeRequest(accessToken, object : GraphRequest.GraphJSONObjectCallback {
             override fun onCompleted(`object`: JSONObject?, response: GraphResponse?) {
                 try {
