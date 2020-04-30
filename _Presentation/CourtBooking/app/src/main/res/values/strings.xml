@@ -22,6 +22,7 @@
     <!--    <string name="facebook_app_id">208036937303298</string>-->
 
     <string name="fb_login_protocol_scheme">fb624133635106948</string>
+    <string name="go_to_my_booking">GO TO MY BOOKING</string>
     <!--    <string name="fb_login_protocol_scheme">fb208036937303298</string>-->
 
 </resources>

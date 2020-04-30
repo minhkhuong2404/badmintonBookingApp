@@ -19,6 +19,7 @@ import com.facebook.AccessToken
 import kotlinx.android.synthetic.main.activity_selection.*
 import org.json.JSONArray
 import java.io.File
+import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -57,6 +58,8 @@ class SelectionActivity : AppCompatActivity() {
                 // if user has not chosen city
                 if (selectedCity.length == 0) {
                     Toast.makeText(this, "Please select a city.", Toast.LENGTH_SHORT).show()
+                } else if (isInThePast(selectedDate)){
+                    Toast.makeText(this, "You have selected a day in the past.", Toast.LENGTH_SHORT).show()
                 } else {
                     // Prepare intent
                     val toCitySlotActivity =
@@ -255,6 +258,12 @@ class SelectionActivity : AppCompatActivity() {
             val json = cacheFile.readText(Charsets.UTF_8)
             return JSONArray(json) // return city json array
         } else return null // return null city list
+    }
+    private fun isInThePast(date : String) : Boolean {
+        val d = LocalDate.parse(date)
+        if (d.isBefore(LocalDate.now())){
+            return true
+        } else return false
     }
 }
 

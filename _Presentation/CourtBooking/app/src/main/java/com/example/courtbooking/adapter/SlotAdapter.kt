@@ -51,6 +51,7 @@ class SlotAdapter(
 
     override fun getItemCount() = slotList.length()
 
+    // Initialize create booking dialog when it is called.
     fun createBookingDialog(context: Context, slot: JSONObject, position: Int) {
         val start = slot.getString("start")
         val end = slot.getString("end")
@@ -76,8 +77,8 @@ class SlotAdapter(
         val builder = AlertDialog.Builder(context)
         with(builder)
         {
-            setTitle("Confirm booking creation")
-            setMessage("On ${selectedDate} with time slot from $start to $end in city $selectedCity center $centerId court $courtId. Do you want to create?")
+            setTitle("Please confirm")
+            setMessage("On ${selectedDate} from ${start.subSequence(0,5)} to ${end.subSequence(0,5)} in city $selectedCity center $centerId court $courtId. Do you want to create new booking with this slot?")
             setPositiveButton(
                 "CREATE",
                 DialogInterface.OnClickListener(function = positiveButtonClick)

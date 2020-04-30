@@ -1785,6 +1785,7 @@ id showHome
 id showTitle
 id skipCollapsed
 id slide
+id slotLabel
 id slotTextView
 id slotTitle
 id small
@@ -1848,6 +1849,7 @@ id timepickerTextView
 id title
 id titleDividerNoCustom
 id title_template
+id toCreatedBookingBtn
 id toMainScreenButton
 id top
 id topPanel
@@ -1863,6 +1865,7 @@ id tvCourt
 id tvDate
 id tvEnd
 id tvPlayer
+id tvSlot
 id tvStart
 id tv_booking_id
 id tv_booking_text
@@ -2123,6 +2126,7 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string facebook_app_id
 string fb_login_protocol_scheme
+string go_to_my_booking
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string mtrl_badge_numberless_content_description

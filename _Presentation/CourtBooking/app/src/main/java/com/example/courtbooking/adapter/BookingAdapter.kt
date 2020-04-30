@@ -21,7 +21,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.sql.Date
 import java.sql.Timestamp
-import java.util.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
     private var BOOKING_VIEW_TYPE_DEFAULT = 0
@@ -40,10 +41,12 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
         val booking : JSONObject = listBooking.getJSONObject(position)
-        val date = Date(booking.getLong("date"))
+        val booking_time_string = Date(booking.getLong("date")).toString() + ' ' + booking.getString("start")
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        val booking_time = LocalDateTime.parse(booking_time_string, formatter);
+        val current_time = LocalDateTime.now()
         val payment_status = booking.getInt("status")
-        val date_now = Date(Calendar.getInstance().getTimeInMillis())
-        return if (date.compareTo(date_now) < 0 && payment_status == 0) {
+        return if (booking_time.compareTo(current_time) < 0 && payment_status == 0) {
             BOOKING_VIEW_TYPE_OVERDUE
         } else {
             BOOKING_VIEW_TYPE_DEFAULT
@@ -108,7 +111,6 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
             requestCancelBooking(tvId, playerid, position)
         }
         val negativeButtonClick = { dialog: DialogInterface, which: Int ->
-            Toast.makeText(tvId.context, "Booking #${tvId.text} was not canceled", Toast.LENGTH_SHORT).show()
         }
 
         val builder = AlertDialog.Builder(tvId.context)

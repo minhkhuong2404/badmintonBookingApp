@@ -16,6 +16,11 @@ DECLARE closeTime time;
 DECLARE startTime time;
 DECLARE endTime time;
 DECLARE playTime time;
+DECLARE PLAYTIME_45M time;
+DECLARE PLAYTIME_1H time;
+DECLARE PLAYTIME_1H15 time;
+DECLARE PLAYTIME_1H30 time;
+
 
 /* Assign variables */
 SELECT MAKETIME(7, 0, 0) into openTime;
@@ -23,7 +28,10 @@ SELECT MAKETIME(21, 0, 0) into closeTime;
 SELECT pstartTime into startTime;
 SELECT pendTime into endTime;
 SELECT TIMEDIFF(endTime, startTime) into playTime;
-
+SELECT MAKETIME(0,45,0) into PLAYTIME_45M;
+SELECT MAKETIME(1,0,0) into PLAYTIME_1H;
+SELECT MAKETIME(1,15,0) into PLAYTIME_1H15;
+SELECT MAKETIME(1,30,0) into PLAYTIME_1H30;
 
 
 IF NOT EXISTS (SELECT * FROM city WHERE city_id = pcityId)
@@ -35,7 +43,8 @@ THEN
 ELSEIF NOT EXISTS (SELECT * FROM court WHERE court_id = pcourtId)
 THEN
 	SET resultCode = 'CB-003';
-ELSEIF date_add(pdate, INTERVAL time_to_sec(startTime) SECOND) < DATE(NOW())
+ELSEIF ((date_add(pdate, INTERVAL TIME_TO_SEC(startTime) SECOND)) <=
+       date_add(DATE(NOW()), INTERVAL TIME_TO_SEC(TIME(NOW())) SECOND))
 THEN 
    SET resultCode = 'CB-005';
 ELSEIF  startTime < openTime 
@@ -47,10 +56,10 @@ THEN
 ELSEIF endTime < startTime
 THEN
     SET resultCode = 'CB-008'; 
-ELSEIF (playTime <> MAKETIME(0,45,0) and
-		playTime <> MAKETIME(1,0,0) and
-		playTime <> MAKETIME(1,15,0) and
-		playTime <> MAKETIME(1,30,0))
+ELSEIF (playTime <> PLAYTIME_45M and
+		playTime <> PLAYTIME_1H and
+		playTime <> PLAYTIME_1H15 and
+		playTime <> PLAYTIME_1H30)
 THEN 
     SET resultCode = 'CB-009'; 
 ELSEIF EXISTS ( SELECT *
@@ -60,10 +69,11 @@ ELSEIF EXISTS ( SELECT *
 THEN 
     SET resultCode = 'CB-010'; 
 ELSEIF EXISTS ( SELECT *
-            FROM booking
-			WHERE ( player_id = pplayerId and
-					status = 0 and
-					date_add(date, INTERVAL TIME_TO_SEC(startTime) SECOND) < DATE(NOW())) )
+            FROM booking b
+			WHERE ( b.player_id = pplayerId and
+					b.status = 0 and
+					date_add(b.date, INTERVAL TIME_TO_SEC(b.startTime) SECOND) <
+					date_add(DATE(NOW()), INTERVAL TIME_TO_SEC(TIME(NOW())) SECOND)) )
 THEN
     SET resultCode = 'CB-011';
 ELSEIF 3 <= ( SELECT COUNT(*) FROM booking

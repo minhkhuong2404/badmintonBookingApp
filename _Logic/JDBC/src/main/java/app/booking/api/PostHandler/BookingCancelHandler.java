@@ -45,14 +45,11 @@ public class BookingCancelHandler extends PostHandler {
         String result_code = SQLStatement.cancelBooking(
                 cancelRequest.getId(),
                 cancelRequest.getPlayerid());
-
         System.out.println("CancelBooking() executed with result code: " + result_code);
 
         // preparing response to client
         Response response = new Response(result_code);
         String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
-
-        System.out.println(rsp);
 
         return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.CREATED);
     }

@@ -1,0 +1,3 @@
+
+select (date_add('2020-04-30', INTERVAL TIME_TO_SEC(MAKETIME(11,0,0)) SECOND)) <
+       date_add(DATE(NOW()), INTERVAL TIME_TO_SEC(TIME(NOW())) SECOND)
