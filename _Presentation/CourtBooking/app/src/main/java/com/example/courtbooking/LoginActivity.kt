@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         // View
         profileImage = findViewById(R.id.profileImage)
         fullnameTextView = findViewById(R.id.usernameTextView)
-        loginButton = findViewById(R.id.realFacebookButton)
+        loginButton = findViewById(R.id.facebookButton)
         loginButton.setPermissions(listOf("public_profile", "email"))
         toBookingButton = findViewById(R.id.toMainScreenButton)
 
