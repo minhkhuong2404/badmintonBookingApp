@@ -48,7 +48,10 @@
   * The third feature is showing customer's booking. To use this feature, at the main screen, customer have to click the button "Show my bookings". Then customer will be processed to their booking screen. In here, customer can see the detail list of their bookings which include booking ID, Date, Time, Payment Status, Court and created date. In addtion, the booking which is overdue will be highlight in red color.  
   
   * The last feature is to cancel their booking. First, customer must go to their booking list by using the third feature. Then they can cancel their book by clicking the button "Cancel this booking". A window will pop-up to confirm the cancellation. By clicking "No", customer will return to the booking list screen. By clicking "Yes", customer can cancel that booking if the cancellation is 24 hours before the start time.  
-### 2.2. Staff
+### 2.2. Staff  
+  * Staff is the user who can be also thought as the manager of the service. Also, the same as the customer, to be a member of the system, staff must have a Facebook account to login into the application.  
+  * As a member of the system, s/he will have a right to access the booking list which shows all the slots reserved by the customers in his/her sport center. But first of all, the staff have to choose the date and the city so that they can click the “show bookings” button and then s/he can see the booking list of his/her sport center in that date and city.  
+
 ## 3. Requirements
 ### 3.1. Hardware and Software Requirements
    * **Hardware requirement:**  
