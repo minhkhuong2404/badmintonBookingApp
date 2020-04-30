@@ -15,7 +15,6 @@ import com.example.courtbooking.request.MySingleton
 import com.facebook.AccessToken
 import kotlinx.android.synthetic.main.activity_create_booking.*
 import org.json.JSONObject
-import java.sql.Time
 import java.time.LocalTime
 
 
@@ -25,15 +24,15 @@ class CreateBookingActivity : AppCompatActivity() {
     lateinit var cityId : String
     lateinit var date : String
     /* Constants */
-    val PLAYTIME_45M = 45
-    val PLAYTIME_1H = 60
-    val PLAYTIME_1H15 = 75
-    val PLAYTIME_1H30 = 90
-    val ALL_PLAYTIME_DURATION = listOf(PLAYTIME_45M, PLAYTIME_1H, PLAYTIME_1H15, PLAYTIME_1H30)
-    var PLAYTIME_MINIMUM = PLAYTIME_45M
-    var chosenStartTime = -1 // initialize
-    var chosenPlaytime = -1 // initialize
-    var chosenEndTime = -1 // initialize
+    private val PLAYTIME_45M = 45
+    private val PLAYTIME_1H = 60
+    private val PLAYTIME_1H15 = 75
+    private val PLAYTIME_1H30 = 90
+    private val ALL_PLAYTIME_DURATION = listOf(PLAYTIME_45M, PLAYTIME_1H, PLAYTIME_1H15, PLAYTIME_1H30)
+    private var PLAYTIME_MINIMUM = PLAYTIME_45M
+    private var chosenStartTime = -1 // initialize
+    private var chosenPlaytime = -1 // initialize
+    private var chosenEndTime = -1 // initialize
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_booking)
@@ -153,8 +152,7 @@ class CreateBookingActivity : AppCompatActivity() {
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.POST, ApiUtils.URL_BOOKING_CREATE, bookingObj,
             Response.Listener { response ->
-                val resultCode = response.getString("code")
-                when (resultCode) {
+                when (response.getString("code")) {
                     "200" -> {
                         val toast = Toast.makeText(this, "Booking successfully created.", Toast.LENGTH_SHORT)
                         toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
