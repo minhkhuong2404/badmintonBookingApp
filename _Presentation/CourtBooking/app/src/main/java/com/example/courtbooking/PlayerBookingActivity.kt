@@ -50,7 +50,7 @@ class PlayerBookingActivity : AppCompatActivity() {
     // request player booking list
     private fun requestPlayerBooking(player: String, city: String, date: String) {
         // Preparing query
-        var query = "?id=$player&cityid=$city&date=$date"
+        val query = "?id=$player&cityid=$city&date=$date"
 
         // Get a RequestQueue
         val jsonArrayRequest =

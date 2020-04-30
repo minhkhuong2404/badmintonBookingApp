@@ -95,13 +95,13 @@ class CreateBookingActivity : AppCompatActivity() {
             chosenEndTime = chosenStartTime + chosenPlaytime
             tvEnd.text = minuteToString(chosenEndTime)
             // recalculate duration list
-            var duration_list = ArrayList<String>()
+            val durationList = ArrayList<String>()
             for (i in ALL_PLAYTIME_DURATION){
                 if (chosenStartTime + i <= slotEndInt){
-                    duration_list.add(i.toString())
+                    durationList.add(i.toString())
                 }
             }
-            durationSpinner.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, duration_list)
+            durationSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, durationList)
         }
         createBookingButton.setOnClickListener {
             // convert to right fornat
@@ -139,7 +139,7 @@ class CreateBookingActivity : AppCompatActivity() {
         pcourtid: String,
         pplayerid: String
     ) {
-        var bookingObj = JSONObject()
+        val bookingObj = JSONObject()
         bookingObj.put("pdate", pdate)
         bookingObj.put("pstarttime", pstarttime)
         bookingObj.put("pendtime", pendtime)
@@ -152,36 +152,46 @@ class CreateBookingActivity : AppCompatActivity() {
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.POST, ApiUtils.URL_BOOKING_CREATE, bookingObj,
             Response.Listener { response ->
-                val result_code = response.getString("code")
-                if (result_code.equals("200")) {
-                    val toast = Toast.makeText(this, "Booking successfully created.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                    createBookingBtn.visibility = View.GONE
-                    toCreatedBookingBtn.visibility = View.VISIBLE
-                } else if (result_code.equals("CB-005")){
-                    val toast = Toast.makeText(this, "Cannot make booking in the past.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                } else if (result_code.equals("CB-006")){
-                    val toast = Toast.makeText(this, "Create failed: start time is before open time.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                } else if (result_code.equals("CB-007")){
-                    val toast = Toast.makeText(this, "Create failed: end time is after close time.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                } else if (result_code.equals("CB-008")){
-                    val toast = Toast.makeText(this, "Create failed: end time is before open time.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                } else if (result_code.equals("CB-009")){
-                    val toast = Toast.makeText(this, "Create failed: playtime is invalid.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                } else if (result_code.equals("CB-010")){
-                    val toast = Toast.makeText(this, "Create failed: overlapped with another booking.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                } else if (result_code.equals("CB-011")){
-                    val toast = Toast.makeText(this, "Create failed: you have an unpaid booking.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
-                } else if (result_code.equals("CB-012")){
-                    val toast = Toast.makeText(this, "Create failed: cannot make more than 3 bookings in advance.", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                val resultCode = response.getString("code")
+                when (resultCode) {
+                    "200" -> {
+                        val toast = Toast.makeText(this, "Booking successfully created.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                        createBookingBtn.visibility = View.GONE
+                        toCreatedBookingBtn.visibility = View.VISIBLE
+                    }
+                    "CB-005" -> {
+                        val toast = Toast.makeText(this, "Cannot make booking in the past.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
+                    "CB-006" -> {
+                        val toast = Toast.makeText(this, "Create failed: start time is before open time.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
+                    "CB-007" -> {
+                        val toast = Toast.makeText(this, "Create failed: end time is after close time.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
+                    "CB-008" -> {
+                        val toast = Toast.makeText(this, "Create failed: end time is before open time.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
+                    "CB-009" -> {
+                        val toast = Toast.makeText(this, "Create failed: playtime is invalid.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
+                    "CB-010" -> {
+                        val toast = Toast.makeText(this, "Create failed: overlapped with another booking.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
+                    "CB-011" -> {
+                        val toast = Toast.makeText(this, "Create failed: you have an unpaid booking.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
+                    "CB-012" -> {
+                        val toast = Toast.makeText(this, "Create failed: cannot make more than 3 bookings in advance.", Toast.LENGTH_SHORT)
+                        toast.setGravity(Gravity.CENTER, 0, 0); toast.show()
+                    }
                 }
             },
             Response.ErrorListener { error ->
@@ -202,15 +212,15 @@ class CreateBookingActivity : AppCompatActivity() {
     ) {
         val start = toMinute(slotStartTime)
         val end = toMinute(slotEndTime)
-        val latest_start = end - SLOT_MIN_LENGTH
-        timePickerTextview.text = "Select a time in range of ${slotStartTime.toString().subSequence(0, 5)} to ${minuteToString(latest_start)}"
+        val latestStart = end - SLOT_MIN_LENGTH
+        timePickerTextview.text = "Select a time in range of ${slotStartTime.toString().subSequence(0, 5)} to ${minuteToString(latestStart)}"
         timePicker.setIs24HourView(true)
         timePicker.setOnTimeChangedListener { _, hour, minute ->
             var selecting = toMinute(hour, minute)
             if (selecting < start) {
                 selecting = start
-            } else if (selecting > latest_start) {
-                selecting = latest_start
+            } else if (selecting > latestStart) {
+                selecting = latestStart
             }
             timePicker.hour = selecting / 60
             timePicker.minute = selecting % 60
@@ -219,9 +229,9 @@ class CreateBookingActivity : AppCompatActivity() {
     private fun minuteToString(time : Int) : String{
         val hour = time / 60
         val min = time % 60
-        val hour_s = hour.toString().padStart(2, '0')
-        val min_s = min.toString().padStart(2, '0')
-        return hour_s + ':' + min_s
+        val hourS = hour.toString().padStart(2, '0')
+        val minS = min.toString().padStart(2, '0')
+        return "$hourS:$minS"
     }
 
     private fun toMinute(hour: Int, minute: Int): Int {

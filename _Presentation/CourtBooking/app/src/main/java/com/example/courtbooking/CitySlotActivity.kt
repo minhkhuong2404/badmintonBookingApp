@@ -2,8 +2,6 @@ package com.example.courtbooking
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -12,16 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.example.courtbooking.adapter.Center
 import com.example.courtbooking.adapter.CenterAdapter
-import com.example.courtbooking.adapter.Court
-import com.example.courtbooking.adapter.Slot
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
 import com.facebook.AccessToken
 import kotlinx.android.synthetic.main.activity_city_slot.*
 import org.json.JSONArray
-import org.json.JSONObject
 
 class CitySlotActivity : AppCompatActivity() {
     // User vars
@@ -48,15 +42,14 @@ class CitySlotActivity : AppCompatActivity() {
     // request available slot
     private fun requestCitySlot(player: String, city: String, date: String) {
         // Preparing query
-        var query = "?id=$city&date=$date"
+        val query = "?id=$city&date=$date"
 
         // Get a RequestQueue
         val jsonObjectRequest =
             JsonObjectRequest(
                 Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
                 Response.Listener { response ->
-                    val city = response
-                    val centerList = city.getJSONArray("citySlots")
+                    val centerList = response.getJSONArray("citySlots")
                     // show available slot
                     initRecyclerViewCenter(centerList)
                 },

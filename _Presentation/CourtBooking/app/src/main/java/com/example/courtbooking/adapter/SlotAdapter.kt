@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,9 @@ import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.slot.view.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+
 
 class SlotAdapter(
     private val parentContext: Context,
@@ -24,9 +28,35 @@ class SlotAdapter(
     private val centerId: String,
     private val courtId: String,
     private val playerId: String,
-    private val slotList: JSONArray
+    private var slotList: JSONArray
 ) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
+
+    init {
+        Log.i("jfjfdkjfksjdfj", "sldfjldkfjldkjsfd")
+        for (i in 0 until slotList.length()) {
+            val startString = slotList.getJSONObject(i).getString("start").substring(0, 5)
+            val endString = slotList.getJSONObject(i).getString("end").substring(0, 5)
+            val start = LocalTime.parse(startString)
+            val end = LocalTime.parse(endString)
+
+            val current = LocalTime.now()
+
+            if (current.isAfter( end.minusMinutes(45) )) {
+                // remove the slot whose length from now to end is less than 45 minutes
+                slotList.remove(i)
+            } else if (current.isAfter(start)) {
+                // change start of slot if current pass start
+                val a = HashMap<String, String>()
+                a.put("start", current.format(DateTimeFormatter.ofPattern("HH:mm")))
+                a.put("end", endString)
+                val updateSlot = JSONObject(a as Map<*, *>)
+
+                slotList.remove(i)
+                slotList.put(i, updateSlot)
+            }
+        }
+    }
 
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val slotBtn: Button = itemView.b_slot

@@ -5,14 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
 import com.facebook.AccessToken
@@ -111,7 +109,7 @@ class SelectionActivity : AppCompatActivity() {
 //        Toast.makeText(this, "UserID: $userId", Toast.LENGTH_SHORT).show()
     }
 
-    fun isNetworkAvailable(activity: AppCompatActivity): Boolean {
+    private fun isNetworkAvailable(activity: AppCompatActivity): Boolean {
         val connectivityManager =
             activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
@@ -162,15 +160,15 @@ class SelectionActivity : AppCompatActivity() {
         val mFinalMonth = month + 1
         val dayText: String
         val monthText: String
-        if (day < 10) {
-            dayText = "0$day";
+        dayText = if (day < 10) {
+            "0$day";
         } else {
-            dayText = "$day"
+            "$day"
         }
-        if (mFinalMonth < 10) {
-            monthText = "0$mFinalMonth";
+        monthText = if (mFinalMonth < 10) {
+            "0$mFinalMonth";
         } else {
-            monthText = "$mFinalMonth"
+            "$mFinalMonth"
         }
         if (separator == '-') {
             return "$year-$monthText-$dayText"
@@ -181,7 +179,7 @@ class SelectionActivity : AppCompatActivity() {
     // set city spinner
     private fun setCitySpinner(cityJSONArray: JSONArray) {
         // if city list not empty, update the spinner
-        var cityList = ArrayList<String>()
+        val cityList = ArrayList<String>()
         for (i in 0 until cityJSONArray.length()) {
             cityList.add(cityJSONArray.get(i).toString())
         }
@@ -223,14 +221,14 @@ class SelectionActivity : AppCompatActivity() {
             },
             Response.ErrorListener { error ->
                 // load cache city list
-                var cached_cityJSONArray : JSONArray? = loadCacheCity()
+                val cachedCityjsonarray : JSONArray? = loadCacheCity()
 
                 // if cache not existed
-                if (cached_cityJSONArray == null) {
+                if (cachedCityjsonarray == null) {
                     Toast.makeText(this, "Unable to load cities.", Toast.LENGTH_SHORT).show()
                 } else {
                     // use cache to set city chooser
-                    setCitySpinner(cached_cityJSONArray)
+                    setCitySpinner(cachedCityjsonarray)
                 }
             }
         )
@@ -240,7 +238,7 @@ class SelectionActivity : AppCompatActivity() {
     }
 
     // cache city list
-    fun cacheCity(cityJSONArray: JSONArray) {
+    private fun cacheCity(cityJSONArray: JSONArray) {
         // prepare content
         val json = cityJSONArray.toString()
         // prepare cache file
@@ -251,7 +249,7 @@ class SelectionActivity : AppCompatActivity() {
     }
 
     // load city list from cache
-    fun loadCacheCity(): JSONArray? {
+    private fun loadCacheCity(): JSONArray? {
         // read cache
         val cacheFile = File(this.cacheDir, cacheFilename)
         if (cacheFile.exists()) {
@@ -261,12 +259,6 @@ class SelectionActivity : AppCompatActivity() {
     }
     private fun isInThePast(date : String) : Boolean {
         val d = LocalDate.parse(date)
-        if (d.isBefore(LocalDate.now())){
-            return true
-        } else return false
+        return d.isBefore(LocalDate.now())
     }
 }
-
-
-
-
