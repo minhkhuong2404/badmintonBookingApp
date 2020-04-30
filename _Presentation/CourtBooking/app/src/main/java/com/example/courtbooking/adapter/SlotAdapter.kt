@@ -31,7 +31,7 @@ class SlotAdapter(
     private var slotList: JSONArray
 ) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
-    val PLAYTIME_MINIMUM:Long = 45
+    private val PLAYTIME_MINIMUM:Long = 45
     init {
         val current = LocalTime.now()
         for (i in (slotList.length() - 1) downTo 0) {
@@ -73,7 +73,7 @@ class SlotAdapter(
     override fun getItemCount() = slotList.length()
 
     // Initialize create booking dialog when it is called.
-    fun createBookingDialog(context: Context, slot: JSONObject, position: Int) {
+    private fun createBookingDialog(context: Context, slot: JSONObject, position: Int) {
         val start = slot.getString("start")
         val end = slot.getString("end")
 
@@ -99,7 +99,7 @@ class SlotAdapter(
         with(builder)
         {
             setTitle("Please confirm")
-            setMessage("On ${selectedDate} from ${start.subSequence(0,5)} to ${end.subSequence(0,5)} in city $selectedCity center $centerId court $courtId. Do you want to create new booking with this slot?")
+            setMessage("On $selectedDate from ${start.subSequence(0,5)} to ${end.subSequence(0,5)} in city $selectedCity center $centerId court $courtId. Do you want to create new booking with this slot?")
             setPositiveButton(
                 "CREATE",
                 DialogInterface.OnClickListener(function = positiveButtonClick)
