@@ -2,7 +2,6 @@ package com.example.courtbooking.request
 
 object ApiUtils {
     const val BASE_URL = "http://10.0.2.2:8003"
-    const val PORT_NUMBER = 8003
 
     // URL GET
     const val URL_GET_CITY_ALL = BASE_URL + "/api/city/all"
