@@ -21,6 +21,16 @@ class CourtAdapter(
 
     ) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
 
+    init {
+        // remove if court that have no slot
+        for (i in (courtList.length() - 1) downTo 0) {
+            val slotList = courtList.getJSONObject(i).getJSONArray("courtSlots")
+            if (slotList.length() == 0) {
+                courtList.remove(i)
+            }
+        }
+    }
+
     // Constants
     private var COURT_VIEW_TYPE_DEFAULT = 0
     private var COURT_VIEW_TYPE_BLUE = 1

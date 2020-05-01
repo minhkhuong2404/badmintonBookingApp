@@ -65,18 +65,21 @@ class CitySlotActivity : AppCompatActivity() {
     @SuppressLint("WrongConstant")
     private fun initRecyclerViewCenter(centerList: JSONArray) {
         // Calling the recycler view for Center
-        rv_center.apply {
-            layoutManager =
-                LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
-            adapter = CenterAdapter(
-                this@CitySlotActivity,
-                selectedDate,
-                selectedCity,
-                playerId,
-                centerList
-            )
-            setHasFixedSize(true)
+        if (centerList.length() != 0) {
+            rv_center.apply {
+                layoutManager =
+                    LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
+                adapter = CenterAdapter(
+                    this@CitySlotActivity,
+                    selectedDate,
+                    selectedCity,
+                    playerId,
+                    centerList
+                )
+                setHasFixedSize(true)
+            }
         }
+
     }
     // reload slot when go back
     override fun onResume() {

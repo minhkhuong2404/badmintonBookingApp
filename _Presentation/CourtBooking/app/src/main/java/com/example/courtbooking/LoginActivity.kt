@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.facebook.*
@@ -17,8 +16,6 @@ import com.facebook.login.widget.LoginButton
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 
 
 class LoginActivity : AppCompatActivity() {
@@ -41,9 +38,12 @@ class LoginActivity : AppCompatActivity() {
         // View
         profileImage = findViewById(R.id.profileImage)
         fullnameTextView = findViewById(R.id.usernameTextView)
-        loginButton = findViewById(R.id.realFacebookButton)
+        loginButton = findViewById(R.id.facebookButton)
         loginButton.setPermissions(listOf("public_profile", "email"))
         toBookingButton = findViewById(R.id.toMainScreenButton)
+
+        loginButton.setPermissions(listOf("public_profile", "email"))
+
         toBookingButton.setOnClickListener {
             // Preparing to next activity
             val toMainScreen = Intent(this@LoginActivity, SelectionActivity::class.java)
@@ -67,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun isNetworkAvailable(activity: AppCompatActivity): Boolean {
+    private fun isNetworkAvailable(activity: AppCompatActivity): Boolean {
         val connectivityManager =
             activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
@@ -111,15 +111,17 @@ class LoginActivity : AppCompatActivity() {
                         if (permission == "public_profile") {
                             // get user's id, name, profile image
                             val firstName = `object`?.getString("first_name")
-                            val middleName = `object`?.getString("middle_name")
+//                            val middleName = `object`?.getString("middle_name")
                             val lastName = `object`?.getString("last_name")
-                            fullname = "$firstName $middleName $lastName"
+                            fullname = "$firstName $lastName"
                             id = `object`?.getString("id").toString()
                             imageURL = "https://graph.facebook.com/$id/picture?type=normal"
 
                             Log.i("load from fb", "before update view")
                             // update to views
-                            fullnameTextView.text = fullname
+                            if (firstName != null && lastName != null) {
+                                fullnameTextView.text = fullname
+                            }
                             Glide.with(this@LoginActivity).load(imageURL).skipMemoryCache(true)
                                 .into(profileImage)
                             Log.i("load from fb", "after update view")

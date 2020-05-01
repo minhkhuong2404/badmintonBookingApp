@@ -41,12 +41,12 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
         val booking : JSONObject = listBooking.getJSONObject(position)
-        val booking_time_string = Date(booking.getLong("date")).toString() + ' ' + booking.getString("start")
+        val bookingTimeString = Date(booking.getLong("date")).toString() + ' ' + booking.getString("start")
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        val booking_time = LocalDateTime.parse(booking_time_string, formatter);
-        val current_time = LocalDateTime.now()
-        val payment_status = booking.getInt("status")
-        return if (booking_time.compareTo(current_time) < 0 && payment_status == 0) {
+        val bookingTime = LocalDateTime.parse(bookingTimeString, formatter);
+        val currentTime = LocalDateTime.now()
+        val paymentStatus = booking.getInt("status")
+        return if (bookingTime.compareTo(currentTime) < 0 && paymentStatus == 0) {
             BOOKING_VIEW_TYPE_OVERDUE
         } else {
             BOOKING_VIEW_TYPE_DEFAULT
@@ -104,7 +104,7 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = listBooking.length()
 
-    fun cancelBookingDialog(tvId: TextView, playerid: String, position: Int) {
+    private fun cancelBookingDialog(tvId: TextView, playerid: String, position: Int) {
 
         val positiveButtonClick = { dialog: DialogInterface, which: Int ->
             // handle cancel booking here
@@ -142,15 +142,15 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.POST, ApiUtils.URL_BOOKING_CANCEL, cancelObj,
             Response.Listener { response ->
-                val result_code = response.getString("code")
-                var msg = ""
-                if (result_code == "200") {
+                val resultCode = response.getString("code")
+
+                val msg = if (resultCode == "200") {
                     removeCancelledBooking(position)
-                    msg = "Booking #${tvId.text} was cancelled."
+                    "Booking #${tvId.text} was cancelled."
                 } else {
-                    if (result_code == "CA-005")
-                        msg = "Cancellation can only be done before 24 hours of start time."
-                    else msg = "Booking #${tvId.text} was not cancelled."
+                    if (resultCode == "CA-005")
+                        "Cancellation can only be done before 24 hours of start time."
+                    else "Booking #${tvId.text} was not cancelled."
                 }
                 Toast.makeText(tvId.context, msg, Toast.LENGTH_SHORT).show()
             },

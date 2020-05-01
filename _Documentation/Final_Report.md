@@ -11,23 +11,21 @@
   
 ## Team E  
 
-#### Nguyen Hoang Quan - 13387
-#### Nguyen Tri Nguyen - 13421
+#### Dang Chi Cong - 13725
 #### Lam Hai Son - 11946
 #### Luu Nguyen Phat - 13322
 #### Lu Minh Khuong - 13156
 #### Ngo Minh Thong - 14077
-#### Dang Chi Cong - 13725 </div>
+#### Nguyen Tri Nguyen - 13421
+#### Nguyen Hoang Quan - 13387 </div>
 
 ## 1. Introduction
 ### 1.1. Project Scope and Description
   * Booking Application is a software which is mainly composed of the following parts:  
-    -Booking slot management  
     -Booking via handheld mobile phone  
     -Online booking and booking management over the Internet  
     -Customer management  
     
-  * Booking slot management is the management of slots which are required for the sport center to be serviced. Possible functions provided by this system will be tracking of unavailable slots and avalable slots of the sport center.  
   * With the help of operated handhelds, booking of the customers in the application will directly be transferred to the database and inform to the sport center where the court are prepared. It is easy communication among the customer and sport center. Increasing service efficiency are the qualifications of this system which makes our automation much more effectively and practical for all users of the application.  
   *  Online booking and booking management module provides solutions for the online customers. By using the application constructed by the automation, customers will have list of any court provided by the sport centers in chosen city. In order to use this application, each customer has to have an Facebook account. This account will not only provide online booking but also be used by the users to keep track of all promotions, announcements prepared for registered customers.  
   * Main concern of customer management system is customer related data. This data consists of individual information such as customer’s name, email, customer ID, telephone number, and order related information like booking amount. This module has a capability of identifying customers by the staff of the sport center. If the customer want to change the profile information, they can confirm this by editing account setting. The management module will also show the pending booking which the customer has not paid yet, improve the way of manage the booking list and available slot list.  
@@ -48,7 +46,10 @@
   * The third feature is showing customer's booking. To use this feature, at the main screen, customer have to click the button "Show my bookings". Then customer will be processed to their booking screen. In here, customer can see the detail list of their bookings which include booking ID, Date, Time, Payment Status, Court and created date. In addtion, the booking which is overdue will be highlight in red color.  
   
   * The last feature is to cancel their booking. First, customer must go to their booking list by using the third feature. Then they can cancel their book by clicking the button "Cancel this booking". A window will pop-up to confirm the cancellation. By clicking "No", customer will return to the booking list screen. By clicking "Yes", customer can cancel that booking if the cancellation is 24 hours before the start time.  
-### 2.2. Staff
+### 2.2. Staff  
+  * Staff is the user who can be also thought as the manager of the service. Also, the same as the customer, to be a member of the system, staff must have a Facebook account to login into the application.  
+  * As a member of the system, s/he will have a right to access the booking list which shows all the slots reserved by the customers in his/her sport center. But first of all, the staff have to choose the date and the city so that they can click the “show bookings” button and then s/he can see the booking list of his/her sport center in that date and city.  
+
 ## 3. Requirements
 ### 3.1. Hardware and Software Requirements
    * **Hardware requirement:**  

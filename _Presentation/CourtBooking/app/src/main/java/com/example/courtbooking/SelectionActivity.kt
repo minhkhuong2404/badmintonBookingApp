@@ -158,14 +158,12 @@ class SelectionActivity : AppCompatActivity() {
     // convert date to string
     private fun dateConvert(day : Int, month : Int, year : Int, separator : Char) : String {
         val mFinalMonth = month + 1
-        val dayText: String
-        val monthText: String
-        dayText = if (day < 10) {
+        val dayText: String = if (day < 10) {
             "0$day";
         } else {
             "$day"
         }
-        monthText = if (mFinalMonth < 10) {
+        val monthText = if (mFinalMonth < 10) {
             "0$mFinalMonth";
         } else {
             "$mFinalMonth"
@@ -184,7 +182,7 @@ class SelectionActivity : AppCompatActivity() {
             cityList.add(cityJSONArray.get(i).toString())
         }
         // Show first item on the cities array on the chosenCity spinner
-        citySpinner.adapter = ArrayAdapter<String>(
+        citySpinner.adapter = ArrayAdapter(
             this@SelectionActivity,
             android.R.layout.simple_list_item_1,
             cityList
@@ -252,10 +250,10 @@ class SelectionActivity : AppCompatActivity() {
     private fun loadCacheCity(): JSONArray? {
         // read cache
         val cacheFile = File(this.cacheDir, cacheFilename)
-        if (cacheFile.exists()) {
+        return if (cacheFile.exists()) {
             val json = cacheFile.readText(Charsets.UTF_8)
-            return JSONArray(json) // return city json array
-        } else return null // return null city list
+            JSONArray(json) // return city json array
+        } else null // return null city list
     }
     private fun isInThePast(date : String) : Boolean {
         val d = LocalDate.parse(date)
