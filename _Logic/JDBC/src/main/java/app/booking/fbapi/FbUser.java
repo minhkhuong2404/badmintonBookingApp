@@ -1,6 +1,6 @@
 package app.booking.fbapi;
 
-public class AccessFBGraphAPI {
+public class FbUser {
     private String id;
     private String name;
     private String email;

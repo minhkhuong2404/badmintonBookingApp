@@ -53,8 +53,8 @@ public class BookingCreateHandler extends PostHandler {
         System.out.println("Create Booking executed with result code: " + result_code);
 
         // preparing response to client
-        Response response = new Response(result_code);
-        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+        PostResponse postResponse = new PostResponse(result_code);
+        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(postResponse);
 
         return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }

@@ -12,3 +12,8 @@ class BookingCreateRequest {
     String pcourtid;
     String pplayerid;
 }
+@Value
+class BookingCancelRequest {
+    int id;
+    String playerid;
+}

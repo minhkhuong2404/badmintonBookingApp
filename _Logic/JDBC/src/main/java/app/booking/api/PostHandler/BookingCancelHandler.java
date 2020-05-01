@@ -11,9 +11,6 @@ import com.sun.net.httpserver.HttpExchange;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Date;
-import java.sql.Time;
-import java.util.ArrayList;
 
 
 public class BookingCancelHandler extends PostHandler {
@@ -48,8 +45,8 @@ public class BookingCancelHandler extends PostHandler {
         System.out.println("CancelBooking() executed with result code: " + result_code);
 
         // preparing response to client
-        Response response = new Response(result_code);
-        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(response);
+        PostResponse postResponse = new PostResponse(result_code);
+        String rsp = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(postResponse);
 
         return new ResponseEntity<>(rsp, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.CREATED);
     }

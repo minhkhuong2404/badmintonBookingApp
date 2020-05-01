@@ -579,6 +579,7 @@ public class SQLStatement {
         return bookingList;
     }
 
+    // getPlayerBookings
     public static ArrayList<Booking> getPlayerBookings(String playerId, String cityId, Date date) throws NullPointerException, SQLException {
         CallableStatement stm = null;
         ArrayList<Booking> bookingList = new ArrayList<>();
