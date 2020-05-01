@@ -154,8 +154,8 @@ the state of the booking (from unpaid to paid and vice versa).
 #### Select Date
 ![Select Date](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/2.1.%20Select%20Date.png)  
 ***
-## 5. Technical Description
-bla bla bla bla
+## 5. Technical Description  
+* Base on the design, analysis and requirement, what we need is definitely the characteristics of the three-tier architecture. As done in the three-tier architecture, we divided the workload into three tasks, each task is reponsible for 1 tier, and each tier will be described in more detail below.  
 ### 5.1. Data Tier
 * The database is composed of three parts: schema initialization, store procedures and data.  
   **Schema initialization:**  
