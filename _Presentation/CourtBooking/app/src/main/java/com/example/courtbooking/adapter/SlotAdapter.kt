@@ -17,6 +17,7 @@ import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.slot.view.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -32,6 +33,31 @@ class SlotAdapter(
 ) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
     private val PLAYTIME_MINIMUM:Long = 45
+
+    init {
+        val today = LocalDate.now()
+        val chosenDate = LocalDate.parse(selectedDate)
+
+        if (chosenDate.isEqual(today)) {
+            // if it is today, check if some slots need to be updated
+            val current = LocalTime.now()
+
+            for (i in (slotList.size - 1) downTo 0) {
+                val startString = slotList[i].getStart()
+                val endString = slotList[i].getEnd()
+                val start = LocalTime.parse(startString)
+                val end = LocalTime.parse(endString)
+
+                if (current.isAfter(end.minusMinutes(PLAYTIME_MINIMUM))) {
+                    // remove slot with length less than PLAYTIME_MINIMUM
+                    slotList.removeAt(i)
+                } else if (current.isAfter(start)) {
+                    // if still available but the current > start: change start
+                    slotList[i].setStart(current.toString())
+                }
+            }
+        }
+    }
 
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val slotBtn: Button = itemView.b_slot

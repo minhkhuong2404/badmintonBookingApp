@@ -7,18 +7,18 @@ class Center {
     private var id: String
     private var courtList: ArrayList<Court>
 
-    constructor(center: JSONObject, date: String) {
+    constructor(center: JSONObject) {
         cityId = center.getString("cityId")
         id = center.getString("centerId")
 
         courtList = ArrayList()
         val jsonCourtList = center.getJSONArray("centerSlots")
-        // remove if court that have no slot
+        // add court that has available slot to slotList
         for (i in (jsonCourtList.length() - 1) downTo 0) {
             val jsonCourt = jsonCourtList.getJSONObject(i)
             val slotList = jsonCourt.getJSONArray("courtSlots")
             if (slotList.length() != 0) {
-                courtList.add( Court(jsonCourt, date) )
+                courtList.add( Court(jsonCourt) )
             }
         }
     }

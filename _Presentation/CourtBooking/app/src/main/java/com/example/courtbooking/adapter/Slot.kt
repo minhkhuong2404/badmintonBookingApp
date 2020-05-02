@@ -16,6 +16,12 @@ class Slot {
         endTime = end
     }
 
+    fun setStart(start: String) {
+        startTime = start
+    }
+    fun setEnd(end: String) {
+        endTime = end
+    }
     fun getStart(): String {
         return startTime
     }

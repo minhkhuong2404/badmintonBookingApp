@@ -6,7 +6,7 @@ class City {
     private var id: String
     private var centerList: ArrayList<Center>
 
-    constructor(city: JSONObject, date: String) {
+    constructor(city: JSONObject) {
         id = city.getString("cityId")
         centerList = ArrayList<Center>()
 
@@ -16,7 +16,7 @@ class City {
             val jsonCenter = jsonCenterList.getJSONObject(i)
             val courtList = jsonCenter.getJSONArray("centerSlots")
             if (courtList.length() != 0) {
-                centerList.add( Center(jsonCenter, date) )
+                centerList.add( Center(jsonCenter) )
             }
         }
     }
