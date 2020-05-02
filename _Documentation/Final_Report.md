@@ -319,6 +319,26 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 ***
 
 ### 6.2. Data-Logic Unit Test
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+032 | Check ```createBooking_Success``` with valid data | centerId | return 200 | As Expected | Pass
+033 | Check ```createBooking_WhencityIdIsNotexisted``` with scenario butcityId is not existed | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-001 | As Expected | Pass
+034 | Check ```createBooking_WhencenterIdIsNotExisted``` with scenario but centerId is not existed | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-002 | As Expected | Pass
+035 | Check ```createBooking_WhenCourtIdIsNotExisted``` with scenario but courtId is not existed | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-003 | As Expected | Pass
+036 | Check ```createBooking_WhenStartTimeLessThanDateNow``` with scenario but startTime < DATE(NOW()) | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-005 | As Expected | Pass
+037 | Check ```createBooking_WhenStartTimeLessThanOpenTime``` with scenario but startTime < openTime | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-006 | As Expected | Pass
+038 | Check ```createBooking_WhenEndTimeLongerThanCloseTime``` with scenario but endTime > closeTime | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-007 | As Expected | Pass
+039 | Check ```createBooking_WhenEndTimeLessThanStartTime``` with scenario but endTime < startTime | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-008 | As Expected | Pass
+040 | Check ```createBooking_WhenPlayTimeIsInvalid``` with scenario but playtime invalid (valid: 45m, 1h, 1h15m, 1h30m) | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-009 | As Expected | Pass
+041 | Check ```createBooking_WhenOverlappedWithOtherBookings``` with scenario but booking time is overlapped | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-010 | As Expected | Pass
+042 | Check ```createBooking_WhenPlayerIdHavePendingBooking``` with scenario when player has pending booking | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-011 | As Expected | Pass
+043 | Check ```createBooking_WhenPlayerIdHaveNoMoreThan3Booking``` with scenario when player has 3 bookings | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-012 | As Expected | Pass
+044 | Check ```cancelBooking_Success``` with scenario | bookingId, playerId | remove booking from database | As Expected | Pass
+045 | Check ```cancelBooking_WhenBookingIdIsNotExisted``` with scenario where bookingId is not existed | bookingId, playerId | error code: CA-003 | As Expected | Pass
+046 | Check ```cancelBooking_WhenPlayerIdDoesNotOwnTheBooking``` with scenario when playerId does not own the bookingId | bookingId, playerId | error code: CA-004 | As Expected | Pass
+047 | Check ```cancelBooking_WhenViolating24HoursBeforeStartTime``` with scenario when violating 24 hours before start time | bookingId, playerId | error code: CA-005 | As Expected | Pass
+***
+
 ### 6.3. Logic Tier Unit Test
 ### 6.4. Logic-Presentation Test
 ## 7. References  
