@@ -28,26 +28,26 @@ class SlotAdapter(
     private val centerId: String,
     private val courtId: String,
     private val playerId: String,
-    private var slotList: JSONArray
+    private var slotList: ArrayList<Slot>
 ) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
     private val PLAYTIME_MINIMUM:Long = 45
-    init {
-        val current = LocalTime.now()
-        for (i in (slotList.length() - 1) downTo 0) {
-            val startString = slotList.getJSONObject(i).getString("start")
-            val endString = slotList.getJSONObject(i).getString("end")
-            val start = LocalTime.parse(startString)
-            val end = LocalTime.parse(endString)
-            if (current.isAfter( end.minusMinutes(PLAYTIME_MINIMUM) )) {
-                // remove the slot whose length from now to end is less than 45 minutes
-                slotList.remove(i)
-            } else if (current.isAfter(start)) {
-                // if current > start: change start = current
-                slotList.getJSONObject(i).put("start", current.toString())
-            }
-        }
-    }
+//    init {
+//        val current = LocalTime.now()
+//        for (i in (slotList.length() - 1) downTo 0) {
+//            val startString = slotList.getJSONObject(i).getString("start")
+//            val endString = slotList.getJSONObject(i).getString("end")
+//            val start = LocalTime.parse(startString)
+//            val end = LocalTime.parse(endString)
+//            if (current.isAfter( end.minusMinutes(PLAYTIME_MINIMUM) )) {
+//                // remove the slot whose length from now to end is less than 45 minutes
+//                slotList.remove(i)
+//            } else if (current.isAfter(start)) {
+//                // if current > start: change start = current
+//                slotList.getJSONObject(i).put("start", current.toString())
+//            }
+//        }
+//    }
 
     class SlotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val slotBtn: Button = itemView.b_slot
@@ -59,9 +59,9 @@ class SlotAdapter(
     }
 
     override fun onBindViewHolder(holder: SlotViewHolder, position: Int) {
-        val currentSlot = slotList.getJSONObject(position)
-        val start = currentSlot.getString("start").substring(0, 5)
-        val end = currentSlot.getString("end").substring(0, 5)
+        val currentSlot = slotList.get(position)
+        val start = currentSlot.getStart()
+        val end = currentSlot.getEnd()
         holder.slotBtn.text = "$start - $end"
         holder.setIsRecyclable(false)
         holder.slotBtn.setOnClickListener {
@@ -70,12 +70,12 @@ class SlotAdapter(
         }
     }
 
-    override fun getItemCount() = slotList.length()
+    override fun getItemCount() = slotList.size
 
     // Initialize create booking dialog when it is called.
-    private fun createBookingDialog(context: Context, slot: JSONObject, position: Int) {
-        val start = slot.getString("start")
-        val end = slot.getString("end")
+    private fun createBookingDialog(context: Context, slot: Slot, position: Int) {
+        val start = slot.getStart()
+        val end = slot.getEnd()
 
         val positiveButtonClick = { dialog: DialogInterface, which: Int ->
             // Prepare intent
