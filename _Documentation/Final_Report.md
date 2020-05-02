@@ -200,7 +200,7 @@ the state of the booking (from unpaid to paid and vice versa).
 * The logic tier consists of algorithm, server and class.
   **Algorithm:**  
     -This part is used to calculate if the start time of booking is larger than the start time of slot about 45 minutes  
-    
+  ```  
     getCourtSlots(array `bookings`)  
     Initialize `slots` = [[7:00, 21:00]]  
 
@@ -212,7 +212,7 @@ the state of the booking (from unpaid to paid and vice versa).
             s_end = b_start  
         Else delete `s` from slots  
     Return slots  
- 
+  ```  
   
   **Server:**  
     -This part is used to initialize the server of the application:
