@@ -340,6 +340,12 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 ***
 
 ### 6.3. Logic Tier Unit Test
+### _CenterSlotTest_
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+048 | Check ```Construct_GivenDate``` with scenario : date 2020-05-10, court: A1C, time: 10:30:00-11:30:00, 12:31:00-13:31:00, court: A1C1, time: 13:31:00-14:31:00, court: A1C2, time: 08:31:00-09:31:00 | test data for city, centere, court, booking table | available slot: court A1C, time: 07:00:00-10:30:00, 11:30:00-12:31:00, 13:31:00-21:00:00, court: A1C1, time: 07:00:00-13:31:00, 14:31:00-21:00:00, court: A1C2, time: 07:00:00-08:31:00, 09:31:00-21:00:00 | As Expected | Pass
+### _CitySlotTest_
+### _CourtSlotTest_
 ### 6.4. Logic-Presentation Test
 ## 7. References  
 ## 8. Appendix  
