@@ -213,22 +213,22 @@ the state of the booking (from unpaid to paid and vice versa).
   
   **Method:**  
     -To handle the request from the user interface and send reponse to user interface, we have created classes which are:  
-      - **getCitySlot:** this class is used to get the available slot in the chosen city. The inputs are city_id and date.  
-      - **getCenterSlot:** this class is used to get the available slot in the chosen center. The inputs are center_id and date.  
-      - **getCourtSlot:** this class is used to get the availble slot in the chosen court. The inputs are court_id and date.  
+      - **getCitySlot:** this class is used to get the available slot in the chosen city. The inputs are `city_id` and `date`.  
+      - **getCenterSlot:** this class is used to get the available slot in the chosen center. The inputs are `center_id` and `date`.  
+      - **getCourtSlot:** this class is used to get the availble slot in the chosen court. The inputs are `court_id` and `date`.  
       - **SQLStatement:** this method is used to call the store procedures from the database.  
-      - **GetHandler:** this method is used to get the request from client
-      - **PostHandler:**  this method is used to response to client
+      - **GetHandler:** this method is used to get the request from client.  
+      - **PostHandler:**  this method is used to response to client.
 ### 5.3. Presentation Tier  
 * The presentation tier includes :  user interface, method.     
   **User Interface:**  
     -This part is used to initialize the user interface of the application:  
   
   **Method:**  
-    - To send a request to a server, we have created classes which are  
-      - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are city_id and date         
-      - **postGetBooking:** used to call “getBooking” class of the server. The queries are  date, city_id, booking_id   
-      - **JSONObject (postCreateBooking):** this class is used to call a “createBooking” class of server. The queries are pdate, pstarttime, pendtime, pcityid, pcenterid, pcourtid, pplayerid   
+    -To send a request to a server, we have created classes which are:  
+      - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are `city_id` and `date`.         
+      - **postGetBooking:** used to call “getBooking” class of the server. The queries are  `date`, `city_id`, `booking_id`.   
+      - **JSONObject (postCreateBooking):** this class is used to call a “createBooking” class of server. The queries are `pdate`, `pstarttime`, `pendtime`, `pcityid`, `pcenterid`, `pcourtid`, `pplayerid`.   
       - **JSONObject (postCancelBooking):** this class is used to call a “cancelBooking” class of server. The queries are pplayerid, pcourtid  
 
 ## 6. Testing
