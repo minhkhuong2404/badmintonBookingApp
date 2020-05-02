@@ -16,11 +16,11 @@ class Slot {
         endTime = end
     }
 
-    public fun getStart(): String {
+    fun getStart(): String {
         return startTime
     }
 
-    public fun getEnd(): String {
+    fun getEnd(): String {
         return endTime
     }
 }
