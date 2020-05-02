@@ -19,20 +19,20 @@ class CenterAdapter(
     private val selectedDate: String,
     private val selectedCity: String,
     private val playerId: String,
-    private val centerList: JSONArray
+    private val centerList: ArrayList<Center>
 ) :
     RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
     private var viewPool = RecyclerView.RecycledViewPool()
 
-    init{
-        // remove center that have no court
-        for (i in (centerList.length() - 1) downTo 0) {
-            val courtList = centerList.getJSONObject(i).getJSONArray("centerSlots")
-            if (courtList.length() == 0) {
-                centerList.remove(i)
-            }
-        }
-    }
+//    init{
+//        // remove center that have no court
+//        for (i in (centerList.length() - 1) downTo 0) {
+//            val courtList = centerList.getJSONObject(i).getJSONArray("centerSlots")
+//            if (courtList.length() == 0) {
+//                centerList.remove(i)
+//            }
+//        }
+//    }
 
     class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val centerTextView: TextView = itemView.tv_center
@@ -47,35 +47,48 @@ class CenterAdapter(
     }
     @SuppressLint("WrongConstant")
     override fun onBindViewHolder(holder: CenterViewHolder, position: Int) {
-        val currentCenter = centerList.getJSONObject(position)
-        val centerId = currentCenter.getString("centerId")
+        val currentCenter = centerList.get(position)
+        val centerId = currentCenter.getId()
         holder.centerTextView.text = centerId
-        val courtList = currentCenter.getJSONArray("centerSlots")
+        val courtList = currentCenter.getCourtList()
 
-        if (courtList.length() == 0) {
-            holder.centerTextView.visibility = View.GONE
-            holder.recyclerViewCourt.visibility = View.GONE
-        } else {
-            var count = 0
-            for(i in 0 until courtList.length()){
-                count += courtList.getJSONObject(i).getJSONArray("courtSlots").length()
-            }
-            if (count > 0){
-                holder.recyclerViewCourt.apply {
-                    layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
-                    adapter = CourtAdapter(
-                        parentContext,
-                        selectedDate,
-                        selectedCity,
-                        centerId,
-                        playerId,
-                        courtList
-                    )
-                    setRecycledViewPool(viewPool)
-                }
-            }
+        holder.recyclerViewCourt.apply {
+            layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
+            adapter = CourtAdapter(
+                parentContext,
+                selectedDate,
+                selectedCity,
+                centerId,
+                playerId,
+                courtList
+            )
+            setRecycledViewPool(viewPool)
         }
+
+//        if (courtList.size == 0) {
+//            holder.centerTextView.visibility = View.GONE
+//            holder.recyclerViewCourt.visibility = View.GONE
+//        } else {
+//            var count = 0
+//            for(i in 0 until courtList.size){
+//                count += courtList.getJSONObject(i).getJSONArray("courtSlots").length()
+//            }
+//            if (count > 0){
+//                holder.recyclerViewCourt.apply {
+//                    layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
+//                    adapter = CourtAdapter(
+//                        parentContext,
+//                        selectedDate,
+//                        selectedCity,
+//                        centerId,
+//                        playerId,
+//                        courtList
+//                    )
+//                    setRecycledViewPool(viewPool)
+//                }
+//            }
+//        }
     }
 
-    override fun getItemCount() = centerList.length()
+    override fun getItemCount() = centerList.size
 }
