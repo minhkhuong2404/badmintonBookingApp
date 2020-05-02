@@ -20,7 +20,7 @@ class Court {
             val start = jsonSlot.getString("start")
             val end = jsonSlot.getString("end")
 
-
+            slotList.add(Slot(start, end))
         }
 
     }
