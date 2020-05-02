@@ -671,7 +671,67 @@ public class TestConnectionDBv2 {
     }
 
     //test cancel booking
+    
+    @Test
+    public void cancelBooking_Success() throws Exception {
 
+        // clean up database
+        SQLStatement.cleanTable("city");
+        SQLStatement.cleanTable("center");
+        SQLStatement.cleanTable("staff");
+        SQLStatement.cleanTable("booking");
+        //scenario
+
+        String sql = "INSERT INTO city VALUE (?)";
+
+        PreparedStatement smt = ConnectionDB.getInstance().getConnection().prepareStatement(sql);
+
+        smt.setString(1, "1");
+
+        smt.execute();
+
+        String sql2 = "INSERT INTO center VALUE (?, ?)";
+
+        PreparedStatement smt2 = ConnectionDB.getInstance().getConnection().prepareStatement(sql2);
+
+        smt2.setString(1, "2");
+        smt2.setString(2, "1");
+
+        smt2.execute();
+
+        String sql3 = "INSERT INTO court VALUE (?, ?, ?)";
+
+        PreparedStatement smt3 = ConnectionDB.getInstance().getConnection().prepareStatement(sql3);
+
+        smt3.setString(1, "A");
+        smt3.setString(2, "1");
+        smt3.setString(3, "2");
+
+        smt3.execute();
+
+
+        String sql5 = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement smt5 = ConnectionDB.getInstance().getConnection().prepareStatement(sql5);
+
+        smt5.setString(1, "1");
+        smt5.setString(2, "2020-04-07 09:27:18");
+        smt5.setString(3, "2021-05-01");
+        smt5.setString(4, "10:30:00");
+        smt5.setString(5, "11:30:00");
+        smt5.setString(6, "1");
+        smt5.setString(7, "2");
+        smt5.setString(8, "A");
+        smt5.setString(9, "B");
+        smt5.setString(10, "0");
+
+
+        smt5.execute();
+
+        //actual test
+        String result_code = SQLStatement.cancelBooking(1, "B");
+        assertEquals("200", result_code, "Pass.");
+    }
 
     @Test
     public void cancelBooking_WhenBookingIdIsNotExisted() throws Exception {
