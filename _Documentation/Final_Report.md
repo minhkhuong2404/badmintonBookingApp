@@ -197,7 +197,7 @@ the state of the booking (from unpaid to paid and vice versa).
       center_id, court_id, player_id. The input must be valid, startTime must be before endTime, all the booking must be satisfied all constraints, no overlap booking is allowed.  
       - **cancelBooking:** this procedure is used to cancel a booking. The parameter are booking_id, player_id. The input must be valid and satisfied all contraints.
 ### 5.2. Logic Tier
-* The logic tier consists of algorithm, server and class.  
+* The logic tier consists of algorithm, server and method.  
   **Algorithm:**  
     -This part is used to calculate if the start time of booking is larger than the start time of slot about 45 minutes  
   ```  
@@ -217,18 +217,18 @@ the state of the booking (from unpaid to paid and vice versa).
   **Server:**  
     -This part is used to initialize the server of the application:
   
-  **Class:**  
+  **Method:**  
     -To handle the request from the user interface and send reponse to user interface, we have created classes which are:  
       - **getCitySlot:** this class is used to get the availble slot in the chosen city. The queries are city_id and date  
       - **getBooking:** used to get the information of the customer's booking from the database. The queries are date, city_id, booking_id   
       - **createBooking:** used to insert new data about the booking into the database  
       - **cancelBooking:** used to remove the chosen booking's data in the database  
 ### 5.3. Presentation Tier  
-* The presentation tier includes :  user interface, class.     
+* The presentation tier includes :  user interface, method.     
   **User Interface:**  
-    -This part is used to initialize the user interface og the application:  
+    -This part is used to initialize the user interface of the application:  
   
-  **Class:**  
+  **Method:**  
     - To send a request to a server, we have created classes which are  
       - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are city_id and date         
       - **postGetBooking:** used to call “getBooking” class of the server. The queries are  date, city_id, booking_id   
