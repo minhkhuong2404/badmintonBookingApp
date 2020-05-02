@@ -47,7 +47,7 @@
   
   * The last feature is to cancel their booking. First, customer must go to their booking list by using the third feature. Then they can cancel their book by clicking the button "Cancel this booking". A window will pop-up to confirm the cancellation. By clicking "No", customer will return to the booking list screen. By clicking "Yes", customer can cancel that booking if the cancellation is 24 hours before the start time.  
 ### 2.2. Staff  
-  * This role was remoced due to the new requirement.  
+  * This user was removed due to the new requirement.  
 
 ## 3. Requirements
 ### 3.1. Hardware and Software Requirements
