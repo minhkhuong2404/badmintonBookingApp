@@ -197,17 +197,25 @@ the state of the booking (from unpaid to paid and vice versa).
       center_id, court_id, player_id. The input must be valid, startTime must be before endTime, all the booking must be satisfied all constraints, no overlap booking is allowed.  
       - **cancelBooking:** this procedure is used to cancel a booking. The parameter are booking_id, player_id. The input must be valid and satisfied all contraints.
 ### 5.2. Logic Tier
+* The logic tier consists of algorithm and class.
+  **Algorithm:**
+  
+  **Class:**
+    -To retrieve the data from the database and send reponse to user interface, we have created classes which are:
+      - **getCitySlot:** this class is used to get the availble slot in the chosen city. The queries are city_id and date  
+      - **getBooking:** used to get the information of the customer's booking from the database. The queries are date, city_id, booking_id  
+      - **createBooking:** used to insert new data about the booking into the database 
+      - **cancelBooking:** used to remove the chosen booking's data in the database
 ### 5.3. Presentation Tier  
 * The presentation tier includes :  user interface, class.   
   **User Interface:**
   
   **Class:**
     - To send a request to a server, we have created classes which are
-      - **postGetCitySlot:** used to call “getCitySlot” command of  logic tier in server. The queries are city_id and date  
-      - **postGetAvailableSlot:** used to call “getAvailableSlot” command of a server. The queries are date, startTime, endTime, city_id, center_id, court_id.   
-      - **postGetBooking:** used to call “getBooking” commmand of the server. The queries are  date, city_id, booking_id  
-      - **JSONObject (postCreateBooking):** this class is used to call a command “createBooking” of server. The queries are pdate, pstarttime, pendtime, pcityid, pcenterid, pcourtid, pplayerid
-      - **JSONObject (postCancelBooking):** this class is used to call a command “cancelBooking” of server. The queries are pplayerid, pcourtid
+      - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are city_id and date        
+      - **postGetBooking:** used to call “getBooking” class of the server. The queries are  date, city_id, booking_id  
+      - **JSONObject (postCreateBooking):** this class is used to call a “createBooking” class of server. The queries are pdate, pstarttime, pendtime, pcityid, pcenterid, pcourtid, pplayerid
+      - **JSONObject (postCancelBooking):** this class is used to call a “cancelBooking” class of server. The queries are pplayerid, pcourtid
 
 ## 6. Testing
 ### 6.1. Database and Store Procedures Test
