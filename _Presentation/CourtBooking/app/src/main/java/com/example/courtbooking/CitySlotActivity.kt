@@ -12,6 +12,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.courtbooking.adapter.Center
 import com.example.courtbooking.adapter.CenterAdapter
+import com.example.courtbooking.adapter.City
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
 import com.facebook.AccessToken
@@ -50,16 +51,9 @@ class CitySlotActivity : AppCompatActivity() {
             JsonObjectRequest(
                 Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
                 Response.Listener { response ->
-                    val jsonCenterList = response.getJSONArray("citySlots")
-                    // create a center list without any 'no court' center
-                    val centerList = ArrayList<Center>()
-                    for (i in 0 until jsonCenterList.length()) {
-                        val jsonCenter = jsonCenterList.getJSONObject(i)
-                        val courtList = jsonCenter.getJSONArray("centerSlots")
-                        if (courtList.length() != 0) {
-                            centerList.add( Center(jsonCenter, date) )
-                        }
-                    }
+                    val city = City(response, date)
+                    val centerList = city.getCenterList()
+
                     // show available slot
                     initRecyclerViewCenter(centerList)
                 },
