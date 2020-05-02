@@ -199,8 +199,10 @@ the state of the booking (from unpaid to paid and vice versa).
 ### 5.2. Logic Tier
 * The logic tier consists of algorithm, server and class.
   **Algorithm:**
+    -This part is used to calculate if the start time of booking is larger than the start time of slot about 45 minutes
   
   **Server:**
+    -This part is used to initialize the server of the application:
   
   **Class:**
     -To handle the request from the user interface and send reponse to user interface, we have created classes which are:
@@ -211,6 +213,7 @@ the state of the booking (from unpaid to paid and vice versa).
 ### 5.3. Presentation Tier  
 * The presentation tier includes :  user interface, class.   
   **User Interface:**
+    -This part is used to initialize the user interface og the application:
   
   **Class:**
     - To send a request to a server, we have created classes which are
