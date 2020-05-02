@@ -194,7 +194,7 @@ the state of the booking (from unpaid to paid and vice versa).
       - **getCities:** this procedure is used to get all the cities in the database. The parameter is city_id and it must be validd and satisfied the constraints.  
       - **getCityBooking:** this procedure is uesd to get the bookings in the chosen city. The parameters are city_id and pdate. This inputs must be valid and satisfied the constraints.  
       - **getCityCenter:** this procedure is used to get the center of the chosen city. The parameter is city_id and it must be valid and satisfied the contraints.  
-      - ** getCourtBooking:** this procedure is used to get all the bookings of the court. The parameters are court_id and pdate. This inputs must be valid and satisfied the constraints.  
+      - **getCourtBooking:** this procedure is used to get all the bookings of the court. The parameters are court_id and pdate. This inputs must be valid and satisfied the constraints.  
       - **getPlayerBooking:** this procedure is used to get all the bookings of the player. The parameters are player_id, city_id and pdate. This inputs must be valid anf satisfied the constraints.  
       
 ### 5.2. Logic Tier
