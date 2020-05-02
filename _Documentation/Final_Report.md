@@ -47,8 +47,7 @@
   
   * The last feature is to cancel their booking. First, customer must go to their booking list by using the third feature. Then they can cancel their book by clicking the button "Cancel this booking". A window will pop-up to confirm the cancellation. By clicking "No", customer will return to the booking list screen. By clicking "Yes", customer can cancel that booking if the cancellation is 24 hours before the start time.  
 ### 2.2. Staff  
-  * Staff is the user who can be also thought as the manager of the service. Also, the same as the customer, to be a member of the system, staff must have a Facebook account to login into the application.  
-  * As a member of the system, s/he will have a right to access the booking list which shows all the slots reserved by the customers in his/her sport center. But first of all, the staff have to choose the date and the city so that they can click the “show bookings” button and then s/he can see the booking list of his/her sport center in that date and city.  
+  * This role was remoced due to the new requirement.  
 
 ## 3. Requirements
 ### 3.1. Hardware and Software Requirements
@@ -148,12 +147,7 @@ the state of the booking (from unpaid to paid and vice versa).
 #### Cancel Confirmed
 ![Cancel Confirmed](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.4.1.3.%20Cancel%20Confirmed.png)  
 ***
-#### Staff Main Sceen 
-![Staff Main Sceen ](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/2.%20Staff%20Main%20Screen.png)  
-***
-#### Select Date
-![Select Date](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/2.1.%20Select%20Date.png)  
-***
+
 ## 5. Technical Description  
 * Base on the design, analysis and requirement, what we need is definitely the characteristics of the three-tier architecture. As done in the three-tier architecture, we divided the workload into three tasks, each task is reponsible for 1 tier, and each tier will be described in more detail below.  
 ### 5.1. Data Tier
