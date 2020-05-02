@@ -1,13 +1,14 @@
 package com.example.courtbooking.adapter
 
 import org.json.JSONObject
+import java.time.LocalDate
 import java.time.LocalTime
 
 class Court {
     private var id: String
     private var slotList: ArrayList<Slot>
 
-    constructor(court: JSONObject) {
+    constructor(court: JSONObject, date: String) {
         this.id = court.getString("courtId")
 
         slotList = ArrayList()
@@ -23,13 +24,18 @@ class Court {
             val start = LocalTime.parse(startString)
             val end = LocalTime.parse(endString)
 
+            val today = LocalDate.now()
+            val chosenDate = LocalDate.parse(date)
 
-            if(start.isAfter(current)) {
+            if (!chosenDate.isEqual(today)) {
+                // if it is not today, feel free to add the slot
+                slotList.add( Slot(startString, endString) )
+            } else if(start.isAfter(current)) {
                 // if the start of the slot is after current time add to slotList
                 slotList.add( Slot(startString, endString) )
             } else if (current.plusMinutes(45).isBefore(end)) {
                 // if the start of the slot is before current but the length is still available, add to slotList
-                slotList.add( Slot(current.toString(), endString) )
+                slotList.add( Slot( current.toString().substring(0, 5), endString ) )
             } else {
                 // if the slot is not available from current, break the loop
                 break
@@ -37,10 +43,10 @@ class Court {
         }
 
     }
-    public fun getId(): String {
+    fun getId(): String {
         return id
     }
-    public fun getSlotList(): ArrayList<Slot> {
+    fun getSlotList(): ArrayList<Slot> {
         return slotList
     }
 }
