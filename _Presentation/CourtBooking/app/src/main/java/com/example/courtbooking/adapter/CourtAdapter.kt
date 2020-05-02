@@ -17,19 +17,19 @@ class CourtAdapter(
     private val selectedCity: String,
     private val centerId: String,
     private val playerId: String,
-    private val courtList: JSONArray
+    private val courtList: ArrayList<Court>
 
     ) : RecyclerView.Adapter<CourtAdapter.CourtViewHolder>() {
 
-    init {
-        // remove if court that have no slot
-        for (i in (courtList.length() - 1) downTo 0) {
-            val slotList = courtList.getJSONObject(i).getJSONArray("courtSlots")
-            if (slotList.length() == 0) {
-                courtList.remove(i)
-            }
-        }
-    }
+//    init {
+//        // remove if court that have no slot
+//        for (i in (courtList.length() - 1) downTo 0) {
+//            val slotList = courtList.getJSONObject(i).getJSONArray("courtSlots")
+//            if (slotList.length() == 0) {
+//                courtList.remove(i)
+//            }
+//        }
+//    }
 
     // Constants
     private var COURT_VIEW_TYPE_DEFAULT = 0
@@ -76,38 +76,57 @@ class CourtAdapter(
 
     // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: CourtViewHolder, position: Int) {
-        val currentCourt = courtList.getJSONObject(position)
-        val courtId = currentCourt.getString("courtId")
+        val currentCourt = courtList.get(position)
+        val courtId = currentCourt.getId()
         holder.courtTextView.text = courtId
-        val slotList = currentCourt.getJSONArray("courtSlots")
-        holder.setIsRecyclable(false)
-        if (slotList.length() == 0){
-            holder.recyclerViewSlot.visibility = View.GONE
-            holder.courtTextView.visibility = View.GONE
-        } else {
-            // Call child adapter to show child recycler view
-            holder.recyclerViewSlot.apply {
-                layoutManager = GridLayoutManager(
-                    holder.recyclerViewSlot.context,
-                    COLUMN_OF_SLOT,
-                    GridLayoutManager.VERTICAL,
-                    false
-                )
-                adapter = SlotAdapter(
-                    parentContext,
-                    selectedDate,
-                    selectedCity,
-                    centerId,
-                    courtId,
-                    playerId,
-                    slotList
-                )
-                setRecycledViewPool(viewPool)
-            }
-            adapterPosition = holder.adapterPosition
+        val slotList = currentCourt.getSlotList()
+        holder.recyclerViewSlot.apply {
+            layoutManager = GridLayoutManager(
+                holder.recyclerViewSlot.context,
+                COLUMN_OF_SLOT,
+                GridLayoutManager.VERTICAL,
+                false
+            )
+            adapter = SlotAdapter(
+                parentContext,
+                selectedDate,
+                selectedCity,
+                centerId,
+                courtId,
+                playerId,
+                slotList
+            )
+            setRecycledViewPool(viewPool)
         }
+        adapterPosition = holder.adapterPosition
+//        holder.setIsRecyclable(false)
+//        if (slotList.length() == 0){
+//            holder.recyclerViewSlot.visibility = View.GONE
+//            holder.courtTextView.visibility = View.GONE
+//        } else {
+//            // Call child adapter to show child recycler view
+//            holder.recyclerViewSlot.apply {
+//                layoutManager = GridLayoutManager(
+//                    holder.recyclerViewSlot.context,
+//                    COLUMN_OF_SLOT,
+//                    GridLayoutManager.VERTICAL,
+//                    false
+//                )
+//                adapter = SlotAdapter(
+//                    parentContext,
+//                    selectedDate,
+//                    selectedCity,
+//                    centerId,
+//                    courtId,
+//                    playerId,
+//                    slotList
+//                )
+//                setRecycledViewPool(viewPool)
+//            }
+//            adapterPosition = holder.adapterPosition
+//        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = courtList.length()
+    override fun getItemCount() = courtList.size
 }
