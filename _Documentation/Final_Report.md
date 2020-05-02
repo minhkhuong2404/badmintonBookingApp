@@ -197,8 +197,10 @@ the state of the booking (from unpaid to paid and vice versa).
       center_id, court_id, player_id. The input must be valid, startTime must be before endTime, all the booking must be satisfied all constraints, no overlap booking is allowed.  
       - **cancelBooking:** this procedure is used to cancel a booking. The parameter are booking_id, player_id. The input must be valid and satisfied all contraints.
 ### 5.2. Logic Tier
-* The logic tier consists of algorithm and class.
+* The logic tier consists of algorithm, server and class.
   **Algorithm:**
+  
+  **Server:**
   
   **Class:**
     -To retrieve the data from the database and send reponse to user interface, we have created classes which are:
