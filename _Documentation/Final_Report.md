@@ -240,6 +240,84 @@ the state of the booking (from unpaid to paid and vice versa).
 
 ## 6. Testing
 ### 6.1. Database and Store Procedures Test
+### _createBooking_   
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+000 | Check ```createBooking``` with valid data | date, startTime, endTime, cityId, centerId, courtId, playerId | insert new booking in to data | As Expected | Pass
+001 | Check ```createBooking``` with valid data but cityId is not existed | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-001 | As Expected | Pass
+002 | Check ```createBooking``` with valid data but centerId is not existed | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-002 | As Expected | Pass
+003 | Check ```createBooking``` with valid data but courtId is not existed | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-003 | As Expected | Pass
+005 | Check ```createBooking``` with valid data but startTime < DATE(NOW()) | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-005 | As Expected | Pass
+006 | Check ```createBooking``` with valid data but startTime < openTime | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-006 | As Expected | Pass
+007 | Check ```createBooking``` with valid data but endTime > closeTime | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-007 | As Expected | Pass
+008 | Check ```createBooking``` with valid data but endTime < startTime | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-008 | As Expected | Pass
+009 | Check ```createBooking``` with valid data but playtime invalid (valid: 45m, 1h, 1h15m, 1h30m) | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-009 | As Expected | Pass
+010 | Check ```createBooking``` with valid data but booking time is overlapped | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-010 | As Expected | Pass
+011 | Check ```createBooking``` with valid data and pending booking | date, startTime, endTime, cityId, centerId, courtId, playerId | error code: CB-011 | As Expected | Pass
+***
+### _cancelBooking_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+012 | Check ```cancelBooking``` with valid data | bookingId, playerId | remove booking from database | As Expected | Pass
+013 | Check ```cancelBooking``` with valid data but bookingId is not existed | bookingId, playerId | error code: CA-003 | As Expected | Pass
+014 | Check ```cancelBooking``` with valid data but playerId does not own the bookingId | bookingId, playerId | error code:CA-004 | As Expected | Pass
+015 | Check ```cancelBooking``` with valid data but  violating 24 hours before start time | bookingId, playerId | error code: CA-005 | As Expected | Pass
+***
+
+### _getCities_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+015 | Check ```getCities```  |  | return table city | As Expected | Pass
+***  
+
+### _getCityCenters_  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+016 | Check ```getCityCenters``` with valid data | cityId | return table center | As Expected | Pass
+017 | Check ```getCityCenters``` with invalid data | cityId | error code: GCC-000 | As Expected | Pass
+018 | Check ```getCityCenters``` with valid data but cityId is not existed | cityId | error code: GCC-001 | As Expected | Pass
+***
+
+### _getCityCenterCourts_
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+019 | Check ```getCityCenterCourts``` with valid data | cityId, centerId | return table court | As Expected | Pass
+020 | Check ```getCityCenterCourts``` with invalid cityId | cityId, centerId | error code: GCCC-000 | As Expected | Pass
+021 | Check ```getCityCenterCourts``` with invalid centerId | cityId, centerId | error code: GCCC-001 | As Expected | Pass
+022 | Check ```getCityCenterCourts``` with valid data but cityId is not existed | cityId, centerId | error code: GCCC-002 | As Expected | Pass
+023 | Check ```getCityCenterCourts``` with valid data but centerId is not existed | cityId, centerId | error code: GCCC-003 | As Expected | Pass
+***
+
+### _getStaffs_
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+024 | Check ```getStaffs```  |  | return table staff | As Expected | Pass
+***
+
+### _getCenterStaffs_
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+025 | Check ```getCenterStaffs``` with valid data | centerId | return table staff | As Expected | Pass
+026 | Check ```getCenterStaffs``` with invalid centerId | centerId | error code: GCS-000 | As Expected | Pass
+027 | Check ```getCenterStaffs``` with valid data but centerId is not existed | centerId | error code: GCS-001 | As Expected | Pass
+***
+
+### _GetPlayerBookings_
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+028 | Check ```getPlayerBookings``` with valid data | playerId | return table player booking | As Expected | Pass
+029 | Check ```getPlayerBookings``` with invalid playerId | playerId | GPB-000 | As Expected | Pass
+030 | Check ```getPlayerBookings``` with valid data but playerId is not existed | playerId | GPB-001 | As Expected | Pass
+***
+
+### _GetCenterBookings_
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+031 | Check ```getPlayerBookings``` with valid data | centerId | return table player booking | As Expected | Pass
+032 | Check ```getPlayerBookings``` with invalid playerId | centerId | GCB-000 | As Expected | Pass
+030 | Check ```getPlayerBookings``` with valid data but centerId is not existed | centerId | GCB-001 | As Expected | Pass
+***
+
 ### 6.2. Data-Logic Unit Test
 ### 6.3. Logic Tier Unit Test
 ### 6.4. Logic-Presentation Test
