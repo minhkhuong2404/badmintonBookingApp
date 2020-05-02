@@ -57,7 +57,7 @@ class CitySlotActivity : AppCompatActivity() {
                         val jsonCenter = jsonCenterList.getJSONObject(i)
                         val courtList = jsonCenter.getJSONArray("centerSlots")
                         if (courtList.length() != 0) {
-                            centerList.add( Center(jsonCenter) )
+                            centerList.add( Center(jsonCenter, date) )
                         }
                     }
                     // show available slot
