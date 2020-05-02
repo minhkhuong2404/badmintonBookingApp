@@ -198,29 +198,42 @@ the state of the booking (from unpaid to paid and vice versa).
       - **cancelBooking:** this procedure is used to cancel a booking. The parameter are booking_id, player_id. The input must be valid and satisfied all contraints.
 ### 5.2. Logic Tier
 * The logic tier consists of algorithm, server and class.
-  **Algorithm:**
-    -This part is used to calculate if the start time of booking is larger than the start time of slot about 45 minutes
+  **Algorithm:**  
+    -This part is used to calculate if the start time of booking is larger than the start time of slot about 45 minutes  
+    
+    getCourtSlots(array `bookings`)  
+    Initialize `slots` = [[7:00, 21:00]]  
+
+    For each `b` in `bookings`:  
+        `s` is the last item in `slots`  
+        If `s_end - b_end ≥ 45 minutes`:  
+            Insert [b_end, s_end] into `slots`  
+        If `(b_start - s_start) ≥ 45 minutes`:  
+            s_end = b_start  
+        Else delete `s` from slots  
+    Return slots  
+ 
   
-  **Server:**
+  **Server:**  
     -This part is used to initialize the server of the application:
   
-  **Class:**
-    -To handle the request from the user interface and send reponse to user interface, we have created classes which are:
+  **Class:**  
+    -To handle the request from the user interface and send reponse to user interface, we have created classes which are:  
       - **getCitySlot:** this class is used to get the availble slot in the chosen city. The queries are city_id and date  
-      - **getBooking:** used to get the information of the customer's booking from the database. The queries are date, city_id, booking_id  
-      - **createBooking:** used to insert new data about the booking into the database 
-      - **cancelBooking:** used to remove the chosen booking's data in the database
+      - **getBooking:** used to get the information of the customer's booking from the database. The queries are date, city_id, booking_id   
+      - **createBooking:** used to insert new data about the booking into the database  
+      - **cancelBooking:** used to remove the chosen booking's data in the database  
 ### 5.3. Presentation Tier  
-* The presentation tier includes :  user interface, class.   
-  **User Interface:**
-    -This part is used to initialize the user interface og the application:
+* The presentation tier includes :  user interface, class.     
+  **User Interface:**  
+    -This part is used to initialize the user interface og the application:  
   
-  **Class:**
-    - To send a request to a server, we have created classes which are
-      - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are city_id and date        
-      - **postGetBooking:** used to call “getBooking” class of the server. The queries are  date, city_id, booking_id  
-      - **JSONObject (postCreateBooking):** this class is used to call a “createBooking” class of server. The queries are pdate, pstarttime, pendtime, pcityid, pcenterid, pcourtid, pplayerid
-      - **JSONObject (postCancelBooking):** this class is used to call a “cancelBooking” class of server. The queries are pplayerid, pcourtid
+  **Class:**  
+    - To send a request to a server, we have created classes which are  
+      - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are city_id and date         
+      - **postGetBooking:** used to call “getBooking” class of the server. The queries are  date, city_id, booking_id   
+      - **JSONObject (postCreateBooking):** this class is used to call a “createBooking” class of server. The queries are pdate, pstarttime, pendtime, pcityid, pcenterid, pcourtid, pplayerid   
+      - **JSONObject (postCancelBooking):** this class is used to call a “cancelBooking” class of server. The queries are pplayerid, pcourtid  
 
 ## 6. Testing
 ### 6.1. Database and Store Procedures Test
