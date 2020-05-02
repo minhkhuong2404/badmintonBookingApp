@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.example.courtbooking.adapter.Center
 import com.example.courtbooking.adapter.CenterAdapter
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
@@ -49,7 +50,16 @@ class CitySlotActivity : AppCompatActivity() {
             JsonObjectRequest(
                 Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
                 Response.Listener { response ->
-                    val centerList = response.getJSONArray("citySlots")
+                    val jsonCenterList = response.getJSONArray("citySlots")
+                    // create a center list without any 'no court' center
+                    val centerList = ArrayList<Center>()
+                    for (i in 0 until jsonCenterList.length()) {
+                        val jsonCenter = jsonCenterList.getJSONObject(i)
+                        val courtList = jsonCenter.getJSONArray("centerSlots")
+                        if (courtList.length() != 0) {
+                            centerList.add( Center(jsonCenter) )
+                        }
+                    }
                     // show available slot
                     initRecyclerViewCenter(centerList)
                 },
@@ -63,9 +73,9 @@ class CitySlotActivity : AppCompatActivity() {
     }
     // init recycler view center
     @SuppressLint("WrongConstant")
-    private fun initRecyclerViewCenter(centerList: JSONArray) {
+    private fun initRecyclerViewCenter(centerList: ArrayList<Center>) {
         // Calling the recycler view for Center
-        if (centerList.length() != 0) {
+        if (centerList.size != 0) {
             rv_center.apply {
                 layoutManager =
                     LinearLayoutManager(this@CitySlotActivity, LinearLayout.VERTICAL, false)
