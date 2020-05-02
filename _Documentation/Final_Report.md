@@ -203,7 +203,7 @@ the state of the booking (from unpaid to paid and vice versa).
   **Server:**
   
   **Class:**
-    -To retrieve the data from the database and send reponse to user interface, we have created classes which are:
+    -To handle the request from the user interface and send reponse to user interface, we have created classes which are:
       - **getCitySlot:** this class is used to get the availble slot in the chosen city. The queries are city_id and date  
       - **getBooking:** used to get the information of the customer's booking from the database. The queries are date, city_id, booking_id  
       - **createBooking:** used to insert new data about the booking into the database 
