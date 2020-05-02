@@ -24,16 +24,6 @@ class CenterAdapter(
     RecyclerView.Adapter<CenterAdapter.CenterViewHolder>() {
     private var viewPool = RecyclerView.RecycledViewPool()
 
-//    init{
-//        // remove center that have no court
-//        for (i in (centerList.length() - 1) downTo 0) {
-//            val courtList = centerList.getJSONObject(i).getJSONArray("centerSlots")
-//            if (courtList.length() == 0) {
-//                centerList.remove(i)
-//            }
-//        }
-//    }
-
     class CenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val centerTextView: TextView = itemView.tv_center
         val recyclerViewCourt: RecyclerView = itemView.findViewById(R.id.rv_court)
@@ -64,30 +54,6 @@ class CenterAdapter(
             )
             setRecycledViewPool(viewPool)
         }
-
-//        if (courtList.size == 0) {
-//            holder.centerTextView.visibility = View.GONE
-//            holder.recyclerViewCourt.visibility = View.GONE
-//        } else {
-//            var count = 0
-//            for(i in 0 until courtList.size){
-//                count += courtList.getJSONObject(i).getJSONArray("courtSlots").length()
-//            }
-//            if (count > 0){
-//                holder.recyclerViewCourt.apply {
-//                    layoutManager = LinearLayoutManager(holder.recyclerViewCourt.context, LinearLayout.VERTICAL, false)
-//                    adapter = CourtAdapter(
-//                        parentContext,
-//                        selectedDate,
-//                        selectedCity,
-//                        centerId,
-//                        playerId,
-//                        courtList
-//                    )
-//                    setRecycledViewPool(viewPool)
-//                }
-//            }
-//        }
     }
 
     override fun getItemCount() = centerList.size
