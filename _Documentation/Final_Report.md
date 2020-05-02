@@ -28,7 +28,7 @@
     
   * With the help of operated handhelds, booking of the customers in the application will directly be transferred to the database and inform to the sport center where the court are prepared. It is easy communication among the customer and sport center. Increasing service efficiency are the qualifications of this system which makes our automation much more effectively and practical for all users of the application.  
   *  Online booking and booking management module provides solutions for the online customers. By using the application constructed by the automation, customers will have list of any court provided by the sport centers in chosen city. In order to use this application, each customer has to have an Facebook account. This account will not only provide online booking but also be used by the users to keep track of all promotions, announcements prepared for registered customers.  
-  * Main concern of customer management system is customer related data. This data consists of individual information such as customer’s name, email, customer ID, telephone number, and order related information like booking amount. This module has a capability of identifying customers by the staff of the sport center. If the customer want to change the profile information, they can confirm this by editing account setting. The management module will also show the pending booking which the customer has not paid yet, improve the way of manage the booking list and available slot list.  
+  * Main concern of customer management system is customer related data. This data consists of individual information such as customer’s name, email, customer ID, telephone number, and order related information like booking amount. This module has a capability of identifying customers by the staff of the sport center. If the customer want to change the profile information, they can confirm this by editing account setting. The management module will also show the pending booking which the customer has not paid yet, improve the way of manage the booking list and available slot list. There will be a simple user interface providing the user to select the necessary options on the screen of the handheld. This user interface belongs to the application embedded inside the handheld that communicates with the main computer of the server.  
 ### 1.2. Software Process Model and Team Organization  
   * In order to complete our project in total of six weeks duration, what we should do exactly is following the requirement, analysis, design, and implementation and testing parts one by one and in each one of these parts returning the previous ones and do some modifications where necessary. we produced prototypes in some periods, and each prototype will have a certain part of the total project.  
   * Our project team is suitable for team organization. Decision on problems and approach are made by all of the group members. There is no hierarchy among the team members.
@@ -186,10 +186,17 @@ the state of the booking (from unpaid to paid and vice versa).
           - city_id(foreign key)  
 
   **Store procedures:**  
-    - To insert and get data from the database, we have created store procedures which are:
-      - **createBooking:** this procedure is used to create a booking. The parameters are date, startTime, endTime, city_id,
-      center_id, court_id, player_id. The input must be valid, startTime must be before endTime, all the booking must be satisfied all constraints, no overlap booking is allowed.  
-      - **cancelBooking:** this procedure is used to cancel a booking. The parameter are booking_id, player_id. The input must be valid and satisfied all contraints.
+    - To insert and get data from the database, we have created store procedures which are:  
+      - **createBooking:** this procedure is used to create a booking. The parameters are date, startTime, endTime, city_id, center_id, court_id, player_id. The inputs must be valid, startTime must be before endTime, all the booking must be satisfied all constraints, no overlap booking is allowed.   
+      - **cancelBooking:** this procedure is used to cancel a booking. The parameters are booking_id, player_id. The inputs must be valid and satisfied all contraints.  
+      - **getCenterBooking:** this procedure is used to get all the bookings of the center in the chosen city. The parameters are center_id and pdate. The inputs must be valid and satisfied all contraints.  
+      - **getCenterCourt:** this procedure is used to get all the coursts of the center in the chosen city. The parameter is center_id and it must be valid and satisfied the constraints.  
+      - **getCities:** this procedure is used to get all the cities in the database. The parameter is city_id and it must be validd and satisfied the constraints.  
+      - **getCityBooking:** this procedure is uesd to get the bookings in the chosen city. The parameters are city_id and pdate. This inputs must be valid and satisfied the constraints.  
+      - **getCityCenter:** this procedure is used to get the center of the chosen city. The parameter is city_id and it must be valid and satisfied the contraints.  
+      - ** getCourtBooking:** this procedure is used to get all the bookings of the court. The parameters are court_id and pdate. This inputs must be valid and satisfied the constraints.  
+      - **getPlayerBooking:** this procedure is used to get all the bookings of the player. The parameters are player_id, city_id and pdate. This inputs must be valid anf satisfied the constraints.  
+      
 ### 5.2. Logic Tier
 * The logic tier consists of algorithm, server and method.  
   **Algorithm:**  
