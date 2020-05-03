@@ -249,7 +249,7 @@ the state of the booking (from unpaid to paid and vice versa).
       - **JSONObject (postCancelBooking):** this class is used to call a “cancelBooking” class of server. The queries are pplayerid, pcourtid  
 
 ## 6. Testing
-Bla Bla Bla
+Below is the an assessment of how well the Testing is performed and a summary of test activities and final test results  
 * The tables below are the final result for testing in which:
   - Test Case ID is the identical number for each test.  
   - Test Scenario is the scenario which have to be create before doing test.  
