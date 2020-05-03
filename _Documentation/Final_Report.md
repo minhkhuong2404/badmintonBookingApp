@@ -372,7 +372,7 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
  - ```CitySlot```: get available slot of a specific city  
  - ```CenterSlot```: get available slot of a specific center  
  - ```CourtSlot```: get available slot of a specific court  
-, and each class will have four different methods to retieve the booking list from database:  
+, and each class will have four different methods to retrieve the booking list from database:  
  - ```GivenDate```: retrieve bookings list on that date from database with default operation time.  
  - ```GivenDate_Arbitrary```: retrieve bookings list on that date from database with arbitrary operation time.  
  - ```GivenBooking```: retrieve the booking list of a specific city/center/court (they must be on the same day) 
