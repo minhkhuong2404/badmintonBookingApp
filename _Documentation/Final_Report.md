@@ -31,7 +31,17 @@
   * Main concern of customer management system is customer related data. This data consists of individual information such as customer’s name, email, customer ID, telephone number, and order related information like booking amount. This module has a capability of identifying customers by the staff of the sport center. If the customer want to change the profile information, they can confirm this by editing account setting. The management module will also show the pending booking which the customer has not paid yet, improve the way of manage the booking list and available slot list. There will be a simple user interface providing the user to select the necessary options on the screen of the handheld. This user interface belongs to the application embedded inside the handheld that communicates with the main computer of the server.  
 ### 1.2. Software Process Model and Team Organization  
   * In order to complete our project in total of six weeks duration, what we should do exactly is following the requirement, analysis, design, and implementation and testing parts one by one and in each one of these parts returning the previous ones and do some modifications where necessary. we produced prototypes in some periods, and each prototype will have a certain part of the total project.  
-  * Our project team is suitable for team organization. Decision on problems and approach are made by all of the group members. There is no hierarchy among the team members.
+  * Our project team is suitable for team organization. Decision on problems and approach are made by all of the group members. There is no hierarchy among the team members.  
+
+Name | Role   
+:----: | :----:   
+Nguyen Hoang Quan(Leader) | Testing and Doc   
+Nguyen Tri Nguyen | Testing and Doc   
+Lu Minh Khuong | Presentation Tier(Kotlin)   
+Ngo Minh Thong | Presentation Tier(Kotlin)   
+Lam Hai Son | Logic Tier(Java)  
+Luu Nguyen Phat | Logic Tier(Java)   
+Dang Chi Cong | Data Tier(MySQL)   
 
 ### 1.3. Definition, Acronyms, and Abbreviations
 ## 2. Detailed System Description
