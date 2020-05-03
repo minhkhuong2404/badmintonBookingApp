@@ -53,25 +53,6 @@ class CourtSlotTest {
 
         smt3.execute();
 
-        String sql9 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt9 = ConnectionDB.getInstance().getConnection().prepareStatement(sql9);
-
-        smt9.setString(1, "A1C1");
-        smt9.setString(2, "A");
-        smt9.setString(3, "A1");
-
-        smt9.execute();
-
-        String sql10 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt10 = ConnectionDB.getInstance().getConnection().prepareStatement(sql10);
-
-        smt10.setString(1, "A1C2");
-        smt10.setString(2, "A");
-        smt10.setString(3, "A1");
-
-        smt10.execute();
 
         String sql5 = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -108,42 +89,6 @@ class CourtSlotTest {
 
 
         smt6.execute();
-
-        String sql7 = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        PreparedStatement smt7 = ConnectionDB.getInstance().getConnection().prepareStatement(sql7);
-
-        smt7.setString(1, "9");
-        smt7.setString(2, "2020-04-22 19:08:48");
-        smt7.setString(3, "2020-05-10");
-        smt7.setString(4, "13:31:00");
-        smt7.setString(5, "14:31:00");
-        smt7.setString(6, "A");
-        smt7.setString(7, "A1");
-        smt7.setString(8, "A1C1");
-        smt7.setString(9, "player1");
-        smt7.setString(10, "0");
-
-        smt7.execute();
-
-
-        String sql8 = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        PreparedStatement smt8 = ConnectionDB.getInstance().getConnection().prepareStatement(sql8);
-
-        smt8.setString(1, "10");
-        smt8.setString(2, "2020-04-22 19:08:48");
-        smt8.setString(3, "2020-05-10");
-        smt8.setString(4, "08:31:00");
-        smt8.setString(5, "09:31:00");
-        smt8.setString(6, "A");
-        smt8.setString(7, "A1");
-        smt8.setString(8, "A1C2");
-        smt8.setString(9, "player1");
-        smt8.setString(10, "0");
-
-
-        smt8.execute();
 
 
         CourtSlot courtSlot = new CourtSlot("A1C", Date.valueOf("2020-05-10"));
@@ -323,25 +268,6 @@ class CourtSlotTest {
 
         smt3.execute();
 
-        String sql9 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt9 = ConnectionDB.getInstance().getConnection().prepareStatement(sql9);
-
-        smt9.setString(1, "A1C1");
-        smt9.setString(2, "A");
-        smt9.setString(3, "A1");
-
-        smt9.execute();
-
-        String sql10 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt10 = ConnectionDB.getInstance().getConnection().prepareStatement(sql10);
-
-        smt10.setString(1, "A1C2");
-        smt10.setString(2, "A");
-        smt10.setString(3, "A1");
-
-        smt10.execute();
 
         String sql5 = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -1272,16 +1198,6 @@ class CourtSlotTest {
 
         smt2.execute();
 
-        String sql3 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt3 = ConnectionDB.getInstance().getConnection().prepareStatement(sql3);
-
-        smt3.setString(1, "A1C");
-        smt3.setString(2, "A");
-        smt3.setString(3, "A1");
-
-        smt3.execute();
-
         String sql9 = "INSERT INTO court VALUE (?, ?, ?)";
 
         PreparedStatement smt9 = ConnectionDB.getInstance().getConnection().prepareStatement(sql9);
@@ -1291,16 +1207,6 @@ class CourtSlotTest {
         smt9.setString(3, "A1");
 
         smt9.execute();
-
-        String sql10 = "INSERT INTO court VALUE (?, ?, ?)";
-
-        PreparedStatement smt10 = ConnectionDB.getInstance().getConnection().prepareStatement(sql10);
-
-        smt10.setString(1, "A1C2");
-        smt10.setString(2, "A");
-        smt10.setString(3, "A1");
-
-        smt10.execute();
 
 
         String sql7 = "INSERT INTO booking VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
