@@ -368,11 +368,11 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 ***
 
 ### 6.3. Logic Tier Unit Test
-* This third test is to test the ```getAvailableSlot``` algorithm. In this test, we also resuse Junit and SQLStatement to run the test. We have three method to get available slot from the database:  
+* This third test is to test the ```getAvailableSlot``` algorithm. In this test, we also resuse Junit and SQLStatement to run the test. We have three class to get available slot from the database:  
  - ```CitySlot```: get available slot of a specific city  
  - ```CenterSlot```: get available slot of a specific center  
  - ```CourtSlot```: get available slot of a specific court  
-, and each method will have four different ways to retieve the booking list from database:  
+, and each class will have four different methods to retieve the booking list from database:  
  - ```GivenDate```: retrieve bookings list on that date from database with default operation time.  
  - ```GivenDate_Arbitrary```: retrieve bookings list on that date from database with arbitrary operation time.  
  - ```GivenBooking```: retrieve the booking list of a specific city/center/court (they must be on the same day) 
