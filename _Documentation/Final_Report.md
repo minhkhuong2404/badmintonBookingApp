@@ -228,7 +228,7 @@ the state of the booking (from unpaid to paid and vice versa).
   **Server:**  
     -This part is used to initialize the server of the application:
   
-  **Method:**  
+  **Class:**  
     -To handle the request from the user interface and send reponse to user interface, we have created classes which are:  
       - **getCitySlot:** this class is used to get the available slot in the chosen city. The inputs are `city_id` and `date`.  
       - **getCenterSlot:** this class is used to get the available slot in the chosen center. The inputs are `center_id` and `date`.  
@@ -241,7 +241,7 @@ the state of the booking (from unpaid to paid and vice versa).
   **User Interface:**  
     -This part is used to initialize the user interface of the application:  
   
-  **Method:**  
+  **Class:**  
     -To send a request to a server, we have created classes which are:  
       - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are `city_id` and `date`.         
       - **postGetBooking:** used to call “getBooking” class of the server. The queries are  `date`, `city_id`, `booking_id`.   
@@ -249,7 +249,7 @@ the state of the booking (from unpaid to paid and vice versa).
       - **JSONObject (postCancelBooking):** this class is used to call a “cancelBooking” class of server. The queries are pplayerid, pcourtid  
 
 ## 6. Testing
-Below is the an assessment of how well the Testing is performed and a summary of test activities and final test results  
+* Below is the an assessment of how well the Testing is performed and a summary of test activities and final test results  
 * The tables below are the final result for testing in which:
   - Test Case ID is the identical number for each test.  
   - Test Scenario is the scenario which have to be create before doing test.  
