@@ -335,8 +335,7 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 
 ### 6.2. Data-Logic Unit Test
 * The purpose of this second test is used to test the connection between Database and Logic tier. The main activity of this test is 
-to test the store procedures again but from the Logic Tier. In this test, we use the SQLStatement method which is declared at 5.2. to 
-create scenario and call the store procedure. Furthermore, most of data in this test is resused from Store Procedures Test.  
+to test the store procedures again but from the Logic Tier. In this test, we use Junit for automatic testing and the SQLStatement method which is declared at 5.2. to create scenario and call the store procedure. Furthermore, most of data in this test is resused from Store Procedures Test.  
 
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
 ------------ | ------------- | --------- | ---------------- | -------------- | ---------
@@ -359,7 +358,7 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 ***
 
 ### 6.3. Logic Tier Unit Test
-* This third test is to test the ```getAvailableSlot``` algorithm. We have three method to get available slot from the database:  
+* This third test is to test the ```getAvailableSlot``` algorithm. In this test, we also resuse Junit and SQLStatement to run the test. We have three method to get available slot from the database:  
  - ```CitySlot```: get available slot of a specific city  
  - ```CenterSlot```: get available slot of a specific center  
  - ```CourtSlot```: get available slot of a specific court  
@@ -382,12 +381,14 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 051 | Check ```Construct_GivenBookings_Arbitrary``` with scenario : open time: 06:00:00, close time: 20:00:00, date 2020-05-10, centerId: A1, time: 10:30:00-11:30:00, 12:31:00-13:31:00, court: A1C1, time: 13:31:00-14:31:00, court: A1C2, time: 08:31:00-09:31:00 | test data for city, center, court, booking table | return 200 | As Expected | Pass
 052 | Check ```Construct_Given_Date_EmptyBooking_Arbitrary``` with scenario : open time: 06:00:00, close time: 20:00:00, date 2020-05-10, centerId: A1, time: 10:30:00-11:30:00, 12:31:00-13:31:00, court: A1C1, time: 13:31:00-14:31:00, court: A1C2, time: 08:31:00-09:31:00 | test data for city, center, court, booking table | return empty booking list | As Expected | Pass
 ***
+
 ### _CitySlotTest_
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
 ------------ | ------------- | --------- | ---------------- | -------------- | ---------
 053 | Check ```Construct_GivenDate``` with scenario : date 2020-05-10, cityId: A, time: 10:30:00-11:30:00, 12:31:00-13:31:00, court: A1C1, time: 13:31:00-14:31:00, court: A1C2, time: 08:31:00-09:31:00 | test data for city, center, court, booking table | available slot: court: A1C, time: 07:00:00-10:30:00, 11:30:00-12:31:00, 13:31:00-21:00:00, court: A1C1, time: 07:00:00-13:31:00, 14:31:00-21:00:00, court: A1C2, time: 07:00:00-08:31:00, 09:31:00-21:00:00 | As Expected | Pass
 054 | Check ```Construct_GivenDate_Arbitrary``` with scenario : open time: 06:00:00, close time: 20:00:00, date 2020-05-10, cityId: A, time: 10:30:00-11:30:00, 12:31:00-13:31:00, court: A1C1, time: 13:31:00-14:31:00, court: A1C2, time: 08:31:00-09:31:00 | test data for city, center, court, booking table | available slot: court A1C, time: 06:00:00-10:30:00, 11:30:00-12:31:00, 13:31:00-20:00:00, court: A1C1, time: 06:00:00-13:31:00, 14:31:00-21:00:00, court: A1C2, time: 06:00:00-08:31:00, 09:31:00-20:00:00 | As Expected | Pass
 ***
+
 ### _CourtSlotTest_
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
 ------------ | ------------- | --------- | ---------------- | -------------- | ---------
