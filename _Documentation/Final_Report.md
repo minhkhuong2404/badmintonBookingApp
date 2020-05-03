@@ -239,7 +239,22 @@ the state of the booking (from unpaid to paid and vice versa).
       - **JSONObject (postCancelBooking):** this class is used to call a “cancelBooking” class of server. The queries are pplayerid, pcourtid  
 
 ## 6. Testing
+Bla Bla Bla
+* The tables below are the final result for testing in which:
+  - Test Case ID is the identical number for each test.  
+  - Test Scenario is the scenario which have to be create before doing test.  
+  - Test Data is the actual data which needs to be tested.    
+  - Expected Results are the the result which is expected to be.  
+  - Actual Results are the actual result which is returned after running test.  
+  - Pass/Fail is the final conclusion for the test in which _"Pass"_ is when Expected Results matched Actual Results
+  and _"Fail"_ is when Expected Results did not match Actual Results.  
 ### 6.1. Database and Store Procedures Test
+* This is the first most test which is used to test store procedures of database. Overall, the each test will follow three steps: 
+  - Clear up the database to ensure the database is empty when doing the test.  
+  - Run SQL statements in "Scenario" to make scenario for the test.  
+  - Every test has n SQL statements, the (n - 1) first SQL statements are the ADDITIONAL SCENARIO for the test.  
+  - The last SQL statements is the actual test.  
+
 ### _createBooking_   
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
 ------------ | ------------- | --------- | ---------------- | -------------- | ---------
@@ -319,6 +334,10 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 ***
 
 ### 6.2. Data-Logic Unit Test
+* The purpose of this second test is used to test the connection between Database and Logic tier. The main activity of this test is 
+to test the store procedures again but from the Logic Tier. In this test, we use the SQLStatement method which is declared at 5.2. to 
+create scenario and call the store procedure. Furthermore, most of data in this test is resused from Store Procedures Test.  
+
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
 ------------ | ------------- | --------- | ---------------- | -------------- | ---------
 032 | Check ```createBooking_Success``` with valid data | centerId | return 200 | As Expected | Pass
@@ -340,6 +359,20 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 ***
 
 ### 6.3. Logic Tier Unit Test
+* This third test is to test the ```getAvailableSlot``` algorithm. We have three method to get available slot from the database:  
+ - ```CitySlot```: get available slot of a specific city  
+ - ```CenterSlot```: get available slot of a specific center  
+ - ```CourtSlot```: get available slot of a specific court  
+, and each method will have four different ways to retieve the booking list from database:  
+ - ```GivenDate```: retrieve bookings list on that date from database with default operation time.  
+ - ```GivenDate_Arbitrary```: retrieve bookings list on that date from database with arbitrary operation time.  
+ - ```GivenBooking```: retrieve the booking list of a specific city/center/court (they must be on the same day) 
+ with default operation time.  
+ - ```GivenBooking_Arbitrary```: retrieve the booking list of a specific city/center/court (they must be on the same day) 
+ with arbitrary operation time.  
+ The reason of those method is to reduce usage of database when user only need to retrieve the booking list from 
+ a specific city/center/court.  
+ 
 ### _CenterSlotTest_
 Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
 ------------ | ------------- | --------- | ---------------- | -------------- | ---------
@@ -376,6 +409,9 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 069 | Check ```Construct_GivenDate_SlotAtStartAndEndOfDay``` with scenario : date 2020-05-10, courtId: A1C, time: 07:45:00-20:15:00 | test data for city, center, court, booking table | available slot: court: A1C, time: 07:00:00-07:45:00, 20:15:00-21:00:00 | As Expected | Pass
 070 | Check ```Construct_GivenDate_IntervalSmallerThan45min``` with scenario : date 2020-05-10, courtId: A1C1, time: 07:30:00-21:00:00 | test data for city, center, court, booking table | no available slot | As Expected | Pass
 ***
+
 ### 6.4. Logic-Presentation Test
 ## 7. References  
+### 7.1. Development Tools
+### 7.2. Documentation
 ## 8. Appendix  
