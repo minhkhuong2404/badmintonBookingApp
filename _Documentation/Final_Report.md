@@ -178,9 +178,6 @@ the state of the booking (from unpaid to paid and vice versa).
           - center_id(foreign key)  
           - city_id(foreign key)  
           
-        - Table player:  
-          - player_id(primary key)  
-          
         - Table staff:  
           - staff_id(primary key)  
           - center_id(foreign key)  
