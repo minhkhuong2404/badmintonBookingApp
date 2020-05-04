@@ -418,7 +418,29 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 070 | Check ```Construct_GivenDate_IntervalSmallerThan45min``` with scenario : date 2020-05-10, courtId: A1C1, time: 07:30:00-21:00:00 | test data for city, center, court, booking table | no available slot | As Expected | Pass
 ***
 
-### 6.4. Logic-Presentation Test
+### 6.4.Presentation Test  
+Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | Pass/Fail
+------------ | ------------- | --------- | ---------------- | -------------- | ---------
+Login using Facebook | user has Facebook account | Username, password | successfully login | As expected | Pass  
+Logout Facebook account | user already login |  | successfully logout | As expected | Pass  
+"continue" button | After successfully login |   | Navigate to the next selection activity screen | As expected | Pass    
+City chosen Button when have Internet connection | user is on main screen |  | successfully chose city | As expected | Pass  
+Date chosen Button when have Internet connection | user is on main screen |  | successfully chose date | As expected | Pass    
+City chosen Button when no Internet connection | user is on main screen |  | fail to chose city | As expected | Pass  
+Date chosen Button when no Internet connection | user is on main screen |  | fail to chose date | As expected | Pass    
+No conection to server | After pressing the "show available slot" button or "create booking" button or "cancel booking" button and no connection to server |   | no connection ton server | As expected | Pass  
+Choose "show available slot" button | have connection to server |   | show the available list | As expected | Pass   
+Choose slot | After choosing city and date |  | successfully chose slot | As expected | Pass
+Choose slot confirmation | After choosing a slot and press "create" button |   | navigate to create booking screen | As expected | Pass  
+Choose slot confirmation | After choosing a slot and press "cancel" button |   | return to availabe slot list | As expected | Pass  
+Choose the booking time | After chosing the slot | Time | successfully create the booking | As expected | Pass  
+"Show my booking" Button | User is on main screen or after create the booking |   | Navigate to booing list of the user | As expected | Pass  
+"Cancel Booking" Button when have Internet connection | User is in booking list | Has at least 1 booking | show the "cancel alert" notification | As expected | Pass  
+Cancel Booking confirmation when more than 24 hours | After press "yes" button |   | Cancel Booking successfully | As expected  | Pass  
+Cancel Booking confirmation when more than 24 hours | After press "no" button |   | return to booking list | As expected  | Pass  
+Cancel Booking confirmation when less than 24 hours | After press "yes" button |   | Cancel Booking fail | As expected | Pass  
+Cancel Booking confirmation when less than 24 hours | After press "no" button |   | return to booking list | As expected | Pass  
+
 ## 7. References  
 ### 7.1. Development Tools
 Tools | Link |   
