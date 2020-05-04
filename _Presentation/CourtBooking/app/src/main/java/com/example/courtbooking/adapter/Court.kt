@@ -1,5 +1,6 @@
 package com.example.courtbooking.adapter
 
+import android.util.Log
 import org.json.JSONObject
 import java.time.LocalDate
 import java.time.LocalTime
@@ -19,7 +20,6 @@ class Court {
             val jsonSlot = slotJsonList.getJSONObject(i)
             val start = jsonSlot.getString("start")
             val end = jsonSlot.getString("end")
-
             slotList.add(Slot(start, end))
         }
 

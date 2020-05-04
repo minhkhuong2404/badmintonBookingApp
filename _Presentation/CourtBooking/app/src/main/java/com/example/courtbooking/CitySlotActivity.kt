@@ -51,7 +51,7 @@ class CitySlotActivity : AppCompatActivity() {
             JsonObjectRequest(
                 Request.Method.GET, ApiUtils.URL_GET_CITY_SLOT + query, null,
                 Response.Listener { response ->
-                    val city = City(response, date)
+                    val city = City(response)
                     val centerList = city.getCenterList()
 
                     // show available slot

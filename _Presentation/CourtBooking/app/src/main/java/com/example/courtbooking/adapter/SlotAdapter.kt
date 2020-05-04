@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.courtbooking.CreateBookingActivity
 import com.example.courtbooking.R
 import kotlinx.android.synthetic.main.slot.view.*
-import org.json.JSONArray
-import org.json.JSONObject
 import java.time.LocalDate
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 
 
 class SlotAdapter(
@@ -32,7 +28,7 @@ class SlotAdapter(
     private var slotList: ArrayList<Slot>
 ) :
     RecyclerView.Adapter<SlotAdapter.SlotViewHolder>() {
-    private val PLAYTIME_MINIMUM:Long = 45
+    private val PLAYTIME_MINIMUM: Long = 45 // minutes
 
     init {
         val today = LocalDate.now()
@@ -53,7 +49,7 @@ class SlotAdapter(
                     slotList.removeAt(i)
                 } else if (current.isAfter(start)) {
                     // if still available but the current > start: change start
-                    slotList[i].setStart(current.toString())
+                    slotList[i].setStart(current.toString().substring(0,8))
                 }
             }
         }
@@ -70,8 +66,8 @@ class SlotAdapter(
 
     override fun onBindViewHolder(holder: SlotViewHolder, position: Int) {
         val currentSlot = slotList.get(position)
-        val start = currentSlot.getStart()
-        val end = currentSlot.getEnd()
+        val start = currentSlot.getStart().substring(0,5)
+        val end = currentSlot.getEnd().substring(0,5)
         holder.slotBtn.text = "$start - $end"
         holder.setIsRecyclable(false)
         holder.slotBtn.setOnClickListener {
