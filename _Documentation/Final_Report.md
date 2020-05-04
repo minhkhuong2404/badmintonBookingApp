@@ -109,7 +109,7 @@ the state of the booking (from unpaid to paid and vice versa).
 
 ## 4. UML diagrams
 ### 4.1. Database
-![ER-Diagram](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Entity-Relationship%20Diagram/ER-diagram.png)  
+![ER-Diagram](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Entity-Relationship%20Diagram/ER-diagram.png)  
 ### 4.2. Logic
 #### 4.2.1. Activity Diagram for Customer
 ![CusActDia](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Activity%20Diagram/User%20Application.jpg)  
@@ -118,44 +118,39 @@ the state of the booking (from unpaid to paid and vice versa).
 ![StaffActDia](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Activity%20Diagram/Staff%20Application.jpg)  
 ***
 ### 4.3. Presentation
-#### Select Customer/Staff
-![Select Customer/Staff](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/0.%20Select%20Customer_Staff.png)  
-***
-#### Custotmer Main Screen
-![Custotmer Main Screen](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.%20Customer%20Main%20Screen.png)  
-***
+#### Login  
+![Login](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588595965.png)  
+***  
+#### Continue with Facebook    
+![Continue with Facebook](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588595953.png)  
+***   
 #### Select City
-![Select City](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.1.%20Select%20City.png)  
-***
+![Select City](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588595986.png)  
+***  
 #### Select Date
-![Select Date](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.2.%20Select%20Date.png) 
-***
+![Select Date](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588595990.png) 
+***  
 #### Show Available Slots
-![Show Available Slots](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.3.%20Show%20Available%20Slots.png)  
-***
-#### Slot Selected
-![Slot Selected](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.3.1.%20Slot%20Selected.png)  
-***
-#### Create Booking
-![Create Booking](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.3.1.1.%20Create%20Booking.png)  
-***
-#### Choose Start_End Time
-![Choose Start_End Time](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.3.1.1.1.%20Choose%20Start_End%20Time.png)  
-***
-#### Booking Created
-![Booking Created](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.3.1.2.%20Booking%20Created.png)  
-***
+![Show Available Slots](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602061.png)  
+***  
+#### Slot Selected  
+![Slot Selected](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602082.png)  
+***  
+#### Create Booking  
+![Create Booking](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602087.png)  
+***  
+#### Choose Start_Time  
+![Choose Start Time](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602092.png)  
+***  
+#### Choose Duration  
+![Duration](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602095.png)  
+***  
 #### Show My Bookings
-![Show My Bookings](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.4.%20Show%20My%20Bookings.png)  
-***
-#### Booking Details 
-![Booking Details](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.4.1.%20Booking%20Details.png)  
+![Show My Bookings](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602120.png)  
+(https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602159.png)  
 ***
 #### Cancel Alert 
-![Cancel Alert ](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.4.1.2.%20Cancel%20Alert.png)  
-***
-#### Cancel Confirmed
-![Cancel Confirmed](https://github.com/manuelclavel/teamepe2020/blob/flexmng/Images/Diagrams/Mock-ups/NewUI/1.4.1.3.%20Cancel%20Confirmed.png)  
+![Cancel Alert ](https://github.com/manuelclavel/teamepe2020/blob/master/Images/Diagrams/Mock-ups/NewUI/Screenshot_1588602194.png)  
 ***
 
 ## 5. Technical Description  
