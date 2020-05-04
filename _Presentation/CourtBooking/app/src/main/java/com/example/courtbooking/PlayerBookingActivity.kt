@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
+import com.example.courtbooking.adapter.Booking
 import com.example.courtbooking.adapter.BookingAdapter
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
@@ -21,7 +22,6 @@ import org.json.JSONArray
 
 
 class PlayerBookingActivity : AppCompatActivity() {
-    // User vars
     // User vars
     lateinit var accessToken: AccessToken
     lateinit var playerId : String
@@ -76,7 +76,13 @@ class PlayerBookingActivity : AppCompatActivity() {
     }
 
     // init recycler view booking
-    private fun initRecyclerViewBooking(bookingList: JSONArray) {
+    private fun initRecyclerViewBooking(jsonBookingList: JSONArray) {
+        // make a booking list
+        val bookingList = ArrayList<Booking>()
+        for (i in 0 until jsonBookingList.length()) {
+            bookingList.add( Booking(jsonBookingList.getJSONObject(i)) )
+        }
+
         rv_booking.apply {
             layoutManager =
                 LinearLayoutManager(this@PlayerBookingActivity, LinearLayoutManager.VERTICAL, false)
