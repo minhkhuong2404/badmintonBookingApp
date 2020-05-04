@@ -208,26 +208,23 @@ the state of the booking (from unpaid to paid and vice versa).
 * The logic tier consists of algorithm, server and method.  
   **Algorithm:**  
     -This part is used to calculate if the start time of booking is larger than the start time of slot about 45 minutes  
-  ```  
     
-open : open time of the center
+```open : open time of the center
 close : close time of the center
 bookings: list of bookings
 
 Initialize `slot` = [open ; null]
 
 For each booking in bookings :
-	If `booking.start_time` - `slot.start_time` >= 45min
-		Set `slot.end_time` = `booking.start_time`
-			Insert `slot` into `court_slot`
-		Set `slot.start_time` = `booking.end_time`
+	  If `booking.start_time` - `slot.start_time` >= 45min
+		   Set `slot.end_time` = `booking.start_time`
+			    Insert `slot` into `court_slot`
+		   Set `slot.start_time` = `booking.end_time`
 
 If  `slot.end_time` - `slot.start_time >=45
 	Set `slot.end_time` = `court.end_time`
-	Insert `slot` into `court_slot`
-
-  ```  
-  
+	Insert `slot` into `court_slot`   
+ ```
   **Class:**  
     -To handle the request from the user interface and send reponse to user interface, we have created classes which are:  
       - **CitySlot:** this class is used to get the available slot in the chosen city. The inputs are `city_id` and `date`.  
