@@ -43,7 +43,6 @@ Lam Hai Son | Logic Tier(Java)
 Luu Nguyen Phat | Logic Tier(Java)   
 Dang Chi Cong | Data Tier(MySQL)   
 
-### 1.3. Definition, Acronyms, and Abbreviations
 ## 2. Detailed System Description
   * Booking Application is the mobile application software which has online booking, via handheld as the main functions. The system has two user categories which are customer and staff. Below, all of the rights and capabilities of each user will be explained in detail.
 ### 2.1. Customer
@@ -449,4 +448,3 @@ Documentation | Link |
 ------------- | ---- |  
 Database      | https://www.w3schools.com/sql/ ; https://www.tutorialspoint.com/sql/index.htm |  
 Java          | https://www.baeldung.com/ |  
-## 8. Appendix  
