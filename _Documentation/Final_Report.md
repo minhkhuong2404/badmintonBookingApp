@@ -209,27 +209,30 @@ the state of the booking (from unpaid to paid and vice versa).
   **Algorithm:**  
     -This part is used to calculate if the start time of booking is larger than the start time of slot about 45 minutes  
   ```  
-    getCourtSlots(array `bookings`)  
-    Initialize `slots` = [[7:00, 21:00]]  
+    
+open : open time of the center
+close : close time of the center
+bookings: list of bookings
 
-    For each `b` in `bookings`:  
-        `s` is the last item in `slots`  
-        If `s_end - b_end ≥ 45 minutes`:  
-            Insert [b_end, s_end] into `slots`  
-        If `(b_start - s_start) ≥ 45 minutes`:  
-            s_end = b_start  
-        Else delete `s` from slots  
-    Return slots  
+Initialize `slot` = [open ; null]
+
+For each booking in bookings :
+	If `booking.start_time` - `slot.start_time` >= 45min
+		Set `slot.end_time` = `booking.start_time`
+			Insert `slot` into `court_slot`
+		Set `slot.start_time` = `booking.end_time`
+
+If  `slot.end_time` - `slot.start_time >=45
+	Set `slot.end_time` = `court.end_time`
+	Insert `slot` into `court_slot`
+
   ```  
-  
-  **Server:**  
-    -This part is used to initialize the server of the application:
   
   **Class:**  
     -To handle the request from the user interface and send reponse to user interface, we have created classes which are:  
-      - **getCitySlot:** this class is used to get the available slot in the chosen city. The inputs are `city_id` and `date`.  
-      - **getCenterSlot:** this class is used to get the available slot in the chosen center. The inputs are `center_id` and `date`.  
-      - **getCourtSlot:** this class is used to get the availble slot in the chosen court. The inputs are `court_id` and `date`.  
+      - **CitySlot:** this class is used to get the available slot in the chosen city. The inputs are `city_id` and `date`.  
+      - **CenterSlot:** this class is used to get the available slot in the chosen center. The inputs are `center_id` and `date`.  
+      - **CourtSlot:** this class is used to get the availble slot in the chosen court. The inputs are `court_id` and `date`.  
       - **SQLStatement:** this method is used to call the store procedures from the database.  
       - **GetHandler:** this method is used to get the request from client.  
       - **PostHandler:**  this method is used to response to client.
