@@ -22,9 +22,9 @@
 ## 1. Introduction
 ### 1.1. Project Scope and Description
   * Booking Application is a software which is mainly composed of the following parts:  
-    -Booking via handheld mobile phone  
-    -Online booking and booking management over the Internet  
-    -Customer management  
+    * Booking via handheld mobile phone  
+    * Online booking and booking management over the Internet  
+    * Customer management  
     
   * With the help of operated handhelds, booking of the customers in the application will directly be transferred to the database and inform to the sport center where the court are prepared. It is easy communication among the customer and sport center. Increasing service efficiency are the qualifications of this system which makes our automation much more effectively and practical for all users of the application.  
   *  Online booking and booking management module provides solutions for the online customers. By using the application constructed by the automation, customers will have list of any court provided by the sport centers in chosen city. In order to use this application, each customer has to have an Facebook account. This account will not only provide online booking but also be used by the users to keep track of all promotions, announcements prepared for registered customers.  
