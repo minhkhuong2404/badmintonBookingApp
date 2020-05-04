@@ -448,3 +448,5 @@ Documentation | Link |
 ------------- | ---- |  
 Database      | https://www.w3schools.com/sql/ ; https://www.tutorialspoint.com/sql/index.htm |  
 Java          | https://www.baeldung.com/ |  
+Android Developer Guide | https://developer.android.com/guide |  
+Login Facebook for Android | https://developers.facebook.com/docs/facebook-login/android/ |  
