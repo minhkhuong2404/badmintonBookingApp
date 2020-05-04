@@ -71,7 +71,7 @@ Dang Chi Cong | Data Tier(MySQL)
   * **Sofware requirement:**  
        - Android Studio  
        - IntelJ IDEA with JDK version 8 241
-       - MySQL
+       - MySQL Community Server 8.0.19
 ### 3.2. Constraints
 * General information/constraints:
   - Cities can have several public sport centres.
@@ -237,7 +237,7 @@ the state of the booking (from unpaid to paid and vice versa).
       - **GetHandler:** this method is used to get the request from client.  
       - **PostHandler:**  this method is used to response to client.
 ### 5.3. Presentation Tier  
-* The presentation tier includes :  user interface, method.     
+* The presentation tier includes :  user interface, class.     
   **User Interface:**  
     -This part is used to initialize the user interface of the application:  
   
@@ -423,13 +423,16 @@ Test Case ID | Test Scenario | Test Data | Expected Results | Actual Results | P
 
 ### 6.4. Logic-Presentation Test
 ## 7. References  
-Tool/Document | Link |   
+### 7.1. Development Tools
+Tools | Link |   
+------------- | ---- |  
+MagicDraw | https://www.nomagic.com/products/magicdraw |
+MySQL Community Server 8.0.19 | https://dev.mysql.com/downloads/mysql/ |  
+IntelliJ IDEA | https://www.jetbrains.com/idea/download/?gclid=Cj0KCQjw17n1BRDEARIsAFDHFex16EdMV2TvUukVPw--BpoCTIJ9Uif3RjiX9woX-HIN8bNU9_pi7fYaAgFVEALw_wcB#section=windows |  
+Android Studio | https://developer.android.com/studio |
+### 7.2. Documentation
+Documentation | Link |   
 ------------- | ---- |  
 Database      | https://www.w3schools.com/sql/ ; https://www.tutorialspoint.com/sql/index.htm |  
 Java          | https://www.baeldung.com/ |  
-MySQL Community Server 8.0.19 | https://dev.mysql.com/downloads/mysql/ |  
-IntelliJ IDEA | https://www.jetbrains.com/idea/download/?gclid=Cj0KCQjw17n1BRDEARIsAFDHFex16EdMV2TvUukVPw--BpoCTIJ9Uif3RjiX9woX-HIN8bNU9_pi7fYaAgFVEALw_wcB#section=windows |  
-Android Studio | https://developer.android.com/studio |  
-### 7.1. Development Tools
-### 7.2. Documentation
 ## 8. Appendix  
