@@ -24,7 +24,7 @@ import java.sql.Timestamp
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
+class BookingAdapter (private val listBooking : ArrayList<Booking>) : RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
     private var BOOKING_VIEW_TYPE_DEFAULT = 0
     private var BOOKING_VIEW_TYPE_OVERDUE = 1
 
@@ -40,12 +40,12 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     }
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
-        val booking : JSONObject = listBooking.getJSONObject(position)
-        val bookingTimeString = Date(booking.getLong("date")).toString() + ' ' + booking.getString("start")
+        val currentBooking = listBooking[position]
+        val bookingTimeString = currentBooking.getDate() + ' ' + currentBooking.getStart()
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         val bookingTime = LocalDateTime.parse(bookingTimeString, formatter);
         val currentTime = LocalDateTime.now()
-        val paymentStatus = booking.getInt("status")
+        val paymentStatus = currentBooking.getStatus()
         return if (bookingTime.compareTo(currentTime) < 0 && paymentStatus == 0) {
             BOOKING_VIEW_TYPE_OVERDUE
         } else {
@@ -75,20 +75,20 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     // Assign the contents to a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int) {
         // - get  element from your dataset at this position
-        val currentItem : JSONObject = listBooking.getJSONObject(position)
-        val start : String = currentItem.getString("start")
-        val end : String = currentItem.getString("end")
-        val city : String = currentItem.getString("cityId")
-        val center : String = currentItem.getString("centerId")
-        val court : String = currentItem.getString("courtId")
-        val playerid: String = currentItem.getString("playerId")
+        val currentItem= listBooking[position]
+        val start : String = currentItem.getStart()
+        val end : String = currentItem.getEnd()
+        val city : String = currentItem.getCityId()
+        val center : String = currentItem.getCenterId()
+        val court : String = currentItem.getCourtId()
+        val playerid: String = currentItem.getPlayerId()
 
         // - replace the contents of the view with that element
-        holder.tvId.text = currentItem.getInt("bookingId").toString()
-        holder.tvDate.text = Date(currentItem.getLong("date")).toString()
+        holder.tvId.text = currentItem.getBookingId()
+        holder.tvDate.text = currentItem.getDate()
         holder.tvTime.text = "$start - $end"
         holder.tvPlace.text = "$city, $center, $court"
-        holder.tvTimestamp.text = Timestamp(currentItem.getLong("timestamp")).toString()
+        holder.tvTimestamp.text = currentItem.getTimestamp()
 
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)
@@ -102,7 +102,7 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = listBooking.length()
+    override fun getItemCount() = listBooking.size
 
     private fun cancelBookingDialog(tvId: TextView, playerid: String, position: Int) {
 
@@ -126,8 +126,8 @@ class BookingAdapter (private val listBooking : JSONArray) : RecyclerView.Adapte
     }
 
     private fun removeCancelledBooking(position: Int) {
-        listBooking.remove(position)
-        if (listBooking.length() == 0){
+        listBooking.removeAt(position)
+        if (listBooking.size == 0){
         }
         notifyDataSetChanged()
     }
