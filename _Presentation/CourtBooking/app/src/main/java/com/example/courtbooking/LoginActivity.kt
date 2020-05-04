@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var profileImage: ImageView
     lateinit var fullnameTextView: TextView
     lateinit var loginButton: LoginButton
-    lateinit var toBookingButton: Button
+    lateinit var toSelectionButton: Button
     var cacheFilename = "user.json"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,15 +40,15 @@ class LoginActivity : AppCompatActivity() {
         fullnameTextView = findViewById(R.id.usernameTextView)
         loginButton = findViewById(R.id.facebookButton)
         loginButton.setPermissions(listOf("public_profile", "email"))
-        toBookingButton = findViewById(R.id.toMainScreenButton)
+        toSelectionButton = findViewById(R.id.toMainScreenButton)
 
         loginButton.setPermissions(listOf("public_profile", "email"))
 
-        toBookingButton.setOnClickListener {
+        toSelectionButton.setOnClickListener {
             // Preparing to next activity
-            val toMainScreen = Intent(this@LoginActivity, SelectionActivity::class.java)
+            val toSelectionActivity = Intent(this@LoginActivity, SelectionActivity::class.java)
             // To next activity
-            startActivity(toMainScreen)
+            startActivity(toSelectionActivity)
         }
 
         // if user logged in
@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
             }
         } else {
             // make the button invisible
-            toBookingButton.visibility = View.INVISIBLE
+            toSelectionButton.visibility = View.INVISIBLE
         }
     }
 
@@ -87,12 +87,12 @@ class LoginActivity : AppCompatActivity() {
                 // clear user cache
                 clearUserDataCache()
                 // hide button
-                toBookingButton.visibility = View.INVISIBLE
+                toSelectionButton.visibility = View.INVISIBLE
             } else {
                 // load user data
                 loadUserDataFb(AccessToken.getCurrentAccessToken())
                 // if logged in, show button
-                toBookingButton.visibility = View.VISIBLE
+                toSelectionButton.visibility = View.VISIBLE
             }
         }
     }
