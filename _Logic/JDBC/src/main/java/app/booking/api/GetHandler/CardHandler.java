@@ -36,9 +36,8 @@ public class CardHandler extends GetHandler {
         //Check for usable card
         for (Card c:PlayerCard
              ) {
-            if (date.after(c.getExpire_date()))
+            if (date.after(c.getExpire_date()) && c.getRemainBooking() > 0)
                 rs.add(c);
-            else if (c.getRemainBooking() > 0) rs.add(c);
         }
         // Convert to json
         String response = JsonConverter.toJson(rs);
