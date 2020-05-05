@@ -23,26 +23,26 @@ DECLARE PLAYTIME_1H30 time;
 
 
 /* Assign variables */
-SELECT MAKETIME(7, 0, 0) into openTime;
-SELECT MAKETIME(21, 0, 0) into closeTime;  
+SELECT MAKETIME(7, 0, 0) into openTime;   --set open hour to 7am--
+SELECT MAKETIME(21, 0, 0) into closeTime; --set end hour to 9pm-- 
 SELECT pstartTime into startTime;
 SELECT pendTime into endTime;
 SELECT TIMEDIFF(endTime, startTime) into playTime;
-SELECT MAKETIME(0,45,0) into PLAYTIME_45M;
-SELECT MAKETIME(1,0,0) into PLAYTIME_1H;
-SELECT MAKETIME(1,15,0) into PLAYTIME_1H15;
-SELECT MAKETIME(1,30,0) into PLAYTIME_1H30;
+SELECT MAKETIME(0,45,0) into PLAYTIME_45M; --set 45 minutes play-time-- 
+SELECT MAKETIME(1,0,0) into PLAYTIME_1H;   --set 60 minutes play-time--
+SELECT MAKETIME(1,15,0) into PLAYTIME_1H15;--set 75 minutes play-time--
+SELECT MAKETIME(1,30,0) into PLAYTIME_1H30;--set 90 minutes play-time, 90 is max minutes for playing--
 
 
 IF NOT EXISTS (SELECT * FROM city WHERE city_id = pcityId)
 THEN
-	SET resultCode = 'CB-001';
+	SET resultCode = 'CB-001'; --check city existed or not --
 ELSEIF NOT EXISTS (SELECT * FROM center WHERE center_id = pcenterId)
 THEN
-	SET resultCode = 'CB-002';
+	SET resultCode = 'CB-002'; --check center existed or not --
 ELSEIF NOT EXISTS (SELECT * FROM court WHERE court_id = pcourtId)
 THEN
-	SET resultCode = 'CB-003';
+	SET resultCode = 'CB-003'; --check court existed or not --
 ELSEIF ((date_add(pdate, INTERVAL TIME_TO_SEC(startTime) SECOND)) <=
        date_add(DATE(NOW()), INTERVAL TIME_TO_SEC(TIME(NOW())) SECOND))
 THEN 
