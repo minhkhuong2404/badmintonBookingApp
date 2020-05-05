@@ -1,3 +1,4 @@
+--getCityBookings(cityId, pdate)-- 
 DROP PROCEDURE IF EXISTS getCityBookings;
 DELIMITER //
 CREATE PROCEDURE getCityBookings(
@@ -13,9 +14,9 @@ THEN SET resultCode = 'GCB-001';
 ELSE
 	select * 
     from booking 
-    where city_id = cityId and pdate = date
+    where city_id = cityId and pdate = date --check city id and the date --
     order by center_id, court_id, startTime;
-  SET resultCode = '200';
+  SET resultCode = '200'; 
 END IF;
 end//
 DELIMITER ;
