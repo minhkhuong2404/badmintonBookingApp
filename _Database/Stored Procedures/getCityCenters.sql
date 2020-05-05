@@ -1,3 +1,4 @@
+--getCityCenters(cityId)--
 DROP PROCEDURE IF EXISTS getCityCenters;
 DELIMITER //
 CREATE PROCEDURE getCityCenters(IN cityId varchar(50),
@@ -13,7 +14,7 @@ BEGIN
     ELSE
         select *
         from center
-        where cityId = city_id
+        where cityId = city_id --check city valid or not --
         order by center_id;
         SET resultCode = '200';
     END IF;
