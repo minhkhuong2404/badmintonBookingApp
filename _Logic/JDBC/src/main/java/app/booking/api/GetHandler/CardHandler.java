@@ -32,15 +32,16 @@ public class CardHandler extends GetHandler {
 
         // Get cards of the player
         ArrayList<Card> PlayerCard = SQLStatement.getPlayerCards(PlayerId);
+        ArrayList<Card> rs = new ArrayList();
         //Check for usable card
         for (Card c:PlayerCard
              ) {
-            if (date.before(c.getExpire_date()))
-                PlayerCard.remove(c);
-            else if (c.getRemainBooking() == 0) PlayerCard.remove(c);
+            if (date.after(c.getExpire_date()))
+                rs.add(c);
+            else if (c.getRemainBooking() > 0) rs.add(c);
         }
         // Convert to json
-        String response = JsonConverter.toJson(PlayerCard);
+        String response = JsonConverter.toJson(rs);
 
         return new ResponseEntity<>(response, getHeaders(Constants.CONTENT_TYPE, Constants.APPLICATION_JSON), StatusCode.OK);
     }
