@@ -11,7 +11,7 @@ class BookingCreateRequest {
     String pcenterid;
     String pcourtid;
     String pplayerid;
-    String cardid;
+    int cardid;
 }
 @Value
 class BookingCancelRequest {
