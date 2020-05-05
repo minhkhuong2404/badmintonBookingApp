@@ -1,3 +1,4 @@
+--getCourtBookings(courtId,pdate)--
 DROP PROCEDURE IF EXISTS getCourtBookings;
 DELIMITER //
 CREATE PROCEDURE getCourtBookings(
@@ -12,7 +13,7 @@ ELSEIF NOT EXISTS (SELECT * FROM booking WHERE court_id = courtId)
 THEN SET resultCode = 'GCB-001';
 ELSE
 	select * from booking 
-    where court_id = courtId and pdate = date
+    where court_id = courtId and pdate = date --check court and date whether valid or not--
     order by startTime;
   SET resultCode = '200';
 END IF;
