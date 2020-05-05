@@ -15,6 +15,7 @@ class Booking {
     private var end:String
     private var playerId:String
     private var status: Int
+    private var cardId: Int
 
     constructor(booking: JSONObject) {
         bookingId = booking.getInt("bookingId").toString()
@@ -27,6 +28,7 @@ class Booking {
         end = booking.getString("end")
         playerId = booking.getString("playerId")
         status = booking.getInt("status")
+        cardId = booking.getInt("cardId")
     }
 
     fun getBookingId(): String {
@@ -59,5 +61,7 @@ class Booking {
     fun getStatus(): Int {
         return status
     }
-
+    fun getCard(): Int {
+        return cardId
+    }
 }

@@ -37,6 +37,7 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>) : RecyclerVi
         val tvPlace : TextView = itemView.tv_court
         val tvTimestamp : TextView = itemView.tv_created_on
         val cancelBtn: Button = itemView.cancelButton
+        val tvCard : TextView = itemView.tv_card_id
     }
     // Determine COURTVIEWTYPE of item
     override fun getItemViewType(position: Int): Int {
@@ -82,6 +83,7 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>) : RecyclerVi
         val center : String = currentItem.getCenterId()
         val court : String = currentItem.getCourtId()
         val playerid: String = currentItem.getPlayerId()
+        val cardid : Int  = currentItem.getCard()
 
         // - replace the contents of the view with that element
         holder.tvId.text = currentItem.getBookingId()
@@ -89,6 +91,7 @@ class BookingAdapter (private val listBooking : ArrayList<Booking>) : RecyclerVi
         holder.tvTime.text = "$start - $end"
         holder.tvPlace.text = "$city, $center, $court"
         holder.tvTimestamp.text = currentItem.getTimestamp()
+        holder.tvCard.text = currentItem.getCard().toString()
 
         // setIsRecyclerable: avoid lag when scrolling
         holder.setIsRecyclable(false)

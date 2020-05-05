@@ -9,12 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.courtbooking.request.ApiUtils
 import com.example.courtbooking.request.MySingleton
 import com.facebook.AccessToken
+import com.google.gson.JsonArray
 import kotlinx.android.synthetic.main.activity_create_booking.*
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.time.LocalTime
 
 
@@ -33,6 +36,8 @@ class CreateBookingActivity : AppCompatActivity() {
     private var chosenStartTime = -1 // initialize
     private var chosenPlaytime = -1 // initialize
     private var chosenEndTime = -1 // initialize
+    private var chosenCard = ""
+    private var cardList = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_booking)
@@ -62,6 +67,7 @@ class CreateBookingActivity : AppCompatActivity() {
         val durationSpinner = findViewById<Spinner>(R.id.durationSpinner)
         val createBookingButton = findViewById<Button>(R.id.createBookingBtn)
         val toCreatedBookingButton = findViewById<Button>(R.id.toCreatedBookingBtn)
+        val cardSpinner = findViewById<Spinner>(R.id.cardSpinner)
 
         /* Bind data to views */
         findViewById<TextView>(R.id.tvCity).text = cityId
@@ -78,6 +84,17 @@ class CreateBookingActivity : AppCompatActivity() {
         tvStart.text = minuteToString(chosenStartTime) // takes "hh:mm" only
         tvEnd.text = minuteToString(chosenEndTime) // takes "hh:mm" only
 
+        /* request list of card*/
+        cardRequest(playerId, date)
+
+        cardSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, cardList)
+        cardSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) { /* Just a place holder */ }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                chosenCard = cardSpinner.selectedItem.toString().split(" ").get(1)
+            }
+        }
         /* Setting button */
         chooseStartButton.setOnClickListener {
             timePickerLayout.visibility = View.VISIBLE
@@ -102,12 +119,14 @@ class CreateBookingActivity : AppCompatActivity() {
                 }
             }
             durationSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, durationList)
+
         }
         createBookingButton.setOnClickListener {
             // convert to right fornat
             val start = minuteToString(chosenStartTime) + ":00"
             val end = minuteToString(chosenEndTime) + ":00"
-            requestCreateBooking(date, start, end, cityId, center, court, playerId)
+            requestCreateBooking(date, start, end, cityId, center, court, playerId, chosenCard.toInt())
+
         }
         toCreatedBookingButton.setOnClickListener {
             // Prepare intent
@@ -129,7 +148,7 @@ class CreateBookingActivity : AppCompatActivity() {
         }
     }
 
-    // request cancel booking
+    // request create booking
     private fun requestCreateBooking(
         pdate: String,
         pstarttime: String,
@@ -137,7 +156,8 @@ class CreateBookingActivity : AppCompatActivity() {
         pcityid: String,
         pcenterid: String,
         pcourtid: String,
-        pplayerid: String
+        pplayerid: String,
+        chosenCard: Int
     ) {
         val bookingObj = JSONObject()
         bookingObj.put("pdate", pdate)
@@ -147,7 +167,7 @@ class CreateBookingActivity : AppCompatActivity() {
         bookingObj.put("pcenterid", pcenterid)
         bookingObj.put("pcourtid", pcourtid)
         bookingObj.put("pplayerid", pplayerid)
-
+        bookingObj.put("pcardid", chosenCard)
         // Get a RequestQueue
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.POST, ApiUtils.URL_BOOKING_CREATE, bookingObj,
@@ -241,4 +261,34 @@ class CreateBookingActivity : AppCompatActivity() {
         return time.hour * 60 + time.minute
     }
 //    private fun requestMinLengthPlaytime(){}
+    private fun cardRequest(playerId : String, date: String){
+        val query = "?playerId=$playerId&date=$date"
+
+    val JsonArray =
+        JsonArrayRequest(
+            Request.Method.GET, ApiUtils.URL_GET_CARD + query, null,
+            Response.Listener { response ->
+                for (i in 0 until response.length()){
+                    var currentCard = response.getJSONObject(i)
+                    var card = ""
+                    card += "card id: " + (currentCard.getString("id").toString())
+                    val expire_date = currentCard.getString("expire_date").toLong()
+
+                    val dateChosen = SimpleDateFormat("dd-MM-yyyy").parse(date)
+                    val validCard = (expire_date - dateChosen.time)/60/60/24/1000
+
+                    card += "days left: $validCard"
+                    card += "remained booking: " + (currentCard.getString("remainBooking").toString())
+
+                    cardList.add(card)
+                }
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(this, "Cannot connect to server.", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+    // Access the RequestQueue through your singleton class.
+    MySingleton.getInstance(this).addToRequestQueue(JsonArray)
+    }
 }
