@@ -189,14 +189,14 @@ where
 END //
 DELIMITER ;
 
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '1','player1 ' , '8 ' , ' 2020-05-05', '2020-06-04' );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '2','player1 ' , '9 ' , ' 2020-05-03', ' 2020-06-02'  );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '3','player3 ' , '3 ' , ' 2020-05-02', '2020-06-01'  );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '4','player4 ' , '4 ' , ' 2020-05-01',  ' 2020-06-31' );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '5','player5 ' , '1 ' , ' 2020-04-30' , ' 2020-05-30' );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '6','player6 ' , '5 ' , ' 2020-04-22',  ' 2020-05-22' );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '7','player7 ' , '6 ' , ' 2020-04-24', ' 2020-05-24' );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '8','player7 ' , '9 ' , ' 2020-04-25' , ' 2020-05-25' );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '9','player7 ' , '10 ' , ' 2020-04-28', ' 2020-05-28'   );  
-INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '10','player8 ' , '2 ' , ' 2020-04-27' , ' 2020-05-27');
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '1','player1 ' , '8 ' , ' 2020-05-05 20:19:18', '2020-06-04 20:19:18' );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '2','player1 ' , '9 ' , ' 2020-05-03 14:12:24', ' 2020-06-02 14:12:24'  );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '3','player3 ' , '3 ' , ' 2020-05-02 15:15:29', '2020-06-01 15:15:29'  );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '4','player4 ' , '4 ' , ' 2020-05-01 03:30:13',  ' 2020-06-31 03:30:13' );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '5','player5 ' , '1 ' , ' 2020-04-30 06:39:13' , ' 2020-05-30 06:39:13' );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '6','player6 ' , '5 ' , ' 2020-04-22 07:13:09',  ' 2020-05-22 07:13:09' );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '7','player7 ' , '6 ' , ' 2020-04-24 11:11:11', ' 2020-05-24 11:11:11' );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '8','player7 ' , '9 ' , ' 2020-04-25 01:00:00' , ' 2020-05-25 01:00:00' );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '9','player7 ' , '10 ' , ' 2020-04-28 12:11:15', ' 2020-05-28 12:11:15'   );  
+INSERT INTO `booking_card` (`card_id` , `player_id` , `remain_booking` , `time_bought`, `expire_dead` ) VALUES ( '10','player8 ' , '2 ' , ' 2020-04-27 16:17:18' , ' 2020-05-27 16:17:18');
 
