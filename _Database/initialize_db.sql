@@ -58,3 +58,12 @@ CREATE TABLE booking(
   CONSTRAINT booking_court_fk
      FOREIGN KEY (court_id) REFERENCES court (court_id) ON DELETE CASCADE
 );
+
+drop table if exists booking_card;
+create table booking_card(
+	card_id int auto_increment primary key,
+    player_id varchar(50),
+	remain_booking int default 10,
+    time_bought datetime,
+    expire_date datetime
+    );

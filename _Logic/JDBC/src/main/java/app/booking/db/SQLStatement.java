@@ -205,11 +205,11 @@ public class SQLStatement {
 
     // createBooking
     public static String createBooking(Date date, Time start, Time end,
-                                       String cityId, String centerId, String courtId, String playerId) throws Exception {
+                                       String cityId, String centerId, String courtId, String playerId, int cardId) throws Exception {
         String code;
         CallableStatement stm = null;
         try {
-            stm = conn.prepareCall("{ CALL createBooking(?, ?, ?, ?, ?, ?, ?, ?) }");
+            stm = conn.prepareCall("{ CALL createBooking(?, ?, ?, ?, ?, ?, ?, ?,?) }");
             stm.setDate(1, date);
             stm.setTime(2, start);
             stm.setTime(3, end);
@@ -217,6 +217,7 @@ public class SQLStatement {
             stm.setString(5, centerId);
             stm.setString(6, courtId);
             stm.setString(7, playerId);
+            stm.setInt(8,cardId);
             stm.registerOutParameter(8, Types.VARCHAR);
             stm.executeUpdate();
             code = stm.getString(8);
@@ -622,6 +623,41 @@ public class SQLStatement {
             System.out.println("getPlayerBookings returns empty list");
 
         return bookingList;
+    }
+
+    // getPlayerCards
+    public static ArrayList<Card> getPlayerCards(String playerId) throws NullPointerException, SQLException {
+        CallableStatement stm = null;
+        ArrayList<Card> cardArrayList = new ArrayList<>();
+
+        try {
+            stm = conn.prepareCall("{ CALL getPlayerCards(?) }");
+            stm.setString(1, playerId);
+            stm.executeUpdate();
+            ResultSet resultSet = stm.getResultSet();
+            while (resultSet.next()) {
+                cardArrayList.add(new Card(
+                        resultSet.getInt("card_id"),
+                        resultSet.getString("player_id"),
+                        resultSet.getInt("remain_booking"),
+                        resultSet.getTimestamp("time_bought"),
+                        resultSet.getTimestamp("expire_date")
+                ));
+            }
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (cardArrayList.isEmpty())
+            System.out.println("getPlayerCards returns empty list");
+
+        return cardArrayList;
     }
 }
 

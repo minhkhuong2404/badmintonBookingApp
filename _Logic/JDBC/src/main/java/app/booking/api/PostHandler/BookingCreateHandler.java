@@ -31,7 +31,8 @@ public class BookingCreateHandler extends PostHandler {
                 CBrequest.getPcityid(),
                 CBrequest.getPcenterid(),
                 CBrequest.getPcourtid(),
-                CBrequest.getPplayerid());
+                CBrequest.getPplayerid(),
+                CBrequest.getCardid());
 
         System.out.println("Create Booking executed with result code: " + result_code);
 
