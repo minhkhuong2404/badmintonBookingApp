@@ -623,5 +623,40 @@ public class SQLStatement {
 
         return bookingList;
     }
+
+    // getPlayerCards
+    public static ArrayList<Card> getPlayerCards(String playerId) throws NullPointerException, SQLException {
+        CallableStatement stm = null;
+        ArrayList<Card> cardArrayList = new ArrayList<>();
+
+        try {
+            stm = conn.prepareCall("{ CALL getPlayerCards(?) }");
+            stm.setString(1, playerId);
+            stm.executeUpdate();
+            ResultSet resultSet = stm.getResultSet();
+            while (resultSet.next()) {
+                cardArrayList.add(new Card(
+                        resultSet.getInt("card_id"),
+                        resultSet.getString("player_id"),
+                        resultSet.getInt("remain_booking"),
+                        resultSet.getTimestamp("time_bought"),
+                        resultSet.getTimestamp("expire_date")
+                ));
+            }
+        } catch (NullPointerException | SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (cardArrayList.isEmpty())
+            System.out.println("getPlayerCards returns empty list");
+
+        return cardArrayList;
+    }
 }
 
