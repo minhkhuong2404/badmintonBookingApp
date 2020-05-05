@@ -39,3 +39,6 @@ INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`ci
 INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) VALUES (17,'2020-04-25 10:33:15','2020-04-23','11:30:00','12:30:00','A','A1','A1C1','player10',0);
 INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) VALUES (19,'2020-04-25 10:35:41','2020-05-12','11:30:00','12:30:00','A','A1','A1C1','player11',0);
 INSERT INTO `booking` (`booking_id`,`timestamp`,`date`,`startTime`,`endTime`,`city_id`,`center_id`,`court_id`,`player_id`,`status`) VALUES (20,'2020-04-25 10:37:28','2020-05-12','11:30:00','12:30:00','A','A1','A1C','player11',0);
+
+INSERT INTO booking_card (card_id , player_id , remain_booking , time_bought, expire_date ) VALUES ( '1','player1 ' , 8 , ' 2020-05-05 10:00:00', '2020-06-04 10:00:00');
+INSERT INTO booking_card (card_id , player_id , remain_booking , time_bought, expire_date ) VALUES ( '2','player1 ' , 9 , ' 2020-05-03 10:45:00', ' 2020-06-02 10:45:00');
