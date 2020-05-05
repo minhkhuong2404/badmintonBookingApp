@@ -228,11 +228,11 @@ If  `slot.end_time` - `slot.start_time >=45
       - **GetHandler:** this method is used to get the request from client.  
       - **PostHandler:**  this method is used to response to client.
 ### 5.3. Presentation Tier  
-* The presentation tier includes :  user interface, class.     
+* The presentation tier includes :  user interface, methods.     
   **User Interface:**  
     -This part is used to initialize the user interface of the application:  
   
-  **Class:**  
+  **Methods:**  
     -To send a request to a server, we have created classes which are:  
       - **postGetCitySlot:** used to call “getCitySlot” class of  logic tier in server. The queries are `city_id` and `date`.         
       - **postGetBooking:** used to call “getBooking” class of the server. The queries are  `date`, `city_id`, `booking_id`.   
