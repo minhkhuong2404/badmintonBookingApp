@@ -1,3 +1,4 @@
+-- getCenterCourts(centerId) --
 DROP PROCEDURE IF EXISTS getCenterCourts;
 DELIMITER //
 CREATE PROCEDURE getCenterCourts(
@@ -10,7 +11,7 @@ THEN
 	SET resultCode = 'GCC-001';
 ELSEIF NOT EXISTS (SELECT * FROM center WHERE center_id = centerId)
 THEN
-	SET resultCode = 'GCC-002';
+	SET resultCode = 'GCC-002'; -- check center valid or not --
 ELSE 
 	select * 
     from court 
