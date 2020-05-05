@@ -1,3 +1,4 @@
+--getCenterBookings(centerId,pdate)
 DROP PROCEDURE IF EXISTS getCenterBookings;
 DELIMITER //
 CREATE PROCEDURE getCenterBookings(in centerId varchar(50),
@@ -10,7 +11,7 @@ BEGIN
         SET resultCode = 'GCB-000';
     ELSEIF NOT EXISTS(SELECT * FROM booking WHERE center_id = centerId)
     THEN
-        SET resultCode = 'GCB-001';
+        SET resultCode = 'GCB-001'; -- check whether center valid or not --
     ELSE
         select *
         from booking
