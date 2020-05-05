@@ -88,12 +88,6 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
-  </component>
   <component name="ProjectId" id="1aFj75jhfBnrkPL6UhMdbH7rHrn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -222,18 +216,6 @@
       <recent name="C:\Users\sonda\Desktop\teamepe2020\_Logic\JDBC" />
       <recent name="C:\Users\sonda\Desktop\teamepe2020\_Logic\JDBC\src\main\java\app\booking" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.ApiServer">
     <configuration name="ApiServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
