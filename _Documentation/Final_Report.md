@@ -230,7 +230,7 @@ If  `slot.end_time` - `slot.start_time >=45
 ### 5.3. Presentation Tier  
 * The presentation tier includes :  user interface, methods.     
   **User Interface:**  
-    -This part is used to initialize the user interface of the application:  
+    -This part is used to initialize the user interface of the application which have been declared in 4.3.  
   
   **Methods:**  
     -To send a request to a server, we have created classes which are:  
